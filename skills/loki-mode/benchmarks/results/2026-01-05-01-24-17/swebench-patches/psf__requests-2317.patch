@@ -29,7 +29,7 @@ And the import needs to be added as well. Let me construct the patch for the req
 @@ -9,7 +9,7 @@ import os
  from collections import Mapping
  from datetime import datetime
- 
+
 -from .compat import cookielib, OrderedDict, urljoin, urlparse, builtin_str
 +from .compat import cookielib, OrderedDict, urljoin, urlparse
  from .cookies import (
@@ -40,15 +40,15 @@ And the import needs to be added as well. Let me construct the patch for the req
  from .exceptions import TooManyRedirects, InvalidSchema
  from .structures import CaseInsensitiveDict
 +from .utils import to_native_string
- 
+
  from .adapters import HTTPAdapter
- 
+
 @@ -425,7 +426,7 @@ class Session(SessionRedirectMixin):
          :param cert: (optional) if String, path to ssl client cert file (.pem).
              If Tuple, ('cert', 'key') pair.
          """
 -        method = builtin_str(method)
 +        method = to_native_string(method, 'utf-8')
- 
+
          # Create the Request.
          req = Request(

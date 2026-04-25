@@ -6,12 +6,12 @@ This native intake skill was imported automatically from an external repository.
 - Source owner: `sickn33`
 - Source repository name: `antigravity-awesome-skills`
 - Source branch: `main`
-- Source commit: `54136b9c7f08e83e9ecd37d495ac49b2a368304c`
+- Source commit: `9bad53f2426e310c33ef5bacf9f845855197be6a`
 - Source skills path: `plugins`
 - Source skill path: `plugins/antigravity-awesome-skills-claude/skills/social-orchestrator`
 - Imported public skill id: `social-orchestrator`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260419T043457.486057+0000-sickn33-antigravity-awesome-skills-weekly`
+- Sync run id: `20260425T172120.724657+0000-sickn33-antigravity-awesome-skills-dashboard-refresh-native-pr`
 
 The original source identity is preserved for review and attribution.

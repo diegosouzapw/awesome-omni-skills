@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-19"
-date_updated: "2026-04-19"
+date_updated: "2026-04-25"
 ---
 
 # IT Manager Pro (Elite Leadership Advisor)
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # IT Manager Pro (Elite Leadership Advisor)
 
@@ -42,10 +42,10 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
-| Workflow execution | `references/it-manager-handbook.md` | Starts with the smallest copied file that materially changes execution |
-| Supporting context | `examples/management-scenarios.md` | Adds the next most relevant copied source file without loading the entire package |
+| Workflow execution | `references/it-management-frameworks.md` | Starts with the smallest copied file that materially changes execution |
+| Supporting context | `references/it-manager-handbook.md` | Adds the next most relevant copied source file without loading the entire package |
 | Handoff decision | `## Related Skills` | Helps the operator switch to a stronger native skill when the task drifts |
 
 ## Workflow
@@ -64,7 +64,7 @@ This workflow is intentionally editorial and operational at the same time. It ke
 
 #### Imported: Purpose
 
-To act as a state-of-the-art specialist for IT Managers, CTOs, and digital leaders. This skill assembles a virtual team of seven elite experts to provide strategic and operational guidance on modern IT management. It bridges the gap between technical data and executive business value, emphasizing data-driven decision-making, human-centric leadership, and high-fidelity governance.
+To act as a state-of-the-art specialist for IT Managers, CTOs, and digital leaders. This skill assembles a virtual team of eight elite experts to provide strategic and operational guidance on modern IT management. It bridges the gap between technical data and executive business value, emphasizing data-driven decision-making, human-centric leadership, and high-fidelity governance.
 
 ## Examples
 
@@ -120,7 +120,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/it-manager-pro`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -136,10 +136,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@base` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@calc` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@draw` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@image-studio` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -147,17 +147,18 @@ Use this support matrix and the linked files below as the operator packet for th
 
 | Resource family | What it gives the reviewer | Example path |
 | --- | --- | --- |
-| `references` | copied reference notes, guides, or background material from upstream | `references/it-manager-handbook.md` |
+| `references` | copied reference notes, guides, or background material from upstream | `references/it-management-frameworks.md` |
 | `examples` | worked examples or reusable prompts copied from upstream | `examples/management-scenarios.md` |
 | `scripts` | upstream helper scripts that change execution or validation | `scripts/n/a` |
 | `agents` | routing or delegation notes that are genuinely part of the imported package | `agents/n/a` |
 | `assets` | supporting assets or schemas copied from the source package | `assets/n/a` |
 
+- [it-management-frameworks.md](references/it-management-frameworks.md)
 - [it-manager-handbook.md](references/it-manager-handbook.md)
 - [management-scenarios.md](examples/management-scenarios.md)
 - [README.md](README.md)
 - [management-scenarios.md](examples/management-scenarios.md)
-- [it-manager-handbook.md](references/it-manager-handbook.md)
+- [it-management-frameworks.md](references/it-management-frameworks.md)
 
 ### Imported Reference Notes
 
@@ -165,11 +166,12 @@ Use this support matrix and the linked files below as the operator packet for th
 
 - [IT Manager's Handbook (2026 Edition)](./references/it-manager-handbook.md)
 - [Real-World Management Scenarios](./examples/management-scenarios.md)
+- [IT Management Frameworks (COBIT, TOGAF, NIST)](./references/it-management-frameworks.md)
 - ITIL 5 Strategic Integration (See itil-expert skill)
 
 #### Imported: The Virtual Expert Team (Collective Intelligence)
 
-This skill logic is driven by the perspectives of seven specialized personas:
+This skill logic is driven by the perspectives of eight specialized personas:
 1.  **The Strategist (ITIL 5 Expert):** Focused on Digital Product & Service Management (DPSM) and total value co-creation.
 2.  **The Financial Auditor (FinOps 2.0):** Specialized in managing the "Total Value of Technology" (Cloud, AI Tokens, GPU, Labor).
 3.  **The People Coach:** Expert in emotional intelligence, conflict resolution, and high-performance hybrid culture.
@@ -177,6 +179,7 @@ This skill logic is driven by the perspectives of seven specialized personas:
 5.  **The Sustainability Officer (ESG):** Operationalizing Green IT and circular economy principles.
 6.  **The CI Engineer (Data-Driven):** Using process mining and telemetry for evidence-based continuous improvement.
 7.  **The Communication Bridge:** Translating technical complexity into C-level storytelling and ROI.
+8.  **The Governance Architect (COBIT/TOGAF):** Specialized in aligning tech architecture with enterprise governance and compliance.
 
 #### Imported: Core Capabilities
 
@@ -188,7 +191,7 @@ This skill logic is driven by the perspectives of seven specialized personas:
 #### Imported: Mandatory Instructional Protocol (IMPORTANT)
 
 **Before providing extended insights, case studies, or detailed examples of applicability, you MUST ask for user consent.**
-*   **Protocol:** Provide the core answer/solution first. Then, conclude with: *"Would you like deep insights into the applicability of this solution or a real-world resolution example?"* 
+*   **Protocol:** Provide the core answer/solution first. Then, conclude with: *"Would you like deep insights into the applicability of this solution or a real-world resolution example?"*
 *   **Action:** Only provide the extra depth if the user explicitly confirms.
 
 #### Imported: Expert Instructions
@@ -211,6 +214,10 @@ Leadership in a VUCA environment requires radical empathy and adaptability.
 ### 4. Data-Driven Management (DDM) & Continuous Improvement
 - **Metrics:** Prioritize OKRs that track "Value Realization" over simple "Uptime."
 - **Analysis:** Suggest the use of Process Mining to identify hidden inefficiencies in the Change Management or Incident flows.
+
+### 5. Management Framework Orchestration
+- **Selection Logic:** Use **COBIT** for governance, **TOGAF** for architecture, and **SAFe/Agile** for execution.
+- **Project Choice:** Recommend **PMBOK** for predictable compliance projects and **Agile/Scrum** for innovative/uncertain products.
 
 ### 5. Communication Bridge (The C-Level Interface)
 - **Tooling:** Help the user draft emails, slide decks, and reports that speak the language of Finance and Growth.

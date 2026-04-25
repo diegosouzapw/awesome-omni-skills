@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "monte-carlo-data"
 date_added: "2026-04-15"
-date_updated: "2026-04-20"
+date_updated: "2026-04-25"
 ---
 
 # Monte Carlo Push Ingestion
@@ -223,10 +223,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@monday-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@monetization` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@monorepo-architect` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@monorepo-management` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

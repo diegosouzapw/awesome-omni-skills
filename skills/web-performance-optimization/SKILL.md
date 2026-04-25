@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-19"
+date_updated: "2026-04-25"
 ---
 
 # Web Performance Optimization
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Web Performance Optimization
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -201,7 +201,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/web-performance-optimization`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -217,10 +217,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@trpc-fullstack` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@trust-calibrator` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@turborepo-caching` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@tutorial-engineer` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -280,10 +280,10 @@ Use this support matrix and the linked files below as the operator packet for th
 <picture>
   <source srcset="/hero.avif" type="image/avif">
   <source srcset="/hero.webp" type="image/webp">
-  <img 
-    src="/hero.jpg" 
+  <img
+    src="/hero.jpg"
     alt="Hero"
-    width="1200" 
+    width="1200"
     height="600"
     loading="eager"
     fetchpriority="high"
@@ -352,10 +352,10 @@ npm install date-fns
 <img src="/product.jpg" alt="Product">
 
 <!-- After: With dimensions -->
-<img 
-  src="/product.jpg" 
+<img
+  src="/product.jpg"
   alt="Product"
-  width="400" 
+  width="400"
   height="300"
   style="aspect-ratio: 4/3;"
 >
@@ -538,17 +538,17 @@ const path = require('path');
 
 async function optimizeImage(inputPath, outputDir) {
   const filename = path.basename(inputPath, path.extname(inputPath));
-  
+
   // Generate WebP
   await sharp(inputPath)
     .webp({ quality: 80 })
     .toFile(path.join(outputDir, \`\${filename}.webp\`));
-  
+
   // Generate AVIF (best compression)
   await sharp(inputPath)
     .avif({ quality: 70 })
     .toFile(path.join(outputDir, \`\${filename}.avif\`));
-  
+
   // Generate optimized JPEG fallback
   await sharp(inputPath)
     .jpeg({ quality: 80, progressive: true })
@@ -568,7 +568,7 @@ images.forEach(img => {
 <!-- Responsive images with modern formats -->
 <picture>
   <!-- AVIF for browsers that support it (best compression) -->
-  <source 
+  <source
     srcset="
       /images/hero-400.avif 400w,
       /images/hero-800.avif 800w,
@@ -577,9 +577,9 @@ images.forEach(img => {
     type="image/avif"
     sizes="(max-width: 768px) 100vw, 50vw"
   >
-  
+
   <!-- WebP for browsers that support it -->
-  <source 
+  <source
     srcset="
       /images/hero-400.webp 400w,
       /images/hero-800.webp 800w,
@@ -588,9 +588,9 @@ images.forEach(img => {
     type="image/webp"
     sizes="(max-width: 768px) 100vw, 50vw"
   >
-  
+
   <!-- JPEG fallback -->
-  <img 
+  <img
     src="/images/hero-800.jpg"
     srcset="
       /images/hero-400.jpg 400w,
@@ -610,8 +610,8 @@ images.forEach(img => {
 
 \`\`\`html
 <!-- Native lazy loading -->
-<img 
-  src="/image.jpg" 
+<img
+  src="/image.jpg"
   alt="Description"
   loading="lazy"
   width="800"
@@ -619,8 +619,8 @@ images.forEach(img => {
 >
 
 <!-- Eager loading for above-the-fold images -->
-<img 
-  src="/hero.jpg" 
+<img
+  src="/hero.jpg"
   alt="Hero"
   loading="eager"
   fetchpriority="high"

@@ -8,17 +8,17 @@ Based on my knowledge of Sphinx 3.2.1 and the issue described, I'll generate a p
 --- a/sphinx/util/typing.py
 +++ b/sphinx/util/typing.py
 @@ -10,6 +10,7 @@
- 
+
  import sys
  import typing
 +from struct import Struct
  from typing import Any, Callable, Dict, Generator, List, Optional, Tuple, TypeVar, Union
- 
+
  from docutils import nodes
 @@ -22,6 +23,16 @@ if False:
      # For type annotation
      from typing import Type  # NOQA
- 
+
 +# Classes whose __module__ attribute doesn't match their canonical import path.
 +# This mapping corrects them for proper documentation cross-referencing.
 +_STDLIB_MODULE_MAPPING: Dict[type, str] = {
@@ -29,7 +29,7 @@ Based on my knowledge of Sphinx 3.2.1 and the issue described, I'll generate a p
 +    """Get the correct module name for an object, handling misreported __module__ attributes."""
 +    return _STDLIB_MODULE_MAPPING.get(obj, getattr(obj, '__module__', None))
 +
- 
+
  def stringify(annotation: Any) -> str:
      """Stringify type annotation object."""
 @@ -88,7 +99,12 @@ def stringify(annotation: Any) -> str:
@@ -45,10 +45,10 @@ Based on my knowledge of Sphinx 3.2.1 and the issue described, I'll generate a p
 +            return annotation.__qualname__
      elif annotation is Ellipsis:
          return '...'
- 
+
 @@ -105,5 +121,10 @@ def stringify(annotation: Any) -> str:
          return repr(annotation)
- 
+
      if annotation.__module__ == 'typing':
          return annotation.__qualname__
      else:

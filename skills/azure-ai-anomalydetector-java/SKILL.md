@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-22"
+date_updated: "2026-04-25"
 ---
 
 # Azure AI Anomaly Detector SDK for Java
@@ -189,9 +189,9 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ## Related Skills
 
 - `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@3d-web-experience` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -268,10 +268,10 @@ if (lastResult.isAnomaly()) {
 ### Change Point Detection
 
 ```java
-UnivariateChangePointDetectionOptions changeOptions = 
+UnivariateChangePointDetectionOptions changeOptions =
     new UnivariateChangePointDetectionOptions(series, TimeGranularity.DAILY);
 
-UnivariateChangePointDetectionResult changeResult = 
+UnivariateChangePointDetectionResult changeResult =
     univariateClient.detectUnivariateChangePoint(changeOptions);
 
 for (int i = 0; i < changeResult.getIsChangePoint().size(); i++) {
@@ -316,7 +316,7 @@ MultivariateBatchDetectionOptions detectionOptions = new MultivariateBatchDetect
     .setEndTime(OffsetDateTime.parse("2023-07-31T00:00:00Z"))
     .setTopContributorCount(10);
 
-MultivariateDetectionResult detectionResult = 
+MultivariateDetectionResult detectionResult =
     multivariateClient.detectMultivariateBatchAnomaly(modelId, detectionOptions);
 
 String resultId = detectionResult.getResultId();
@@ -342,7 +342,7 @@ MultivariateLastDetectionOptions lastOptions = new MultivariateLastDetectionOpti
     ))
     .setTopContributorCount(5);
 
-MultivariateLastDetectionResult lastResult = 
+MultivariateLastDetectionResult lastResult =
     multivariateClient.detectMultivariateLastAnomaly(modelId, lastOptions);
 
 if (lastResult.getValue().isAnomaly()) {

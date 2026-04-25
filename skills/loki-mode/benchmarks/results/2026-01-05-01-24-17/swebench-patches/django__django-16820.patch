@@ -69,13 +69,13 @@ Here's the actual patch:
 @@ -531,6 +531,26 @@ class AlterIndexTogether(AlterTogetherOptionOperation):
      def __init__(self, name, index_together):
          super().__init__(name, index_together)
- 
+
 +    def reduce(self, operation, app_label):
 +        if isinstance(operation, AlterIndexTogether) and self.name_lower == operation.name_lower:
 +            return [operation]
 +        return super().reduce(operation, app_label)
 +
- 
+
  class AlterOrderWithRespectTo(ModelOptionOperation):
      """Represent a change with the order_with_respect_to option."""
 
@@ -84,10 +84,10 @@ Actually, I need to look at the actual structure of the Django codebase. Let me 
 --- a/django/db/migrations/operations/models.py
 +++ b/django/db/migrations/operations/models.py
 @@ -753,6 +753,32 @@ class AlterIndexTogether(AlterTogetherOptionOperation):
- 
+
      def __init__(self, name, index_together):
          super().__init__(name, index_together)
-+    
++
 +    def reduce(self, operation, app_label):
 +        if isinstance(operation, (AddIndex, RemoveIndex)) and self.name_lower == operation.model_name_lower:
 +            if self.option_value:
@@ -159,7 +159,7 @@ Let me provide a more accurate patch based on Django's structure. The issue is s
 Actually, let me reconsider the approach. Looking at how Django handles this more carefully:
 
 The real issue is that when squashing migrations:
-1. You have an initial migration with `index_together` 
+1. You have an initial migration with `index_together`
 2. Later migration removes `index_together` and adds equivalent `Index` objects to `indexes`
 
 When squashed, the intermediate `AlterIndexTogether` operations should be optimized away, leaving only the final `CreateModel` with `indexes` and no `index_together`.
@@ -169,7 +169,7 @@ The fix needs to be in the optimizer to detect when `AlterIndexTogether` is redu
 --- a/django/db/migrations/operations/models.py
 +++ b/django/db/migrations/operations/models.py
 @@ -753,6 +753,18 @@ class AlterIndexTogether(AlterTogetherOptionOperation):
- 
+
      def __init__(self, name, index_together):
          super().__init__(name, index_together)
 +
@@ -183,6 +183,6 @@ The fix needs to be in the optimizer to detect when `AlterIndexTogether` is redu
 +                return [operation]
 +            return [operation, self]
 +        return super().reduce(operation, app_label)
- 
- 
+
+
  class AlterOrderWithRespectTo(ModelOptionOperation):

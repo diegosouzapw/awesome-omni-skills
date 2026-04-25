@@ -164,7 +164,7 @@ interface CacheInterface {
    * Check if a URL is cached
    */
   match(url: string): Promise<Response | undefined>;
-  
+
   /**
    * Store a URL and its response
    */
@@ -187,21 +187,21 @@ class S3Cache {
 
   async match(url) {
     const key = this.urlToKey(url);
-    
+
     try {
       const command = new GetObjectCommand({
         Bucket: this.bucket,
         Key: key
       });
       const response = await this.s3.send(command);
-      
+
       // Convert stream to buffer
       const chunks = [];
       for await (const chunk of response.Body) {
         chunks.push(chunk);
       }
       const body = Buffer.concat(chunks);
-      
+
       return new Response(body, {
         status: 200,
         headers: JSON.parse(response.Metadata.headers || '{}')
@@ -224,7 +224,7 @@ class S3Cache {
       Body: body,
       Metadata: { headers }
     });
-    
+
     await this.s3.send(command);
   }
 

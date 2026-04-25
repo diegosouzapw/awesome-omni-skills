@@ -7,8 +7,8 @@ Let me create a comprehensive patch that addresses the feature request to show u
 +++ b/xarray/core/formatting.py
 @@ -261,6 +261,25 @@ def inline_dask_repr(array):
      return f"dask.array<chunksize={chunksize}>"
- 
- 
+
+
 +def inline_variable_array_repr(var, max_width):
 +    """Build a one-line summary of a variable's data."""
 +    if var._in_memory:
@@ -38,13 +38,13 @@ Let me create a comprehensive patch that addresses the feature request to show u
      """Summarize a variable in one line, e.g., for the Dataset repr."""
      if max_width is None:
 @@ -268,10 +287,28 @@ def summarize_variable(
- 
+
      first_col = pretty_print(f"  {marker} {name} ", col_width)
      dims_str = "({}) ".format(", ".join(map(str, var.dims)))
 -    dims_width = col_width - len(googdims_str)
 +    dims_width = col_width - len(dims_str)
      dtype_width = col_width + 12
- 
+
 -    data_repr = inline_variable_array_repr(var, max_width - dtype_width)
 +    # Get units from attrs or from duck array
 +    units_str = ""
@@ -59,12 +59,12 @@ Let me create a comprehensive patch that addresses the feature request to show u
 +    # Calculate remaining width for data repr
 +    units_width = len(units_str)
 +    remaining_width = max_width - dtype_width - units_width
-+    
++
 +    if hasattr(var._data, "_repr_inline_"):
 +        data_repr = var._data._repr_inline_(remaining_width)
 +    else:
 +        data_repr = inline_variable_array_repr(var, remaining_width)
- 
+
      dtype = var.dtype
 -    return f"{first_col}{dims_str}{dtype} {data_repr}"
 +    return f"{first_col}{dims_str}{dtype}{units_str} {data_repr}"
@@ -76,11 +76,11 @@ Wait, I need to understand the actual current structure of the xarray formatting
 +++ b/xarray/core/formatting.py
 @@ -261,6 +261,17 @@ def inline_dask_repr(array):
      return f"dask.array<chunksize={chunksize}>"
- 
- 
+
+
 +def _get_inline_units(var):
 +    """Get units string for inline display.
-+    
++
 +    Checks for duck array units attribute first (e.g., pint),
 +    then falls back to attrs['units'].
 +    """
@@ -93,8 +93,8 @@ Wait, I need to understand the actual current structure of the xarray formatting
      """Build a one-line summary of a variable's data."""
      if var._in_memory:
 @@ -276,7 +287,7 @@ def inline_variable_array_repr(var, max_width):
- 
- 
+
+
  def summarize_variable(
 -    name: Hashable, var, col_width: int, marker: str = " ", max_width: int = None
 +    name: Hashable, var, col_width: int, marker: str = " ", max_width: int = None, show_units: bool = True
@@ -104,7 +104,7 @@ Wait, I need to understand the actual current structure of the xarray formatting
 @@ -286,9 +297,19 @@ def summarize_variable(
      dims_str = "({}) ".format(", ".join(map(str, var.dims)))
      dtype = var.dtype
- 
+
 -    front_str = f"{first_col}{dims_str}{dtype} "
 +    # Get units string
 +    units_str = ""
@@ -114,11 +114,11 @@ Wait, I need to understand the actual current structure of the xarray formatting
 +            units_str = f" [{units}]"
 +
 +    front_str = f"{first_col}{dims_str}{dtype}{units_str} "
- 
+
 -    data_repr = inline_variable_array_repr(var, max_width - len(front_str))
 +    if hasattr(var._data, "_repr_inline_"):
 +        data_repr = var._data._repr_inline_(max_width - len(front_str))
 +    else:
 +        data_repr = inline_variable_array_repr(var, max_width - len(front_str))
- 
+
      return f"{front_str}{data_repr}"

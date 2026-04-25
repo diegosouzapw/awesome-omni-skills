@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-14"
-date_updated: "2026-04-22"
+date_updated: "2026-04-25"
 ---
 
 # Docker Expert
@@ -193,7 +193,7 @@ secrets:
   db_name:
     external: true
   db_user:
-    external: true  
+    external: true
   db_password:
     external: true
 ```
@@ -326,7 +326,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 **When to recommend other experts:**
 - **Kubernetes orchestration** → kubernetes-expert: Pod management, services, ingress
-- **CI/CD pipeline issues** → github-actions-expert: Build automation, deployment workflows  
+- **CI/CD pipeline issues** → github-actions-expert: Build automation, deployment workflows
 - **Database containerization** → database-expert: Complex persistence, backup strategies
 - **Application-specific optimization** → Language experts: Code-level performance issues
 - **Infrastructure automation** → devops-expert: Terraform, cloud-specific deployments
@@ -399,9 +399,9 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
 ## Related Skills
 
 - `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@3d-web-experience` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -475,7 +475,7 @@ When reviewing Docker configurations, focus on:
 **Root causes**: Poor layer ordering, large build context, no caching strategy
 **Solutions**: Multi-stage builds, .dockerignore optimization, dependency caching
 
-### Security Vulnerabilities  
+### Security Vulnerabilities
 **Symptoms**: Security scan failures, exposed secrets, root execution
 **Root causes**: Outdated base images, hardcoded secrets, default user
 **Solutions**: Regular base updates, secrets management, non-root configuration

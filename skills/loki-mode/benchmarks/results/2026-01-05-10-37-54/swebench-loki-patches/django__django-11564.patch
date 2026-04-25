@@ -26,7 +26,7 @@ Based on my knowledge of the Django codebase and the issue description, I'll gen
 +        if url.startswith('/') and not url.startswith(script_prefix):
 +            url = script_prefix.rstrip('/') + url
 +        return url
- 
+
      def _datetime_from_timestamp(self, ts):
          """
 --- a/django/contrib/staticfiles/storage.py
@@ -38,7 +38,7 @@ Based on my knowledge of the Django codebase and the issue description, I'll gen
 +from django.urls import get_script_prefix
  from django.utils.crypto import md5
  from django.utils.functional import cached_property, lazy
- 
+
 @@ -40,6 +41,14 @@ class StaticFilesStorage(FileSystemStorage):
          super().__init__(location, base_url, *args, **kwargs)
          # FileSystemStorage fallbacks to MEDIA_ROOT when location
@@ -61,16 +61,16 @@ Based on my knowledge of the Django codebase and the issue description, I'll gen
  from django.apps import apps
  from django.utils.encoding import iri_to_uri
 +from django.urls import get_script_prefix
- 
+
  register = template.Library()
- 
+
 @@ -66,6 +67,7 @@ class StaticNode(template.Node):
- 
+
      def url(self, context):
          path = self.path.resolve(context)
 +        url = self.handle_simple(path)
          return self.handle_simple(path)
- 
+
      def render(self, context):
 ```
 
@@ -100,7 +100,7 @@ Wait, I need to reconsider this patch. Let me provide a cleaner implementation:
 +            if script_prefix != '/' and not url.startswith(script_prefix):
 +                url = script_prefix.rstrip('/') + url
 +        return url
- 
+
      def _datetime_from_timestamp(self, ts):
          """
 --- a/django/contrib/staticfiles/storage.py
@@ -112,7 +112,7 @@ Wait, I need to reconsider this patch. Let me provide a cleaner implementation:
 +from django.urls import get_script_prefix
  from django.utils.crypto import md5
  from django.utils.functional import cached_property, lazy
- 
+
 --- a/django/templatetags/static.py
 +++ b/django/templatetags/static.py
 @@ -1,6 +1,7 @@
@@ -120,9 +120,9 @@ Wait, I need to reconsider this patch. Let me provide a cleaner implementation:
  from django.apps import apps
  from django.utils.encoding import iri_to_uri
 +from django.urls import get_script_prefix
- 
+
  register = template.Library()
- 
+
 @@ -68,7 +69,13 @@ class StaticNode(template.Node):
      def url(self, context):
          path = self.path.resolve(context)
@@ -134,7 +134,7 @@ Wait, I need to reconsider this patch. Let me provide a cleaner implementation:
 +            if script_prefix != '/' and not url.startswith(script_prefix):
 +                url = script_prefix.rstrip('/') + url
 +        return url
- 
+
      def render(self, context):
          url = self.url(context)
 ```

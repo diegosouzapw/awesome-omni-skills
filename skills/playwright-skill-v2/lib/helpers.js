@@ -46,14 +46,14 @@ async function launchBrowser(browserType = 'chromium', options = {}) {
     slowMo: process.env.SLOW_MO ? parseInt(process.env.SLOW_MO) : 0,
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   };
-  
+
   const browsers = { chromium, firefox, webkit };
   const browser = browsers[browserType];
-  
+
   if (!browser) {
     throw new Error(`Invalid browser type: ${browserType}`);
   }
-  
+
   return await browser.launch({ ...defaultOptions, ...options });
 }
 
@@ -64,20 +64,20 @@ async function launchBrowser(browserType = 'chromium', options = {}) {
  */
 async function createPage(context, options = {}) {
   const page = await context.newPage();
-  
+
   if (options.viewport) {
     await page.setViewportSize(options.viewport);
   }
-  
+
   if (options.userAgent) {
     await page.setExtraHTTPHeaders({
       'User-Agent': options.userAgent
     });
   }
-  
+
   // Set default timeout
   page.setDefaultTimeout(options.timeout || 30000);
-  
+
   return page;
 }
 
@@ -91,19 +91,19 @@ async function waitForPageReady(page, options = {}) {
     waitUntil: options.waitUntil || 'networkidle',
     timeout: options.timeout || 30000
   };
-  
+
   try {
-    await page.waitForLoadState(waitOptions.waitUntil, { 
-      timeout: waitOptions.timeout 
+    await page.waitForLoadState(waitOptions.waitUntil, {
+      timeout: waitOptions.timeout
     });
   } catch (e) {
     console.warn('Page load timeout, continuing...');
   }
-  
+
   // Additional wait for dynamic content if selector provided
   if (options.waitForSelector) {
-    await page.waitForSelector(options.waitForSelector, { 
-      timeout: options.timeout 
+    await page.waitForSelector(options.waitForSelector, {
+      timeout: options.timeout
     });
   }
 }
@@ -117,12 +117,12 @@ async function waitForPageReady(page, options = {}) {
 async function safeClick(page, selector, options = {}) {
   const maxRetries = options.retries || 3;
   const retryDelay = options.retryDelay || 1000;
-  
+
   for (let i = 0; i < maxRetries; i++) {
     try {
-      await page.waitForSelector(selector, { 
+      await page.waitForSelector(selector, {
         state: 'visible',
-        timeout: options.timeout || 5000 
+        timeout: options.timeout || 5000
       });
       await page.click(selector, {
         force: options.force || false,
@@ -148,15 +148,15 @@ async function safeClick(page, selector, options = {}) {
  * @param {Object} options - Type options
  */
 async function safeType(page, selector, text, options = {}) {
-  await page.waitForSelector(selector, { 
+  await page.waitForSelector(selector, {
     state: 'visible',
-    timeout: options.timeout || 10000 
+    timeout: options.timeout || 10000
   });
-  
+
   if (options.clear !== false) {
     await page.fill(selector, '');
   }
-  
+
   if (options.slow) {
     await page.type(selector, text, { delay: options.delay || 100 });
   } else {
@@ -171,7 +171,7 @@ async function safeType(page, selector, text, options = {}) {
  */
 async function extractTexts(page, selector) {
   await page.waitForSelector(selector, { timeout: 10000 });
-  return await page.$$eval(selector, elements => 
+  return await page.$$eval(selector, elements =>
     elements.map(el => el.textContent?.trim()).filter(Boolean)
   );
 }
@@ -185,13 +185,13 @@ async function extractTexts(page, selector) {
 async function takeScreenshot(page, name, options = {}) {
   const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
   const filename = `${name}-${timestamp}.png`;
-  
+
   await page.screenshot({
     path: filename,
     fullPage: options.fullPage !== false,
     ...options
   });
-  
+
   console.log(`Screenshot saved: ${filename}`);
   return filename;
 }
@@ -208,13 +208,13 @@ async function authenticate(page, credentials, selectors = {}) {
     password: 'input[name="password"], #password',
     submit: 'button[type="submit"], input[type="submit"], button:has-text("Login"), button:has-text("Sign in")'
   };
-  
+
   const finalSelectors = { ...defaultSelectors, ...selectors };
-  
+
   await safeType(page, finalSelectors.username, credentials.username);
   await safeType(page, finalSelectors.password, credentials.password);
   await safeClick(page, finalSelectors.submit);
-  
+
   // Wait for navigation or success indicator
   await Promise.race([
     page.waitForNavigation({ waitUntil: 'networkidle' }),
@@ -255,15 +255,15 @@ async function scrollPage(page, direction = 'down', distance = 500) {
  */
 async function extractTableData(page, tableSelector) {
   await page.waitForSelector(tableSelector);
-  
+
   return await page.evaluate((selector) => {
     const table = document.querySelector(selector);
     if (!table) return null;
-    
-    const headers = Array.from(table.querySelectorAll('thead th')).map(th => 
+
+    const headers = Array.from(table.querySelectorAll('thead th')).map(th =>
       th.textContent?.trim()
     );
-    
+
     const rows = Array.from(table.querySelectorAll('tbody tr')).map(tr => {
       const cells = Array.from(tr.querySelectorAll('td'));
       if (headers.length > 0) {
@@ -275,7 +275,7 @@ async function extractTableData(page, tableSelector) {
         return cells.map(cell => cell.textContent?.trim());
       }
     });
-    
+
     return { headers, rows };
   }, tableSelector);
 }
@@ -296,10 +296,10 @@ async function handleCookieBanner(page, timeout = 3000) {
     '#cookie-accept',
     '[data-testid="cookie-accept"]'
   ];
-  
+
   for (const selector of commonSelectors) {
     try {
-      const element = await page.waitForSelector(selector, { 
+      const element = await page.waitForSelector(selector, {
         timeout: timeout / commonSelectors.length,
         state: 'visible'
       });
@@ -312,7 +312,7 @@ async function handleCookieBanner(page, timeout = 3000) {
       // Continue to next selector
     }
   }
-  
+
   return false;
 }
 
@@ -324,7 +324,7 @@ async function handleCookieBanner(page, timeout = 3000) {
  */
 async function retryWithBackoff(fn, maxRetries = 3, initialDelay = 1000) {
   let lastError;
-  
+
   for (let i = 0; i < maxRetries; i++) {
     try {
       return await fn();
@@ -335,7 +335,7 @@ async function retryWithBackoff(fn, maxRetries = 3, initialDelay = 1000) {
       await new Promise(resolve => setTimeout(resolve, delay));
     }
   }
-  
+
   throw lastError;
 }
 

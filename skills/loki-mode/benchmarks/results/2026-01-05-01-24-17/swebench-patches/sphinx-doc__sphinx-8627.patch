@@ -7,22 +7,22 @@ Based on my understanding of the issue and the Sphinx codebase patterns from the
 --- a/sphinx/util/typing.py
 +++ b/sphinx/util/typing.py
 @@ -10,6 +10,7 @@
- 
+
  import sys
  import typing
 +from struct import Struct
  from typing import Any, Callable, Dict, Generator, List, Optional, Tuple, TypeVar, Union
- 
+
  from docutils import nodes
 @@ -35,6 +36,10 @@ if sys.version_info > (3, 7):
  else:
      ForwardRef = typing._ForwardRef
- 
+
 +# types whose __module__ attribute doesn't point to the correct module
 +_INVALID_MODULES_MAPPING = {
 +    Struct: 'struct',
 +}
- 
+
  def stringify(annotation: Any) -> str:
      """Stringify type annotation object."""
 @@ -89,7 +94,11 @@ def stringify(annotation: Any) -> str:
@@ -37,10 +37,10 @@ Based on my understanding of the issue and the Sphinx codebase patterns from the
 +            return annotation.__qualname__
      elif annotation is Ellipsis:
          return '...'
- 
+
 @@ -107,6 +116,9 @@ def stringify(annotation: Any) -> str:
              return repr(annotation)
- 
+
      module = getattr(annotation, '__module__', None)
 +    if annotation in _INVALID_MODULES_MAPPING:
 +        module = _INVALID_MODULES_MAPPING[annotation]

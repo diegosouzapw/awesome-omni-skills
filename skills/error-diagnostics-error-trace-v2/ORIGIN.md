@@ -6,12 +6,12 @@ This native intake skill was imported automatically from an external repository.
 - Source owner: `sickn33`
 - Source repository name: `antigravity-awesome-skills`
 - Source branch: `main`
-- Source commit: `222dd0e45cab799f09937121e3b083ed1ac8ec20`
+- Source commit: `9bad53f2426e310c33ef5bacf9f845855197be6a`
 - Source skills path: `plugins`
 - Source skill path: `plugins/antigravity-awesome-skills/skills/error-diagnostics-error-trace`
 - Imported public skill id: `error-diagnostics-error-trace-v2`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260416T202423.880631+0000-sickn33-antigravity-awesome-skills-dashboard-sync`
+- Sync run id: `20260425T172120.724657+0000-sickn33-antigravity-awesome-skills-dashboard-refresh-native-pr`
 
 The original source identity is preserved for review and attribution.

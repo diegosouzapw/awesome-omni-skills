@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-21"
+date_updated: "2026-04-25"
 ---
 
 # Filesystem-Based Context Engineering
@@ -110,7 +110,7 @@ Review @filesystem-context using the copied upstream files plus provenance, then
 ```
 Input: Web search returns 8000 tokens
 Before: 8000 tokens added to message history
-After: 
+After:
   - Write to scratch/search_results_001.txt
   - Return: "[Results in scratch/search_results_001.txt. Key finding: API rate limit is 1000 req/min]"
   - Agent greps file when needing specific details
@@ -128,7 +128,7 @@ Result: Full skill loaded only when relevant
 **Example 3: Chat History as File Reference**
 ```
 Trigger: Context window limit reached, summarization required
-Action: 
+Action:
   1. Write full history to history/session_001.txt
   2. Generate summary for new context window
   3. Include reference: "Full history in history/session_001.txt"
@@ -183,10 +183,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@2d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@3d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@daily-gift` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@design-taste-frontend` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -248,11 +248,11 @@ Write large tool outputs to files instead of returning them directly to the cont
 def handle_tool_output(output: str, threshold: int = 2000) -> str:
     if len(output) < threshold:
         return output
-    
+
     # Write to scratch pad
     file_path = f"scratch/{tool_name}_{timestamp}.txt"
     write_file(file_path, output)
-    
+
     # Return reference instead of content
     key_summary = extract_summary(output, max_tokens=200)
     return f"[Output written to {file_path}. Summary: {key_summary}]"

@@ -8,9 +8,9 @@ The fix is to:
 --- a/sklearn/isotonic.py
 +++ b/sklearn/isotonic.py
 @@ -360,7 +360,20 @@ class IsotonicRegression(RegressorMixin, TransformerMixin, BaseEstimator):
- 
+
          return self
- 
+
 -    def transform(self, T):
 +    def _transform(self, T):
 +        """Transform data using the fitted isotonic regression model.
@@ -29,12 +29,12 @@ The fix is to:
 +            Transformed data.
 +        """
          """Transform new data by linear interpolation.
- 
+
          Parameters
 @@ -387,6 +400,26 @@ class IsotonicRegression(RegressorMixin, TransformerMixin, BaseEstimator):
              return res
          return res.reshape(T.shape)
- 
+
 +    def transform(self, T):
 +        """Transform new data by linear interpolation.
 +
@@ -55,7 +55,7 @@ The fix is to:
 +
      def predict(self, T):
          """Predict new data by linear interpolation.
- 
+
 @@ -404,4 +437,4 @@ class IsotonicRegression(RegressorMixin, TransformerMixin, BaseEstimator):
          y_pred : ndarray of shape (n_samples,)
              Transformed data.

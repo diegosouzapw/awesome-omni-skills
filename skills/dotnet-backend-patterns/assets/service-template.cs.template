@@ -14,7 +14,7 @@ namespace YourNamespace.Application.Services;
 public class ProductServiceOptions
 {
     public const string SectionName = "ProductService";
-    
+
     public int DefaultPageSize { get; set; } = 50;
     public int MaxPageSize { get; set; } = 200;
     public TimeSpan CacheDuration { get; set; } = TimeSpan.FromMinutes(15);
@@ -30,7 +30,7 @@ public class Result<T>
     public T? Value { get; }
     public string? Error { get; }
     public string? ErrorCode { get; }
-    
+
     private Result(bool isSuccess, T? value, string? error, string? errorCode)
     {
         IsSuccess = isSuccess;
@@ -38,10 +38,10 @@ public class Result<T>
         Error = error;
         ErrorCode = errorCode;
     }
-    
+
     public static Result<T> Success(T value) => new(true, value, null, null);
     public static Result<T> Failure(string error, string? code = null) => new(false, default, error, code);
-    
+
     public Result<TNew> Map<TNew>(Func<T, TNew> mapper) =>
         IsSuccess ? Result<TNew>.Success(mapper(Value!)) : Result<TNew>.Failure(Error!, ErrorCode);
 }
@@ -96,7 +96,7 @@ public class ProductService : IProductService
             // Try cache first
             var cacheKey = GetCacheKey(id);
             var cached = await _cache.GetAsync<Product>(cacheKey, ct);
-            
+
             if (cached != null)
             {
                 _logger.LogDebug("Cache hit for product {ProductId}", id);
@@ -105,7 +105,7 @@ public class ProductService : IProductService
 
             // Fetch from repository
             var product = await _repository.GetByIdAsync(id, ct);
-            
+
             if (product == null)
             {
                 _logger.LogWarning("Product not found: {ProductId}", id);
@@ -114,7 +114,7 @@ public class ProductService : IProductService
 
             // Populate cache
             await _cache.SetAsync(cacheKey, product, _options.CacheDuration, ct);
-            
+
             return Result<Product>.Success(product);
         }
         catch (Exception ex)
@@ -125,7 +125,7 @@ public class ProductService : IProductService
     }
 
     public async Task<Result<PagedResult<Product>>> SearchAsync(
-        ProductSearchRequest request, 
+        ProductSearchRequest request,
         CancellationToken ct = default)
     {
         try
@@ -191,7 +191,7 @@ public class ProductService : IProductService
 
             // Persist
             var created = await _repository.CreateAsync(product, ct);
-            
+
             _logger.LogInformation("Created product {ProductId} with SKU {Sku}", created.Id, created.Sku);
 
             return Result<Product>.Success(created);
@@ -204,8 +204,8 @@ public class ProductService : IProductService
     }
 
     public async Task<Result<Product>> UpdateAsync(
-        string id, 
-        UpdateProductRequest request, 
+        string id,
+        UpdateProductRequest request,
         CancellationToken ct = default)
     {
         if (string.IsNullOrWhiteSpace(id))
@@ -237,7 +237,7 @@ public class ProductService : IProductService
 
             // Invalidate cache
             await _cache.RemoveAsync(GetCacheKey(id), ct);
-            
+
             _logger.LogInformation("Updated product {ProductId}", id);
 
             return Result<Product>.Success(updated);
@@ -265,7 +265,7 @@ public class ProductService : IProductService
 
             // Invalidate cache
             await _cache.RemoveAsync(GetCacheKey(id), ct);
-            
+
             _logger.LogInformation("Deleted product {ProductId}", id);
 
             return Result<bool>.Success(true);

@@ -10,7 +10,7 @@ Based on the issue description and the architect's analysis, I need to generate 
 @@ -68,7 +68,7 @@ def _line_type(line, delimiter=None):
      _decimal_re = r"[+-]?(\d+(\.\d*)?|\.\d+)([eE][+-]?\d+)?"
      _command_re = r"READ [TS]ERR(\s+[0-9]+)+"
- 
+
 -    sep = delimiter
 +    sep = delimiter
      if delimiter is None:
@@ -19,7 +19,7 @@ Based on the issue description and the architect's analysis, I need to generate 
 @@ -76,10 +76,10 @@ def _line_type(line, delimiter=None):
      _data_re = rf"({_decimal_re}|NO|[-+]?nan)({sep}({_decimal_re}|NO|[-+]?nan))*)"
      _type_re = rf"^\s*((?P<command>{_command_re})|(?P<new>{_new_re})|(?P<data>{_data_re})?\s*(\!(?P<comment>.*))?\s*$"
- 
+
 -    _line_type_re = re.compile(_type_re)
 +    _line_type_re = re.compile(_type_re, re.IGNORECASE)
      line = line.strip()
@@ -27,7 +27,7 @@ Based on the issue description and the architect's analysis, I need to generate 
          return ("comment", "")
 -    match = _line_type_re.match(line)
 +    match = _line_type_re.match(line)
- 
+
      if match is None:
 ```
 

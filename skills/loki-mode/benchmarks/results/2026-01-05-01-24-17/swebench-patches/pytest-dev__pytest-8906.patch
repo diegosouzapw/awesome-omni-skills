@@ -13,14 +13,14 @@ Based on my knowledge of the pytest codebase, the relevant code is in `src/_pyte
 @@ -123,11 +123,10 @@ def skip(msg: str = "", *, allow_module_level: bool = False) -> "NoReturn":
      __tracebackhide__ = True
      raise Skipped(msg=msg, allow_module_level=allow_module_level)
- 
- 
+
+
  skip.Exception = Skipped  # type: ignore[attr-defined]
- 
- 
+
+
  def fail(msg: str = "", pytrace: bool = True) -> "NoReturn":
      """Explicitly fail an executing test with the given message.
- 
+
 --- a/src/_pytest/python.py
 +++ b/src/_pytest/python.py
 @@ -592,9 +592,10 @@ class Module(nodes.File, PyCollector):

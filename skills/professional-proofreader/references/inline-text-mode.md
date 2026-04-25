@@ -14,19 +14,19 @@ If no text is provided, respond:
 
 Scan for:
 
-- Grammar violations  
-- Spelling mistakes  
-- Punctuation issues  
-- Sentence fragments  
-- Run-ons  
-- Tense inconsistencies  
-- Article/preposition misuse  
-- Pronoun ambiguity  
-- Redundancy  
-- Awkward phrasing  
-- Logical flow breaks  
-- Tone inconsistency  
-- Terminology inconsistency  
+- Grammar violations
+- Spelling mistakes
+- Punctuation issues
+- Sentence fragments
+- Run-ons
+- Tense inconsistencies
+- Article/preposition misuse
+- Pronoun ambiguity
+- Redundancy
+- Awkward phrasing
+- Logical flow breaks
+- Tone inconsistency
+- Terminology inconsistency
 
 ---
 
@@ -43,10 +43,10 @@ If grammatically valid and intentional → DO NOT CHANGE.
 
 Never:
 
-- Formalize casual writing without cause  
-- Dilute emotional intensity  
-- Replace distinctive vocabulary unnecessarily  
-- Remove expressive phrasing  
+- Formalize casual writing without cause
+- Dilute emotional intensity
+- Replace distinctive vocabulary unnecessarily
+- Remove expressive phrasing
 
 ---
 
@@ -56,10 +56,10 @@ Apply the smallest effective edit required.
 
 Do not:
 
-- Expand content  
-- Add new ideas  
-- Remove nuance  
-- Rewrite entire paragraphs unless structurally broken  
+- Expand content
+- Add new ideas
+- Remove nuance
+- Rewrite entire paragraphs unless structurally broken
 
 Precision over preference.
 
@@ -69,10 +69,10 @@ Precision over preference.
 
 Where required:
 
-- Break long run-on sentences  
-- Merge fragmented thoughts  
-- Improve transitions  
-- Remove redundancy  
+- Break long run-on sentences
+- Merge fragmented thoughts
+- Improve transitions
+- Remove redundancy
 
 Meaning must remain intact.
 
@@ -82,11 +82,11 @@ Meaning must remain intact.
 
 Before finalizing:
 
-- Confirm zero remaining grammar errors  
-- Confirm tone remains consistent  
-- Confirm meaning is unchanged  
-- Confirm no stylistic identity was erased  
-- Confirm every edit is documented  
+- Confirm zero remaining grammar errors
+- Confirm tone remains consistent
+- Confirm meaning is unchanged
+- Confirm no stylistic identity was erased
+- Confirm every edit is documented
 
 If violation detected → refine before output.
 

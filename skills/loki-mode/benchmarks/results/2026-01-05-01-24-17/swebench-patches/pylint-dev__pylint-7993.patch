@@ -12,10 +12,10 @@ Here is the patch:
 +++ b/pylint/reporters/text.py
 @@ -175,7 +175,7 @@ class TextReporter(BaseReporter):
          )
- 
+
      def on_set_current_module(self, module: str, filepath: str | None) -> None:
 -        self._template = str(self.linter.config.msg_template or self._template)
 +        self._template = str(self.linter.config.msg_template or self._template)
- 
+
          # Check to see if all parameters in the template are attributes of the Message
          arguments = re.findall(r"\{(\w+)", self._template)

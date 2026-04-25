@@ -13,7 +13,7 @@ Here's the fix based on my knowledge of the astropy codebase:
          cright = np.zeros((noutp, right.shape[1]))
 -        cright[-right.shape[0]:, -right.shape[1]:] = 1
 +        cright[-right.shape[0]:, -right.shape[1]:] = right
- 
+
      return np.hstack([cleft, cright])
 ```
 
@@ -27,5 +27,5 @@ Wait, let me reconsider the exact fix. The issue is that when `right` is already
          cright = np.zeros((noutp, right.shape[1]))
 -        cright[-right.shape[0]:, -right.shape[1]:] = 1
 +        cright[-right.shape[0]:, -right.shape[1]:] = right
- 
+
      return np.hstack([cleft, cright])

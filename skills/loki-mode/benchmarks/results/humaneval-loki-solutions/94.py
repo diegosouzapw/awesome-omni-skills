@@ -26,7 +26,7 @@ def skjkasdkd(lst):
             if n % i == 0:
                 return False
         return True
-    
+
     primes = [x for x in lst if is_prime(x)]
     largest_prime = max(primes)
     return sum(int(d) for d in str(largest_prime))

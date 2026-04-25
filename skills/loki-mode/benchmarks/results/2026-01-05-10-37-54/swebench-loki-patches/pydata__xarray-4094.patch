@@ -12,6 +12,6 @@ Based on the existing patch and analysis, here's the fix for the `to_unstacked_d
          for k in variables:
 -            data_dict[k] = self.sel({dim: k}).squeeze(drop=True)
 +            data_dict[k] = self.sel({dim: k}).squeeze(drop=True).drop_vars(dim)
- 
+
          # unstacked dataset
          return Dataset(data_dict)

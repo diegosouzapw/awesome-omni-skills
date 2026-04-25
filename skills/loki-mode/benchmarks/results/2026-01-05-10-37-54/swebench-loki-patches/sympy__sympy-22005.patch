@@ -5,9 +5,9 @@
 --- a/sympy/solvers/polysys.py
 +++ b/sympy/solvers/polysys.py
 @@ -237,10 +237,14 @@ def _solve_reduced_system(system, gens, entry=False):
- 
+
          basis = groebner(system, gens, polys=True)
- 
+
 +        if len(basis) < len(gens):
 +            raise NotImplementedError(filldedent('''
 +                only zero-dimensional systems supported
@@ -15,7 +15,7 @@
 +                '''))
 +
          univariate = list(filter(_is_univariate, basis))
- 
+
 -        if len(univariate) == 1:
 +        if len(univariate) == 1 and len(gens) == 1:
              f = univariate.pop()
@@ -31,6 +31,6 @@
 +        Poly(x - 1, x, y), (x, y)))
 +    raises(NotImplementedError, lambda: solve_poly_system(
 +        Poly(y - 1, x, y), (x, y)))
- 
- 
+
+
  def test_solve_biquadratic():

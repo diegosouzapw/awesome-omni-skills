@@ -62,8 +62,8 @@ A tab bar can include a distinct search item at the trailing end. For guidance, 
 
 The system displays a tab bar near the top of the screen. You can choose to have the tab bar appear as a fixed element, or with a button that converts it to a sidebar. For developer guidance, see [`tabBarOnly`](https://developer.apple.com/documentation/SwiftUI/TabViewStyle/tabBarOnly) and [`sidebarAdaptable`](https://developer.apple.com/documentation/SwiftUI/TabViewStyle/sidebarAdaptable).
 
-  * Tab bar 
-  * Sidebar 
+  * Tab bar
+  * Sidebar
 
 
 
@@ -117,11 +117,11 @@ For additional guidance, see [Live-viewing apps](https://developer.apple.com/des
 
 In visionOS, a tab bar is always vertical, floating in a position that’s fixed relative to the window’s leading side. When people look at a tab bar, it automatically expands; to open a specific tab, people look at the tab and tap. While a tab bar is expanded, it can temporarily obscure the content behind it.
 
-Video with custom controls. 
+Video with custom controls.
 
-Content description: A recording showing a closeup of a tab bar along the side of an app's window in visionOS. The tab bar includes only symbols. The currently selected tab receives the hover effect, showing that someone is looking at it, and the bar expands to display both symbols and labels. 
+Content description: A recording showing a closeup of a tab bar along the side of an app's window in visionOS. The tab bar includes only symbols. The currently selected tab receives the hover effect, showing that someone is looking at it, and the bar expands to display both symbols and labels.
 
-Play 
+Play
 
 **Supply a symbol and a text label for each tab.** A tab’s symbol is always visible in the tab bar. When people look at the tab bar, the system reveals tab labels, too. Even though the tab bar expands, you need to keep tab labels short so people can read them at a glance.
 
@@ -163,11 +163,11 @@ Play
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/tab-bars#Change-log)
 
-Date| Changes  
----|---  
-December 16, 2025| Updated guidance for Liquid Glass.  
-July 28, 2025| Added guidance for Liquid Glass.  
-September 9, 2024| Added art representing the tab bar in iPadOS 18.  
-August 6, 2024| Updated with guidance for the tab bar in iPadOS 18.  
-June 21, 2023| Updated to include guidance for visionOS.  
-  
+Date| Changes
+---|---
+December 16, 2025| Updated guidance for Liquid Glass.
+July 28, 2025| Added guidance for Liquid Glass.
+September 9, 2024| Added art representing the tab bar in iPadOS 18.
+August 6, 2024| Updated with guidance for the tab bar in iPadOS 18.
+June 21, 2023| Updated to include guidance for visionOS.
+
