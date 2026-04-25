@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "avij1109"
 date_added: "2026-04-24"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Frontend API Integration Patterns
@@ -399,8 +399,8 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 - `@2d-games-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@3d-games-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@free-tool-strategy-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@freshdesk-automation-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@freshservice-automation-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
