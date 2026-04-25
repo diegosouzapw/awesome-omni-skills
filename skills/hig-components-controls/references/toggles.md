@@ -120,8 +120,8 @@ A radio button’s state is either selected (a filled circle) or deselected (an 
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/toggles#Change-log)
 
-Date| Changes  
----|---  
-March 29, 2024| Enhanced guidance for using switches in macOS apps, clarified when a checkbox has a title, and added artwork for radio buttons.  
-September 12, 2023| Updated artwork.  
-  
+Date| Changes
+---|---
+March 29, 2024| Enhanced guidance for using switches in macOS apps, clarified when a checkbox has a title, and added artwork for radio buttons.
+September 12, 2023| Updated artwork.
+

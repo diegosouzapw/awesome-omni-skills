@@ -13,21 +13,21 @@ Here's the patch:
                      'view_only': view_only,
 +                    'model': model,
                  })
- 
+
          if app_dict:
 @@ -486,7 +487,7 @@ class AdminSite:
- 
+
          return app_dict
- 
+
 -    def _build_app_dict(self, request, label=None):
 +    def build_app_dict(self, request, label=None):
          """
          Build the app dictionary. The optional `label` parameter filters models
          of a specific app.
 @@ -514,13 +515,13 @@ class AdminSite:
- 
+
          return app_dict
- 
+
      def get_app_list(self, request, app_label=None):
          """
          Return a sorted list of all the installed apps that have been
@@ -35,6 +35,6 @@ Here's the patch:
          """
 -        app_dict = self._build_app_dict(request, app_label)
 +        app_dict = self.build_app_dict(request, app_label)
- 
+
          # Sort the apps alphabetically.
          app_list = sorted(app_dict.values(), key=lambda x: x['name'].lower())

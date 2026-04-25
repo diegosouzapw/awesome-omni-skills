@@ -18,7 +18,7 @@ Based on the architect's analysis, I need to generate a patch for the sympy repo
 @@ -1889,6 +1889,18 @@ class sinc(Function):
      def _eval_rewrite_as_sin(self, arg, **kwargs):
          return sin(arg) / arg
- 
+
 +    def _eval_rewrite_as_exp(self, arg, **kwargs):
 +        from sympy import exp
 +        if arg.is_zero:
@@ -36,12 +36,12 @@ Based on the architect's analysis, I need to generate a patch for the sympy repo
 @@ -423,6 +423,10 @@ class sin(TrigonometricFunction):
      def _eval_rewrite_as_csc(self, arg, **kwargs):
          return 1/csc(arg)
- 
+
 +    def _eval_rewrite_as_sinc(self, arg, **kwargs):
 +        from sympy.functions.special.error_functions import sinc
 +        return arg*sinc(arg)
 +
      def _eval_rewrite_as_sec(self, arg, **kwargs):
          return 1/sec(arg - S.Pi/2, evaluate=False)
- 
+
 ```

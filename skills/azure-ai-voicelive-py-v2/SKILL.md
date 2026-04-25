@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-16"
-date_updated: "2026-04-19"
+date_updated: "2026-04-25"
 ---
 
 # Azure AI Voice Live SDK
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills/skills/azur
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Azure AI Voice Live SDK Build real-time voice AI applications with bidirectional WebSocket communication.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -133,7 +133,7 @@ async def main():
             "modalities": ["text", "audio"],
             "voice": "alloy"
         })
-        
+
         # Listen for events
         async for event in conn:
             print(f"Event: {event.type}")
@@ -163,7 +163,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills/skills/azure-ai-voicelive-py`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -179,10 +179,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@azure-ai-projects-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-ai-projects-ts-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-ai-textanalytics-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-ai-transcription-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -319,19 +319,19 @@ async for event in conn:
             print(f"Session: {event.session}")
         case "session.updated":
             print("Session updated")
-        
+
         # Audio input events
         case "input_audio_buffer.speech_started":
             print(f"Speech started at {event.audio_start_ms}ms")
         case "input_audio_buffer.speech_stopped":
             print(f"Speech stopped at {event.audio_end_ms}ms")
-        
+
         # Transcription events
         case "conversation.item.input_audio_transcription.completed":
             print(f"User said: {event.transcript}")
         case "conversation.item.input_audio_transcription.delta":
             print(f"Partial: {event.delta}")
-        
+
         # Response events
         case "response.created":
             print(f"Response started: {event.response.id}")
@@ -341,7 +341,7 @@ async for event in conn:
             audio = base64.b64decode(event.delta)
         case "response.done":
             print(f"Response complete: {event.response.status}")
-        
+
         # Function calls
         case "response.function_call_arguments.done":
             result = handle_function(event.name, event.arguments)
@@ -351,7 +351,7 @@ async for event in conn:
                 "output": json.dumps(result)
             })
             await conn.response.create()
-        
+
         # Errors
         case "error":
             print(f"Error: {event.error.message}")
@@ -393,7 +393,7 @@ await conn.conversation.item.create(item={
 # Add user message
 await conn.conversation.item.create(item={
     "type": "message",
-    "role": "user", 
+    "role": "user",
     "content": [{"type": "input_text", "text": "Hello!"}]
 })
 

@@ -10,7 +10,7 @@ Based on my knowledge of SymPy's codebase structure and the issue details, here'
 --- a/sympy/core/mul.py
 +++ b/sympy/core/mul.py
 @@ -262,6 +262,14 @@ class Mul(Expr, AssocOp):
- 
+
              if b.is_Number:
                  c, nc = split_args(b)
 +            elif b.is_Add:
@@ -24,7 +24,7 @@ Based on my knowledge of SymPy's codebase structure and the issue details, here'
 +                c, nc = S.One, []
              else:
                  c, nc = S.One, []
- 
+
 @@ -318,6 +326,16 @@ class Mul(Expr, AssocOp):
                  c_powers[b] = c_powers.get(b, S.Zero) + e
                  if e.is_real is not None:
@@ -56,13 +56,13 @@ The fix needs to be in the power combination logic. Looking at the standard SymP
 @@ -1,4 +1,5 @@
  from __future__ import print_function, division
 +from functools import reduce
- 
+
  from collections import defaultdict
  from .sympify import sympify
 @@ -165,6 +166,20 @@ class Mul(Expr, AssocOp):
                      c_part.append(s)
              return c_part, nc_part, order_symbols, lambda_args
- 
+
 +        # Check if expression contains infinity
 +        def _contains_infinity(expr):
 +            """Check if expr contains oo, -oo, or zoo."""
@@ -90,7 +90,7 @@ Actually, looking at this more carefully, I realize I should provide a more targ
 +                        # Check if combining powers results in 0 for a base containing infinity
 +                        if c_powers[b] == 0:
 +                            from sympy.core.numbers import ComplexInfinity, Infinity, NegativeInfinity
-+                            if (b.has(ComplexInfinity) or b.has(Infinity) or 
++                            if (b.has(ComplexInfinity) or b.has(Infinity) or
 +                                b.has(NegativeInfinity) or b.is_infinite):
 +                                # x/x where x contains infinity should be nan, not 1
 +                                return [S.NaN], [], None

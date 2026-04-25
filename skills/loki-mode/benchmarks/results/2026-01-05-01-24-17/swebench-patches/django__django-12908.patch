@@ -3,7 +3,7 @@ Let me provide the patch based on my knowledge of Django's codebase structure. T
 --- a/django/db/models/query.py
 +++ b/django/db/models/query.py
 @@ -1000,6 +1000,10 @@ class QuerySet:
- 
+
      def distinct(self, *field_names):
          """Return a new QuerySet instance that will select only distinct results."""
 +        if self.query.combinator:

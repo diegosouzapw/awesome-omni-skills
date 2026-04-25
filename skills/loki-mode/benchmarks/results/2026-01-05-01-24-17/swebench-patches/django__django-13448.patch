@@ -1,7 +1,7 @@
 Let me understand the issue from the problem statement and hints:
 
 1. **Issue**: When `TEST: {"MIGRATE": False}` is set, the test runner crashes because:
-   - It tries to serialize the database contents via `serialize_db_to_string()` 
+   - It tries to serialize the database contents via `serialize_db_to_string()`
    - But since migrations weren't run, tables like `django_admin_log` don't exist
    - This causes a `ProgrammingError: relation "django_admin_log" does not exist`
 
@@ -26,7 +26,7 @@ Based on the traceback and hints, here's the patch for `django/db/backends/base/
 +++ b/django/db/backends/base/creation.py
 @@ -58,6 +58,7 @@ class BaseDatabaseCreation:
          test_database_name = self._get_test_db_name()
- 
+
          if verbosity >= 1:
 +            from django.apps import apps
              action = 'Creating'
@@ -44,11 +44,11 @@ Based on the traceback and hints, here's the patch for `django/db/backends/base/
 +            self.connection._test_serialized_contents = (
 +                self.serialize_db_to_string()
 +            )
- 
+
          call_command('createcachetable', database=self.connection.alias)
- 
+
          return test_database_name
- 
+
 +    def _syncdb(self, verbosity, interactive):
 +        """Sync database tables without migrations."""
 +        from django.apps import apps
@@ -90,14 +90,14 @@ The fix should be: when `MIGRATE` is `False`, we still need to create tables by 
 +++ b/django/db/backends/base/creation.py
 @@ -58,7 +58,9 @@ class BaseDatabaseCreation:
          test_database_name = self._get_test_db_name()
- 
+
          if verbosity >= 1:
 +            from django.apps import apps
              action = 'Creating'
 +            from django.conf import settings
              if keepdb:
                  action = "Using existing"
- 
+
 @@ -68,6 +70,21 @@ class BaseDatabaseCreation:
                  interactive=False,
                  database=self.connection.alias,
@@ -128,15 +128,15 @@ The fix should be: when `MIGRATE` is `False`, we still need to create tables by 
  import os
  import sys
  from io import StringIO
- 
+
 +from django.apps import apps
 +from django.conf import settings
  from django.core import serializers
  from django.db import router
- 
+
 @@ -58,6 +60,7 @@ class BaseDatabaseCreation:
          test_database_name = self._get_test_db_name()
- 
+
          if verbosity >= 1:
              action = 'Creating'
              if keepdb:
@@ -173,12 +173,12 @@ Let me produce the clean patch:
  import os
  import sys
  from io import StringIO
- 
+
 +from django.apps import apps
 +from django.conf import settings
  from django.core import serializers
  from django.db import router
- 
+
 @@ -68,6 +70,21 @@ class BaseDatabaseCreation:
                  database=self.connection.alias,
                  run_syncdb=True,
@@ -199,5 +199,5 @@ Let me produce the clean patch:
 +                )
 +            finally:
 +                settings.MIGRATION_MODULES = old_migration_modules
- 
+
          # We then serialize the current state of the database into a string

@@ -15,13 +15,13 @@ The fix is to modify the `_subclasses` property in `AutoFieldMeta` to include `B
 +        return (AutoField, BigAutoField, SmallAutoField) + tuple(
 +            cls for cls in (BigAutoField, SmallAutoField) for cls in cls.__subclasses__()
 +        )
- 
+
      def __instancecheck__(self, instance):
          return isinstance(instance, self._subclasses) or super().__instancecheck__(instance)
 
 Wait, that's not correct. Let me reconsider the issue more carefully.
 
-Looking at the problem: When you have `class MyBigAutoField(models.BigAutoField)`, the `__subclasscheck__` method needs to return `True` when checking if `MyBigAutoField` is a subclass of `AutoField`. 
+Looking at the problem: When you have `class MyBigAutoField(models.BigAutoField)`, the `__subclasscheck__` method needs to return `True` when checking if `MyBigAutoField` is a subclass of `AutoField`.
 
 The current implementation of `__subclasscheck__` likely does something like:
 ```python
@@ -37,14 +37,14 @@ The fix should modify the `__subclasscheck__` to check if the class is a subclas
 +++ b/django/db/models/fields/__init__.py
 @@ -2555,4 +2555,4 @@ class AutoFieldMeta(type):
          return isinstance(instance, self._subclasses) or super().__instancecheck__(instance)
- 
+
      def __subclasscheck__(self, subclass):
 -        return subclass in self._subclasses or super().__subclasscheck__(subclass)
 +        return issubclass(subclass, self._subclasses) or super().__subclasscheck__(subclass)
 
 Hmm, but this might cause infinite recursion. Let me think about this more carefully.
 
-The metaclass `AutoFieldMeta` is used by `AutoField`. The `_subclasses` property returns `(AutoField, BigAutoField, SmallAutoField)`. 
+The metaclass `AutoFieldMeta` is used by `AutoField`. The `_subclasses` property returns `(AutoField, BigAutoField, SmallAutoField)`.
 
 When checking `issubclass(MyBigAutoField, AutoField)`:
 1. Python calls `AutoFieldMeta.__subclasscheck__(AutoField, MyBigAutoField)`
@@ -69,7 +69,7 @@ def __subclasscheck__(self, subclass):
 
 Wait, but this could cause recursion if `subclass` also uses `AutoFieldMeta`. Let me think again...
 
-Actually, `issubclass(MyBigAutoField, BigAutoField)` would work correctly because `BigAutoField` uses the regular `type` metaclass for this check, and `MyBigAutoField` inherits from `BigAutoField`. 
+Actually, `issubclass(MyBigAutoField, BigAutoField)` would work correctly because `BigAutoField` uses the regular `type` metaclass for this check, and `MyBigAutoField` inherits from `BigAutoField`.
 
 The issue is that `BigAutoField` and `SmallAutoField` classes themselves don't use `AutoFieldMeta` as their metaclass - only `AutoField` does. So `issubclass(subclass, self._subclasses)` should work correctly without causing infinite recursion.
 
@@ -79,7 +79,7 @@ Let me verify this understanding and create the correct patch:
 +++ b/django/db/models/fields/__init__.py
 @@ -2555,4 +2555,4 @@ class AutoFieldMeta(type):
          return isinstance(instance, self._subclasses) or super().__instancecheck__(instance)
- 
+
      def __subclasscheck__(self, subclass):
 -        return subclass in self._subclasses or super().__subclasscheck__(subclass)
 +        return issubclass(subclass, self._subclasses) or super().__subclasscheck__(subclass)
@@ -108,7 +108,7 @@ Actually, the simplest fix that matches the description in the issue is to just 
 +++ b/django/db/models/fields/__init__.py
 @@ -2555,4 +2555,4 @@ class AutoFieldMeta(type):
          return isinstance(instance, self._subclasses) or super().__instancecheck__(instance)
- 
+
      def __subclasscheck__(self, subclass):
 -        return subclass in self._subclasses or super().__subclasscheck__(subclass)
 +        return issubclass(subclass, self._subclasses) or super().__subclasscheck__(subclass)

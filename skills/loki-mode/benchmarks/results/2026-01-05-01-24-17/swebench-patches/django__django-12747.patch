@@ -7,9 +7,9 @@ The fix should ensure consistency by not including models with zero deletion cou
 @@ -408,6 +408,8 @@ class Collector:
                      origin=self.origin,
                  )
- 
+
 +        if deleted_counter[model] == 0:
 +            del deleted_counter[model]
          return sum(deleted_counter.values()), dict(deleted_counter)
- 
+
      def related_objects(self, related_model, related_fields, objs):

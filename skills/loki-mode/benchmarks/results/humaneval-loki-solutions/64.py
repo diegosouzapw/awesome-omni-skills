@@ -18,12 +18,12 @@ def vowels_count(s):
     vowels = "aeiou"
     s_lower = s.lower()
     count = 0
-    
+
     for char in s_lower:
         if char in vowels:
             count += 1
-    
+
     if s_lower and s_lower[-1] == 'y':
         count += 1
-    
+
     return count

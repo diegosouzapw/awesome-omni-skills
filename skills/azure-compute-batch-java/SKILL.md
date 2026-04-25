@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Azure Batch SDK for Java
@@ -160,10 +160,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@architecture-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@arm-cortex-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@asana-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@ask-questions-if-underspecified` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -393,7 +393,7 @@ batchClient.createTask("myJobId", task);
 batchClient.createTask("myJobId", new BatchTaskCreateParameters("task2", "cmd /c exit 3")
     .setExitConditions(new ExitConditions()
         .setExitCodeRanges(Arrays.asList(
-            new ExitCodeRangeMapping(2, 4, 
+            new ExitCodeRangeMapping(2, 4,
                 new ExitOptions().setJobAction(BatchJobActionKind.TERMINATE)))))
     .setUserIdentity(new UserIdentity()
         .setAutoUser(new AutoUserSpecification()
@@ -516,7 +516,7 @@ try {
     BatchError error = e.getValue();
     System.err.println("Error code: " + error.getCode());
     System.err.println("Message: " + error.getMessage().getValue());
-    
+
     if ("PoolNotFound".equals(error.getCode())) {
         System.err.println("The specified pool does not exist.");
     }

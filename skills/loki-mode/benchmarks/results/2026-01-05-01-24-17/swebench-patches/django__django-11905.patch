@@ -4,7 +4,7 @@ Based on the issue and the hints provided, I can generate the correct patch. The
 +++ b/django/db/models/lookups.py
 @@ -461,6 +461,11 @@ class IsNull(BuiltinLookup):
      prepare_rhs = False
- 
+
      def as_sql(self, compiler, connection):
 +        if not isinstance(self.rhs, bool):
 +            raise ValueError(

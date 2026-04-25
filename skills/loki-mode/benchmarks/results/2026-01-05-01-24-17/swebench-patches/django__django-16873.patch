@@ -1,7 +1,7 @@
-This repository doesn't contain the Django source code. Based on my knowledge of Django's codebase and the issue description, I can provide the fix. The issue is in the `join` filter in `django/template/defaultfilters.py`. 
+This repository doesn't contain the Django source code. Based on my knowledge of Django's codebase and the issue description, I can provide the fix. The issue is in the `join` filter in `django/template/defaultfilters.py`.
 
 Looking at the Django source code and the issue:
-1. The `join` filter always escapes the joining string using `conditional_escape(arg)` 
+1. The `join` filter always escapes the joining string using `conditional_escape(arg)`
 2. But when `autoescape` is off, the joining string should not be escaped
 
 The current implementation looks something like:

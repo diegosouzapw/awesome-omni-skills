@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Azure Service Bus SDK for Python
@@ -158,10 +158,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@azure-mgmt-apicenter-py` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-apimanagement-dotnet` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-apimanagement-py` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-applicationinsights-dotnet` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -220,22 +220,22 @@ from azure.identity.aio import DefaultAzureCredential
 
 async def send_messages():
     credential = DefaultAzureCredential()
-    
+
     async with ServiceBusClient(
         fully_qualified_namespace="<namespace>.servicebus.windows.net",
         credential=credential
     ) as client:
         sender = client.get_queue_sender(queue_name="myqueue")
-        
+
         async with sender:
             # Single message
             message = ServiceBusMessage("Hello, Service Bus!")
             await sender.send_messages(message)
-            
+
             # Batch of messages
             messages = [ServiceBusMessage(f"Message {i}") for i in range(10)]
             await sender.send_messages(messages)
-            
+
             # Message batch (for size control)
             batch = await sender.create_message_batch()
             for i in range(100):
@@ -255,20 +255,20 @@ asyncio.run(send_messages())
 ```python
 async def receive_messages():
     credential = DefaultAzureCredential()
-    
+
     async with ServiceBusClient(
         fully_qualified_namespace="<namespace>.servicebus.windows.net",
         credential=credential
     ) as client:
         receiver = client.get_queue_receiver(queue_name="myqueue")
-        
+
         async with receiver:
             # Receive batch
             messages = await receiver.receive_messages(
                 max_message_count=10,
                 max_wait_time=5  # seconds
             )
-            
+
             for msg in messages:
                 print(f"Received: {str(msg)}")
                 await receiver.complete_message(msg)  # Remove from queue
@@ -297,7 +297,7 @@ receiver = client.get_queue_receiver(
 ```python
 async with receiver:
     messages = await receiver.receive_messages(max_message_count=1)
-    
+
     for msg in messages:
         try:
             # Process message...
@@ -403,7 +403,7 @@ with ServiceBusClient(
 ) as client:
     with client.get_queue_sender("myqueue") as sender:
         sender.send_messages(ServiceBusMessage("Sync message"))
-    
+
     with client.get_queue_receiver("myqueue") as receiver:
         for msg in receiver:
             print(str(msg))

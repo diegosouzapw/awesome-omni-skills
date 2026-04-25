@@ -1,4 +1,4 @@
-Based on my knowledge of Django's codebase and the issue description, I can provide the patch. The bug is in `django/db/models/fields/__init__.py` in the `contribute_to_class` method. 
+Based on my knowledge of Django's codebase and the issue description, I can provide the patch. The bug is in `django/db/models/fields/__init__.py` in the `contribute_to_class` method.
 
 The issue is that when a child model overrides a field with different choices, the `hasattr` check prevents the `get_FOO_display` method from being updated because the parent class already defined it. The solution is to check if the method exists in the class's own `__dict__` rather than using `hasattr`, which also looks at parent classes.
 
@@ -12,7 +12,7 @@ Here's the patch:
              setattr(cls, 'get_%s_display' % self.name,
 -                    partialmethod(cls._get_FIELD_display, field=self))
 +                partialmethod(cls._get_FIELD_display, field=self))
- 
+
      def get_filter_kwargs_for_object(self, obj):
          """
 

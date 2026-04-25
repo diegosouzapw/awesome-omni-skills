@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-15"
-date_updated: "2026-04-20"
+date_updated: "2026-04-25"
 ---
 
 # MONETIZATION - Do Produto ao Revenue
@@ -190,10 +190,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@monday-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@monorepo-architect` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@monorepo-management` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@monte-carlo-monitor-creation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

@@ -18,19 +18,19 @@ Here's the patch for Django's query_utils.py:
 +++ b/django/db/models/query_utils.py
 @@ -40,6 +40,10 @@ class Q(tree.Node):
      conditional = True
- 
+
      def __init__(self, *args, _connector=None, _negated=False, **kwargs):
 +        # Import here to avoid circular imports.
 +        from django.db.models.lookups import Lookup
 +        from django.db.models.expressions import BaseExpression
 +        self._resolve_types = (Lookup, BaseExpression)
          super().__init__(children=[*args, *sorted(kwargs.items())], connector=_connector, negated=_negated)
- 
+
      def _combine(self, other, conn):
 @@ -69,6 +73,9 @@ class Q(tree.Node):
      def __and__(self, other):
          return self._combine(other, self.AND)
- 
+
 +    def __rand__(self, other):
 +        return self._combine(other, self.AND)
 +
@@ -56,12 +56,12 @@ The fix should modify `Q._combine` to also accept `Combinable` expressions. Let 
 --- a/django/db/models/query_utils.py
 +++ b/django/db/models/query_utils.py
 @@ -68,10 +68,16 @@ class Q(tree.Node):
- 
+
      def _combine(self, other, conn):
 -        if not isinstance(other, Q):
 +        if not(isinstance(other, Q) or getattr(other, 'conditional', False)):
              raise TypeError(other)
- 
+
          # If the other Q() is empty, ignore it and just use `self`.
          if not other:
 +            _, args, kwargs = self.deconstruct()
@@ -79,10 +79,10 @@ Actually, looking at the issue more carefully, I realize the simplest fix is to 
 --- a/django/db/models/query_utils.py
 +++ b/django/db/models/query_utils.py
 @@ -68,7 +68,7 @@ class Q(tree.Node):
- 
+
      def _combine(self, other, conn):
 -        if not isinstance(other, Q):
 +        if not isinstance(other, Q) and not getattr(other, 'conditional', False):
              raise TypeError(other)
- 
+
          # If the other Q() is empty, ignore it and just use `self`.

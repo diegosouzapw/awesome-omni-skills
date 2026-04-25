@@ -7,7 +7,7 @@ The fix should ensure consistency by not including model labels with zero counts
 @@ -408,6 +408,8 @@ class Collector:
                              sender=model, origin=self.origin,
                          )
- 
+
 +        for model, instances in self.data.items():
 +            deleted_counter[model._meta.label] += len(instances)
          # update collected instances
@@ -16,7 +16,7 @@ The fix should ensure consistency by not including model labels with zero counts
 @@ -418,8 +420,6 @@ class Collector:
              query = sql.UpdateQuery(model)
              query.update_batch(pk_list, {field.name: value}, self.using)
- 
+
 -        for model, instances in self.data.items():
 -            deleted_counter[model._meta.label] += len(instances)
          # fast deletes

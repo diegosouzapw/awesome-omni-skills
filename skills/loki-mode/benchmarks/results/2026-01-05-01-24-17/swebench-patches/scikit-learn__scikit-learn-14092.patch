@@ -13,8 +13,8 @@ Based on the issue description and standard scikit-learn patterns, here's the pa
  from ..utils.validation import check_is_fitted, check_array
  from ..utils._readonly_array_wrapper import ReadonlyArrayWrapper
 +import numbers
- 
- 
+
+
  class NeighborhoodComponentsAnalysis(TransformerMixin, BaseEstimator):
 @@ -295,7 +296,7 @@ class NeighborhoodComponentsAnalysis(TransformerMixin, BaseEstimator):
          # Check the preferred dimensionality of the projected space
@@ -25,7 +25,7 @@ Based on the issue description and standard scikit-learn patterns, here's the pa
              if self.n_components < 1:
                  raise ValueError("n_components must be at least 1.")
 @@ -305,7 +306,7 @@ class NeighborhoodComponentsAnalysis(TransformerMixin, BaseEstimator):
- 
+
          # Check the convergence tolerance
          if self.tol is not None:
 -            if not isinstance(self.tol, float):

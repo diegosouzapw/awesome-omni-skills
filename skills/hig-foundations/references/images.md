@@ -24,27 +24,27 @@ When creating bitmap images, you specify a _scale factor_ which determines the r
 
 **Provide high-resolution assets for all bitmap images in your app, for every device you support.** As you add each image to your project’s asset catalog, identify its scale factor by appending “@1x,” “@2x,” or “@3x” to its filename. Use the following values for guidance; for additional scale factors, see [Layout](https://developer.apple.com/design/human-interface-guidelines/layout).
 
-Platform| Scale factors  
----|---  
-iPadOS, watchOS| @2x  
-iOS| @2x and @3x  
-visionOS| @2x or higher (see [visionOS](https://developer.apple.com/design/human-interface-guidelines/images#visionOS))  
-macOS, tvOS| @1x and @2x  
-  
+Platform| Scale factors
+---|---
+iPadOS, watchOS| @2x
+iOS| @2x and @3x
+visionOS| @2x or higher (see [visionOS](https://developer.apple.com/design/human-interface-guidelines/images#visionOS))
+macOS, tvOS| @1x and @2x
+
 **In general, design images at the lowest resolution and scale them up to create high-resolution assets.** When you use resizable vectorized shapes, you might want to position control points at whole values so that they’re cleanly aligned at 1x. This positioning allows the points to remain cleanly aligned to the raster grid at higher resolutions, because 2x and 3x are multiples of 1x.
 
 ## [Formats](https://developer.apple.com/design/human-interface-guidelines/images#Formats)
 
 As you create different types of images, consider the following recommendations.
 
-Image type| Format  
----|---  
-Bitmap or raster work| De-interlaced PNG files  
-PNG graphics that don’t require full 24-bit color| An 8-bit color palette  
-Photos| JPEG files, optimized as necessary, or HEIC files  
-Stereo or spatial photos| Stereo HEIC  
-Flat icons, interface icons, and other flat artwork that requires high-resolution scaling| PDF or SVG files  
-  
+Image type| Format
+---|---
+Bitmap or raster work| De-interlaced PNG files
+PNG graphics that don’t require full 24-bit color| An 8-bit color palette
+Photos| JPEG files, optimized as necessary, or HEIC files
+Stereo or spatial photos| Stereo HEIC
+Flat icons, interface icons, and other flat artwork that requires high-resolution scaling| PDF or SVG files
+
 ## [Best practices](https://developer.apple.com/design/human-interface-guidelines/images#Best-practices)
 
 **Include a color profile with each image.** Color profiles help ensure that your app’s colors appear as intended on different displays. For guidance, see [Color management](https://developer.apple.com/design/human-interface-guidelines/color#Color-management).
@@ -65,11 +65,11 @@ Layered images are at the heart of the Apple TV user experience. The system comb
 
 Layered images are required to support the parallax effect.
 
-Video with custom controls. 
+Video with custom controls.
 
-Content description: An animation of a tvOS app icon moving to show the parallax effect. 
+Content description: An animation of a tvOS app icon moving to show the parallax effect.
 
-Play 
+Play
 
 #### [Layered images](https://developer.apple.com/design/human-interface-guidelines/images#Layered-images)
 
@@ -133,16 +133,16 @@ In addition to 2D and stereoscopic images, visionOS apps and games can use Reali
 
 **Use autoscaling PDFs to let you provide a single asset for all screen sizes.** Design your image for the 40mm and 42mm screens at 2x. When you load the PDF, WatchKit automatically scales the image based on the device’s screen size, using the values shown below:
 
-Screen size| Image scale  
----|---  
-38mm| 90%  
-40mm| 100%  
-41mm| 106%  
-42mm| 100%  
-44mm| 110%  
-45mm| 119%  
-49mm| 119%  
-  
+Screen size| Image scale
+---|---
+38mm| 90%
+40mm| 100%
+41mm| 106%
+42mm| 100%
+44mm| 110%
+45mm| 119%
+49mm| 119%
+
 ## [Resources](https://developer.apple.com/design/human-interface-guidelines/images#Resources)
 
 #### [Related](https://developer.apple.com/design/human-interface-guidelines/images#Related)
@@ -167,10 +167,10 @@ Screen size| Image scale
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/images#Change-log)
 
-Date| Changes  
----|---  
-December 16, 2025| Added guidance for spatial photos and spatial scenes in visionOS.  
-December 5, 2023| Clarified guidance on choosing a resolution for a rasterized image in a visionOS app.  
-June 21, 2023| Updated to include guidance for visionOS.  
-September 14, 2022| Added specifications for Apple Watch Ultra.  
-  
+Date| Changes
+---|---
+December 16, 2025| Added guidance for spatial photos and spatial scenes in visionOS.
+December 5, 2023| Clarified guidance on choosing a resolution for a rasterized image in a visionOS app.
+June 21, 2023| Updated to include guidance for visionOS.
+September 14, 2022| Added specifications for Apple Watch Ultra.
+

@@ -78,8 +78,8 @@ You’re most likely to benefit from the Mac idiom if your app displays a lot of
 
 **Make sure views and images look good in the Mac version of your app.** With the Mac idiom, iPadOS views render at 100% of their size, making them appear more detailed. To help you visualize the difference, consider the two depictions of an image asset shown below. One version illustrates how the asset appears when you use the iPad idiom, and the other version shows how the asset appears when you adopt the Mac idiom. Both depictions are zoomed in to show how the image renders with more details when you use the Mac idiom.
 
-  * iPad idiom 
-  * Mac idiom 
+  * iPad idiom
+  * Mac idiom
 
 
 
@@ -133,20 +133,20 @@ Although both iPad and Mac accept user input from a range of devices — such as
 
 Most iPadOS gestures convert automatically when you create your Mac app using Mac Catalyst; for example:
 
-iPadOS gesture…| Translates to mouse interaction  
----|---  
-Tap| Left or right click  
-Touch and hold| Click and hold  
-Pan| Left click and drag  
-  
-iPadOS gesture…| Translates to trackpad gesture  
----|---  
-Tap| Click  
-Touch and hold| Click and hold  
-Pan| Click and drag  
-Pinch| Pinch  
-Rotate| Rotate  
-  
+iPadOS gesture…| Translates to mouse interaction
+---|---
+Tap| Left or right click
+Touch and hold| Click and hold
+Pan| Left click and drag
+
+iPadOS gesture…| Translates to trackpad gesture
+---|---
+Tap| Click
+Touch and hold| Click and hold
+Pan| Click and drag
+Pinch| Pinch
+Rotate| Rotate
+
 Developer note
 
 The system sends the two touches in the pinch and rotate gestures to the view under the pointer, not the view under each touch.
@@ -210,7 +210,7 @@ The system automatically converts the context menus in your iPad app to context 
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/mac-catalyst#Change-log)
 
-Date| Changes  
----|---  
-May 2, 2023| Consolidated guidance into one page.  
-  
+Date| Changes
+---|---
+May 2, 2023| Consolidated guidance into one page.
+

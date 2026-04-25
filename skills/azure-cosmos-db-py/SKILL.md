@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Cosmos DB Service Implementation
@@ -180,7 +180,7 @@ class ProjectInDB(Project):             # Internal with docType
 class ProjectService:
     def _use_cosmos(self) -> bool:
         return get_container() is not None
-    
+
     async def get_by_id(self, project_id: str, workspace_id: str) -> Project | None:
         if not self._use_cosmos():
             return None
@@ -238,10 +238,10 @@ def mock_cosmos_container(mocker):
 async def test_get_project_by_id_returns_project(mock_cosmos_container):
     # Arrange
     mock_cosmos_container.read_item.return_value = {"id": "123", "name": "Test"}
-    
+
     # Act
     result = await project_service.get_by_id("123", "workspace-1")
-    
+
     # Assert
     assert result.id == "123"
     assert result.name == "Test"
@@ -270,10 +270,10 @@ async def test_get_project_by_id_returns_project(mock_cosmos_container):
 
 ## Related Skills
 
-- `@architecture-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@arm-cortex-expert` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@asana-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@ask-questions-if-underspecified` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

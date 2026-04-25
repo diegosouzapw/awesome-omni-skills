@@ -49,13 +49,13 @@ Every platform supports basic gestures like tap, swipe, and drag. Although the p
 
 In addition to the [standard gestures](https://developer.apple.com/design/human-interface-guidelines/gestures#Standard-gestures) supported in all platforms, iOS and iPadOS support a few other gestures that people expect.
 
-Gesture| Common action  
----|---  
-Three-finger swipe| Initiate undo (left swipe); initiate redo (right swipe).  
-Three-finger pinch| Copy selected text (pinch in); paste copied text (pinch out).  
-Four-finger swipe (iPadOS only)| Switch between apps.  
-Shake| Initiate undo; initiate redo.  
-  
+Gesture| Common action
+---|---
+Three-finger swipe| Initiate undo (left swipe); initiate redo (right swipe).
+Three-finger pinch| Copy selected text (pinch in); paste copied text (pinch out).
+Four-finger swipe (iPadOS only)| Switch between apps.
+Shake| Initiate undo; initiate redo.
+
 **Consider allowing simultaneous recognition of multiple gestures if it enhances the experience.** Although simultaneous gestures are unlikely to be useful in nongame apps, a game might include multiple onscreen controls — such as a joystick and firing buttons — that people can operate at the same time. For guidance on integrating touchscreen input with Apple Pencil input in your iPadOS app, see [Apple Pencil and Scribble](https://developer.apple.com/design/human-interface-guidelines/apple-pencil-and-scribble).
 
 ### [macOS](https://developer.apple.com/design/human-interface-guidelines/gestures#macOS)
@@ -72,32 +72,32 @@ visionOS supports two categories of gestures: indirect and direct.
 
 People use an _indirect_ gesture by looking at an object to target it, and then manipulating that object from a distance — indirectly — with their hands. For example, a person can look at a button to focus it and select it by quickly tapping their finger and thumb together. Indirect gestures are comfortable to perform at any distance, and let people quickly change focus between different objects and select items with minimal movement.
 
-Video with custom controls. 
+Video with custom controls.
 
-Content description: A recording showing a closeup view of the top portion of a window in visionOS. A button in the window becomes highlighted. A picture-in-picture window is visible in the bottom-right corner of the recording. It shows a person's hand performing the indirect tap gesture. In response to the gesture, the highlighted button in the window activates. 
+Content description: A recording showing a closeup view of the top portion of a window in visionOS. A button in the window becomes highlighted. A picture-in-picture window is visible in the bottom-right corner of the recording. It shows a person's hand performing the indirect tap gesture. In response to the gesture, the highlighted button in the window activates.
 
-Play 
+Play
 
 People use a _direct_ gesture to physically touch an interactive object. For example, people can directly type on the visionOS keyboard by tapping the virtual keys. Direct gestures work best when they are within reach. Because people may find it tiring to keep their arms raised for extended periods, direct gestures are best for infrequent use. visionOS also supports direct versions of all standard gestures, allowing people the choice to interact directly or indirectly with any standard component.
 
-Video with custom controls. 
+Video with custom controls.
 
-Content description: A recording showing a table with a vertical stack of three virtual cubic blocks on it in visionOS. A person moves their hand toward the blocks from right to left, and their extended fingers touch and push aside the center block. The center block falls to the side, and the other block also tumbles onto the tabletop. 
+Content description: A recording showing a table with a vertical stack of three virtual cubic blocks on it in visionOS. A person moves their hand toward the blocks from right to left, and their extended fingers touch and push aside the center block. The center block falls to the side, and the other block also tumbles onto the tabletop.
 
-Play 
+Play
 
 Here are the standard direct gestures people use in visionOS; see [Specifications](https://developer.apple.com/design/human-interface-guidelines/gestures#Specifications) for a list of standard indirect gestures.
 
-Direct gesture| Common use  
----|---  
-Touch| Directly select or activate an object.  
-Touch and hold| Open a contextual menu.  
-Touch and drag| Move an object to a new location.  
-Double touch| Preview an object or file; select a word in an editing context.  
-Swipe| Reveal actions and controls; dismiss views; scroll.  
-With two hands, pinch and drag together or apart| Zoom in or out.  
-With two hands, pinch and drag in a circular motion| Rotate an object.  
-  
+Direct gesture| Common use
+---|---
+Touch| Directly select or activate an object.
+Touch and hold| Open a contextual menu.
+Touch and drag| Move an object to a new location.
+Double touch| Preview an object or file; select a word in an editing context.
+Swipe| Reveal actions and controls; dismiss views; scroll.
+With two hands, pinch and drag together or apart| Zoom in or out.
+With two hands, pinch and drag in a circular motion| Rotate an object.
+
 **Support standard gestures everywhere you can.** For example, as soon as someone looks at an object in your app or game, tap is the first gesture they’re likely to make when they want to select or activate it. Even if you also support custom gestures, supporting standard gestures such as tap helps people get comfortable with your app or game quickly.
 
 **Offer both indirect and direct interactions when possible.** Prefer indirect gestures for UI and common components like buttons. Reserve direct gestures and custom gestures for objects that invite close-up interaction or specific motions in a game or interactive experience.
@@ -164,16 +164,16 @@ In watchOS 11 and later, people can use the double-tap gesture to scroll through
 
 The system provides APIs that support the familiar gestures people use with their devices, whether they use a touchscreen, an indirect gesture in visionOS, or an input device like a trackpad, mouse, remote, or game controller. For developer guidance, see [Gestures](https://developer.apple.com/documentation/SwiftUI/Gestures).
 
-Gesture| Supported in| Common action  
----|---|---  
-Tap| iOS, iPadOS, macOS, tvOS, visionOS, watchOS| Activate a control; select an item.  
-Swipe| iOS, iPadOS, macOS, tvOS, visionOS, watchOS| Reveal actions and controls; dismiss views; scroll.  
-Drag| iOS, iPadOS, macOS, tvOS, visionOS, watchOS| Move a UI element.  
-Touch (or pinch) and hold| iOS, iPadOS, tvOS, visionOS, watchOS| Reveal additional controls or functionality.  
-Double tap| iOS, iPadOS, macOS, tvOS, visionOS, watchOS| Zoom in; zoom out if already zoomed in; perform a primary action on Apple Watch Series 9 and Apple Watch Ultra 2.  
-Zoom| iOS, iPadOS, macOS, tvOS, visionOS| Zoom a view; magnify content.  
-Rotate| iOS, iPadOS, macOS, tvOS, visionOS| Rotate a selected item.  
-  
+Gesture| Supported in| Common action
+---|---|---
+Tap| iOS, iPadOS, macOS, tvOS, visionOS, watchOS| Activate a control; select an item.
+Swipe| iOS, iPadOS, macOS, tvOS, visionOS, watchOS| Reveal actions and controls; dismiss views; scroll.
+Drag| iOS, iPadOS, macOS, tvOS, visionOS, watchOS| Move a UI element.
+Touch (or pinch) and hold| iOS, iPadOS, tvOS, visionOS, watchOS| Reveal additional controls or functionality.
+Double tap| iOS, iPadOS, macOS, tvOS, visionOS, watchOS| Zoom in; zoom out if already zoomed in; perform a primary action on Apple Watch Series 9 and Apple Watch Ultra 2.
+Zoom| iOS, iPadOS, macOS, tvOS, visionOS| Zoom a view; magnify content.
+Rotate| iOS, iPadOS, macOS, tvOS, visionOS| Rotate a selected item.
+
 For guidance on supporting additional gestures and button presses on specific input devices, see [Pointing devices](https://developer.apple.com/design/human-interface-guidelines/pointing-devices), [Remotes](https://developer.apple.com/design/human-interface-guidelines/remotes), and [Game controls](https://developer.apple.com/design/human-interface-guidelines/game-controls).
 
 ## [Resources](https://developer.apple.com/design/human-interface-guidelines/gestures#Resources)
@@ -200,9 +200,9 @@ For guidance on supporting additional gestures and button presses on specific in
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/gestures#Change-log)
 
-Date| Changes  
----|---  
-September 9, 2024| Added guidance for working with system overlays in visionOS and made organizational updates.  
-September 15, 2023| Updated specifications to include double tap in watchOS.  
-June 21, 2023| Changed page title from Touchscreen gestures and updated to include guidance for visionOS.  
-  
+Date| Changes
+---|---
+September 9, 2024| Added guidance for working with system overlays in visionOS and made organizational updates.
+September 15, 2023| Updated specifications to include double tap in watchOS.
+June 21, 2023| Changed page title from Touchscreen gestures and updated to include guidance for visionOS.
+

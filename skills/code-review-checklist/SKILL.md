@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-14"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Code Review Checklist
@@ -225,10 +225,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@bullmq-specialist` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@burp-suite-testing` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@burpsuite-project-parser` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@business-analyst` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -413,27 +413,27 @@ function calculateTotalPrice(quantity, unitPrice, tax) {
 function processOrder(order) {
   // Validate order
   if (!order.items) throw new Error('No items');
-  
+
   // Calculate total
   let total = 0;
   for (let item of order.items) {
     total += item.price * item.quantity;
   }
-  
+
   // Apply discount
   if (order.coupon) {
     total *= 0.9;
   }
-  
+
   // Process payment
   const payment = stripe.charge(total);
-  
+
   // Send email
   sendEmail(order.email, 'Order confirmed');
-  
+
   // Update inventory
   updateInventory(order.items);
-  
+
   return { orderId: order.id, total };
 }
 \`\`\`
@@ -446,7 +446,7 @@ function processOrder(order) {
   const payment = processPayment(total);
   sendOrderConfirmation(order.email);
   updateInventory(order.items);
-  
+
   return { orderId: order.id, total };
 }
 \`\`\`

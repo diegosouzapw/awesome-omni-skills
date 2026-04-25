@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "Champbreed"
 date_added: "2026-04-14"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # /aegisops-ai — Autonomous Governance Orchestrator
@@ -80,7 +80,7 @@ pip install google-genai python-dotenv
 ```
 ### 3. API Configuration
 
-Create a `.env` file in the root directory to securely 
+Create a `.env` file in the root directory to securely
 store your credentials:
 
 ```bash
@@ -90,11 +90,11 @@ echo "GEMINI_API_KEY='your_api_key_here'" > .env
 #### Imported: Goal
 
 To automate high-stakes security and financial audits by:
-1. Identifying logic-based vulnerabilities (UAF, Stale 
+1. Identifying logic-based vulnerabilities (UAF, Stale
 State) in Linux Kernel patches.
-2. Detecting massive "Silent Disaster" cost drifts in 
+2. Detecting massive "Silent Disaster" cost drifts in
 Terraform plans.
-3. Translating natural language security intent into 
+3. Translating natural language security intent into
 hardened K8s manifests.
 
 ## Examples
@@ -177,9 +177,9 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ## Related Skills
 
 - `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@3d-web-experience` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

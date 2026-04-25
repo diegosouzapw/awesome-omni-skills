@@ -192,8 +192,8 @@ trackio.init(
 Embed Space dashboards in websites with query parameters:
 
 ```html
-<iframe 
-  src="https://username-trackio.hf.space/?project=my-project&metrics=train_loss,val_loss&sidebar=hidden" 
+<iframe
+  src="https://username-trackio.hf.space/?project=my-project&metrics=train_loss,val_loss&sidebar=hidden"
   style="width:1600px; height:500px; border:0;">
 </iframe>
 ```

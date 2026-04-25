@@ -29,12 +29,12 @@ Let me create the patch based on sympy's standard patterns:
 -complementary error function, and exponential integrals.
 +complementary error function, exponential integrals, and the sinc function.
  """
- 
+
  from sympy.core import S
 @@ -1900,6 +1900,14 @@ class sinc(Function):
      def _eval_rewrite_as_sin(self, arg, **kwargs):
          return sin(arg) / arg
- 
+
 +    def _eval_rewrite_as_exp(self, arg, **kwargs):
 +        from sympy import exp, I
 +        return (exp(I*arg) - exp(-I*arg)) / (2*I*arg)
@@ -62,7 +62,7 @@ The key additions needed:
 +    def _eval_rewrite_as_sinc(self, arg, **kwargs):
 +        from sympy.functions.special.error_functions import sinc
 +        return arg*sinc(arg)
---- a/sympy/functions/special/error_functions.py  
+--- a/sympy/functions/special/error_functions.py
 +++ b/sympy/functions/special/error_functions.py
 @@ -xxx,6 +xxx,10 @@ class sinc(Function):
 +    def _eval_rewrite_as_exp(self, arg, **kwargs):
@@ -74,20 +74,20 @@ The key additions needed:
 @@ -437,6 +437,10 @@ class sin(TrigonometricFunction):
      def _eval_rewrite_as_csc(self, arg, **kwargs):
          return 1/csc(arg)
- 
+
 +    def _eval_rewrite_as_sinc(self, arg, **kwargs):
 +        from sympy.functions.special.error_functions import sinc
 +        return arg*sinc(arg)
 +
      def _eval_conjugate(self):
          return self.func(self.args[0].conjugate())
- 
+
 --- a/sympy/functions/special/error_functions.py
 +++ b/sympy/functions/special/error_functions.py
 @@ -1900,6 +1900,10 @@ class sinc(Function):
      def _eval_rewrite_as_sin(self, arg, **kwargs):
          return sin(arg) / arg
- 
+
 +    def _eval_rewrite_as_exp(self, arg, **kwargs):
 +        from sympy import exp, I
 +        return (exp(I*arg) - exp(-I*arg)) / (2*I*arg)

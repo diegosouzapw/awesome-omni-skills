@@ -21,7 +21,7 @@ def int_to_mini_roman(number):
         'x', 'ix', 'v', 'iv',
         'i'
     ]
-    
+
     roman_num = ''
     i = 0
     while number > 0:

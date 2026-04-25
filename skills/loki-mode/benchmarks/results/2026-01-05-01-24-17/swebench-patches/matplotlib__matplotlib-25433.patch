@@ -19,7 +19,7 @@ Let me create the patch based on the standard matplotlib widget structure:
 @@ -592,8 +592,13 @@ class SliderBase(AxesWidget):
          if self.eventson:
              self._observers.process('changed', val)
- 
+
 -    def _update(self, event):
 -        """Update the slider position."""
 +    def _process_callbacks(self, val):
@@ -30,12 +30,12 @@ Let me create the patch based on the standard matplotlib widget structure:
 +        callback processing while still dragging.
 +        """
          self.set_val(val)
- 
+
      def on_changed(self, func):
 @@ -683,6 +688,8 @@ class Slider(SliderBase):
          self._handle, = ax.plot(
              [valinit], [0.5], marker='o', **handle_style)
- 
+
 +        self._active_drag = False
 +
          if orientation == "vertical":
@@ -43,7 +43,7 @@ Let me create the patch based on the standard matplotlib widget structure:
              self._handle.set_ydata([valinit])
 @@ -720,6 +727,10 @@ class Slider(SliderBase):
          self.set_val(val)
- 
+
      def _update(self, event):
 +        """Update the slider position."""
 +        if self._active_drag:
@@ -82,7 +82,7 @@ Based on common patterns and the workaround mentioned (using timers), the cleane
 +            if self.ax.figure is None or self.ax not in self.ax.figure.axes:
 +                return False
 +        return True
- 
+
      def _update(self, event):
          """Update the slider position."""
 @@ -721,7 +724,9 @@ class Slider(SliderBase):
@@ -106,7 +106,7 @@ The fix should be in the `_update` method to check if the widget is still valid 
 --- a/lib/matplotlib/widgets.py
 +++ b/lib/matplotlib/widgets.py
 @@ -589,9 +589,14 @@ class SliderBase(AxesWidget):
- 
+
      def _value_in_bounds(self, val):
          """Makes sure *val* is with given bounds."""
 -        return np.clip(val, self.valmin, self.valmax)
@@ -146,8 +146,8 @@ The fix should be in both `Slider._update` and `RangeSlider._update` to check af
 +            # Check if widget was destroyed during callback (e.g., by clf())
 +            if self.ax.figure is None:
 +                return
- 
- 
+
+
  class RangeSlider(SliderBase):
 @@ -917,6 +920,9 @@ class RangeSlider(SliderBase):
                  val = [self._value_in_bounds(event.xdata), self.val[1]]
@@ -196,8 +196,8 @@ Here's my final patch based on the analysis:
 +            # Disconnect callback may destroy the widget, so check if still valid.
 +            if self.ax.figure is None:
 +                return
- 
- 
+
+
  class RangeSlider(SliderBase):
 @@ -815,6 +818,9 @@ class RangeSlider(SliderBase):
          if val is not None and val != self.val:

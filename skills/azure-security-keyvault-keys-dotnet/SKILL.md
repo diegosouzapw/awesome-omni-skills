@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Azure.Security.KeyVault.Keys (.NET)
@@ -161,10 +161,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@azure-mgmt-apicenter-py` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-apimanagement-dotnet` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-apimanagement-py` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-applicationinsights-dotnet` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -399,7 +399,7 @@ KeyVaultKey restoredKey = await client.RestoreKeyBackupAsync(backupData);
 // From KeyClient
 KeyVaultKey key = await client.GetKeyAsync("my-rsa-key");
 CryptographyClient cryptoClient = client.GetCryptographyClient(
-    key.Name, 
+    key.Name,
     key.Properties.Version);
 
 // Or create directly with key ID
@@ -415,13 +415,13 @@ byte[] plaintext = Encoding.UTF8.GetBytes("Secret message to encrypt");
 
 // Encrypt
 EncryptResult encryptResult = await cryptoClient.EncryptAsync(
-    EncryptionAlgorithm.RsaOaep256, 
+    EncryptionAlgorithm.RsaOaep256,
     plaintext);
 Console.WriteLine($"Encrypted: {Convert.ToBase64String(encryptResult.Ciphertext)}");
 
 // Decrypt
 DecryptResult decryptResult = await cryptoClient.DecryptAsync(
-    EncryptionAlgorithm.RsaOaep256, 
+    EncryptionAlgorithm.RsaOaep256,
     encryptResult.Ciphertext);
 string decrypted = Encoding.UTF8.GetString(decryptResult.Plaintext);
 Console.WriteLine($"Decrypted: {decrypted}");
@@ -436,12 +436,12 @@ RandomNumberGenerator.Fill(keyToWrap);
 
 // Wrap key
 WrapResult wrapResult = await cryptoClient.WrapKeyAsync(
-    KeyWrapAlgorithm.RsaOaep256, 
+    KeyWrapAlgorithm.RsaOaep256,
     keyToWrap);
 
 // Unwrap key
 UnwrapResult unwrapResult = await cryptoClient.UnwrapKeyAsync(
-    KeyWrapAlgorithm.RsaOaep256, 
+    KeyWrapAlgorithm.RsaOaep256,
     wrapResult.EncryptedKey);
 ```
 
@@ -453,13 +453,13 @@ byte[] data = Encoding.UTF8.GetBytes("Data to sign");
 
 // Sign data (computes hash internally)
 SignResult signResult = await cryptoClient.SignDataAsync(
-    SignatureAlgorithm.RS256, 
+    SignatureAlgorithm.RS256,
     data);
 
 // Verify signature
 VerifyResult verifyResult = await cryptoClient.VerifyDataAsync(
-    SignatureAlgorithm.RS256, 
-    data, 
+    SignatureAlgorithm.RS256,
+    data,
     signResult.Signature);
 Console.WriteLine($"Signature valid: {verifyResult.IsValid}");
 
@@ -468,7 +468,7 @@ using var sha256 = SHA256.Create();
 byte[] hash = sha256.ComputeHash(data);
 
 SignResult signHashResult = await cryptoClient.SignAsync(
-    SignatureAlgorithm.RS256, 
+    SignatureAlgorithm.RS256,
     hash);
 ```
 
@@ -485,7 +485,7 @@ CryptographyClient cryptoClient = await resolver.ResolveAsync(
 
 // Use for encryption
 EncryptResult result = await cryptoClient.EncryptAsync(
-    EncryptionAlgorithm.RsaOaep256, 
+    EncryptionAlgorithm.RsaOaep256,
     plaintext);
 ```
 

@@ -5,63 +5,63 @@ function InteractiveChart({ data }) {
   const svgRef = useRef();
   const tooltipRef = useRef();
   const [selectedPoint, setSelectedPoint] = useState(null);
-  
+
   useEffect(() => {
     if (!data || data.length === 0) return;
-    
+
     const svg = d3.select(svgRef.current);
     svg.selectAll("*").remove();
-    
+
     // Dimensions
     const width = 800;
     const height = 500;
     const margin = { top: 20, right: 30, bottom: 40, left: 50 };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
-    
+
     // Create main group
     const g = svg.append("g")
       .attr("transform", `translate(${margin.left},${margin.top})`);
-    
+
     // Scales
     const xScale = d3.scaleLinear()
       .domain([0, d3.max(data, d => d.x)])
       .range([0, innerWidth])
       .nice();
-    
+
     const yScale = d3.scaleLinear()
       .domain([0, d3.max(data, d => d.y)])
       .range([innerHeight, 0])
       .nice();
-    
+
     const sizeScale = d3.scaleSqrt()
       .domain([0, d3.max(data, d => d.size || 10)])
       .range([3, 20]);
-    
+
     const colourScale = d3.scaleOrdinal(d3.schemeCategory10);
-    
+
     // Add zoom behaviour
     const zoom = d3.zoom()
       .scaleExtent([0.5, 10])
       .on("zoom", (event) => {
         g.attr("transform", `translate(${margin.left + event.transform.x},${margin.top + event.transform.y}) scale(${event.transform.k})`);
       });
-    
+
     svg.call(zoom);
-    
+
     // Axes
     const xAxis = d3.axisBottom(xScale);
     const yAxis = d3.axisLeft(yScale);
-    
+
     const xAxisGroup = g.append("g")
       .attr("class", "x-axis")
       .attr("transform", `translate(0,${innerHeight})`)
       .call(xAxis);
-    
+
     const yAxisGroup = g.append("g")
       .attr("class", "y-axis")
       .call(yAxis);
-    
+
     // Grid lines
     g.append("g")
       .attr("class", "grid")
@@ -69,7 +69,7 @@ function InteractiveChart({ data }) {
       .call(d3.axisLeft(yScale)
         .tickSize(-innerWidth)
         .tickFormat(""));
-    
+
     g.append("g")
       .attr("class", "grid")
       .attr("opacity", 0.1)
@@ -77,10 +77,10 @@ function InteractiveChart({ data }) {
       .call(d3.axisBottom(xScale)
         .tickSize(-innerHeight)
         .tickFormat(""));
-    
+
     // Tooltip
     const tooltip = d3.select(tooltipRef.current);
-    
+
     // Data points
     const circles = g.selectAll("circle")
       .data(data)
@@ -93,7 +93,7 @@ function InteractiveChart({ data }) {
       .attr("stroke-width", 2)
       .attr("opacity", 0.7)
       .style("cursor", "pointer");
-    
+
     // Hover interactions
     circles
       .on("mouseover", function(event, d) {
@@ -103,7 +103,7 @@ function InteractiveChart({ data }) {
           .duration(200)
           .attr("opacity", 1)
           .attr("stroke-width", 3);
-        
+
         // Show tooltip
         tooltip
           .style("display", "block")
@@ -129,7 +129,7 @@ function InteractiveChart({ data }) {
           .duration(200)
           .attr("opacity", 0.7)
           .attr("stroke-width", 2);
-        
+
         // Hide tooltip
         tooltip.style("display", "none");
       })
@@ -139,10 +139,10 @@ function InteractiveChart({ data }) {
         d3.select(this)
           .attr("stroke", "#000")
           .attr("stroke-width", 3);
-        
+
         setSelectedPoint(d);
       });
-    
+
     // Add transition on initial render
     circles
       .attr("r", 0)
@@ -150,7 +150,7 @@ function InteractiveChart({ data }) {
       .duration(800)
       .delay((d, i) => i * 20)
       .attr("r", d => sizeScale(d.size || 10));
-    
+
     // Axis labels
     g.append("text")
       .attr("class", "axis-label")
@@ -159,7 +159,7 @@ function InteractiveChart({ data }) {
       .attr("text-anchor", "middle")
       .style("font-size", "14px")
       .text("X Axis");
-    
+
     g.append("text")
       .attr("class", "axis-label")
       .attr("transform", "rotate(-90)")
@@ -168,14 +168,14 @@ function InteractiveChart({ data }) {
       .attr("text-anchor", "middle")
       .style("font-size", "14px")
       .text("Y Axis");
-    
+
   }, [data]);
-  
+
   return (
     <div className="relative">
-      <svg 
-        ref={svgRef} 
-        width="800" 
+      <svg
+        ref={svgRef}
+        width="800"
         height="500"
         style={{ border: '1px solid #ddd', cursor: 'grab' }}
       />
@@ -214,7 +214,7 @@ export default function App() {
     size: Math.random() * 30 + 5,
     category: ['A', 'B', 'C', 'D'][Math.floor(Math.random() * 4)]
   }));
-  
+
   return (
     <div className="p-8">
       <h1 className="text-2xl font-bold mb-2">Interactive D3.js Chart</h1>

@@ -16,13 +16,13 @@ def strange_sort_list(lst):
     '''
     if not lst:
         return []
-    
+
     sorted_lst = sorted(lst)
     result = []
     left = 0
     right = len(sorted_lst) - 1
     pick_min = True
-    
+
     while left <= right:
         if pick_min:
             result.append(sorted_lst[left])
@@ -31,5 +31,5 @@ def strange_sort_list(lst):
             result.append(sorted_lst[right])
             right -= 1
         pick_min = not pick_min
-    
+
     return result

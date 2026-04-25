@@ -27,7 +27,7 @@ to recognize anti-patterns.
 
 Include specific metrics. Helps agents prioritize fixes.
 
-**Good:** "10x faster queries", "50% smaller index", "Eliminates N+1" 
+**Good:** "10x faster queries", "50% smaller index", "Eliminates N+1"
 **Bad:** "Faster", "Better", "More efficient"
 
 ### 4. Self-Contained Examples

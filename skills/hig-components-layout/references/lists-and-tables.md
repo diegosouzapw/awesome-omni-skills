@@ -92,8 +92,8 @@ Sometimes, people need to work with complex data in a multicolumn table or a spr
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/lists-and-tables#Change-log)
 
-Date| Changes  
----|---  
-June 21, 2023| Updated to include guidance for visionOS.  
-June 5, 2023| Updated guidance to reflect changes in watchOS 10.  
-  
+Date| Changes
+---|---
+June 21, 2023| Updated to include guidance for visionOS.
+June 5, 2023| Updated guidance to reflect changes in watchOS 10.
+

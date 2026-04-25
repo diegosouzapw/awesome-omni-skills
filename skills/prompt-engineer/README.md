@@ -1,6 +1,6 @@
 # 🎯 Prompt Engineer
 
-**Version:** 1.0.1  
+**Version:** 1.0.1
 **Status:** ✨ Zero-Config | 🌍 Universal
 
 Transform raw prompts into optimized, production-ready prompts using 11 established prompting frameworks.
@@ -483,7 +483,7 @@ User Input (rough prompt)
 ┌────────────────────────┐
 │ 2. Clarify (Optional)  │  Only if critically needed
 │    - Ask 2-3 questions │  Multiple choice when possible
-│    - Fill missing gaps │  
+│    - Fill missing gaps │
 └────────┬───────────────┘
          ↓
 ┌────────────────────────┐
@@ -494,8 +494,8 @@ User Input (rough prompt)
          ↓
 ┌────────────────────────┐
 │ 4. Generate Prompt     │  Apply framework rules
-│    - Add role/context  │  
-│    - Structure task    │  
+│    - Add role/context  │
+│    - Structure task    │
 │    - Define format     │
 │    - Add examples      │
 └────────┬───────────────┘
@@ -655,5 +655,5 @@ Then configure:
 
 ## 📄 Version
 
-**v1.0.1** | Zero-Config | Universal  
+**v1.0.1** | Zero-Config | Universal
 *Works in any project, any context, any terminal.*

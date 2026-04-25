@@ -1,7 +1,7 @@
 Based on my knowledge of Django's codebase, I can analyze and fix this issue. The problem is in `django/forms/models.py` in the `apply_limit_choices_to_to_formfield` function or more specifically in how the form field's `show_hidden_initial` is determined.
 
 The issue is:
-1. When a model field has a callable default, Django's form field gets `show_hidden_initial=True` 
+1. When a model field has a callable default, Django's form field gets `show_hidden_initial=True`
 2. This is because the callable is evaluated, making it appear the field has an initial value that could change
 3. However, for fields with callable defaults that return empty/default values (like `list`), this causes issues with `has_changed()` detection
 
@@ -53,7 +53,7 @@ The root cause is that `show_hidden_initial` is being set to `True` for fields w
 
 Looking at the Django code flow:
 1. `modelform_defines_fields` checks fields
-2. `fields_for_model` creates form fields from model fields  
+2. `fields_for_model` creates form fields from model fields
 3. For each field, `formfield()` is called which sets `show_hidden_initial`
 
 The fix should be in how `show_hidden_initial` is determined. When the initial value comes from evaluating a callable default, the resulting value should be used for the hidden initial comparison, not the fact that it came from a callable.
@@ -100,8 +100,8 @@ Wait, I need to be more precise about the location of the fix. Let me provide th
 +++ b/django/forms/models.py
 @@ -47,6 +47,12 @@ __all__ = (
  ALL_FIELDS = "__all__"
- 
- 
+
+
 +def _get_default_value(field):
 +    """Return the default value for a model field, calling it if callable."""
 +    if callable(field.default):
