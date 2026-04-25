@@ -191,10 +191,10 @@ If ethical risk > leverage → **do not recommend**
 
 ## Related Skills
 
+- `@local-legal-seo-audit-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@local-llm-expert-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@logistics-exception-management-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@loss-aversion-designer-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@m365-agents-dotnet-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

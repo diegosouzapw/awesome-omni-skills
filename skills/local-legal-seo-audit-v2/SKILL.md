@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-24"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Local Legal SEO Audit
@@ -161,10 +161,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@base-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@calc-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@draw-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@impress-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@local-llm-expert-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@logistics-exception-management-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@loss-aversion-designer-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@m365-agents-dotnet-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
