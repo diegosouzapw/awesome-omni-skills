@@ -565,10 +565,10 @@ await SecureStore.setItemAsync("token", token);
 
 ## Related Skills
 
+- `@n8n-node-configuration-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@n8n-validation-expert-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@n8n-workflow-patterns-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@nanobanana-ppt-skills-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@neon-postgres-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
