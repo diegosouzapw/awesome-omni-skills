@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "Shpigford"
 date_added: "2026-04-16"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # favicon
@@ -344,10 +344,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@family-health-analyzer-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@fastapi-pro-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@fastapi-router-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@fastapi-templates-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@fda-food-safety-auditor-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

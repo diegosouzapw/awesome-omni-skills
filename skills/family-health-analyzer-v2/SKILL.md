@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-16"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # 家庭健康分析技能
@@ -141,10 +141,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@earllm-build-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@electron-development-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@elixir-pro-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@elon-musk-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@fastapi-pro-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@fastapi-router-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@fastapi-templates-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@favicon-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
