@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Skill Installer v3.0
@@ -187,10 +187,10 @@ python C:\Users\renat\skills\skill-installer\scripts\install_skill.py --health -
 
 ## Related Skills
 
+- `@seo-plan` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@seo-programmatic` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@seo-schema` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@seo-sitemap` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@seo-snippet-hunter` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
