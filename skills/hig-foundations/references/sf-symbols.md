@@ -127,53 +127,53 @@ Animations work on all SF Symbols in the library, in all rendering modes, weight
 
 **Appear** — Causes a symbol to gradually emerge into view.
 
-Video with custom controls. 
+Video with custom controls.
 
-Content description: A video showing three symbols with the same appear animation effect applied to each. In each animation, the symbol layers gradually animate into view. From the left, the symbols are an antenna with radio waves that animate from the center outward, a photo stack with lines representing a stack animating from the bottom to the top, and a waveform animating from left to right. 
+Content description: A video showing three symbols with the same appear animation effect applied to each. In each animation, the symbol layers gradually animate into view. From the left, the symbols are an antenna with radio waves that animate from the center outward, a photo stack with lines representing a stack animating from the bottom to the top, and a waveform animating from left to right.
 
-Play 
+Play
 
 **Disappear** — Causes a symbol to gradually recede out of view.
 
-Video with custom controls. 
+Video with custom controls.
 
-Content description: A video showing three symbols with the same disappear animation effect applied to each. In each animation, all the symbol layers gradually animate out of view. From the left, the symbols are a folder with a badge plus icon, two overlapping lightbulbs, and two overlapping chat bubbles 
+Content description: A video showing three symbols with the same disappear animation effect applied to each. In each animation, all the symbol layers gradually animate out of view. From the left, the symbols are a folder with a badge plus icon, two overlapping lightbulbs, and two overlapping chat bubbles
 
-Play 
+Play
 
 **Bounce** — Briefly scales a symbol with an elastic-like movement that goes either up or down and then returns to the symbol’s initial state. The bounce animation plays once by default and can help communicate that an action occurred or needs to take place.
 
-Video with custom controls. 
+Video with custom controls.
 
-Content description: A video showing three symbols with the same bounce animation effect applied to each. In each animation, the symbol layers individually bounce. From the left, the symbols are a music note with three lines, text that reads haha, and the Live Photos icon. 
+Content description: A video showing three symbols with the same bounce animation effect applied to each. In each animation, the symbol layers individually bounce. From the left, the symbols are a music note with three lines, text that reads haha, and the Live Photos icon.
 
-Play 
+Play
 
 **Scale** — Changes the size of a symbol, increasing or decreasing its scale. Unlike the bounce animation, which returns the symbol to its original state, the scale animation persists until you set a new scale or remove the effect. You might use the scale animation to draw people’s attention to a selected item or as feedback when people choose a symbol.
 
-Video with custom controls. 
+Video with custom controls.
 
-Content description: A video showing three symbols with the same scale animation effect applied to each. In each animation, the symbol decreases in size, and after a pause, increases back to the original size. From the left, the symbols are a PIP exit window, a 3D stack of three diagonally positioned squares, and an overlapping HomePod and HomePod mini. 
+Content description: A video showing three symbols with the same scale animation effect applied to each. In each animation, the symbol decreases in size, and after a pause, increases back to the original size. From the left, the symbols are a PIP exit window, a 3D stack of three diagonally positioned squares, and an overlapping HomePod and HomePod mini.
 
-Play 
+Play
 
 **Pulse** — Varies the opacity of a symbol over time. This animation automatically pulses only the layers within a symbol that are annotated to pulse, and optionally can pulse all layers within a symbol. You might use the pulse animation to communicate ongoing activity, playing it continuously until a condition is met.
 
-Video with custom controls. 
+Video with custom controls.
 
-Content description: A video showing three symbols with the same pulse animation effect applied to each. In each animation, one layer pulses its opacity. From the left, the symbols are the AirPlay icon with a pulsing screen, a chat bubble with a waveform that is overlapped with a pulsing pause button, and a pulsing rectangle to represent a screen that is overlapped with a person icon. 
+Content description: A video showing three symbols with the same pulse animation effect applied to each. In each animation, one layer pulses its opacity. From the left, the symbols are the AirPlay icon with a pulsing screen, a chat bubble with a waveform that is overlapped with a pulsing pause button, and a pulsing rectangle to represent a screen that is overlapped with a person icon.
 
-Play 
+Play
 
 **Variable color** — Incrementally varies the opacity of layers within a symbol. This animation can be cumulative or iterative. When cumulative, color changes persist for each layer until the animation cycle is complete. When iterative, color changes occur one layer at a time. You might use variable color to communicate progress or ongoing activity, such as playback, connecting, or broadcasting. You can customize the animation to autoreverse — meaning reverse the animation to the starting point and replay the sequence — as well as hide inactive layers rather than reduce their opacity.
 
 The arrangement of layers within a symbol determines how variable color behaves during a repeating animation. Symbols with layers that are arranged linearly where the start and end points don’t meet are annotated as _open loop_. Symbols with layers that follow a complete shape where the start and end points do meet, like in a circular progress indicator, are annotated as _closed loop_. Variable color animations for symbols with closed loop designs feature seamless, continuous playback.
 
-Video with custom controls. 
+Video with custom controls.
 
-Content description: A video showing three symbols with the same variable color animation effect applied to each. In each animation, color is added one path at a time. From the left, the symbols are a speaker with color cycling through three sound waves, a Wi-Fi symbol with color cycling through two paths that represent signal strength before reversing and replaying the animation, and a sprinkler icon with color cycling through droplets. 
+Content description: A video showing three symbols with the same variable color animation effect applied to each. In each animation, color is added one path at a time. From the left, the symbols are a speaker with color cycling through three sound waves, a Wi-Fi symbol with color cycling through two paths that represent signal strength before reversing and replaying the animation, and a sprinkler icon with color cycling through droplets.
 
-Play 
+Play
 
 **Replace** — Replaces one symbol with another. The replace animation works between arbitrary symbols and across all weights and rendering modes. This animation features three configurations:
 
@@ -186,45 +186,45 @@ Play
 
 
 
-Video with custom controls. 
+Video with custom controls.
 
-Content description: A video showing three symbols with the same replace animation effect applied to each. In each animation, one symbol is replaced by a new symbol, and then replaced by the original symbol. From the left, the symbols are a grid of four squares replaced by a bulleted list, a cloud with rain replaced by a cloud partly blocking the sun, and microphone symbol replaced by an x symbol in a circle. 
+Content description: A video showing three symbols with the same replace animation effect applied to each. In each animation, one symbol is replaced by a new symbol, and then replaced by the original symbol. From the left, the symbols are a grid of four squares replaced by a bulleted list, a cloud with rain replaced by a cloud partly blocking the sun, and microphone symbol replaced by an x symbol in a circle.
 
-Play 
+Play
 
 From left to right: down-up, up-up, off-up
 
 **Magic Replace** — Performs a smart transition between two symbols with related shapes. For example, slashes can draw on and off, and badges can appear or disappear, or you can replace them independently of the base symbol. Magic Replace is the new default replace animation, but doesn’t occur between unrelated symbols; the default down-up animation occurs instead. You can choose a custom direction for the fallback animation in these situations if you prefer one other than the default.
 
-Video with custom controls. 
+Video with custom controls.
 
-Content description: A video showing three symbols each with a shape being added, removed, or replaced using the Magic Replace animation effect. In each animation, the symbol is transformed, and then the transformation is reverted. From the left, the symbols are a credit card with a triangle caution shape added, a microphone with a diagonal slash added, and a circular ID with a checkmark badge replaced by an X badge. 
+Content description: A video showing three symbols each with a shape being added, removed, or replaced using the Magic Replace animation effect. In each animation, the symbol is transformed, and then the transformation is reverted. From the left, the symbols are a credit card with a triangle caution shape added, a microphone with a diagonal slash added, and a circular ID with a checkmark badge replaced by an X badge.
 
-Play 
+Play
 
 **Wiggle** — Moves the symbol back and forth along a directional axis. You might use the wiggle animation to highlight a change or a call to action that a person might overlook. Wiggle can also add a dynamic emphasis to an interaction or reinforce what the symbol is representing, such as when an arrow points in a specific direction.
 
-Video with custom controls. 
+Video with custom controls.
 
-Content description: A video showing three symbols that wiggle laterally, rotationally, or along a linear axis. From the left, the symbols are an arrow pointing down at a container that wiggles vertically; a stack of two photos that wiggles rotationally; and a top-down car between two lane markers with arrows pointing inward that wiggles horizontally. 
+Content description: A video showing three symbols that wiggle laterally, rotationally, or along a linear axis. From the left, the symbols are an arrow pointing down at a container that wiggles vertically; a stack of two photos that wiggles rotationally; and a top-down car between two lane markers with arrows pointing inward that wiggles horizontally.
 
-Play 
+Play
 
 **Breathe** — Smoothly increases and decreases the presence of a symbol, giving it a living quality. You might use the breathe animation to convey status changes, or signal that an activity is taking place, like an ongoing recording session. Breathe is similar to pulse; however pulse animates by changing opacity alone, while breathe changes both opacity and size to convey ongoing activity.
 
-Video with custom controls. 
+Video with custom controls.
 
-Content description: A video showing three symbols that breathe in and out, growing and shrinking in size and changing opacity in a smooth rhythm. From the left, the symbols are a stylized waveform of vertical lines that expand and contract from left to right with a pulse of variable opacity; a pair of translation word bubbles that grow with reduced opacity, then shrink with increased opacity; and three concentric mindfulness rings that pulse outward with reduced opacity, then inward with increased opacity. 
+Content description: A video showing three symbols that breathe in and out, growing and shrinking in size and changing opacity in a smooth rhythm. From the left, the symbols are a stylized waveform of vertical lines that expand and contract from left to right with a pulse of variable opacity; a pair of translation word bubbles that grow with reduced opacity, then shrink with increased opacity; and three concentric mindfulness rings that pulse outward with reduced opacity, then inward with increased opacity.
 
-Play 
+Play
 
 **Rotate** — Rotates the symbol to act as a visual indicator or imitate an object’s behavior in the real world. For example, when a task is in progress, rotation confirms that it’s working as expected. The rotate animation causes some symbols to rotate entirely, while in others only certain parts of the symbol rotate. Symbols like the desk fan, for example, use the By Layer rotation option to spin only the fan blades.
 
-Video with custom controls. 
+Video with custom controls.
 
-Content description: A video showing three symbols that either rotate completely or contain a rotating shape. From the left, the symbols are a rotating gear; a desk fan with rotating fan blades; and two dots rotating on concentric orbital paths around a center circle. 
+Content description: A video showing three symbols that either rotate completely or contain a rotating shape. From the left, the symbols are a rotating gear; a desk fan with rotating fan blades; and two dots rotating on concentric orbital paths around a center circle.
 
-Play 
+Play
 
 **Draw On / Draw Off** — In SF Symbols 7 and later, draws the symbol along a path through a set of guide points, either from offscreen to onscreen (Draw On) or from onscreen to offscreen (Draw Off). You can draw all layers at once, stagger them, or draw each layer one at a time. You might use the draw animation to convey progress, as with a download, or to reinforce the meaning of a symbol, like a directional arrow.
 
@@ -301,10 +301,10 @@ For guidance, see [Icons](https://developer.apple.com/design/human-interface-gui
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/sf-symbols#Change-log)
 
-Date| Changes  
----|---  
-July 28, 2025| Updated with guidance for Draw animations and gradient rendering in SF Symbols 7.  
-June 10, 2024| Updated with guidance for new animations and features of SF Symbols 6.  
-June 5, 2023| Added a new section on animations. Included animation guidance for custom symbols.  
-September 14, 2022| Added a new section on variable color. Removed instructions on creating custom symbol paths, exporting templates, and layering paths, deferring to developer articles that cover these topics.  
-  
+Date| Changes
+---|---
+July 28, 2025| Updated with guidance for Draw animations and gradient rendering in SF Symbols 7.
+June 10, 2024| Updated with guidance for new animations and features of SF Symbols 6.
+June 5, 2023| Added a new section on animations. Included animation guidance for custom symbols.
+September 14, 2022| Added a new section on variable color. Removed instructions on creating custom symbol paths, exporting templates, and layering paths, deferring to developer articles that cover these topics.
+

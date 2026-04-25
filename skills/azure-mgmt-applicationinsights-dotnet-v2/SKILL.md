@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-16"
-date_updated: "2026-04-19"
+date_updated: "2026-04-25"
 ---
 
 # Azure.ResourceManager.ApplicationInsights (.NET)
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills/skills/azur
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Azure.ResourceManager.ApplicationInsights (.NET) Azure Resource Manager SDK for managing Application Insights resources for application performance monitoring.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -69,7 +69,7 @@ dotnet add package Azure.ResourceManager.ApplicationInsights
 dotnet add package Azure.Identity
 ```
 
-**Current Version**: v1.0.0 (GA)  
+**Current Version**: v1.0.0 (GA)
 **API Version**: 2022-06-15
 
 #### Imported: Core Workflows
@@ -189,12 +189,12 @@ WebTestData urlPingTest = new WebTestData(AzureLocation.EastUS)
     Configuration = new WebTestConfiguration
     {
         WebTest = """
-            <WebTest Name="Homepage" Enabled="True" Timeout="120" 
+            <WebTest Name="Homepage" Enabled="True" Timeout="120"
                      xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
                 <Items>
-                    <Request Method="GET" Version="1.1" Url="https://myapp.example.com" 
-                             ThinkTime="0" Timeout="120" ParseDependentRequests="False" 
-                             FollowRedirects="True" RecordResult="True" Cache="False" 
+                    <Request Method="GET" Version="1.1" Url="https://myapp.example.com"
+                             ThinkTime="0" Timeout="120" ParseDependentRequests="False"
+                             FollowRedirects="True" RecordResult="True" Cache="False"
                              ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="200" />
                 </Items>
             </WebTest>
@@ -237,9 +237,9 @@ WebTestData multiStepTest = new WebTestData(AzureLocation.EastUS)
             <WebTest Name="LoginFlow" Enabled="True" Timeout="300"
                      xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
                 <Items>
-                    <Request Method="GET" Version="1.1" Url="https://myapp.example.com/login" 
+                    <Request Method="GET" Version="1.1" Url="https://myapp.example.com/login"
                              ThinkTime="0" Timeout="60" />
-                    <Request Method="POST" Version="1.1" Url="https://myapp.example.com/api/auth" 
+                    <Request Method="POST" Version="1.1" Url="https://myapp.example.com/api/auth"
                              ThinkTime="0" Timeout="60">
                         <Headers>
                             <Header Name="Content-Type" Value="application/json" />
@@ -338,7 +338,7 @@ ArmOperation<ComponentLinkedStorageAccountResource> operation = await linkedStor
 
 ```csharp
 // List all Application Insights components in resource group
-await foreach (ApplicationInsightsComponentResource component in 
+await foreach (ApplicationInsightsComponentResource component in
     resourceGroup.GetApplicationInsightsComponents())
 {
     Console.WriteLine($"Component: {component.Data.Name}");
@@ -469,7 +469,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills/skills/azure-mgmt-applicationinsights-dotnet`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -485,10 +485,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@azure-mgmt-arizeaiobservabilityeval-dotnet-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-botservice-dotnet-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-botservice-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-mgmt-fabric-dotnet-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

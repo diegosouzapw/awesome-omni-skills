@@ -50,7 +50,7 @@ You can display text in tvOS using a text view. Because text input in tvOS is mi
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/text-views#Change-log)
 
-Date| Changes  
----|---  
-June 5, 2023| Updated guidance to reflect changes in watchOS 10.  
-  
+Date| Changes
+---|---
+June 5, 2023| Updated guidance to reflect changes in watchOS 10.
+

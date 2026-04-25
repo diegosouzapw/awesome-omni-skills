@@ -13,7 +13,7 @@ Based on the hints and the suggested fix in the issue, here's the patch:
 +                # this means we found no finite element, fall back to first
 +                # element unconditionally
 +                x0 = cbook.safe_first_element(x0)
- 
+
              try:
                  x = cbook._safe_first_finite(xconv)
              except (TypeError, IndexError, KeyError):
@@ -22,6 +22,6 @@ Based on the hints and the suggested fix in the issue, here's the patch:
 +                # this means we found no finite element, fall back to first
 +                # element unconditionally
 +                x = cbook.safe_first_element(xconv)
- 
+
              delist = False
              if not np.iterable(dx):

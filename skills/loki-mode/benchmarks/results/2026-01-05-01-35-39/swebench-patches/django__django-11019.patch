@@ -10,7 +10,7 @@ Based on the issue description and the algorithm proposed by Matt (the reporter)
 --- a/django/forms/widgets.py
 +++ b/django/forms/widgets.py
 @@ -58,12 +58,7 @@ class Media:
- 
+
      @property
      def _js(self):
 -        js = self._js_lists[0]
@@ -19,12 +19,12 @@ Based on the issue description and the algorithm proposed by Matt (the reporter)
 -            js = self.merge(js, obj)
 -        return js
 +        return self.merge(*self._js_lists)
- 
+
      def render(self):
          return mark_safe('\n'.join(chain.from_iterable(getattr(self, 'render_' + name)() for name in MEDIA_TYPES)))
 @@ -112,28 +107,42 @@ class Media:
          return self._css_lists == other._css_lists and self._js_lists == other._js_lists
- 
+
      @staticmethod
 -    def merge(list_1, list_2):
 +    def merge(*lists):
@@ -34,7 +34,7 @@ Based on the issue description and the algorithm proposed by Matt (the reporter)
 +        Merge lists while trying to keep the relative order of the elements.
 +        Warn if the lists have the same elements in a different relative
 +        order.
- 
+
          For static assets it can be important to have them included in the DOM
          in a certain order. In JavaScript you may not be able to reference a
          global or in CSS you might want to override a style.

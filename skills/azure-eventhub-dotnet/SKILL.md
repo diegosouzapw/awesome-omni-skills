@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-22"
+date_updated: "2026-04-25"
 ---
 
 # Azure.Messaging.EventHubs (.NET)
@@ -111,7 +111,7 @@ foreach (var eventData in events)
         // Batch is full - send it and create a new one
         await producer.SendAsync(batch);
         batch = await producer.CreateBatchAsync();
-        
+
         if (!batch.TryAdd(eventData))
         {
             throw new Exception("Event too large for empty batch");
@@ -194,7 +194,7 @@ processor.ProcessEventAsync += async args =>
 {
     Console.WriteLine($"Partition: {args.Partition.PartitionId}");
     Console.WriteLine($"Data: {args.Data.EventBody}");
-    
+
     // Checkpoint after processing (or batch checkpoints)
     await args.UpdateCheckpointAsync();
 };
@@ -335,9 +335,9 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ## Related Skills
 
 - `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@3d-web-experience` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -422,7 +422,7 @@ builder.Services.AddAzureClients(clientBuilder =>
     clientBuilder.AddEventHubProducerClient(
         builder.Configuration["EventHub:FullyQualifiedNamespace"],
         builder.Configuration["EventHub:Name"]);
-    
+
     clientBuilder.UseCredential(new DefaultAzureCredential());
 });
 
@@ -430,12 +430,12 @@ builder.Services.AddAzureClients(clientBuilder =>
 public class EventService
 {
     private readonly EventHubProducerClient _producer;
-    
+
     public EventService(EventHubProducerClient producer)
     {
         _producer = producer;
     }
-    
+
     public async Task SendAsync(string message)
     {
         using var batch = await _producer.CreateBatchAsync();
@@ -487,7 +487,7 @@ private int _eventCount = 0;
 processor.ProcessEventAsync += async args =>
 {
     // Process event...
-    
+
     _eventCount++;
     if (_eventCount >= 100)
     {

@@ -19,8 +19,8 @@ Based on my knowledge of sympy's factortools.py and the issue description about 
      dup_l1_norm, dmp_l1_norm,
 @@ -123,23 +124,49 @@
      return K.one
- 
- 
+
+
 -def dup_zz_mignotte_bound(f, K):
 -    """Mignotte bound for univariate polynomials in `K[x]`. """
 +def dup_zz_mignotte_bound(f, K):
@@ -34,7 +34,7 @@ Based on my knowledge of sympy's factortools.py and the issue description about 
      a = dup_max_norm(f, K)
      b = abs(dup_LC(f, K))
      n = dup_degree(f)
- 
+
 -    return K.sqrt(K(n + 1))*2**n*a*b
 +    if n <= 0:
 +        return K.one
@@ -43,20 +43,20 @@ Based on my knowledge of sympy's factortools.py and the issue description about 
 +    t = abs(dup_TC(f, K))
 +    l2_norm_sq = sum(c**2 for c in f)
 +    bound = K.sqrt(K(n + 1)) * K.sqrt(l2_norm_sq) * 2**n * max(b, t) // b
- 
+
 +    return bound
- 
+
 -def dmp_zz_mignotte_bound(f, u, K):
 -    """Mignotte bound for multivariate polynomials in `K[X]`. """
 -    a = dmp_max_norm(f, u, K)
 -    b = abs(dmp_ground_LC(f, u, K))
 -    n = sum(dmp_degree_list(f, u))
- 
+
 -    return K.sqrt(K(n + 1))*2**n*a*b
 +def dmp_zz_mignotte_bound(f, u, K):
 +    """
 +    Knuth-Cohen bound for multivariate polynomials in `K[X]`.
- 
+
 +    This replaces the classical Mignotte bound with the tighter
 +    Knuth-Cohen bound.
 +    """
@@ -74,6 +74,6 @@ Based on my knowledge of sympy's factortools.py and the issue description about 
 +    bound = K.sqrt(K(n + 1)) * K.sqrt(l2_norm_sq) * 2**n * max(b, t) // b
 +
 +    return bound
- 
+
  def dup_zz_hensel_step(m, f, g, h, s, t, K):
 ```

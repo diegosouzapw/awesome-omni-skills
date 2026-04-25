@@ -13,13 +13,13 @@ Let me provide the patch:
 --- a/django/db/models/expressions.py
 +++ b/django/db/models/expressions.py
 @@ -1156,6 +1156,8 @@ class Col(Expression):
- 
+
      def rename_table_references(self, old_table, new_table):
          if self.alias == old_table:
              self.alias = new_table
 +        if self.alias is None and self.target.model._meta.db_table == old_table:
 +            pass  # Don't set alias when there isn't one
- 
+
      def get_group_by_cols(self):
          return [self]
 
@@ -30,11 +30,11 @@ Looking at the traceback and hints again - the issue is that the `rename_table_r
 --- a/django/db/models/expressions.py
 +++ b/django/db/models/expressions.py
 @@ -1156,6 +1156,8 @@ class Col(Expression):
- 
+
      def rename_table_references(self, old_table, new_table):
 -        if self.alias == old_table:
 +        if self.alias is not None and self.alias == old_table:
              self.alias = new_table
- 
+
      def get_group_by_cols(self):
          return [self]

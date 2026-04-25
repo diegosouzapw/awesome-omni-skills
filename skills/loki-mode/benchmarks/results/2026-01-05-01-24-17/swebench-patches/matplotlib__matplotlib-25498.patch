@@ -10,7 +10,7 @@ Looking at the error message and the hints, the fix should be in the `norm` sett
 @@ -343,6 +343,11 @@ class ScalarMappable(object):
              self.norm = colors.Normalize()
          self.norm = norm
- 
+
 +    @norm.setter
 +    def norm(self, norm):
 +        self._norm = norm
@@ -43,7 +43,7 @@ Looking at the issue more carefully, the problem is that matplotlib doesn't have
 -    @property
 -    def norm(self):
 -        return self._norm
-+    @norm.setter  
++    @norm.setter
 +    def norm(self, norm):
 +        if norm is None:
 +            norm = colors.Normalize()
@@ -59,7 +59,7 @@ Actually, let me think through this more carefully based on the standard matplot
 @@ -339,6 +339,20 @@ class ScalarMappable(object):
          self._norm = norm
          self._norm.callbacks.connect('changed', self.changed)
- 
+
 +    @norm.setter
 +    def norm(self, norm):
 +        """

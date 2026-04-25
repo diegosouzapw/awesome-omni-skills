@@ -8,7 +8,7 @@
          if self._non_form_errors is None:
              self.full_clean()
          return self._non_form_errors
- 
+
      def _should_delete_form(self, form):
          """Return whether or not the form was marked for deletion."""
 @@ -380,7 +380,7 @@ class BaseFormSet(RenderableFormMixin):
@@ -18,7 +18,7 @@
 -                        e.error_list
 +                        e.error_list, error_class='nonform'
                      )
- 
+
          for i, form in enumerate(self.forms):
 @@ -410,7 +410,7 @@ class BaseFormSet(RenderableFormMixin):
          # Give self.clean() a chance to do cross-form validation.

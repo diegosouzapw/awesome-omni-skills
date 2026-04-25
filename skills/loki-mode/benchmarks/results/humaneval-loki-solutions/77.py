@@ -5,7 +5,7 @@
 
 def iscube(a):
     '''
-    Write a function that takes an integer a and returns True 
+    Write a function that takes an integer a and returns True
     if this ingeger is a cube of some integer number.
     Note: you may assume the input is always valid.
     Examples:
@@ -18,8 +18,8 @@ def iscube(a):
     '''
     if a == 0:
         return True
-    
+
     abs_a = abs(a)
     cube_root = round(abs_a ** (1/3))
-    
+
     return cube_root ** 3 == abs_a

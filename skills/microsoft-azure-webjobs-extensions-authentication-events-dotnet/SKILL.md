@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-19"
+date_updated: "2026-04-25"
 ---
 
 # Microsoft.Azure.WebJobs.Extensions.AuthenticationEvents (.NET)
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Microsoft.Azure.WebJobs.Extensions.AuthenticationEvents (.NET) Azure Functions extension for handling Microsoft Entra ID custom authentication events.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -89,12 +89,12 @@ public static class TokenEnrichmentFunction
         [WebJobsAuthenticationEventsTrigger] WebJobsTokenIssuanceStartRequest request,
         ILogger log)
     {
-        log.LogInformation("Token issuance event for user: {UserId}", 
+        log.LogInformation("Token issuance event for user: {UserId}",
             request.Data?.AuthenticationContext?.User?.Id);
 
         // Create response with custom claims
         var response = new WebJobsTokenIssuanceStartResponse();
-        
+
         // Add claims to the token
         response.Actions.Add(new WebJobsProvideClaimsForToken
         {
@@ -134,7 +134,7 @@ public static class TokenEnrichmentWithExternalData
         ILogger log)
     {
         string? userId = request.Data?.AuthenticationContext?.User?.Id;
-        
+
         if (string.IsNullOrEmpty(userId))
         {
             log.LogWarning("No user ID in request");
@@ -143,7 +143,7 @@ public static class TokenEnrichmentWithExternalData
 
         // Fetch user data from external API
         var userProfile = await GetUserProfileAsync(userId);
-        
+
         var response = new WebJobsTokenIssuanceStartResponse();
         response.Actions.Add(new WebJobsProvideClaimsForToken
         {
@@ -237,7 +237,7 @@ public static class AttributeCollectionSubmitFunction
 
         // Access submitted attributes
         var attributes = request.Data?.UserSignUpInfo?.Attributes;
-        
+
         string? email = attributes?["email"]?.ToString();
         string? displayName = attributes?["displayName"]?.ToString();
 
@@ -316,7 +316,7 @@ public static class CustomOtpFunction
         {
             // Send OTP via your SMS provider
             await SendSmsAsync(phoneNumber, $"Your verification code is: {otp}");
-            
+
             response.Actions.Add(new WebJobsOnOtpSendSuccess());
             log.LogInformation("OTP sent successfully to {PhoneNumber}", phoneNumber);
         }
@@ -460,7 +460,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/microsoft-azure-webjobs-extensions-authentication-events-dotnet`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -476,10 +476,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@linear-claude-skill` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@linkedin-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@linkedin-cli` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@linkedin-profile-optimizer` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -569,7 +569,7 @@ public static WebJobsAuthenticationEventResponse Run(
     catch (Exception ex)
     {
         log.LogError(ex, "Error processing token issuance event");
-        
+
         // Return empty response - authentication continues without custom claims
         // Do NOT throw - this would fail the authentication
         return new WebJobsTokenIssuanceStartResponse();

@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "wolfejam"
 date_added: "2026-04-14"
-date_updated: "2026-04-22"
+date_updated: "2026-04-25"
 ---
 
 # FAF Expert - Advanced AI Context Architecture
@@ -66,7 +66,7 @@ This workflow is intentionally editorial and operational at the same time. It ke
 
 ### 🏆 Championship Scoring System
 - **Gold Tier (95%+)**: Production-ready AI context
-- **Silver Tier (85%+)**: Professional development standard  
+- **Silver Tier (85%+)**: Professional development standard
 - **Bronze Tier (70%+)**: Solid foundation for AI assistance
 
 ### 🔧 MCP Server Configuration
@@ -84,7 +84,7 @@ Expert setup of claude-faf-mcp with 33 tools:
 
 ### 🔄 Bi-Directional Sync
 Keep context synchronized across platforms:
-- `.faf` ↔ `CLAUDE.md` 
+- `.faf` ↔ `CLAUDE.md`
 - `.faf` ↔ `.cursorrules`
 - `.faf` ↔ `GEMINI.md`
 - `.faf` ↔ `AGENTS.md`
@@ -92,7 +92,7 @@ Keep context synchronized across platforms:
 ### 📊 Mk4 Architecture Framework
 33-slot IANA format for comprehensive project context:
 - Project identity and goals
-- Technical stack detection  
+- Technical stack detection
 - Human context (who/what/why/where/when/how)
 - Architecture patterns
 - Deployment configuration
@@ -141,13 +141,13 @@ Review @faf-expert using the copied upstream files plus provenance, then summari
 project:
   name: enterprise-payment-api
   goal: Mission-critical payment processing system
-  
+
 stack:
   backend: java-spring
   database: oracle
   runtime: java-11
   deployment: kubernetes
-  
+
 human_context:
   where: AWS EKS production cluster
   when: Legacy system from 2018, modernizing 2026
@@ -160,7 +160,7 @@ human_context:
 project:
   name: analytics-dashboard
   goal: Real-time analytics for SaaS platform
-  
+
 stack:
   frontend: react-18
   css_framework: tailwind
@@ -205,9 +205,9 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ## Related Skills
 
 - `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@3d-web-experience` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -279,7 +279,7 @@ faf enhance --model claude --focus completeness
 ### Supported AI Tools
 - ✅ **Claude Code** - Native MCP integration
 - ✅ **Cursor** - .cursorrules sync
-- ✅ **Gemini CLI** - GEMINI.md sync  
+- ✅ **Gemini CLI** - GEMINI.md sync
 - ✅ **Windsurf** - .windsurfrules support
 - ✅ **Universal** - Works with any AI that reads YAML
 
@@ -297,12 +297,12 @@ faf_version: "3.0"
 project:
   name: enterprise-platform
   tier: production
-  
+
 human_context:
   team_size: 50+
   compliance: SOC2, HIPAA
   deployment: multi-region
-  
+
 stack:
   architecture: microservices
   orchestration: kubernetes
@@ -316,7 +316,7 @@ stack:
 project:
   archaeology: true
   modernization_target: 2026
-  
+
 stack:
   legacy: php-5.6
   migration_path: laravel-11

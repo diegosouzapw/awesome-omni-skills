@@ -27,7 +27,7 @@ The file would be in `sympy/core/mod.py`. Let me produce the patch:
 +++ b/sympy/core/mod.py
 @@ -123,7 +123,8 @@ def doit(p, q):
              return p
- 
+
          if (p == q or p == -q or
 -                p.is_Pow and p.exp.is_Integer and p.base == q or
 +                p.is_Pow and p.base == q and q.is_integer and

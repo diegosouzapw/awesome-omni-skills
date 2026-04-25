@@ -16,12 +16,12 @@ def pluck(arr):
     Example 2:
         Input: [1,2,3]
         Output: [2, 1]
-        Explanation: 2 has the smallest even value, and 2 has the smallest index. 
+        Explanation: 2 has the smallest even value, and 2 has the smallest index.
 
     Example 3:
         Input: []
         Output: []
-    
+
     Example 4:
         Input: [5, 0, 3, 0, 4, 2]
         Output: [0, 1]
@@ -34,17 +34,17 @@ def pluck(arr):
     """
     if not arr:
         return []
-    
+
     smallest_even = None
     smallest_index = None
-    
+
     for i, val in enumerate(arr):
         if val % 2 == 0:
             if smallest_even is None or val < smallest_even:
                 smallest_even = val
                 smallest_index = i
-    
+
     if smallest_even is None:
         return []
-    
+
     return [smallest_even, smallest_index]

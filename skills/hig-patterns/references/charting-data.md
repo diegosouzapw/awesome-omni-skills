@@ -75,7 +75,7 @@ Not every collection of data needs to be displayed in a chart. If you simply nee
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/charting-data#Change-log)
 
-Date| Changes  
----|---  
-September 23, 2022| New page.  
-  
+Date| Changes
+---|---
+September 23, 2022| New page.
+

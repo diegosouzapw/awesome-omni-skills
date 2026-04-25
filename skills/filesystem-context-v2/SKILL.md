@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-16"
-date_updated: "2026-04-16"
+date_updated: "2026-04-25"
 ---
 
 # Filesystem-Based Context Engineering
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills/skills/file
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Filesystem-Based Context Engineering The filesystem provides a single interface through which agents can flexibly store, retrieve, and update an effectively unlimited amount of context. This pattern addresses the fundamental constraint that context windows are limited while tasks often require more information than fits in a single window. The core insight is that files enable dynamic context discovery: agents pull relevant context on demand rather than carrying everything in the context window. This contrasts with static context, which is always included regardless of relevance.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -110,7 +110,7 @@ Review @filesystem-context-v2 using the copied upstream files plus provenance, t
 ```
 Input: Web search returns 8000 tokens
 Before: 8000 tokens added to message history
-After: 
+After:
   - Write to scratch/search_results_001.txt
   - Return: "[Results in scratch/search_results_001.txt. Key finding: API rate limit is 1000 req/min]"
   - Agent greps file when needing specific details
@@ -128,7 +128,7 @@ Result: Full skill loaded only when relevant
 **Example 3: Chat History as File Reference**
 ```
 Trigger: Context window limit reached, summarization required
-Action: 
+Action:
   1. Write full history to history/session_001.txt
   2. Generate summary for new context window
   3. Include reference: "Full history in history/session_001.txt"
@@ -167,7 +167,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills/skills/filesystem-context`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -183,10 +183,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@error-debugging-multi-agent-review-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@error-detective-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@error-diagnostics-error-analysis-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@error-diagnostics-error-trace-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -248,11 +248,11 @@ Write large tool outputs to files instead of returning them directly to the cont
 def handle_tool_output(output: str, threshold: int = 2000) -> str:
     if len(output) < threshold:
         return output
-    
+
     # Write to scratch pad
     file_path = f"scratch/{tool_name}_{timestamp}.txt"
     write_file(file_path, output)
-    
+
     # Return reference instead of content
     key_summary = extract_summary(output, max_tokens=200)
     return f"[Output written to {file_path}. Summary: {key_summary}]"

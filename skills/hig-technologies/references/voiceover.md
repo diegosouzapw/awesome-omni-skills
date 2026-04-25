@@ -84,7 +84,7 @@ For developer guidance, see [`shouldGroupAccessibilityChildren`](https://develop
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/voiceover#Change-log)
 
-Date| Changes  
----|---  
-March 7, 2025| New page.  
-  
+Date| Changes
+---|---
+March 7, 2025| New page.
+

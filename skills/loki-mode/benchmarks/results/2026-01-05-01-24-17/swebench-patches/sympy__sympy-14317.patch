@@ -1,4 +1,4 @@
-Based on my deep knowledge of the sympy codebase, I can provide the fix for this issue. The problem is in `sympy/printing/latex.py` in the `_print_Poly` method. 
+Based on my deep knowledge of the sympy codebase, I can provide the fix for this issue. The problem is in `sympy/printing/latex.py` in the `_print_Poly` method.
 
 The current implementation uses `poly.terms()` which returns terms in a dictionary-based order that doesn't match the canonical monomial ordering. The fix is to use `poly.as_expr()` to get the properly ordered expression, which will match the behavior of the str and pretty printers.
 
@@ -9,7 +9,7 @@ Here is the patch:
 --- a/sympy/printing/latex.py
 +++ b/sympy/printing/latex.py
 @@ -1868,25 +1868,7 @@ class LatexPrinter(Printer):
- 
+
      def _print_Poly(self, poly):
          cls = poly.__class__.__name__
 -        terms = []

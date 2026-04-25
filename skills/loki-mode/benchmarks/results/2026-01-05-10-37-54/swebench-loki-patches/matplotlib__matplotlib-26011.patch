@@ -6,11 +6,11 @@
 +++ b/lib/matplotlib/axes/_base.py
 @@ -36,6 +36,7 @@ import matplotlib.ticker as mticker
  import matplotlib.transforms as mtransforms
- 
+
  _log = logging.getLogger(__name__)
 +_EMIT_CALLBACK = object()  # Sentinel to emit callback but stop recursion
- 
- 
+
+
  class _axis_method_wrapper:
 @@ -3598,11 +3599,16 @@ class _AxesBase(martist.Artist):
              self._stale_viewlim_x = False
@@ -32,7 +32,7 @@
 +            self.callbacks.process('xlim_changed', self)
          self.stale = True
          return left, right
- 
+
 @@ -3755,11 +3761,16 @@ class _AxesBase(martist.Artist):
              self._stale_viewlim_y = False
          if emit:

@@ -14,8 +14,8 @@ Here is the patch:
 +++ b/sphinx/ext/autodoc/__init__.py
 @@ -103,6 +103,21 @@ def bool_option(arg: Any) -> bool:
      return True
- 
- 
+
+
 +def inherited_members_option(arg: Any) -> Union[object, Set[str]]:
 +    """Used to convert the :inherited-members: option to auto directives."""
 +    if arg in (None, True):
@@ -59,8 +59,8 @@ Here is the patch:
 +++ b/sphinx/ext/autodoc/__init__.py
 @@ -103,6 +103,17 @@ def bool_option(arg: Any) -> bool:
      return True
- 
- 
+
+
 +def inherited_members_option(arg: Any) -> Union[object, Set[str]]:
 +    """Used to convert the :inherited-members: option to auto directives."""
 +    if arg in (None, True):
@@ -85,7 +85,7 @@ Here is the patch:
          'exclude-members': members_set_option,
 @@ -751,10 +762,15 @@ class ClassDocumenter(DocstringSignatureMixin, ModuleLevelDocumenter):
                  return True
- 
+
          inherited_members = self.options.inherited_members
 +        if isinstance(inherited_members, set):
 +            unhappy_bases = inherited_members
@@ -109,8 +109,8 @@ Let me provide a cleaner, properly formatted patch:
 +++ b/sphinx/ext/autodoc/__init__.py
 @@ -103,6 +103,17 @@ def bool_option(arg: Any) -> bool:
      return True
- 
- 
+
+
 +def inherited_members_option(arg: Any) -> Union[object, Set[str]]:
 +    """Used to convert the :inherited-members: option to auto directives."""
 +    if arg in (None, True):
@@ -135,7 +135,7 @@ Let me provide a cleaner, properly formatted patch:
          'exclude-members': members_set_option,
 @@ -751,10 +762,15 @@ class ClassDocumenter(DocstringSignatureMixin, ModuleLevelDocumenter):
                  return True
- 
+
          inherited_members = self.options.inherited_members
 +        if isinstance(inherited_members, set):
 +            unhappy_bases = inherited_members

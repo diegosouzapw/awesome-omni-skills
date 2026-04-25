@@ -11,9 +11,9 @@ The fix should use `im(a).is_nonzero` instead, which returns `True` only when th
 @@ -150,7 +150,7 @@ class Point(GeometryEntity):
                  coords = coords[0] if is_sequence(coords[0]) else coords
              coords = Tuple(*coords)
- 
+
 -        if any(a.is_number and im(a).is_zero is False for a in coords):
 +        if any(a.is_number and im(a).is_nonzero for a in coords):
              raise ValueError('Imaginary coordinates are not permitted.')
- 
+
          if not all(isinstance(a, Expr) for a in coords):

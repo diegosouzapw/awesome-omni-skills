@@ -32,13 +32,13 @@
 +        else:
              self.canvas.mpl_connect('button_release_event', self.on_release),
          ]
- 
+
 --- a/lib/matplotlib/legend.py
 +++ b/lib/matplotlib/legend.py
 @@ -600,6 +600,25 @@ class Legend(Artist):
          self._draggable = None
          self.set_draggable(state=draggable)
- 
+
 +    def __getstate__(self):
 +        state = self.__dict__.copy()
 +        # Store whether legend was draggable so it can be restored

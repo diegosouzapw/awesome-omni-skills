@@ -15,7 +15,7 @@ Based on the analysis of the `prepend_prolog` function at lines 81-91, here's th
          pos = 0
      else:
          pos = lineno + 1
- 
+
 +    # Check if we're inserting before a heading (title + underline pattern)
 +    # If so, we need to skip past the underline as well
 +    if pos < len(content):
@@ -28,7 +28,7 @@ Based on the analysis of the `prepend_prolog` function at lines 81-91, here's th
      lineno = 0
      for lineno, line in enumerate(prolog.splitlines()):
 @@ -89,3 +97,6 @@ def prepend_prolog(content: StringList, prolog: str) -> None:
- 
+
      content.insert(pos + lineno, '', '<generated>', 0)
 +
 +    # Add blank line after prolog to separate from document content
@@ -45,7 +45,7 @@ Wait, let me reconsider. The simpler fix suggested by the architect is to add an
      lineno = 0
      for lineno, line in enumerate(prolog.splitlines()):
          content.insert(pos + lineno, line, '<rst_prolog>', lineno)
- 
+
      content.insert(pos + lineno, '', '<generated>', 0)
 +    # Add blank line after prolog to ensure separation from document content
 +    content.insert(pos + lineno + 1, '', '<generated>', 0)
@@ -60,7 +60,7 @@ Actually, based on the architect's hint about adding an empty line after the pro
      lineno = 0
      for lineno, line in enumerate(prolog.splitlines()):
          content.insert(pos + lineno, line, '<rst_prolog>', lineno)
- 
+
      content.insert(pos + lineno, '', '<generated>', 0)
 +
 +    # Add blank line after prolog to separate it from document content

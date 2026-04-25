@@ -9,7 +9,7 @@ These patches are for a different Django issue (12497). The issue I need to solv
 @@ -1173,6 +1173,7 @@ class ManyToManyField(RelatedField):
      def _check_ignored_options(self, **kwargs):
          warnings = []
- 
+
 +        errors = []
          if self.has_null_arg:
              warnings.append(
@@ -17,7 +17,7 @@ These patches are for a different Django issue (12497). The issue I need to solv
 @@ -1183,7 +1184,25 @@ class ManyToManyField(RelatedField):
                  )
              )
- 
+
 -        return warnings
 +        if self.remote_field.symmetrical and self.remote_field.related_name:
 +            errors.append(
@@ -38,6 +38,6 @@ These patches are for a different Django issue (12497). The issue I need to solv
 +            )
 +
 +        return warnings + errors
- 
+
      def _check_relationship_model(self, from_model=None, **kwargs):
          if hasattr(self.remote_field.through, '_meta'):

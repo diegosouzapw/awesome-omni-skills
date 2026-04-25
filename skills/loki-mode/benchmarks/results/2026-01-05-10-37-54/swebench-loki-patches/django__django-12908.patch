@@ -8,7 +8,7 @@ Based on my knowledge of Django's codebase and the issue description, I can gene
 --- a/django/db/models/query.py
 +++ b/django/db/models/query.py
 @@ -1176,6 +1176,10 @@ class QuerySet:
- 
+
      def distinct(self, *field_names):
          """Return a new QuerySet instance that will select only distinct results."""
 +        if self.query.combinator:

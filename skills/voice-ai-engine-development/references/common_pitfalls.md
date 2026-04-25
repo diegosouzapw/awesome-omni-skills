@@ -38,7 +38,7 @@ async def generate_response(self, prompt):
     full_response = ""
     async for chunk in llm_stream:
         full_response += chunk
-    
+
     # Yield once with complete response
     yield GeneratedResponse(message=BaseMessage(text=full_response))
 ```
@@ -84,7 +84,7 @@ self.transcriber.unmute()
 class BaseTranscriber:
     def __init__(self):
         self.is_muted = False
-    
+
     def send_audio(self, chunk: bytes):
         """Client calls this to send audio"""
         if not self.is_muted:
@@ -92,15 +92,15 @@ class BaseTranscriber:
         else:
             # Send silence instead (prevents echo)
             self.input_queue.put_nowait(self.create_silent_chunk(len(chunk)))
-    
+
     def mute(self):
         """Called when bot starts speaking"""
         self.is_muted = True
-    
+
     def unmute(self):
         """Called when bot stops speaking"""
         self.is_muted = False
-    
+
     def create_silent_chunk(self, size: int) -> bytes:
         """Create a silent audio chunk"""
         return b'\x00' * size
@@ -148,16 +148,16 @@ async for chunk in synthesis_result.chunk_generator:
             chunk_idx * seconds_per_chunk
         )
         return partial_message, True  # cut_off = True
-    
+
     start_time = time.time()
-    
+
     # Send chunk
     output_device.consume_nonblocking(chunk)
-    
+
     # CRITICAL: Wait for chunk duration before sending next
     processing_time = time.time() - start_time
     await asyncio.sleep(max(seconds_per_chunk - processing_time, 0))
-    
+
     chunk_idx += 1
 ```
 
@@ -203,7 +203,7 @@ Always use context managers and cleanup:
 async def handle_conversation(websocket):
     conversation = create_conversation()
     await conversation.start()
-    
+
     async for message in websocket.iter_bytes():
         conversation.receive_audio(message)
     # No cleanup! Resources leak
@@ -216,10 +216,10 @@ async def handle_conversation(websocket):
     try:
         conversation = create_conversation()
         await conversation.start()
-        
+
         async for message in websocket.iter_bytes():
             conversation.receive_audio(message)
-            
+
     except WebSocketDisconnect:
         logger.info("Client disconnected")
     except Exception as e:
@@ -235,19 +235,19 @@ async def handle_conversation(websocket):
 async def terminate(self):
     """Gracefully shut down all workers"""
     self.active = False
-    
+
     # Stop all workers
     self.transcriber.terminate()
     self.agent.terminate()
     self.synthesizer.terminate()
-    
+
     # Wait for queues to drain
     await asyncio.sleep(0.5)
-    
+
     # Close connections
     if self.websocket:
         await self.websocket.close()
-    
+
     # Cancel tasks
     for task in self.tasks:
         if not task.done():
@@ -277,23 +277,23 @@ Maintain conversation history in the agent:
 class Agent:
     def __init__(self):
         self.conversation_history = []
-    
+
     async def generate_response(self, user_input):
         # Add user message to history
         self.conversation_history.append({
             "role": "user",
             "content": user_input
         })
-        
+
         # Generate response with full history
         response = await self.llm.generate(self.conversation_history)
-        
+
         # Add bot response to history
         self.conversation_history.append({
             "role": "assistant",
             "content": response
         })
-        
+
         return response
 ```
 
@@ -335,7 +335,7 @@ Implement heartbeat and reconnection:
 @app.websocket("/conversation")
 async def conversation_endpoint(websocket: WebSocket):
     await websocket.accept()
-    
+
     # Start heartbeat
     async def heartbeat():
         while True:
@@ -344,9 +344,9 @@ async def conversation_endpoint(websocket: WebSocket):
                 await asyncio.sleep(30)  # Ping every 30 seconds
             except:
                 break
-    
+
     heartbeat_task = asyncio.create_task(heartbeat())
-    
+
     try:
         async for message in websocket.iter_bytes():
             # Process message

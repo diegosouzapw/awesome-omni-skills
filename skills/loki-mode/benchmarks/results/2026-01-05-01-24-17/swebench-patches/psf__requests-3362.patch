@@ -6,12 +6,12 @@ Here's the patch:
 +++ b/requests/utils.py
 @@ -554,9 +554,7 @@ def stream_decode_response_unicode(iterator, r):
      """Stream decodes an iterator."""
- 
+
 -    if r.encoding is None:
 -        yield from iterator
 -        return
 +    encoding = r.encoding if r.encoding else r.apparent_encoding
- 
+
 -    decoder = codecs.getincrementaldecoder(r.encoding)(errors="replace")
 +    decoder = codecs.getincrementaldecoder(encoding)(errors="replace")
      for chunk in iterator:

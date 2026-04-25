@@ -9,13 +9,13 @@ Here's the patch:
 --- a/django/template/autoreload.py
 +++ b/django/template/autoreload.py
 @@ -48,6 +48,8 @@ def reset_loaders():
- 
+
  @receiver(autoreload_started, dispatch_uid="template_loaders_watch_changes")
  def watch_for_template_changes(sender, **kwargs):
      for directory in get_template_directories():
          sender.watch_dir(directory, "**/*")
- 
- 
+
+
  @receiver(file_changed, dispatch_uid="template_loaders_file_changed")
  def template_changed(sender, file_path, **kwargs):
 +    if file_path.suffix == ".py":

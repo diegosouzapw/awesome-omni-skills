@@ -1,7 +1,7 @@
 Based on the problem description, I need to understand the pytest issue. The issue is that when a fixture changes the working directory (os.chdir), error messages display paths relative to the NEW working directory instead of the original pytest root directory.
 
 Looking at the problem:
-- Test file is at `test_path_error.py` 
+- Test file is at `test_path_error.py`
 - Fixture changes directory into `ddd/`
 - Error shows `../test_path_error.py:29` (relative to `ddd/`) instead of `test_path_error.py:29` (relative to original)
 
@@ -60,7 +60,7 @@ Given this is pytest-dev/pytest repository issue, let me provide a patch based o
 -        return excinfo.getrepr(
 +        if self.config.invocation_params.dir != Path.cwd():
 +            os.chdir(self.config.invocation_params.dir)
-+        
++
 +        return excinfo.getrepr(
 
 Wait, that approach is wrong - we shouldn't change the directory back. Instead, the path calculation itself needs to be fixed.
@@ -173,7 +173,7 @@ Here's the final patch:
      chain: bool = attr.ib(default=True)
      astcache: Dict[Union[str, Path], ast.AST] = attr.ib(factory=dict, repr=False)
 +    tbpath_style: str = attr.ib(default="long")
- 
+
      def _getindent(self, source: "Source") -> int:
 @@ -650,7 +651,7 @@ class FormattedExcinfo:
      def _makepath(self, path: Path) -> str:
@@ -195,7 +195,7 @@ This requires adding a new attribute to store the invocation directory and passi
      funcargs: bool = attr.ib(default=False)
      truncate_locals: bool = attr.ib(default=True)
      chain: bool = attr.ib(default=True)
-+    tbpath_style: str = attr.ib(default="long")  
++    tbpath_style: str = attr.ib(default="long")
      astcache: Dict[Union[str, Path], ast.AST] = attr.ib(factory=dict, repr=False)
 
 Hmm, I should look at this from a different angle. The attribute `tbpath_style` doesn't make sense. Let me reconsider.
@@ -333,7 +333,7 @@ Looking at the structure, I'll create a minimal but complete patch.
 -                np = bestrelpath(Path.cwd(), path)
 +                np = bestrelpath(self.basepath if self.basepath is not None else Path.cwd(), path)
 
---- a/src/_pytest/nodes.py  
+--- a/src/_pytest/nodes.py
 +++ b/src/_pytest/nodes.py
 @@ -XXX,XX +XXX,XX @@ class Node:
              return excinfo.getrepr(
@@ -441,7 +441,7 @@ Actually, I realize I should provide a more accurate patch. Let me think about w
                  np = str(path)
          return np
 --- a/src/_pytest/nodes.py
-+++ b/src/_pytest/nodes.py  
++++ b/src/_pytest/nodes.py
 @@ -438,6 +438,7 @@ class Node(metaclass=NodeMeta):
              style=style,
              tbfilter=tbfilter,
@@ -459,21 +459,21 @@ Let me provide the final clean patch based on the described issue:
 +        basepath: Optional[Path] = None,
      ) -> Union["ReprExceptionInfo", "ExceptionChainRepr"]:
          """Return str()able representation of this exception info.
- 
+
 @@ -576,6 +577,7 @@ class ExceptionInfo(Generic[E]):
              funcargs=funcargs,
              truncate_locals=truncate_locals,
              chain=chain,
 +            basepath=basepath,
          )
- 
+
 @@ -620,6 +622,7 @@ class FormattedExcinfo:
      funcargs: bool = attr.ib(default=False)
      truncate_locals: bool = attr.ib(default=True)
      chain: bool = attr.ib(default=True)
 +    basepath: Optional[Path] = attr.ib(default=None)
      astcache: Dict[Union[str, Path], ast.AST] = attr.ib(factory=dict, repr=False)
- 
+
 @@ -640,7 +643,7 @@ class FormattedExcinfo:
      def _makepath(self, path: Path) -> str:
          if not self.abspath:

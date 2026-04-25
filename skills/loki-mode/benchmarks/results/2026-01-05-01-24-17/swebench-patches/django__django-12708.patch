@@ -14,7 +14,7 @@ Here's the patch:
                  ", ".join(columns),
              ))
          self.execute(self._delete_constraint_sql(sql, model, constraint_names[0]))
- 
+
      def alter_db_table(self, model, old_db_table, new_db_table):
 -        constraint_names = self._constraint_names(model, [model._meta.get_field(field).column for field in fields], index=True)
 +        constraint_names = self._constraint_names(
@@ -27,7 +27,7 @@ Let me reconsider this and provide a more accurate patch based on my understandi
 --- a/django/db/backends/base/schema.py
 +++ b/django/db/backends/base/schema.py
 @@ -378,7 +378,8 @@ class BaseDatabaseSchemaEditor:
- 
+
      def _delete_composed_index(self, model, fields, constraint_kwargs, sql):
          columns = [model._meta.get_field(field).column for field in fields]
 -        constraint_names = self._constraint_names(model, columns, **constraint_kwargs)
@@ -51,7 +51,7 @@ Here's the correct patch:
 --- a/django/db/backends/base/schema.py
 +++ b/django/db/backends/base/schema.py
 @@ -402,7 +402,10 @@ class BaseDatabaseSchemaEditor:
- 
+
      def _delete_composed_index(self, model, fields, constraint_kwargs, sql):
          columns = [model._meta.get_field(field).column for field in fields]
 -        constraint_names = self._constraint_names(model, columns, **constraint_kwargs)

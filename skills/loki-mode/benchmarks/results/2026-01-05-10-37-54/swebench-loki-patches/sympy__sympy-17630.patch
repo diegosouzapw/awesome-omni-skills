@@ -9,7 +9,7 @@ The sympy repository is not available locally. Based on the issue description an
 +++ b/sympy/matrices/expressions/blockmatrix.py
 @@ -1,5 +1,6 @@
  from __future__ import print_function, division
- 
+
 +from sympy import S
  from sympy.assumptions.ask import ask, Q
  from sympy.core import Basic, Add
@@ -17,7 +17,7 @@ The sympy repository is not available locally. Based on the issue description an
 @@ -88,6 +89,23 @@ class BlockMatrix(MatrixExpr):
      def colblocksizes(self):
          return [self.blocks[0, i].cols for i in range(self.blockshape[1])]
- 
+
 +    def _ensure_zero_matrix(self, block, rows, cols):
 +        """Convert scalar Zero to ZeroMatrix with proper dimensions."""
 +        from sympy.matrices.expressions.matexpr import ZeroMatrix
@@ -41,7 +41,7 @@ The sympy repository is not available locally. Based on the issue description an
 @@ -95,8 +113,14 @@ class BlockMatrix(MatrixExpr):
                          for i in range(self.blockshape[0])
                          for j in range(other.blockshape[1])]
- 
+
 -            return BlockMatrix(Matrix(self.blockshape[0], other.blockshape[1], block_mul))
 -        return self * other
 +            result = BlockMatrix(Matrix(self.blockshape[0], other.blockshape[1], block_mul))
@@ -53,7 +53,7 @@ The sympy repository is not available locally. Based on the issue description an
 +                          for i in range(result.blockshape[0])]
 +            return BlockMatrix(Matrix(new_blocks))
 +        return self * other
- 
+
      def _blockadd(self, other):
          if (isinstance(other, BlockMatrix)
 ```
@@ -68,7 +68,7 @@ Let me provide a cleaner patch:
 @@ -163,6 +163,8 @@ def bc_matmul(expr):
  def bc_block_plus_ident(expr):
      pass
- 
+
 +from sympy.matrices.expressions.matexpr import ZeroMatrix
 +
  def _block_mul(A, B):
@@ -91,7 +91,7 @@ Actually, let me reconsider. Looking at the traceback more carefully, the issue 
 +++ b/sympy/matrices/expressions/blockmatrix.py
 @@ -89,13 +89,20 @@ class BlockMatrix(MatrixExpr):
          return [self.blocks[0, i].cols for i in range(self.blockshape[1])]
- 
+
      def _blockmul(self, other):
 +        from sympy.matrices.expressions.matexpr import ZeroMatrix
 +        from sympy import S
@@ -111,6 +111,6 @@ Actually, let me reconsider. Looking at the traceback more carefully, the issue 
 +                return result
 +            return BlockMatrix(Matrix(self.blockshape[0], other.blockshape[1], block_mul))
 +        return self * other
- 
+
      def _blockadd(self, other):
          if (isinstance(other, BlockMatrix)

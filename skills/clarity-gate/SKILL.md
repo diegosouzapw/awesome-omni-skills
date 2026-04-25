@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "Francesco Marinoni Moretto"
 date_added: "2026-04-14"
-date_updated: "2026-04-22"
+date_updated: "2026-04-25"
 ---
 
 # Clarity Gate v2.1
@@ -146,9 +146,9 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ## Related Skills
 
 - `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@3d-web-experience` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -290,7 +290,7 @@ Clarity Gate **enforces** their presence where epistemically required ("Should u
 
 > **Clarity Gate verifies FORM, not TRUTH.**
 >
-> This skill checks whether claims are properly marked as uncertain—it cannot verify if claims are actually true. 
+> This skill checks whether claims are properly marked as uncertain—it cannot verify if claims are actually true.
 >
 > **Risk:** An LLM can hallucinate facts INTO a document, then "pass" Clarity Gate by adding source markers to false claims.
 >
@@ -660,7 +660,7 @@ After running Clarity Gate, report:
 ### Critical (will cause hallucination)
 - [issue + location + fix]
 
-### Warning (could cause equivocation)  
+### Warning (could cause equivocation)
 - [issue + location + fix]
 
 ### Temporal (date/time issues)
@@ -732,7 +732,7 @@ Reply "confirmed" or flag any I misread.
 #### Imported: What This Skill Does NOT Do
 
 - Does not classify document types (use Stream Coding for that)
-- Does not restructure documents 
+- Does not restructure documents
 - Does not add deep links or references
 - Does not evaluate writing quality
 - **Does not check factual accuracy autonomously** (requires HITL)

@@ -26,11 +26,11 @@ class CodeAnalyzer:
             'dependencies': [],
             'difficulty_level': 'beginner'
         }
-        
+
         # Parse code structure
         try:
             tree = ast.parse(code)
-            
+
             # Analyze complexity metrics
             analysis['metrics'] = {
                 'lines_of_code': len(code.splitlines()),
@@ -39,59 +39,59 @@ class CodeAnalyzer:
                 'function_count': len([n for n in ast.walk(tree) if isinstance(n, ast.FunctionDef)]),
                 'class_count': len([n for n in ast.walk(tree) if isinstance(n, ast.ClassDef)])
             }
-            
+
             # Identify concepts used
             analysis['concepts'] = self._identify_concepts(tree)
-            
+
             # Detect design patterns
             analysis['patterns'] = self._detect_patterns(tree)
-            
+
             # Extract dependencies
             analysis['dependencies'] = self._extract_dependencies(tree)
-            
+
             # Determine difficulty level
             analysis['difficulty_level'] = self._assess_difficulty(analysis)
-            
+
         except SyntaxError as e:
             analysis['parse_error'] = str(e)
-            
+
         return analysis
-    
+
     def _identify_concepts(self, tree) -> List[str]:
         """
         Identify programming concepts used in the code
         """
         concepts = []
-        
+
         for node in ast.walk(tree):
             # Async/await
             if isinstance(node, (ast.AsyncFunctionDef, ast.AsyncWith, ast.AsyncFor)):
                 concepts.append('asynchronous programming')
-            
+
             # Decorators
             elif isinstance(node, ast.FunctionDef) and node.decorator_list:
                 concepts.append('decorators')
-            
+
             # Context managers
             elif isinstance(node, ast.With):
                 concepts.append('context managers')
-            
+
             # Generators
             elif isinstance(node, ast.Yield):
                 concepts.append('generators')
-            
+
             # List/Dict/Set comprehensions
             elif isinstance(node, (ast.ListComp, ast.DictComp, ast.SetComp)):
                 concepts.append('comprehensions')
-            
+
             # Lambda functions
             elif isinstance(node, ast.Lambda):
                 concepts.append('lambda functions')
-            
+
             # Exception handling
             elif isinstance(node, ast.Try):
                 concepts.append('exception handling')
-                
+
         return list(set(concepts))
 ```
 
@@ -107,67 +107,67 @@ class VisualExplainer:
         Generate Mermaid diagram showing code flow
         """
         diagram = "```mermaid\nflowchart TD\n"
-        
+
         # Example: Function call flow
         if code_structure['type'] == 'function_flow':
             nodes = []
             edges = []
-            
+
             for i, func in enumerate(code_structure['functions']):
                 node_id = f"F{i}"
                 nodes.append(f"    {node_id}[{func['name']}]")
-                
+
                 # Add function details
                 if func.get('parameters'):
                     nodes.append(f"    {node_id}_params[/{', '.join(func['parameters'])}/]")
                     edges.append(f"    {node_id}_params --> {node_id}")
-                
+
                 # Add return value
                 if func.get('returns'):
                     nodes.append(f"    {node_id}_return[{func['returns']}]")
                     edges.append(f"    {node_id} --> {node_id}_return")
-                
+
                 # Connect to called functions
                 for called in func.get('calls', []):
                     called_id = f"F{code_structure['function_map'][called]}"
                     edges.append(f"    {node_id} --> {called_id}")
-            
+
             diagram += "\n".join(nodes) + "\n"
             diagram += "\n".join(edges) + "\n"
-            
+
         diagram += "```"
         return diagram
-    
+
     def generate_class_diagram(self, classes):
         """
         Generate UML-style class diagram
         """
         diagram = "```mermaid\nclassDiagram\n"
-        
+
         for cls in classes:
             # Class definition
             diagram += f"    class {cls['name']} {{\n"
-            
+
             # Attributes
             for attr in cls.get('attributes', []):
                 visibility = '+' if attr['public'] else '-'
                 diagram += f"        {visibility}{attr['name']} : {attr['type']}\n"
-            
+
             # Methods
             for method in cls.get('methods', []):
                 visibility = '+' if method['public'] else '-'
                 params = ', '.join(method.get('params', []))
                 diagram += f"        {visibility}{method['name']}({params}) : {method['returns']}\n"
-            
+
             diagram += "    }\n"
-            
+
             # Relationships
             if cls.get('inherits'):
                 diagram += f"    {cls['inherits']} <|-- {cls['name']}\n"
-            
+
             for composition in cls.get('compositions', []):
                 diagram += f"    {cls['name']} *-- {composition}\n"
-            
+
         diagram += "```"
         return diagram
 ```
@@ -188,7 +188,7 @@ def generate_step_by_step_explanation(self, code, analysis):
         'deep_dive': [],
         'examples': []
     }
-    
+
     # Level 1: High-level overview
     explanation['overview'] = f"""
 ## What This Code Does
@@ -198,7 +198,7 @@ def generate_step_by_step_explanation(self, code, analysis):
 **Key Concepts**: {', '.join(analysis['concepts'])}
 **Difficulty Level**: {analysis['difficulty_level'].capitalize()}
 """
-    
+
     # Level 2: Step-by-step breakdown
     if analysis.get('functions'):
         for i, func in enumerate(analysis['functions']):
@@ -212,18 +212,18 @@ def generate_step_by_step_explanation(self, code, analysis):
             # Break down function logic
             for j, logic_step in enumerate(self._analyze_function_logic(func)):
                 step += f"{j+1}. {logic_step}\n"
-            
+
             # Add visual flow if complex
             if func['complexity'] > 5:
                 step += f"\n{self._generate_function_flow(func)}\n"
-            
+
             explanation['steps'].append(step)
-    
+
     # Level 3: Deep dive into complex parts
     for concept in analysis['concepts']:
         deep_dive = self._explain_concept(concept, code)
         explanation['deep_dive'].append(deep_dive)
-    
+
     return explanation
 
 def _explain_concept(self, concept, code):
@@ -277,7 +277,7 @@ for num in count_up_to(5):
 **In this code**: The generator is used to {specific_use_in_code}
 '''
     }
-    
+
     return explanations.get(concept, f"Explanation for {concept}")
 ```
 
@@ -293,7 +293,7 @@ class AlgorithmVisualizer:
         Create step-by-step visualization of sorting algorithm
         """
         steps = []
-        
+
         if algorithm_name == 'bubble_sort':
             steps.append("""
 ## Bubble Sort Visualization
@@ -307,34 +307,34 @@ class AlgorithmVisualizer:
 
 ### Step-by-Step Execution:
 """)
-            
+
             # Simulate bubble sort with visualization
             arr = array.copy()
             n = len(arr)
-            
+
             for i in range(n):
                 swapped = False
                 step_viz = f"\n**Pass {i+1}**:\n"
-                
+
                 for j in range(0, n-i-1):
                     # Show comparison
                     step_viz += f"Compare [{arr[j]}] and [{arr[j+1]}]: "
-                    
+
                     if arr[j] > arr[j+1]:
                         arr[j], arr[j+1] = arr[j+1], arr[j]
                         step_viz += f"Swap → {arr}\n"
                         swapped = True
                     else:
                         step_viz += "No swap needed\n"
-                
+
                 steps.append(step_viz)
-                
+
                 if not swapped:
                     steps.append(f"\n✅ Array is sorted: {arr}")
                     break
-        
+
         return '\n'.join(steps)
-    
+
     def visualize_recursion(self, func_name, example_input):
         """
         Visualize recursive function calls
@@ -459,7 +459,7 @@ async def main():
     await slow_operation("Task 1", 2)
     await slow_operation("Task 2", 2)
     print(f"Sequential time: {time.time() - start:.2f}s")
-    
+
     # Concurrent execution (fast)
     start = time.time()
     results = await asyncio.gather(
@@ -492,7 +492,7 @@ print(results)
 ```
 '''
     }
-    
+
     return examples.get(concept, "No example available")
 ```
 
@@ -596,17 +596,17 @@ class Newsletter:
     def __init__(self):
         self._subscribers = []
         self._latest_article = None
-    
+
     def subscribe(self, subscriber):
         self._subscribers.append(subscriber)
-    
+
     def unsubscribe(self, subscriber):
         self._subscribers.remove(subscriber)
-    
+
     def publish_article(self, article):
         self._latest_article = article
         self._notify_subscribers()
-    
+
     def _notify_subscribers(self):
         for subscriber in self._subscribers:
             subscriber.update(self._latest_article)
@@ -614,13 +614,13 @@ class Newsletter:
 class EmailSubscriber:
     def __init__(self, email):
         self.email = email
-    
+
     def update(self, article):
         print(f"Sending email to {self.email}: New article - {article}")
 ```
 '''
         }
-        
+
         return patterns.get(pattern_name, "Pattern explanation not available")
 ```
 
@@ -635,7 +635,7 @@ def analyze_common_pitfalls(self, code):
     Identify common mistakes and suggest improvements
     """
     issues = []
-    
+
     # Check for common Python pitfalls
     pitfall_patterns = [
         {
@@ -698,7 +698,7 @@ def increment():
 class Counter:
     def __init__(self):
         self.count = 0
-    
+
     def increment(self):
         self.count += 1
         return self.count
@@ -706,11 +706,11 @@ class Counter:
 '''
         }
     ]
-    
+
     for pitfall in pitfall_patterns:
         if re.search(pitfall['pattern'], code):
             issues.append(pitfall)
-    
+
     return issues
 ```
 
@@ -730,7 +730,7 @@ def generate_learning_path(self, analysis):
         'recommended_topics': [],
         'resources': []
     }
-    
+
     # Identify knowledge gaps
     if 'async' in analysis['concepts'] and analysis['difficulty_level'] == 'beginner':
         learning_path['identified_gaps'].append('Asynchronous programming fundamentals')
@@ -740,7 +740,7 @@ def generate_learning_path(self, analysis):
             'Async/await syntax',
             'Concurrent programming patterns'
         ])
-    
+
     # Add resources
     learning_path['resources'] = [
         {
@@ -759,7 +759,7 @@ def generate_learning_path(self, analysis):
             'format': 'visual learning'
         }
     ]
-    
+
     # Create structured learning plan
     learning_path['structured_plan'] = f"""
 ## Your Personalized Learning Path
@@ -784,7 +784,7 @@ def generate_learning_path(self, analysis):
 2. **Intermediate**: {self._suggest_intermediate_project(analysis)}
 3. **Advanced**: {self._suggest_advanced_project(analysis)}
 """
-    
+
     return learning_path
 ```
 
