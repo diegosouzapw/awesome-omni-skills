@@ -110,8 +110,8 @@ A _tooltip_ (called a _help tag_ in user documentation) displays a small, transi
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/offering-help#Change-log)
 
-Date| Changes  
----|---  
-December 5, 2023| Included visionOS in guidance for creating tooltips.  
-September 12, 2023| Added guidance for creating tips.  
-  
+Date| Changes
+---|---
+December 5, 2023| Included visionOS in guidance for creating tooltips.
+September 12, 2023| Added guidance for creating tips.
+

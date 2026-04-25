@@ -10,7 +10,7 @@ This is a Django repository issue, but the Django codebase isn't in this directo
 @@ -182,3 +182,56 @@ class ValidationError(Exception):
              return repr(self.message)
          return repr(self.messages)
- 
+
 +    def __eq__(self, other):
 +        if not isinstance(other, ValidationError):
 +            return NotImplemented
@@ -71,7 +71,7 @@ Wait, there's an issue with `__hash__` referencing `make_hashable` which is defi
 @@ -182,3 +182,59 @@ class ValidationError(Exception):
              return repr(self.message)
          return repr(self.messages)
- 
+
 +    def __eq__(self, other):
 +        if not isinstance(other, ValidationError):
 +            return NotImplemented

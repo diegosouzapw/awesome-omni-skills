@@ -9,14 +9,14 @@ Based on my knowledge of Django's codebase and the issue description, here's the
 --- a/django/core/checks/model_checks.py
 +++ b/django/core/checks/model_checks.py
 @@ -4,7 +4,8 @@ from itertools import chain
- 
+
  from django.apps import apps
  from django.conf import settings
 -from django.core.checks import Error, Tags, register
 +from django.core.checks import Error, Tags, Warning, register
 +
- 
- 
+
+
  @register(Tags.models)
 @@ -35,11 +36,18 @@ def check_all_models(app_configs=None, **kwargs):
      for db_table, model_labels in db_table_models.items():
@@ -30,7 +30,7 @@ Based on my knowledge of Django's codebase and the issue description, here's the
 +                make_error(
 +                    msg="db_table '%s' is used by multiple models: %s."
 +                        % (db_table, ', '.join(db_table_models[db_table])),
-+                    obj=db_table, 
++                    obj=db_table,
 +                    id='models.W035' if settings.DATABASE_ROUTERS else 'models.E028',
                  )
              )
@@ -47,13 +47,13 @@ Wait, let me reconsider. Looking at the hints more carefully and the Django code
 --- a/django/core/checks/model_checks.py
 +++ b/django/core/checks/model_checks.py
 @@ -4,7 +4,7 @@ from itertools import chain
- 
+
  from django.apps import apps
  from django.conf import settings
 -from django.core.checks import Error, Tags, register
 +from django.core.checks import Error, Tags, Warning, register
- 
- 
+
+
  @register(Tags.models)
 @@ -35,12 +35,17 @@ def check_all_models(app_configs=None, **kwargs):
      for db_table, model_labels in db_table_models.items():

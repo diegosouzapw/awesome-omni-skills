@@ -118,13 +118,13 @@ You can enhance an AR experience by using known images and objects in the real-w
 
 **If you must display instructional text, use approachable terminology.** AR is an advanced concept that may be intimidating to some people. To help make it approachable, avoid using technical terms like ARKit, world detection, and tracking. Instead, use friendly, conversational terms that most people will understand.
 
-Do| Don’t  
----|---  
-Unable to find a surface. Try moving to the side or repositioning your phone.| Unable to find a plane. Adjust tracking.  
-Tap a location to place the _[name of object to be placed]_.| Tap a plane to anchor an object.  
-Try turning on more lights and moving around.| Insufficient features.  
-Try moving your phone more slowly.| Excessive motion detected.  
-  
+Do| Don’t
+---|---
+Unable to find a surface. Try moving to the side or repositioning your phone.| Unable to find a plane. Adjust tracking.
+Tap a location to place the _[name of object to be placed]_.| Tap a plane to anchor an object.
+Try turning on more lights and moving around.| Insufficient features.
+Try moving your phone more slowly.| Excessive motion detected.
+
 **In a three-dimensional context, prefer 3D hints.** For example, placing a 3D rotation indicator around an object is more intuitive than displaying text-based instructions in a 2D overlay. Avoid displaying textual overlay hints in a 3D context unless people aren’t responding to contextual hints.
 
 ![An illustration of a cube. The base of the cube is indicated with a grid, and the active side of the cube is outlined in blue. Arrows follow a continuous circle around the cube to the right, hinting that the cube can be rotated within the 3D context.](https://docs-assets.developer.apple.com/published/43871ef4bb55592e7474b1905da12f98/augmented-reality-3d-hint%402x.png)Prefer a 3D hint in a 3D context.
@@ -169,12 +169,12 @@ ARKit can’t track device position and orientation during an interruption, such
 
 **Suggest possible fixes if problems occur.** Analysis of the real-world environment and surface detection can fail or take too long for a variety of reasons — insufficient light, an overly reflective surface, a surface without enough detail, or too much camera motion. If your app is notified of these problems, use straightforward, friendly language to offer suggestions for resolving them.
 
-Problem| Possible suggestion  
----|---  
-Insufficient features detected.| Try turning on more lights and moving around.  
-Excessive motion detected.| Try moving your phone slower.  
-Surface detection takes too long.| Try moving around, turning on more lights, and making sure your phone is pointed at a sufficiently textured surface.  
-  
+Problem| Possible suggestion
+---|---
+Insufficient features detected.| Try turning on more lights and moving around.
+Excessive motion detected.| Try moving your phone slower.
+Surface detection takes too long.| Try moving around, turning on more lights, and making sure your phone is pointed at a sufficiently textured surface.
+
 ## [Icons and badges](https://developer.apple.com/design/human-interface-guidelines/augmented-reality#Icons-and-badges)
 
 Apps can display an AR icon in controls that launch ARKit-based experiences. You can download this icon in [Resources](https://developer.apple.com/design/resources/#ios-apps).
@@ -219,11 +219,11 @@ Apps that include collections of products or other objects can use badging to id
 
 With the wearer’s [permission](https://developer.apple.com/design/human-interface-guidelines/privacy#visionOS), you can use ARKit in your visionOS app to detect surfaces in a person’s surroundings, use a person’s hand and finger postions to inform your [custom gestures](https://developer.apple.com/design/human-interface-guidelines/gestures#Designing-custom-gestures-in-visionOS), support interactions that incorporate nearby physical objects into your [immersive experience](https://developer.apple.com/design/human-interface-guidelines/immersive-experiences), and more. For developer guidance, see [ARKit](https://developer.apple.com/documentation/ARKit).
 
-Video with custom controls. 
+Video with custom controls.
 
-Content description: A recording showing a 3D model of a meteor in visionOS rotating above a physical table. 
+Content description: A recording showing a 3D model of a meteor in visionOS rotating above a physical table.
 
-Play 
+Play
 
 ## [Resources](https://developer.apple.com/design/human-interface-guidelines/augmented-reality#Resources)
 

@@ -6,12 +6,12 @@ This native intake skill was imported automatically from an external repository.
 - Source owner: `sickn33`
 - Source repository name: `antigravity-awesome-skills`
 - Source branch: `main`
-- Source commit: `99f4722632f1891e6b01d32d87b66e80b7ce0d07`
+- Source commit: `9bad53f2426e310c33ef5bacf9f845855197be6a`
 - Source skills path: `plugins`
 - Source skill path: `plugins/antigravity-awesome-skills-claude/skills/monorepo-architect`
 - Imported public skill id: `monorepo-architect`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260420T001313.898993+0000-sickn33-antigravity-awesome-skills-dashboard-sync`
+- Sync run id: `20260425T165653.823358+0000-sickn33-antigravity-awesome-skills-dashboard-refresh-native-pr`
 
 The original source identity is preserved for review and attribution.

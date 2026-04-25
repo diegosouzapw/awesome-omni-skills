@@ -17,14 +17,14 @@ Here's the patch:
 -                _key = bisect.bisect_left(sortkey, lckey)
 +                _key = 0
 +                letter = _('Symbols')
-             
+
 -            if _key < len(googlesortkey):
 -                key = googlesortkey[_key]
 -            return _key
 +            if letter:
 +                return (letter, entry)
 +            return (_key, entry)
- 
+
 
 Let me look at the actual structure of this problem more carefully. The issue is that the index creates separate sections, and symbols end up in two places. I need to understand the exact algorithm better.
 
@@ -42,11 +42,11 @@ Based on typical Sphinx code structure, the fix should be in `sphinx/environment
 -                return (True, key)
 +                # Group all non-letters together at the beginning
 +                return (False, '')
- 
+
          newlist = sorted(new.items(), key=keyfunc0)
          # fixup entries: transform
 @@ -123,15 +124,19 @@ class IndexEntries:
- 
+
          # group the entries by letter
          def keyfunc(item: tuple[str, list]) -> str:
 -            # hack: mutate the subitems dicts to a list in the keyfunc
@@ -85,5 +85,5 @@ The fix needs to ensure all symbol entries are sorted together (either all at th
 -                return (True, key)
 +                # Sort all symbols first (together)
 +                return (False, key)
- 
+
          newlist = sorted(new.items(), key=keyfunc0)

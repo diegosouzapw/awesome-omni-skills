@@ -8,7 +8,7 @@ Based on the patch file I found, I can see this is indeed the Django issue about
 +++ b/django/db/models/fields/__init__.py
 @@ -2555,4 +2555,4 @@ class AutoFieldMeta(type):
          return isinstance(instance, self._subclasses) or super().__instancecheck__(instance)
- 
+
      def __subclasscheck__(self, subclass):
 -        return subclass in self._subclasses or super().__subclasscheck__(subclass)
 +        return issubclass(subclass, self._subclasses) or super().__subclasscheck__(subclass)

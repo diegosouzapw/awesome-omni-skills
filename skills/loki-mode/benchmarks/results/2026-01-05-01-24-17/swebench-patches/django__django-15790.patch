@@ -14,14 +14,14 @@ Here's the patch:
 +++ b/django/core/checks/templates.py
 @@ -50,14 +50,14 @@ def check_for_template_tags_with_the_same_name(app_configs, **kwargs):
              )
- 
+
      for name, module_name in libraries.items():
 -        if name in libraries_modules:
 -            libraries_modules[name].append(module_name)
 -        else:
 -            libraries_modules[name] = [module_name]
 +        libraries_modules.setdefault(name, set()).add(module_name)
- 
+
      for name, module_names in libraries_modules.items():
          if len(module_names) > 1:
              errors.append(

@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-16"
-date_updated: "2026-04-19"
+date_updated: "2026-04-25"
 ---
 
 # Azure.Messaging.EventHubs (.NET)
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills/skills/azur
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Azure.Messaging.EventHubs (.NET) High-throughput event streaming SDK for sending and receiving events via Azure Event Hubs.
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -111,7 +111,7 @@ foreach (var eventData in events)
         // Batch is full - send it and create a new one
         await producer.SendAsync(batch);
         batch = await producer.CreateBatchAsync();
-        
+
         if (!batch.TryAdd(eventData))
         {
             throw new Exception("Event too large for empty batch");
@@ -194,7 +194,7 @@ processor.ProcessEventAsync += async args =>
 {
     Console.WriteLine($"Partition: {args.Partition.PartitionId}");
     Console.WriteLine($"Data: {args.Data.EventBody}");
-    
+
     // Checkpoint after processing (or batch checkpoints)
     await args.UpdateCheckpointAsync();
 };
@@ -318,7 +318,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills/skills/azure-eventhub-dotnet`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -334,10 +334,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@azure-ai-projects-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-ai-projects-ts-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-ai-textanalytics-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@azure-ai-transcription-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -422,7 +422,7 @@ builder.Services.AddAzureClients(clientBuilder =>
     clientBuilder.AddEventHubProducerClient(
         builder.Configuration["EventHub:FullyQualifiedNamespace"],
         builder.Configuration["EventHub:Name"]);
-    
+
     clientBuilder.UseCredential(new DefaultAzureCredential());
 });
 
@@ -430,12 +430,12 @@ builder.Services.AddAzureClients(clientBuilder =>
 public class EventService
 {
     private readonly EventHubProducerClient _producer;
-    
+
     public EventService(EventHubProducerClient producer)
     {
         _producer = producer;
     }
-    
+
     public async Task SendAsync(string message)
     {
         using var batch = await _producer.CreateBatchAsync();
@@ -487,7 +487,7 @@ private int _eventCount = 0;
 processor.ProcessEventAsync += async args =>
 {
     // Process event...
-    
+
     _eventCount++;
     if (_eventCount >= 100)
     {

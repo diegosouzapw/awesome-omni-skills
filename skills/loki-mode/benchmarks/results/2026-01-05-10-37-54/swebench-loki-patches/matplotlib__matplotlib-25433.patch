@@ -18,18 +18,18 @@ The issue is that `RangeSlider.on_changed` fires during mouse drag events while 
          if orientation == "vertical":
              self.ax.set_ylim((valmin, valmax))
 @@ -639,6 +640,8 @@ class SliderBase(AxesWidget):
- 
+
      def _update(self, event):
          """Update the slider position."""
 +        if self._changed_callbacks_blocked:
 +            return
          if self.ignore(event) or event.button != 1:
              return
- 
+
 @@ -653,6 +656,18 @@ class SliderBase(AxesWidget):
              self._active_handle = None
              return
- 
+
 +        if event.name == 'button_release_event':
 +            self._changed_callbacks_blocked = False
 +
@@ -42,21 +42,21 @@ The issue is that `RangeSlider.on_changed` fires during mouse drag events while 
 +        finally:
 +            self._changed_callbacks_blocked = False
 +
- 
+
  class Slider(SliderBase):
      """
 @@ -809,7 +824,11 @@ class Slider(SliderBase):
          self.val = val
          if self.eventson:
              self._observers.process('changed', val)
-+    
++
 +    def set_val_safe(self, val):
 +        """Set the slider value, with safe callback handling."""
 +        self._set_val_internal(val)
 +        if self.eventson:
 +            self._process_callbacks_safely(val)
- 
- 
+
+
  class RangeSlider(SliderBase):
 @@ -1029,7 +1048,12 @@ class RangeSlider(SliderBase):
          self._update_selection_poly(*val)
@@ -69,7 +69,7 @@ The issue is that `RangeSlider.on_changed` fires during mouse drag events while 
 +            if not hasattr(self, '_dragging') or not self._dragging:
 +                self._observers.process('changed', val)
 +            self._pending_callback_val = val
- 
+
      def on_changed(self, func):
          """
 ```
@@ -90,7 +90,7 @@ Let me provide a cleaner, more focused patch that addresses the core issue:
              self.ax.set_ylim((valmin, valmax))
 @@ -651,8 +653,17 @@ class SliderBase(AxesWidget):
              return
- 
+
          if event.name == 'button_press_event' and event.inaxes == self.ax:
 +            self._dragging = True
              self._active_handle = handle
@@ -106,8 +106,8 @@ Let me provide a cleaner, more focused patch that addresses the core issue:
 +                pending = self._pending_val
 +                self._pending_val = None
 +                self._observers.process('changed', pending)
- 
- 
+
+
  class Slider(SliderBase):
 @@ -1029,7 +1040,12 @@ class RangeSlider(SliderBase):
          self._update_selection_poly(*val)
@@ -120,7 +120,7 @@ Let me provide a cleaner, more focused patch that addresses the core issue:
 +                self._pending_val = val
 +            else:
 +                self._observers.process('changed', val)
- 
+
      def on_changed(self, func):
          """
 ```

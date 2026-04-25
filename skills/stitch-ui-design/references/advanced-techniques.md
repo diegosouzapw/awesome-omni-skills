@@ -31,7 +31,7 @@ Stitch can interpret hand-drawn sketches, wireframes, and rough mockups.
 1. Sketch wireframe on paper or tablet
 2. Take clear photo or scan
 3. Upload to Stitch with prompt:
-   "Convert this wireframe to a modern web interface with 
+   "Convert this wireframe to a modern web interface with
    glassmorphic design and purple gradient accents"
 4. Refine generated design with annotations
 ```
@@ -114,7 +114,7 @@ Create a component library by generating individual components first, then compo
    - Variants
 
 3. Compose screens using established components:
-   "Create a settings page using the button and input 
+   "Create a settings page using the button and input
    components from previous generations"
 ```
 

@@ -26,11 +26,11 @@ def find_api_files(project_path: Path) -> list:
         "**/swagger.json", "**/swagger.yaml",
         "**/openapi.json", "**/openapi.yaml"
     ]
-    
+
     files = []
     for pattern in patterns:
         files.extend(project_path.glob(pattern))
-    
+
     # Exclude node_modules, etc.
     return [f for f in files if not any(x in str(f) for x in ['node_modules', '.git', 'dist', 'build', '__pycache__'])]
 
@@ -38,10 +38,10 @@ def check_openapi_spec(file_path: Path) -> dict:
     """Check OpenAPI/Swagger specification."""
     issues = []
     passed = []
-    
+
     try:
         content = file_path.read_text(encoding='utf-8')
-        
+
         if file_path.suffix == '.json':
             spec = json.loads(content)
         else:
@@ -50,21 +50,21 @@ def check_openapi_spec(file_path: Path) -> dict:
                 passed.append("[OK] OpenAPI/Swagger version defined")
             else:
                 issues.append("[X] No OpenAPI version found")
-            
+
             if 'paths:' in content:
                 passed.append("[OK] Paths section exists")
             else:
                 issues.append("[X] No paths defined")
-            
+
             if 'components:' in content or 'definitions:' in content:
                 passed.append("[OK] Schema components defined")
-            
+
             return {'file': str(file_path), 'passed': passed, 'issues': issues, 'type': 'openapi'}
-        
+
         # JSON OpenAPI checks
         if 'openapi' in spec or 'swagger' in spec:
             passed.append("[OK] OpenAPI version defined")
-        
+
         if 'info' in spec:
             if 'title' in spec['info']:
                 passed.append("[OK] API title defined")
@@ -72,11 +72,11 @@ def check_openapi_spec(file_path: Path) -> dict:
                 passed.append("[OK] API version defined")
             if 'description' not in spec['info']:
                 issues.append("[!] API description missing")
-        
+
         if 'paths' in spec:
             path_count = len(spec['paths'])
             passed.append(f"[OK] {path_count} endpoints defined")
-            
+
             # Check each path
             for path, methods in spec['paths'].items():
                 for method, details in methods.items():
@@ -85,20 +85,20 @@ def check_openapi_spec(file_path: Path) -> dict:
                             issues.append(f"[X] {method.upper()} {path}: No responses defined")
                         if 'summary' not in details and 'description' not in details:
                             issues.append(f"[!] {method.upper()} {path}: No description")
-        
+
     except Exception as e:
         issues.append(f"[X] Parse error: {e}")
-    
+
     return {'file': str(file_path), 'passed': passed, 'issues': issues, 'type': 'openapi'}
 
 def check_api_code(file_path: Path) -> dict:
     """Check API code for common issues."""
     issues = []
     passed = []
-    
+
     try:
         content = file_path.read_text(encoding='utf-8')
-        
+
         # Check for error handling
         error_patterns = [
             r'try\s*{', r'try:', r'\.catch\(',
@@ -109,7 +109,7 @@ def check_api_code(file_path: Path) -> dict:
             passed.append("[OK] Error handling present")
         else:
             issues.append("[X] No error handling found")
-        
+
         # Check for status codes
         status_patterns = [
             r'status\s*\(\s*\d{3}\s*\)', r'statusCode\s*[=:]\s*\d{3}',
@@ -121,7 +121,7 @@ def check_api_code(file_path: Path) -> dict:
             passed.append("[OK] HTTP status codes used")
         else:
             issues.append("[!] No explicit HTTP status codes")
-        
+
         # Check for validation
         validation_patterns = [
             r'validate', r'schema', r'zod', r'joi', r'yup',
@@ -132,7 +132,7 @@ def check_api_code(file_path: Path) -> dict:
             passed.append("[OK] Input validation present")
         else:
             issues.append("[!] No input validation detected")
-        
+
         # Check for auth middleware
         auth_patterns = [
             r'auth', r'jwt', r'bearer', r'token',
@@ -141,39 +141,39 @@ def check_api_code(file_path: Path) -> dict:
         has_auth = any(re.search(p, content, re.I) for p in auth_patterns)
         if has_auth:
             passed.append("[OK] Authentication/authorization detected")
-        
+
         # Check for rate limiting
         rate_patterns = [r'rateLimit', r'throttle', r'rate.?limit']
         has_rate = any(re.search(p, content, re.I) for p in rate_patterns)
         if has_rate:
             passed.append("[OK] Rate limiting present")
-        
+
         # Check for logging
         log_patterns = [r'console\.log', r'logger\.', r'logging\.', r'log\.']
         has_logging = any(re.search(p, content) for p in log_patterns)
         if has_logging:
             passed.append("[OK] Logging present")
-        
+
     except Exception as e:
         issues.append(f"[X] Read error: {e}")
-    
+
     return {'file': str(file_path), 'passed': passed, 'issues': issues, 'type': 'code'}
 
 def main():
     target = sys.argv[1] if len(sys.argv) > 1 else "."
     project_path = Path(target)
-    
+
     print("\n" + "=" * 60)
     print("  API VALIDATOR - Endpoint Best Practices Check")
     print("=" * 60 + "\n")
-    
+
     api_files = find_api_files(project_path)
-    
+
     if not api_files:
         print("[!] No API files found.")
         print("   Looking for: routes/, controllers/, api/, openapi.json/yaml")
         sys.exit(0)
-    
+
     results = []
     for file_path in api_files[:15]:  # Limit
         if 'openapi' in file_path.name.lower() or 'swagger' in file_path.name.lower():
@@ -181,11 +181,11 @@ def main():
         else:
             result = check_api_code(file_path)
         results.append(result)
-    
+
     # Print results
     total_issues = 0
     total_passed = 0
-    
+
     for result in results:
         print(f"\n[FILE] {result['file']} [{result['type']}]")
         for item in result['passed']:
@@ -195,11 +195,11 @@ def main():
             print(f"   {item}")
             if item.startswith("[X]"):
                 total_issues += 1
-    
+
     print("\n" + "=" * 60)
     print(f"[RESULTS] {total_passed} passed, {total_issues} critical issues")
     print("=" * 60)
-    
+
     if total_issues == 0:
         print("[OK] API validation passed")
         sys.exit(0)

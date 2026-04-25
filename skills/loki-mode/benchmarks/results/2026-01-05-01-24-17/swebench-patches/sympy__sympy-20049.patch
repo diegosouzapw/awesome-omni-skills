@@ -14,13 +14,13 @@ Here's the patch that implements this fix:
  from .vector import Vector, _check_vector
  from .frame import _check_frame
 +from warnings import warn
- 
+
  __all__ = ['Point']
- 
+
 @@ -515,9 +516,56 @@ class Point(object):
          Examples
          ========
- 
+
 -        >>> from sympy.physics.vector import Point, ReferenceFrame
 +        >>> from sympy.physics.vector import Point, ReferenceFrame, dynamicsymbols
          >>> N = ReferenceFrame('N')
@@ -34,9 +34,9 @@ Here's the patch that implements this fix:
          10*N.x
 +        >>> p2.vel(N)
 +        q'*N.y
- 
+
          """
- 
+
          _check_frame(frame)
 -        if not (frame in self._vel_dict):
 -            raise ValueError('Velocity of point ' + self.name + ' has not been'
@@ -98,7 +98,7 @@ Wait, let me reconsider. Looking at the actual SymPy codebase structure more car
 +++ b/sympy/physics/vector/point.py
 @@ -519,8 +519,26 @@ class Point(object):
          """
- 
+
          _check_frame(frame)
 -        if not (frame in self._vel_dict):
 -            raise ValueError('Velocity of point ' + self.name + ' has not been'

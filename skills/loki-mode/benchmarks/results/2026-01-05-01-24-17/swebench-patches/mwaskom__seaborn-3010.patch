@@ -11,7 +11,7 @@ Let me generate a patch based on the traceback information showing the relevant 
 +++ b/seaborn/_stats/regression.py
 @@ -25,6 +25,8 @@ class PolyFit(Stat):
      def _fit_predict(self, data):
- 
+
          x = data["x"]
          y = data["y"]
 +        if x.isna().any() or y.isna().any():
@@ -24,7 +24,7 @@ Let me generate a patch based on the traceback information showing the relevant 
 
 Wait, let me look more carefully at the traceback to understand the exact line numbers and code structure:
 
-- Line 28: `xx = yy = []`  
+- Line 28: `xx = yy = []`
 - Line 29: `else:`
 - Line 30: `p = np.polyfit(x, y, self.order)`
 - Line 31: `xx = np.linspace(x.min(), x.max(), self.gridsize)`
@@ -49,7 +49,7 @@ The fix should drop NaN values before the fitting. Here's the patch:
 +++ b/seaborn/_stats/regression.py
 @@ -23,6 +23,9 @@ class PolyFit(Stat):
      def _fit_predict(self, data):
- 
+
          x = data["x"]
          y = data["y"]
 +        if x.isna().any() or y.isna().any():

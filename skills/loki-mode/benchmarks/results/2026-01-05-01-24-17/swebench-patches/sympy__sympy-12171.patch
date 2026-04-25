@@ -5,13 +5,13 @@ This task asks me to generate a patch for the sympy repository, but the sympy co
 @@ -100,6 +100,12 @@ class MCodePrinter(CodePrinter):
      def _print_Function(self, expr):
          return expr.func.__name__ + "[%s]" % self.stringify(expr.args, ", ")
- 
+
 +    def _print_Derivative(self, expr):
 +        return "D[%s]" % (self.stringify(expr.args, ", "))
 +
 +    def _print_Float(self, expr):
 +        res = str(expr)
 +        return res.replace('e', '*^')
- 
+
  def mathematica_code(expr, **settings):
      r"""Converts an expr to a string of the Wolfram Mathematica code

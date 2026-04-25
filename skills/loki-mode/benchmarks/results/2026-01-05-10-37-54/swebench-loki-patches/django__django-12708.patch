@@ -12,7 +12,7 @@ Here's the patch:
 @@ -355,7 +355,7 @@ class BaseDatabaseSchemaEditor:
          self.execute(self._delete_constraint_sql(self.sql_delete_pk, model, pk_names[0]))
          return True
- 
+
 -    def _delete_composed_index(self, model, fields, constraint_kwargs, sql):
 +    def _delete_composed_index(self, model, fields, constraint_kwargs, sql, exclude_unique=False):
          columns = [model._meta.get_field(field).column for field in fields]

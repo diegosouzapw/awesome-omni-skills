@@ -12,8 +12,8 @@ Let me generate the patch for the `sphinx/ext/autodoc/__init__.py` file:
 +++ b/sphinx/ext/autodoc/__init__.py
 @@ -109,6 +109,15 @@ def identity(x: Any) -> Any:
      return x
- 
- 
+
+
 +def inherited_members_option(arg: Any) -> Union[object, Set[str]]:
 +    """Used to convert the :inherited-members: option to auto directives."""
 +    if arg in (None, True):
@@ -32,7 +32,7 @@ Let me generate the patch for the `sphinx/ext/autodoc/__init__.py` file:
          'noindex': bool_option,
      }
 +    option_spec: ClassVar[OptionSpec] = {'noindex': bool_option}
- 
+
      def get_attr(self, obj: Any, name: str, *defargs: Any) -> Any:
          """getattr() override for types such as Zope's DateRecurringIndex."""
 @@ -1078,7 +1087,7 @@ class ModuleDocumenter(Documenter):
@@ -56,24 +56,24 @@ Let me generate the patch for the `sphinx/ext/autodoc/__init__.py` file:
 @@ -1813,10 +1822,14 @@ class ClassDocumenter(DocstringSignatureMixin, ModuleLevelDocumenter):
                  if name in ClassDocumenter.option_spec:
                      self.options[name] = self.env.config.autodoc_default_options[name]
- 
+
          # obtain the document_inherited_members option to allow the user to
          # override inherited_members for specific classes
 -        inherited_members = self.options.inherited_members or ''
 -        inherited_members = inherited_members.split(',') if inherited_members else []
 -        self.options.inherited_members = inherited_members
 +        pass
- 
+
      def add_content(self, more_content: Optional[StringList]) -> None:
          if self.doc_as_attr:
 @@ -1848,13 +1861,18 @@ class ClassDocumenter(DocstringSignatureMixin, ModuleLevelDocumenter):
          return None, None, None
- 
+
      def filter_members(self, members: ObjectMembers, want_all: bool
 -                       ) -> List[Tuple[str, Any, bool]]:
 +                       ) -> List[Tuple[str, Any, bool]]:
          ret = []
- 
+
          # determine the base classes to ignore
 -        inherited_members = self.options.get('inherited-members', set())
 -        if isinstance(inherited_members, str):
@@ -97,7 +97,7 @@ Let me generate the patch for the `sphinx/ext/autodoc/__init__.py` file:
 +                pass
 +            if qualname in inherited_members:
 +                ignored_classes.add(cls)
- 
+
          for (membername, member) in members:
              # ignore members defined in a class in ignored_classes
 ```
@@ -108,8 +108,8 @@ Let me create a more accurate patch based on the actual Sphinx codebase. I need 
 +++ b/sphinx/ext/autodoc/__init__.py
 @@ -109,6 +109,15 @@ def identity(x: Any) -> Any:
      return x
- 
- 
+
+
 +def inherited_members_option(arg: Any) -> Union[object, Set[str]]:
 +    """Used to convert the :inherited-members: option to auto directives."""
 +    if arg in (None, True):
@@ -128,7 +128,7 @@ Let me create a more accurate patch based on the actual Sphinx codebase. I need 
          'noindex': bool_option,
      }
 -
-+    
++
      def get_attr(self, obj: Any, name: str, *defargs: Any) -> Any:
          """getattr() override for types such as Zope's DateRecurringIndex."""
          return autodoc_attrgetter(self.env.app, obj, name, *defargs)
@@ -152,12 +152,12 @@ Let me create a more accurate patch based on the actual Sphinx codebase. I need 
          'class-doc-from': class_doc_from_option,
 @@ -1848,13 +1857,18 @@ class ClassDocumenter(DocstringSignatureMixin, ModuleLevelDocumenter):
          return None, None, None
- 
+
      def filter_members(self, members: ObjectMembers, want_all: bool
 -                       ) -> List[Tuple[str, Any, bool]]:
 +                       ) -> List[Tuple[str, Any, bool]]:
          ret = []
- 
+
          # determine the base classes to ignore
 -        inherited_members = self.options.get('inherited-members', set())
 -        if isinstance(inherited_members, str):

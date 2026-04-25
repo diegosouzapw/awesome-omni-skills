@@ -7,9 +7,9 @@ Here's the patch:
 --- a/sympy/simplify/radsimp.py
 +++ b/sympy/simplify/radsimp.py
 @@ -1071,7 +1071,14 @@ def fraction(expr, exact=False):
- 
+
      numer, denom = [], []
- 
+
 -    for term in Mul.make_args(expr):
 +    def mul_args(e):
 +        for term in Mul.make_args(e):

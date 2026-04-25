@@ -60,102 +60,102 @@ For icons to represent common actions in [menus](https://developer.apple.com/des
 
 ### [Editing](https://developer.apple.com/design/human-interface-guidelines/icons#Editing)
 
-Action| Icon| Symbol name  
----|---|---  
-Cut| ![An icon showing a pair of scissors.](https://docs-assets.developer.apple.com/published/16c5fe84ae743e06cf2d388fc64e0cf4/icons-symbols-meaning-cut%402x.png)| `scissors`  
-Copy| ![An icon showing two copies of a document.](https://docs-assets.developer.apple.com/published/a88919c55265efbadeac0df5e16ffd05/icons-symbols-meaning-copy%402x.png)| `document.on.document`  
-Paste| ![An icon showing a document in front of a clipboard.](https://docs-assets.developer.apple.com/published/20e32bbb2a3a94eb35d01ddfa9c630e0/icons-symbols-meaning-paste%402x.png)| `document.on.clipboard`  
-Done| ![An icon showing a checkmark.](https://docs-assets.developer.apple.com/published/833bd3b8ccdf0e2fee0893b3858ddae5/icons-symbols-meaning-done-save%402x.png)| `checkmark `  
-Save  
-Cancel| ![An icon showing an X.](https://docs-assets.developer.apple.com/published/b834206c8d155bc1b0d9d17c206c6da3/icons-symbols-meaning-close-cancel%402x.png)| `xmark`  
-Close  
-Delete| ![An icon showing a trash can.](https://docs-assets.developer.apple.com/published/61f8368d02b05af22d3253a892ced7f3/icons-symbols-meaning-delete%402x.png)| `trash`  
-Undo| ![An icon showing an arrow curving toward the top left.](https://docs-assets.developer.apple.com/published/e3e973d07e4cfa983c92e37da5b3e104/icons-symbols-meaning-undo%402x.png)| `arrow.uturn.backward`  
-Redo| ![An icon showing an arrow curving toward the top right.](https://docs-assets.developer.apple.com/published/0f263db97ca2b7c31bbbd3cd5682d071/icons-symbols-meaning-redo%402x.png)| `arrow.uturn.forward`  
-Compose| ![An icon showing a pencil positioned over a square.](https://docs-assets.developer.apple.com/published/cfac914468b7fa2f287495f8644f3937/icons-symbols-meaning-compose%402x.png)| `square.and.pencil`  
-Duplicate| ![An icon showing a square with a plus sign on top of another square.](https://docs-assets.developer.apple.com/published/96323f746d3c67172648745420a15c27/icons-symbols-meaning-duplicate%402x.png)| `plus.square.on.square`  
-Rename| ![An icon showing a pencil.](https://docs-assets.developer.apple.com/published/8d3692b6e29cf0cdcb7885af414b2693/icons-symbols-meaning-rename%402x.png)| `pencil`  
-Move to| ![An icon showing a folder.](https://docs-assets.developer.apple.com/published/77c3e45c395bf2d2225c85979eca53a8/icons-symbols-meaning-move-to-folder%402x.png)| `folder`  
-Folder  
-Attach| ![An icon showing a paperclip.](https://docs-assets.developer.apple.com/published/e493eab83f8cc2a6f0aaa2ced386dcff/icons-symbols-meaning-attach%402x.png)| `paperclip`  
-Add| ![An icon showing a plus sign.](https://docs-assets.developer.apple.com/published/e0a7d36fc7aecfd6e49a4d0c0cb196af/icons-symbols-meaning-add%402x.png)| `plus`  
-More| ![An icon showing an ellipsis.](https://docs-assets.developer.apple.com/published/92e0b17a3881b62008563deb4a2aca40/icons-symbols-meaning-more%402x.png)| `ellipsis`  
-  
+Action| Icon| Symbol name
+---|---|---
+Cut| ![An icon showing a pair of scissors.](https://docs-assets.developer.apple.com/published/16c5fe84ae743e06cf2d388fc64e0cf4/icons-symbols-meaning-cut%402x.png)| `scissors`
+Copy| ![An icon showing two copies of a document.](https://docs-assets.developer.apple.com/published/a88919c55265efbadeac0df5e16ffd05/icons-symbols-meaning-copy%402x.png)| `document.on.document`
+Paste| ![An icon showing a document in front of a clipboard.](https://docs-assets.developer.apple.com/published/20e32bbb2a3a94eb35d01ddfa9c630e0/icons-symbols-meaning-paste%402x.png)| `document.on.clipboard`
+Done| ![An icon showing a checkmark.](https://docs-assets.developer.apple.com/published/833bd3b8ccdf0e2fee0893b3858ddae5/icons-symbols-meaning-done-save%402x.png)| `checkmark `
+Save
+Cancel| ![An icon showing an X.](https://docs-assets.developer.apple.com/published/b834206c8d155bc1b0d9d17c206c6da3/icons-symbols-meaning-close-cancel%402x.png)| `xmark`
+Close
+Delete| ![An icon showing a trash can.](https://docs-assets.developer.apple.com/published/61f8368d02b05af22d3253a892ced7f3/icons-symbols-meaning-delete%402x.png)| `trash`
+Undo| ![An icon showing an arrow curving toward the top left.](https://docs-assets.developer.apple.com/published/e3e973d07e4cfa983c92e37da5b3e104/icons-symbols-meaning-undo%402x.png)| `arrow.uturn.backward`
+Redo| ![An icon showing an arrow curving toward the top right.](https://docs-assets.developer.apple.com/published/0f263db97ca2b7c31bbbd3cd5682d071/icons-symbols-meaning-redo%402x.png)| `arrow.uturn.forward`
+Compose| ![An icon showing a pencil positioned over a square.](https://docs-assets.developer.apple.com/published/cfac914468b7fa2f287495f8644f3937/icons-symbols-meaning-compose%402x.png)| `square.and.pencil`
+Duplicate| ![An icon showing a square with a plus sign on top of another square.](https://docs-assets.developer.apple.com/published/96323f746d3c67172648745420a15c27/icons-symbols-meaning-duplicate%402x.png)| `plus.square.on.square`
+Rename| ![An icon showing a pencil.](https://docs-assets.developer.apple.com/published/8d3692b6e29cf0cdcb7885af414b2693/icons-symbols-meaning-rename%402x.png)| `pencil`
+Move to| ![An icon showing a folder.](https://docs-assets.developer.apple.com/published/77c3e45c395bf2d2225c85979eca53a8/icons-symbols-meaning-move-to-folder%402x.png)| `folder`
+Folder
+Attach| ![An icon showing a paperclip.](https://docs-assets.developer.apple.com/published/e493eab83f8cc2a6f0aaa2ced386dcff/icons-symbols-meaning-attach%402x.png)| `paperclip`
+Add| ![An icon showing a plus sign.](https://docs-assets.developer.apple.com/published/e0a7d36fc7aecfd6e49a4d0c0cb196af/icons-symbols-meaning-add%402x.png)| `plus`
+More| ![An icon showing an ellipsis.](https://docs-assets.developer.apple.com/published/92e0b17a3881b62008563deb4a2aca40/icons-symbols-meaning-more%402x.png)| `ellipsis`
+
 ### [Selection](https://developer.apple.com/design/human-interface-guidelines/icons#Selection)
 
-Action| Icon| Symbol name  
----|---|---  
-Select| ![An icon showing a checkmark in a circle.](https://docs-assets.developer.apple.com/published/7eac493b5a3896062a90328117d43e90/icons-symbols-meaning-select-all%402x.png)| `checkmark.circle`  
-Deselect| ![An icon showing an X.](https://docs-assets.developer.apple.com/published/b834206c8d155bc1b0d9d17c206c6da3/icons-symbols-meaning-deselect-close%402x.png)| `xmark`  
-Close  
-Delete| ![An icon showing a trash can.](https://docs-assets.developer.apple.com/published/61f8368d02b05af22d3253a892ced7f3/icons-symbols-meaning-delete%402x.png)| `trash`  
-  
+Action| Icon| Symbol name
+---|---|---
+Select| ![An icon showing a checkmark in a circle.](https://docs-assets.developer.apple.com/published/7eac493b5a3896062a90328117d43e90/icons-symbols-meaning-select-all%402x.png)| `checkmark.circle`
+Deselect| ![An icon showing an X.](https://docs-assets.developer.apple.com/published/b834206c8d155bc1b0d9d17c206c6da3/icons-symbols-meaning-deselect-close%402x.png)| `xmark`
+Close
+Delete| ![An icon showing a trash can.](https://docs-assets.developer.apple.com/published/61f8368d02b05af22d3253a892ced7f3/icons-symbols-meaning-delete%402x.png)| `trash`
+
 ### [Text formatting](https://developer.apple.com/design/human-interface-guidelines/icons#Text-formatting)
 
-Action| Icon| Symbol name  
----|---|---  
-Superscript| ![An icon showing the capital letter A with the number 1 in the upper right corner.](https://docs-assets.developer.apple.com/published/7e5e3d9b1b0eb6f340f531841d6b27f9/icons-symbols-meaning-superscript%402x.png)| `textformat.superscript`  
-Subscript| ![An icon showing the capital letter A with the number 1 in the lower right corner.](https://docs-assets.developer.apple.com/published/aac330c124cac37a78e02d6049943e53/icons-symbols-meaning-subscript%402x.png)| `textformat.subscript`  
-Bold| ![An icon showing the capital letter B in bold.](https://docs-assets.developer.apple.com/published/c8695e06d6461e79c145e9b6627f70ac/icons-symbols-meaning-bold%402x.png)| `bold`  
-Italic| ![An icon showing the capital letter I in italics.](https://docs-assets.developer.apple.com/published/9f560283ff88d8d1d4b48f278a831b7b/icons-symbols-meaning-italic%402x.png)| `italic`  
-Underline| ![An icon showing the capital letter U with an underline.](https://docs-assets.developer.apple.com/published/3b0d371f10bde381bfa1c9a8999797ec/icons-symbols-meaning-underline%402x.png)| `underline`  
-​​Align Left| ![An icon showing a stack of four horizontal lines of varying widths that align at the left edge.](https://docs-assets.developer.apple.com/published/68c0ff42aa0ac813b57b663562198e15/icons-symbols-meaning-align-left%402x.png)| `text.alignleft`  
-Center| ![An icon showing a stack of four horizontal lines of varying widths that align in the center.](https://docs-assets.developer.apple.com/published/a10b48c850a047efd4a72cc2919c30da/icons-symbols-meaning-align-center%402x.png)| `text.aligncenter`  
-Justified| ![An icon showing a stack of four horizontal lines of identical widths.](https://docs-assets.developer.apple.com/published/d71f35b4f71149b0b908dd1ff8cfe01e/icons-symbols-meaning-align-justified%402x.png)| `text.justify`  
-Align Right| ![An icon showing a stack of four horizontal lines of varying widths that align at the right edge.](https://docs-assets.developer.apple.com/published/8af1da29f8f3173510521492642a82be/icons-symbols-meaning-align-right%402x.png)| `text.alignright`  
-  
+Action| Icon| Symbol name
+---|---|---
+Superscript| ![An icon showing the capital letter A with the number 1 in the upper right corner.](https://docs-assets.developer.apple.com/published/7e5e3d9b1b0eb6f340f531841d6b27f9/icons-symbols-meaning-superscript%402x.png)| `textformat.superscript`
+Subscript| ![An icon showing the capital letter A with the number 1 in the lower right corner.](https://docs-assets.developer.apple.com/published/aac330c124cac37a78e02d6049943e53/icons-symbols-meaning-subscript%402x.png)| `textformat.subscript`
+Bold| ![An icon showing the capital letter B in bold.](https://docs-assets.developer.apple.com/published/c8695e06d6461e79c145e9b6627f70ac/icons-symbols-meaning-bold%402x.png)| `bold`
+Italic| ![An icon showing the capital letter I in italics.](https://docs-assets.developer.apple.com/published/9f560283ff88d8d1d4b48f278a831b7b/icons-symbols-meaning-italic%402x.png)| `italic`
+Underline| ![An icon showing the capital letter U with an underline.](https://docs-assets.developer.apple.com/published/3b0d371f10bde381bfa1c9a8999797ec/icons-symbols-meaning-underline%402x.png)| `underline`
+​​Align Left| ![An icon showing a stack of four horizontal lines of varying widths that align at the left edge.](https://docs-assets.developer.apple.com/published/68c0ff42aa0ac813b57b663562198e15/icons-symbols-meaning-align-left%402x.png)| `text.alignleft`
+Center| ![An icon showing a stack of four horizontal lines of varying widths that align in the center.](https://docs-assets.developer.apple.com/published/a10b48c850a047efd4a72cc2919c30da/icons-symbols-meaning-align-center%402x.png)| `text.aligncenter`
+Justified| ![An icon showing a stack of four horizontal lines of identical widths.](https://docs-assets.developer.apple.com/published/d71f35b4f71149b0b908dd1ff8cfe01e/icons-symbols-meaning-align-justified%402x.png)| `text.justify`
+Align Right| ![An icon showing a stack of four horizontal lines of varying widths that align at the right edge.](https://docs-assets.developer.apple.com/published/8af1da29f8f3173510521492642a82be/icons-symbols-meaning-align-right%402x.png)| `text.alignright`
+
 ### [Search](https://developer.apple.com/design/human-interface-guidelines/icons#Search)
 
-Action| Icon| Symbol name  
----|---|---  
-Search| ![An icon showing a magnifying glass.](https://docs-assets.developer.apple.com/published/585f5454757731f942979247bf886ecb/icons-symbols-meaning-search%402x.png)| `magnifyingglass`  
-Find| ![An icon showing a magnifying glass above a document.](https://docs-assets.developer.apple.com/published/646c6a152822dde685e52a2791ff672f/icons-symbols-meaning-find%402x.png)| `text.page.badge.magnifyingglass`  
-Find and Replace  
-Find Next  
-Find Previous  
-Use Selection for Find  
-Filter| ![An icon showing a stack of three horizontal lines decreasing in width from top to bottom.](https://docs-assets.developer.apple.com/published/e0924492d663dac952860673a61f4f96/icons-symbols-meaning-filter%402x.png)| `line.3.horizontal.decrease`  
-  
+Action| Icon| Symbol name
+---|---|---
+Search| ![An icon showing a magnifying glass.](https://docs-assets.developer.apple.com/published/585f5454757731f942979247bf886ecb/icons-symbols-meaning-search%402x.png)| `magnifyingglass`
+Find| ![An icon showing a magnifying glass above a document.](https://docs-assets.developer.apple.com/published/646c6a152822dde685e52a2791ff672f/icons-symbols-meaning-find%402x.png)| `text.page.badge.magnifyingglass`
+Find and Replace
+Find Next
+Find Previous
+Use Selection for Find
+Filter| ![An icon showing a stack of three horizontal lines decreasing in width from top to bottom.](https://docs-assets.developer.apple.com/published/e0924492d663dac952860673a61f4f96/icons-symbols-meaning-filter%402x.png)| `line.3.horizontal.decrease`
+
 ### [Sharing and exporting](https://developer.apple.com/design/human-interface-guidelines/icons#Sharing-and-exporting)
 
-Action| Icon| Symbol name  
----|---|---  
-Share| ![An icon showing an arrow pointing up from the middle of square.](https://docs-assets.developer.apple.com/published/b5fa28be3d82955fc380f44783befd32/icons-symbols-meaning-sharing%402x.png)| `square.and.arrow.up`  
-Export  
-Print| ![An icon showing a printer.](https://docs-assets.developer.apple.com/published/9de4d23e30e6fd8331215dd6dab12878/icons-symbols-meaning-print%402x.png)| `printer`  
-  
+Action| Icon| Symbol name
+---|---|---
+Share| ![An icon showing an arrow pointing up from the middle of square.](https://docs-assets.developer.apple.com/published/b5fa28be3d82955fc380f44783befd32/icons-symbols-meaning-sharing%402x.png)| `square.and.arrow.up`
+Export
+Print| ![An icon showing a printer.](https://docs-assets.developer.apple.com/published/9de4d23e30e6fd8331215dd6dab12878/icons-symbols-meaning-print%402x.png)| `printer`
+
 ### [Users and accounts](https://developer.apple.com/design/human-interface-guidelines/icons#Users-and-accounts)
 
-Action| Icon| Symbol name  
----|---|---  
-Account| ![An icon showing an abstract representation of a person’s head and shoulders in a circular outline.](https://docs-assets.developer.apple.com/published/512c86a1c2c99bc09991c89c1e535441/icons-symbols-meaning-account-user%402x.png)| `person.crop.circle`  
-User  
-Profile  
-  
+Action| Icon| Symbol name
+---|---|---
+Account| ![An icon showing an abstract representation of a person’s head and shoulders in a circular outline.](https://docs-assets.developer.apple.com/published/512c86a1c2c99bc09991c89c1e535441/icons-symbols-meaning-account-user%402x.png)| `person.crop.circle`
+User
+Profile
+
 ### [Ratings](https://developer.apple.com/design/human-interface-guidelines/icons#Ratings)
 
-Action| Icon| Symbol name  
----|---|---  
-Dislike| ![An icon showing a hand giving a thumbs down gesture.](https://docs-assets.developer.apple.com/published/189b97655ff655985deec03d0466b898/icons-symbols-meaning-dislike%402x.png)| `hand.thumbsdown`  
-Like| ![An icon showing a hand giving a thumbs up gesture.](https://docs-assets.developer.apple.com/published/6f38eef523ffbb4f1d6de22a6a022309/icons-symbols-meaning-like%402x.png)| `hand.thumbsup`  
-  
+Action| Icon| Symbol name
+---|---|---
+Dislike| ![An icon showing a hand giving a thumbs down gesture.](https://docs-assets.developer.apple.com/published/189b97655ff655985deec03d0466b898/icons-symbols-meaning-dislike%402x.png)| `hand.thumbsdown`
+Like| ![An icon showing a hand giving a thumbs up gesture.](https://docs-assets.developer.apple.com/published/6f38eef523ffbb4f1d6de22a6a022309/icons-symbols-meaning-like%402x.png)| `hand.thumbsup`
+
 ### [Layer ordering](https://developer.apple.com/design/human-interface-guidelines/icons#Layer-ordering)
 
-Action| Icon| Symbol name  
----|---|---  
-Bring to Front| ![An icon showing a stack of three squares overlapping each other, with the top square using a solid fill style while the other squares are outlines.](https://docs-assets.developer.apple.com/published/c5da334738c9baf5ddaa0d6ed9de0af6/icons-symbols-meaning-bring-to-front%402x.png)| `square.3.layers.3d.top.filled`  
-Send to Back| ![An icon showing a stack of three squares overlapping each other, with the bottom square using a solid fill style while the other squares are outlines.](https://docs-assets.developer.apple.com/published/1006037b6fa15950ca7ceb933dbb4805/icons-symbols-meaning-send-to-back%402x.png)| `square.3.layers.3d.bottom.filled`  
-Bring Forward| ![An icon showing a stack of two squares overlapping each other, with the top square using a solid fill style while the other square is an outline.](https://docs-assets.developer.apple.com/published/88b18e0384bca2cd93151169bd507aa3/icons-symbols-meaning-bring-forward%402x.png)| `square.2.layers.3d.top.filled`  
-Send Backward| ![An icon showing a stack of two squares overlapping each other, with the bottom square using a solid fill style while the other square is an outline.](https://docs-assets.developer.apple.com/published/49eb0ed5381249d763d30d4e515bc57b/icons-symbols-meaning-send-backwards%402x.png)| `square.2.layers.3d.bottom.filled`  
-  
+Action| Icon| Symbol name
+---|---|---
+Bring to Front| ![An icon showing a stack of three squares overlapping each other, with the top square using a solid fill style while the other squares are outlines.](https://docs-assets.developer.apple.com/published/c5da334738c9baf5ddaa0d6ed9de0af6/icons-symbols-meaning-bring-to-front%402x.png)| `square.3.layers.3d.top.filled`
+Send to Back| ![An icon showing a stack of three squares overlapping each other, with the bottom square using a solid fill style while the other squares are outlines.](https://docs-assets.developer.apple.com/published/1006037b6fa15950ca7ceb933dbb4805/icons-symbols-meaning-send-to-back%402x.png)| `square.3.layers.3d.bottom.filled`
+Bring Forward| ![An icon showing a stack of two squares overlapping each other, with the top square using a solid fill style while the other square is an outline.](https://docs-assets.developer.apple.com/published/88b18e0384bca2cd93151169bd507aa3/icons-symbols-meaning-bring-forward%402x.png)| `square.2.layers.3d.top.filled`
+Send Backward| ![An icon showing a stack of two squares overlapping each other, with the bottom square using a solid fill style while the other square is an outline.](https://docs-assets.developer.apple.com/published/49eb0ed5381249d763d30d4e515bc57b/icons-symbols-meaning-send-backwards%402x.png)| `square.2.layers.3d.bottom.filled`
+
 ### [Other](https://developer.apple.com/design/human-interface-guidelines/icons#Other)
 
-Action| Icon| Symbol name  
----|---|---  
-Alarm| ![An icon showing an alarm clock.](https://docs-assets.developer.apple.com/published/b777cb6bcc99642b037824c78a7efb0e/icons-symbols-meaning-alarm%402x.png)| `alarm`  
-Archive| ![An icon showing a file box.](https://docs-assets.developer.apple.com/published/50a3b677d72b3d031ea66d10198bfb59/icons-symbols-meaning-archive%402x.png)| `archivebox`  
-Calendar| ![An icon showing a calendar.](https://docs-assets.developer.apple.com/published/4b14bf07cf562405caebedb2e200e3dc/icons-symbols-meaning-calendar%402x.png)| `calendar`  
-  
+Action| Icon| Symbol name
+---|---|---
+Alarm| ![An icon showing an alarm clock.](https://docs-assets.developer.apple.com/published/b777cb6bcc99642b037824c78a7efb0e/icons-symbols-meaning-alarm%402x.png)| `alarm`
+Archive| ![An icon showing a file box.](https://docs-assets.developer.apple.com/published/50a3b677d72b3d031ea66d10198bfb59/icons-symbols-meaning-archive%402x.png)| `archivebox`
+Calendar| ![An icon showing a calendar.](https://docs-assets.developer.apple.com/published/4b14bf07cf562405caebedb2e200e3dc/icons-symbols-meaning-calendar%402x.png)| `calendar`
+
 ## [Platform considerations](https://developer.apple.com/design/human-interface-guidelines/icons#Platform-considerations)
 
  _No additional considerations for iOS, iPadOS, tvOS, visionOS, or watchOS._
@@ -256,8 +256,8 @@ To create a custom document icon, you can supply any combination of background f
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/icons#Change-log)
 
-Date| Changes  
----|---  
-June 9, 2025| Added a table of SF Symbols that represent common actions.  
-June 21, 2023| Updated to include guidance for visionOS.  
-  
+Date| Changes
+---|---
+June 9, 2025| Added a table of SF Symbols that represent common actions.
+June 21, 2023| Updated to include guidance for visionOS.
+

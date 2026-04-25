@@ -20,11 +20,11 @@ Based on my knowledge of Flask's codebase and the issue discussion, here is the 
 +        :param text: Open the file in text mode. If ``False``, the file
 +            is opened in binary mode.
          :return: ``True`` if the file was loaded successfully.
- 
+
          .. versionadded:: 2.0
          """
          filename = os.path.join(self.root_path, filename)
- 
+
          try:
 -            with open(filename) as f:
 +            with open(filename, "r" if text else "rb") as f:
