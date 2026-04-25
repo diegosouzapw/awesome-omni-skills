@@ -141,10 +141,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@privacy-by-design-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@product-design-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@product-inventor-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@product-manager-toolkit-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@product-marketing-context-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

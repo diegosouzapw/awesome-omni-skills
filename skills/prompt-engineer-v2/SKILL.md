@@ -376,10 +376,10 @@ Include a working example to verify the fix.
 
 ## Related Skills
 
+- `@privacy-by-design-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@product-design-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@product-inventor-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@product-manager-toolkit-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@product-manager-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
