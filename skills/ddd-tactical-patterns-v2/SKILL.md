@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-16"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # DDD Tactical Patterns
@@ -162,10 +162,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@copilot-sdk-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@copy-editing-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@copywriting-psychologist-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@copywriting-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@core-components-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
