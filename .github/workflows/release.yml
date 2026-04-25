@@ -19,6 +19,9 @@ jobs:
       OMNI_SKILLS_ENABLE_CLAMAV: "1"
       OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS: "1"
       OMNI_SKILLS_EMBED_SIGNATURES: "1"
+      # Avoid thousands of per-skill VirusTotal lookups during release validation.
+      # ClamAV still runs locally and VirusTotal can be re-enabled by raising this cap.
+      OMNI_SKILLS_VT_MAX_FILES: "0"
       VT_API_KEY: ${{ secrets.VT_API_KEY || secrets.VIRUSTOTAL }}
     outputs:
       tarball_name: ${{ steps.pack.outputs.tarball_name }}
@@ -54,7 +57,7 @@ jobs:
           SIGN_PRIVATE_KEY_B64: ${{ secrets.OMNI_SKILLS_SIGN_PRIVATE_KEY_B64 }}
           SIGN_PRIVATE_KEY: ${{ secrets.OMNI_SKILLS_SIGN_PRIVATE_KEY }}
         run: |
-          if [ -z "${VT_API_KEY:-}" ]; then
+          if [ "${OMNI_SKILLS_VT_MAX_FILES:-3}" != "0" ] && [ -z "${VT_API_KEY:-}" ]; then
             echo "VT_API_KEY or VIRUSTOTAL is required for release verification."
             exit 1
           fi

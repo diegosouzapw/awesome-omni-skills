@@ -128,7 +128,11 @@ def main() -> int:
     lines.append("")
     lines.append("- `npm run release:verify` passed")
     lines.append("- ClamAV was required in CI")
-    lines.append("- VirusTotal hash lookup was required in CI")
+    vt_max_files = os.getenv("OMNI_SKILLS_VT_MAX_FILES", "3")
+    if vt_max_files == "0":
+        lines.append("- VirusTotal hash lookups were disabled in CI for bounded release runtime")
+    else:
+        lines.append(f"- VirusTotal hash lookup was enabled in CI with max `{vt_max_files}` file(s) per skill")
     lines.append("- Detached signatures were required and verified for archives and checksum manifests")
     lines.append("- `npm publish --provenance` published the verified tarball")
     if signing_assets:
