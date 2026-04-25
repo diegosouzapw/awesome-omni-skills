@@ -10,9 +10,9 @@
 <!-- generated:contributing-repository-baseline:start -->
 | Metric | Value |
 |:-------|:------|
-| 📦 Package version | `0.12.5` |
-| 🧠 Published skills | `2484` |
-| ✨ Curated derivatives | `295` |
+| 📦 Package version | `0.12.7` |
+| 🧠 Published skills | `2486` |
+| ✨ Curated derivatives | `297` |
 | 📦 Fully backed bundles | `7` |
 | 🖥️ Install-capable clients | `9` |
 | 🔌 MCP config-capable clients | `16` across `33` targets |
