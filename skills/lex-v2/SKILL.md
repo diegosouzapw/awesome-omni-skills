@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "Svobikl"
 date_added: "2026-04-17"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # LEX: Legal-Entity-X-ref

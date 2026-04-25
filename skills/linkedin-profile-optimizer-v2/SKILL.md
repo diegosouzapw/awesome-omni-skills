@@ -10,7 +10,7 @@ tools: ["cursor", "antigravity", "codex-cli", "claude-code", "gemini-cli", "open
 source: community
 author: "WHOISABHISHEKADHIKARI"
 date_added: "2026-04-24"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # LinkedIn Profile Optimizer & Authority Builder

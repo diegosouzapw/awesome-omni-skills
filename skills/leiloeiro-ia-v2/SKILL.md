@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-17"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # LEILOEIRO JURÍDICO, PERICIAL E DE MERCADO — IA
