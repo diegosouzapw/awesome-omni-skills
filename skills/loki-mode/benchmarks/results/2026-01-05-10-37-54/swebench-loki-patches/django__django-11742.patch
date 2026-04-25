@@ -14,7 +14,7 @@ Based on my knowledge of Django's codebase structure, I'll generate the patch fo
              *self._check_max_length_attribute(**kwargs),
 +            *self._check_max_length_fits_choices(**kwargs),
          ]
- 
+
 +    def _check_max_length_fits_choices(self, **kwargs):
 +        if self.max_length is None or not self.choices:
 +            return []

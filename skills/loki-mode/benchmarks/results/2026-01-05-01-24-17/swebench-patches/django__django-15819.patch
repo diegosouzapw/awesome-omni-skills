@@ -11,7 +11,7 @@ Here is the patch for Django's inspectdb command:
 @@ -123,6 +123,15 @@ class Command(BaseCommand):
                  if table_name in relations:
                      raise CommandError("Multiple models have the same name: %s" % att_name)
- 
+
 +            # Track how many ForeignKey/OneToOneField relations point to each
 +            # related table to detect when we need related_name.
 +            used_relations = {}
@@ -52,7 +52,7 @@ Wait, let me reconsider the Django inspectdb structure more carefully. Based on 
              yield "from %s import models" % self.db_module
              known_models = []
              tables_to_introspect = options["table"] or connection.introspection.table_names(cursor)
- 
+
              for table_name in tables_to_introspect:
                  if table_name_filter is not None and callable(table_name_filter):
                      if not table_name_filter(table_name):

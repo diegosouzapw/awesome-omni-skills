@@ -17,7 +17,7 @@ Looking at the discussion and PRs mentioned in the ticket, the solution is strai
          super().__init__(verbose_name, name, **kwargs)
 +        if callable(self.path):
 +            self.path = self.path()
- 
+
      def check(self):
 --- a/django/forms/fields.py
 +++ b/django/forms/fields.py
@@ -29,5 +29,5 @@ Looking at the discussion and PRs mentioned in the ticket, the solution is strai
          super().__init__(choices=(), **kwargs)
 +        if callable(self.path):
 +            self.path = self.path()
- 
+
          if self.required:

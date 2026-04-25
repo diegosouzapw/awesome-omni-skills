@@ -13,7 +13,7 @@ The fix should sanitize the username by replacing illegal characters. Here's the
 @@ -10,6 +11,13 @@ from _pytest.config import Config
  from _pytest.fixtures import fixture
  from _pytest.monkeypatch import MonkeyPatch
- 
+
 +
 +def get_user() -> Optional[str]:
 +    """Return the current user name, or None if getpass.getuser() does not work
@@ -35,12 +35,12 @@ The fix should sanitize the username by replacing illegal characters. Here's the
 +    # Replace illegal characters on Windows (and \ on all platforms for consistency)
 +    return re.sub(r'[\\/:*?"<>|]', "_", user_name)
 +
- 
+
  @final
  @attr.s(init=False)
 @@ -47,16 +55,12 @@ class TempPathFactory:
          return self._given_basetemp
- 
+
      def _ensure_relative_to_basetemp(self, basename: str) -> str:
 -        # Check if the user provided a path that is relative to basetemp
 -        # or an absolute path.
@@ -59,7 +59,7 @@ The fix should sanitize the username by replacing illegal characters. Here's the
 +        if basename == "":
 +            basename = "unknown"
          return basename
- 
+
      @classmethod
 @@ -79,19 +83,15 @@ class TempPathFactory:
          """
@@ -67,12 +67,12 @@ The fix should sanitize the username by replacing illegal characters. Here's the
          basename = self._ensure_relative_to_basetemp(basename)
 -        return make_numbered_dir(root=basetemp, prefix=basename)
 +        return make_numbered_dir(root=basetemp, prefix=basename, mode=0o700)
- 
+
      def getbasetemp(self) -> Path:
          """Return the base temporary directory, creating it if needed."""
          if self._basetemp is not None:
              return self._basetemp
- 
+
 -        import getpass
 -
 -        try:
@@ -83,7 +83,7 @@ The fix should sanitize the username by replacing illegal characters. Here's the
 +        if user is None:
 +            user = "unknown"
 +        user = sanitize_user_name(user)
- 
+
          if self._given_basetemp is not None:
              basetemp = self._given_basetemp
 
@@ -100,7 +100,7 @@ Wait, let me reconsider based on the actual pytest code structure. The key issue
 @@ -150,6 +151,14 @@ class TempPathFactory:
      _basetemp: Optional[Path] = attr.ib(default=None)
      _trace = attr.ib(default=None)
- 
+
 +    @staticmethod
 +    def _sanitize_path_component(name: str) -> str:
 +        """Sanitize a string to be used as a path component.
@@ -118,6 +118,6 @@ Wait, let me reconsider based on the actual pytest code structure. The key issue
          except (ImportError, KeyError):
              user = "unknown"
 +        user = self._sanitize_path_component(user)
- 
+
          if self._given_basetemp is not None:
              basetemp = self._given_basetemp

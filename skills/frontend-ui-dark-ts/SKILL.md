@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-21"
+date_updated: "2026-04-25"
 ---
 
 # Frontend UI Dark Theme (TypeScript)
@@ -172,10 +172,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@2d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@3d-games` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@daily-gift` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@design-taste-frontend` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -240,29 +240,29 @@ The HTML entry point with mobile viewport, favicons, and social meta tags:
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    
+
     <!-- Favicons -->
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    
+
     <!-- Theme color for mobile browser chrome -->
     <meta name="theme-color" content="#18181B" />
-    
+
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="App Name" />
     <meta property="og:description" content="App description" />
     <meta property="og:image" content="https://example.com/og-image.png" />
     <meta property="og:url" content="https://example.com" />
-    
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="App Name" />
     <meta name="twitter:description" content="App description" />
     <meta name="twitter:image" content="https://example.com/og-image.png" />
-    
+
     <title>App Name</title>
   </head>
   <body>

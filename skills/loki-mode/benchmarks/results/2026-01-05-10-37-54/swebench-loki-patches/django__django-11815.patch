@@ -16,7 +16,7 @@ Based on the architect's analysis, I need to generate a patch for Django's `djan
 -        return "%s.%s(%s)" % (module, enum_class.__name__, v_string), imports
 +        imports = {'import %s' % module}
 +        return "%s.%s[%r]" % (module, enum_class.__name__, self.value.name), imports
- 
- 
+
+
  class FloatSerializer(BaseSimpleSerializer):
 ```

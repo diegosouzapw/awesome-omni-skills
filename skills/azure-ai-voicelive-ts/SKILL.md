@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-22"
+date_updated: "2026-04-25"
 ---
 
 # @azure/ai-voicelive (JavaScript/TypeScript)
@@ -243,9 +243,9 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ## Related Skills
 
 - `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@3d-web-experience` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -328,16 +328,16 @@ VoiceLiveClient
 await session.updateSession({
   // Modalities
   modalities: ["audio", "text"],
-  
+
   // System instructions
   instructions: "You are a customer service representative.",
-  
+
   // Voice selection
   voice: {
     type: "azure-standard",  // or "azure-custom", "openai"
     name: "en-US-AvaNeural",
   },
-  
+
   // Turn detection (VAD)
   turnDetection: {
     type: "server_vad",      // or "azure_semantic_vad"
@@ -345,11 +345,11 @@ await session.updateSession({
     prefixPaddingMs: 300,
     silenceDurationMs: 500,
   },
-  
+
   // Audio formats
   inputAudioFormat: "pcm16",
   outputAudioFormat: "pcm16",
-  
+
   // Tools (function calling)
   tools: [
     {
@@ -385,7 +385,7 @@ const subscription = session.subscribe({
   onError: async (args, context) => {
     console.error("Error:", args.error.message);
   },
-  
+
   // Session events
   onSessionCreated: async (event, context) => {
     console.log("Session created:", context.sessionId);
@@ -393,7 +393,7 @@ const subscription = session.subscribe({
   onSessionUpdated: async (event, context) => {
     console.log("Session updated");
   },
-  
+
   // Audio input events (VAD)
   onInputAudioBufferSpeechStarted: async (event, context) => {
     console.log("Speech started at:", event.audioStartMs);
@@ -401,7 +401,7 @@ const subscription = session.subscribe({
   onInputAudioBufferSpeechStopped: async (event, context) => {
     console.log("Speech stopped at:", event.audioEndMs);
   },
-  
+
   // Transcription events
   onConversationItemInputAudioTranscriptionCompleted: async (event, context) => {
     console.log("User said:", event.transcript);
@@ -409,7 +409,7 @@ const subscription = session.subscribe({
   onConversationItemInputAudioTranscriptionDelta: async (event, context) => {
     process.stdout.write(event.delta);
   },
-  
+
   // Response events
   onResponseCreated: async (event, context) => {
     console.log("Response started");
@@ -417,7 +417,7 @@ const subscription = session.subscribe({
   onResponseDone: async (event, context) => {
     console.log("Response complete");
   },
-  
+
   // Streaming text
   onResponseTextDelta: async (event, context) => {
     process.stdout.write(event.delta);
@@ -425,7 +425,7 @@ const subscription = session.subscribe({
   onResponseTextDone: async (event, context) => {
     console.log("\n--- Text complete ---");
   },
-  
+
   // Streaming audio
   onResponseAudioDelta: async (event, context) => {
     const audioData = event.delta;
@@ -434,28 +434,28 @@ const subscription = session.subscribe({
   onResponseAudioDone: async (event, context) => {
     console.log("Audio complete");
   },
-  
+
   // Audio transcript (what assistant said)
   onResponseAudioTranscriptDelta: async (event, context) => {
     process.stdout.write(event.delta);
   },
-  
+
   // Function calling
   onResponseFunctionCallArgumentsDone: async (event, context) => {
     if (event.name === "get_weather") {
       const args = JSON.parse(event.arguments);
       const result = await getWeather(args.location);
-      
+
       await session.addConversationItem({
         type: "function_call_output",
         callId: event.callId,
         output: JSON.stringify(result),
       });
-      
+
       await session.sendEvent({ type: "response.create" });
     }
   },
-  
+
   // Catch-all for debugging
   onServerEvent: async (event, context) => {
     console.log("Event:", event.type);
@@ -499,14 +499,14 @@ const subscription = session.subscribe({
     if (event.name === "get_weather") {
       const args = JSON.parse(event.arguments);
       const weatherData = await fetchWeather(args.location);
-      
+
       // Send function result
       await session.addConversationItem({
         type: "function_call_output",
         callId: event.callId,
         output: JSON.stringify(weatherData),
       });
-      
+
       // Trigger response generation
       await session.sendEvent({ type: "response.create" });
     }
@@ -581,7 +581,7 @@ import {
 const subscription = session.subscribe({
   onError: async (args, context) => {
     const { error } = args;
-    
+
     if (error instanceof VoiceLiveConnectionError) {
       console.error("Connection error:", error.message);
     } else if (error instanceof VoiceLiveAuthenticationError) {
@@ -590,7 +590,7 @@ const subscription = session.subscribe({
       console.error("Protocol error:", error.message);
     }
   },
-  
+
   onServerError: async (event, context) => {
     console.error("Server error:", event.error?.message);
   },

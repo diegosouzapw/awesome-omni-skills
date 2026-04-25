@@ -9,13 +9,13 @@ Based on my knowledge of Django's migration optimizer and the issue description,
 @@ -251,6 +251,10 @@ class AlterField(FieldOperation):
              operation.field,
          )]
- 
+
 +    def reduce(self, operation, app_label):
 +        if isinstance(operation, AlterField) and self.is_same_field_operation(operation):
 +            return [operation]
 +        return super().reduce(operation, app_label)
 +
- 
+
  class RenameField(FieldOperation):
      """Rename a field on the model. Might affect db_column too."""
 
@@ -26,7 +26,7 @@ Wait, I need to check the actual structure more carefully. The `AlterField` clas
 @@ -247,6 +247,12 @@ class AlterField(FieldOperation):
      def describe(self):
          return "Alter field %s on %s" % (self.name, self.model_name)
- 
+
 +    def reduce(self, operation, app_label):
 +        if isinstance(operation, AlterField) and self.is_same_field_operation(
 +            operation
@@ -34,6 +34,6 @@ Wait, I need to check the actual structure more carefully. The `AlterField` clas
 +            return [operation]
 +        return super().reduce(operation, app_label)
 +
- 
+
  class RenameField(FieldOperation):
      """Rename a field on the model. Might affect db_column too."""

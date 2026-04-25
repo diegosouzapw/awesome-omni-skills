@@ -7,7 +7,7 @@
 @@ -431,7 +431,7 @@ class AdminSite:
              )
          return HttpResponsePermanentRedirect(path)
- 
+
 -    def _build_app_dict(self, request, label=None):
 +    def build_app_dict(self, request, label=None):
          """
@@ -22,9 +22,9 @@
                      "perms": perms,
                      "admin_url": None,
 @@ -491,6 +492,9 @@ class AdminSite:
- 
+
          return app_dict
- 
+
 +    # Kept for backward compatibility
 +    _build_app_dict = build_app_dict
 +
@@ -34,9 +34,9 @@
 @@ -498,7 +502,7 @@ class AdminSite:
          """
          app_dict = self._build_app_dict(request)
- 
+
 -        # Sort the apps alphabetically.
 +        # Sort the apps alphabetically
          app_list = sorted(app_dict.values(), key=lambda x: x["name"].lower())
- 
+
          # Sort the models alphabetically within each app.

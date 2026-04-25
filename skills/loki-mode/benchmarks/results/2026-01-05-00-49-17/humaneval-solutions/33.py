@@ -11,10 +11,10 @@ def sort_third(l: list):
     third_values = [l[i] for i in range(0, len(l), 3)]
     # Sort them
     third_values.sort()
-    
+
     # Build result list
     result = l.copy()
     for i, val in enumerate(third_values):
         result[i * 3] = val
-    
+
     return result

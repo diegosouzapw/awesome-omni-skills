@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-19"
+date_updated: "2026-04-25"
 ---
 
 # antigravity-skill-orchestrator
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills/skills/anti
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # antigravity-skill-orchestrator
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `README.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `README.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -100,7 +100,7 @@ The `skill-orchestrator` is a meta-skill designed to enhance the AI agent's abil
 #### Imported: Core Concepts
 
 ### Task Evaluation Guardrails
-Not every task requires a specialized skill. For straightforward issues (e.g., small CSS fixes, simple script writing, renaming a variable), **DO NOT USE** specialized skills. Over-engineering simple tasks wastes tokens and time. 
+Not every task requires a specialized skill. For straightforward issues (e.g., small CSS fixes, simple script writing, renaming a variable), **DO NOT USE** specialized skills. Over-engineering simple tasks wastes tokens and time.
 
 Additionally, the orchestrator is strictly forbidden from creating new skills. Its sole purpose is to combine and use existing skills provided by the community or present in the current environment.
 
@@ -171,9 +171,9 @@ Review @antigravity-skill-orchestrator-v2 using the copied upstream files plus p
 ### Example 2: Recording a New Skill Combination
 ```javascript
 // Using the agent-memory-mcp tool after successfully building a complex feature
-memory_write({ 
-  key: "combination-ecommerce-checkout", 
-  type: "skill_combination", 
+memory_write({
+  key: "combination-ecommerce-checkout",
+  type: "skill_combination",
   content: "For e-commerce checkouts, using @stripe-integration combined with @react-state-management and @postgresql effectively handles the full flow from UI state to payment processing to order recording.",
   tags: ["ecommerce", "checkout", "stripe", "react"]
 })
@@ -182,9 +182,9 @@ memory_write({
 ### Example 3: Retrieving a Combination
 ```javascript
 // At the start of a new e-commerce task
-memory_search({ 
-  query: "ecommerce checkout", 
-  type: "skill_combination" 
+memory_search({
+  query: "ecommerce checkout",
+  type: "skill_combination"
 })
 // Returns the key "combination-ecommerce-checkout", which you then read:
 memory_read({ key: "combination-ecommerce-checkout" })
@@ -218,7 +218,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills/skills/antigravity-skill-orchestrator`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -234,10 +234,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@advogado-especialista-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@aegisops-ai-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@agent-evaluation-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@agent-framework-azure-ai-py-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

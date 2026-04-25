@@ -86,7 +86,7 @@ A slider is a horizontal track — appearing as a set of discrete steps or as a 
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/sliders#Change-log)
 
-Date| Changes  
----|---  
-June 21, 2023| Updated to include guidance for visionOS.  
-  
+Date| Changes
+---|---
+June 21, 2023| Updated to include guidance for visionOS.
+

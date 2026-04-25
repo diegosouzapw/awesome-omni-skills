@@ -29,11 +29,11 @@ def int_to_mini_roman(number):
         (4, 'iv'),
         (1, 'i')
     ]
-    
+
     result = ''
     for value, symbol in value_symbol_pairs:
         while number >= value:
             result += symbol
             number -= value
-    
+
     return result

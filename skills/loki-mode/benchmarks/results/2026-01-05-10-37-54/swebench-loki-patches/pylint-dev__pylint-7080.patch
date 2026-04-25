@@ -23,7 +23,7 @@ Wait, I need to provide a more complete patch with proper context. Let me constr
 +++ b/pylint/lint/pylinter.py
 @@ -600,6 +600,7 @@ class PyLinter(
                  skip_subtrees: list[str] = []
- 
+
                  for root, dirs, files in os.walk(start_path, followlinks=follow_imports):
 +                    root = os.path.normpath(root)
                      if _is_in_ignore_list_re(

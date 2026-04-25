@@ -9,7 +9,7 @@ Based on the issue description and architect's analysis, I need to generate a pa
 @@ -343,6 +343,34 @@ class ScalarMappable(object):
          self.changed()
          return True
- 
+
 +    def set_norm(self, norm):
 +        """
 +        Set the normalization instance.
@@ -44,13 +44,13 @@ Based on the issue description and architect's analysis, I need to generate a pa
 @@ -920,6 +920,10 @@ class Colorbar(ColorbarBase):
          """
          Updates this colorbar to match the mappable's properties.
- 
+
 +        Typically this is automatically registered as an event handler
 +        by :func:`colorbar_factory` and should not need to be called manually.
          """
 +        self.mappable.autoscale_None()
 +        self.update_normal(self.mappable)
- 
+
      def update_normal(self, mappable):
 @@ -930,6 +934,10 @@ class Colorbar(ColorbarBase):
          """

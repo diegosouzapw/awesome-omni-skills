@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-19"
-date_updated: "2026-04-19"
+date_updated: "2026-04-25"
 ---
 
 # Check for Faster-Whisper (preferred - 4-5x faster)
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills/skills/audi
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: Purpose, 📊 Metadata, 📋 Meeting Minutes, Limitations.
 
@@ -40,7 +40,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `references/tools-comparison.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `examples/basic-transcription.sh` | Adds the next most relevant copied source file without loading the entire package |
@@ -105,7 +105,7 @@ read -p "Run installation script? [Y/n]: " AUTO_INSTALL
 if [[ ! "$AUTO_INSTALL" =~ ^[Nn] ]]; then
     # Get skill directory (works for both repo and symlinked installations)
     SKILL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-    
+
     # Run installation script
     if [[ -f "$SKILL_DIR/scripts/install-requirements.sh" ]]; then
         bash "$SKILL_DIR/scripts/install-requirements.sh"
@@ -118,7 +118,7 @@ if [[ ! "$AUTO_INSTALL" =~ ^[Nn] ]]; then
         echo "  brew install ffmpeg         # Optional (macOS)"
         exit 1
     fi
-    
+
     # Verify installation succeeded
     if python3 -c "import faster_whisper" 2>/dev/null || python3 -c "import whisper" 2>/dev/null; then
         echo "✅ Installation successful! Proceeding with transcription..."
@@ -391,7 +391,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills/skills/audio-transcriber`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -407,10 +407,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@apify-actorization-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@apify-audience-analysis-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@apify-brand-reputation-monitoring-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@apify-competitor-intelligence-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -469,7 +469,7 @@ Use this support matrix and the linked files below as the operator packet for th
 - [ ] **{action_2}** - Assigned to: {speaker}
 
 
-*Generated by audio-transcriber skill v1.0.0*  
+*Generated by audio-transcriber skill v1.0.0*
 *Transcription engine: {engine} | Processing time: {elapsed_time}s*
 ```
 
@@ -480,16 +480,16 @@ Use Python or bash with AI model (Claude/GPT) for intelligent summarization:
 ```python
 def generate_meeting_minutes(segments):
     """Extract topics, decisions, action items from transcription."""
-    
+
     # Group segments by topic (simple clustering by timestamps)
     topics = cluster_by_topic(segments)
-    
+
     # Identify action items (keywords: "should", "will", "need to", "action")
     action_items = extract_action_items(segments)
-    
+
     # Identify decisions (keywords: "decided", "agreed", "approved")
     decisions = extract_decisions(segments)
-    
+
     return {
         "topics": topics,
         "decisions": decisions,
@@ -498,21 +498,21 @@ def generate_meeting_minutes(segments):
 
 def generate_summary(segments, max_paragraphs=5):
     """Create executive summary using AI (Claude/GPT via API or local model)."""
-    
+
     full_text = " ".join([s["text"] for s in segments])
-    
+
     # Use Chain of Density approach (from prompt-engineer frameworks)
     summary_prompt = f"""
     Summarize the following transcription in {max_paragraphs} concise paragraphs.
     Focus on key topics, decisions, and action items.
-    
+
     Transcription:
     {full_text}
     """
-    
+
     # Call AI model (placeholder - user can integrate Claude API or use local model)
     summary = call_ai_model(summary_prompt)
-    
+
     return summary
 ```
 
@@ -587,7 +587,7 @@ from rich.progress import Progress, SpinnerColumn, TextColumn
 
 def process_with_llm(transcript, prompt, cli_tool='claude'):
     full_prompt = f"{prompt}\n\n---\n\nTranscrição:\n\n{transcript}"
-    
+
     with Progress(
         SpinnerColumn(),
         TextColumn("[progress.description]{task.description}"),
@@ -597,7 +597,7 @@ def process_with_llm(transcript, prompt, cli_tool='claude'):
             description=f"🤖 Processando com {cli_tool}...",
             total=None
         )
-        
+
         if cli_tool == 'claude':
             result = subprocess.run(
                 ['claude', '-'],
@@ -613,7 +613,7 @@ def process_with_llm(transcript, prompt, cli_tool='claude'):
                 text=True,
                 timeout=300
             )
-    
+
     if result.returncode == 0:
         return result.stdout.strip()
     else:

@@ -1,6 +1,6 @@
 Based on my understanding of the issue from the error traceback and hints provided, I can construct the fix. The problem is:
 
-1. In `_print_Pow`, when the base is a Function, it calls `self._print(expr.base, exp=self._print(expr.exp))` 
+1. In `_print_Pow`, when the base is a Function, it calls `self._print(expr.base, exp=self._print(expr.exp))`
 2. `_print_SingularityFunction` doesn't accept the `exp` keyword argument
 3. The fix is to add support for the `exp` keyword argument in `_print_SingularityFunction`
 
@@ -23,7 +23,7 @@ Here's the patch:
 @@ -1962,7 +1962,7 @@ class LatexPrinter(Printer):
              return r"\delta^{%s}\left(%s\right)" % (tex1, diff)
          return r"\delta\left(%s\right)" % diff
- 
+
 -    def _print_SingularityFunction(self, expr):
 +    def _print_SingularityFunction(self, expr, exp=None):
          shift = self._print(expr.args[0] - expr.args[1])
@@ -32,5 +32,5 @@ Here's the patch:
 +        if exp is not None:
 +            tex = r"{\left(%s\right)}^{%s}" % (tex, exp)
          return tex
- 
+
      def _print_Heaviside(self, expr, exp=None):

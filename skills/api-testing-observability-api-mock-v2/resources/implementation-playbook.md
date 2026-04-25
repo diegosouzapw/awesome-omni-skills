@@ -1290,14 +1290,14 @@ return doc
                 layout: "BaseLayout",
                 tryItOutEnabled: true,
                 requestInterceptor: (request) => {
-                    request.headers['X-Mock-Scenario'] = 
+                    request.headers['X-Mock-Scenario'] =
                         document.getElementById('scenario-select').value;
                     return request;
                 }
             });
         }
     </script>
-    
+
     <div class="scenario-selector">
         <label>Scenario:</label>
         <select id="scenario-select">

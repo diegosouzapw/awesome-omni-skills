@@ -22,8 +22,8 @@ Here's the patch:
 +    draggable: bool, default: False
 +        Whether the legend can be dragged with the mouse.
      """)
- 
- 
+
+
 @@ -329,6 +338,7 @@ class Legend(Artist):
                   borderpad=None,      # whitespace inside the legend border
                   labelspacing=None,   # vertical space between the legend entries
@@ -42,7 +42,7 @@ Here's the patch:
          """
 @@ -523,6 +534,9 @@ class Legend(Artist):
          self._draggable = None
- 
+
 +        # Enable dragging if requested
 +        self.set_draggable(draggable)
 +
@@ -52,7 +52,7 @@ Here's the patch:
 @@ -1086,10 +1100,18 @@ class Legend(Artist):
              self._draggable.disconnect()
          self._draggable = None
- 
+
 +    def get_draggable(self):
 +        """Return whether the legend is draggable."""
 +        return self._draggable is not None
@@ -64,7 +64,7 @@ Here's the patch:
 +
 +        .. deprecated:: 3.x
 +            Use `.set_draggable` and `.get_draggable` instead.
- 
+
 +        """
 +        _api.warn_deprecated(
 +            "3.x", name="draggable", alternative="set_draggable or get_draggable")
@@ -114,15 +114,15 @@ Let me provide a cleaner, more accurate patch based on the standard matplotlib l
 --- a/lib/matplotlib/legend.py
 +++ b/lib/matplotlib/legend.py
 @@ -301,6 +301,9 @@ handler : the legend handler.
- 
+
      fancybox : bool or None
          Control whether a fancy box is used.
 +
 +    draggable : bool, default: False
 +        Whether the legend can be dragged with the mouse.
      """)
- 
- 
+
+
 @@ -338,6 +341,7 @@ class Legend(Artist):
                   title_fontproperties=None,
                   alignment="center",
@@ -132,19 +132,19 @@ Let me provide a cleaner, more accurate patch based on the standard matplotlib l
                   ):
          """
 @@ -520,6 +524,9 @@ class Legend(Artist):
- 
+
          self._draggable = None
- 
+
 +        # Enable dragging if requested.
 +        self.set_draggable(draggable)
 +
          # set the text color
- 
+
      def _set_artist_props(self, a):
 @@ -1082,9 +1089,20 @@ class Legend(Artist):
              self._draggable.disconnect()
          self._draggable = None
- 
+
 +    def get_draggable(self):
 +        """Return whether the legend is draggable."""
 +        return self._draggable is not None
@@ -159,7 +159,7 @@ Let me provide a cleaner, more accurate patch based on the standard matplotlib l
 +        Parameters
 +        ----------
 +        state : bool or None
- 
+
          Parameters
          ----------
 @@ -1112,6 +1130,42 @@ class Legend(Artist):

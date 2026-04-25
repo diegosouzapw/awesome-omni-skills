@@ -27,7 +27,7 @@ I need to look for a real sphinx repository. This appears to be a different proj
 @@ -1633,6 +1640,22 @@ class DataDocumenterMixinBase:
          """Check the subject is annotation only property."""
          return False
- 
+
 +    def _get_docstring_from_class(self: "Documenter", cls: Any) -> List[List[str]]:
 +        """Get docstring for an annotation-only member from the specified class."""
 +        try:
@@ -41,13 +41,13 @@ I need to look for a real sphinx repository. This appears to be a different proj
 +            pass
 +        return []
 +
- 
+
  class GenericAliasMixin(DataDocumenterMixinBase):
      """
 @@ -1761,6 +1784,17 @@ class UninitializedMixin(DataDocumenterMixinBase):
          else:
              return super().get_doc(encoding, ignore)  # type: ignore
- 
+
 +        # If no docstring found and this is an inherited member, check parent classes
 +        if not doc and self.parent:
 +            for cls in self.parent.__mro__[1:]:
@@ -59,7 +59,7 @@ I need to look for a real sphinx repository. This appears to be a different proj
 +
 +        return doc
 +
- 
+
  class DataDocumenter(UninitializedMixin, GenericAliasMixin, NewTypeMixin,
                       TypeVarMixin, ClassLevelDocumenter):
 ```
@@ -97,5 +97,5 @@ Actually, let me provide a more accurate and complete patch based on the specifi
 +                                return [parent_analyzer.attr_docs[key]]
              except PycodeError:
                  pass
- 
+
 ```

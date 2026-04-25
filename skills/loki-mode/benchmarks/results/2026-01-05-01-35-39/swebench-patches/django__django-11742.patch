@@ -9,11 +9,11 @@
 +            *self._check_max_length_fits_choices(**kwargs),
              *self._check_db_collation(databases),
          ]
- 
+
 @@ -1118,6 +1119,25 @@ class CharField(Field):
              ]
          return []
- 
+
 +    def _check_max_length_fits_choices(self, **kwargs):
 +        if self.max_length is not None and self.choices is not None:
 +            choice_max_length = 0

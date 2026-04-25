@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "Francesco Marinoni Moretto"
 date_added: "2026-04-16"
-date_updated: "2026-04-16"
+date_updated: "2026-04-25"
 ---
 
 # Clarity Gate v2.1
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills/skills/clar
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Clarity Gate v2.1 Purpose: Pre-ingestion verification system that enforces epistemic quality before documents enter RAG knowledge bases. Produces Clarity-Gated Documents (CGD) compliant with the Clarity Gate Format Specification v2.1. Core Question: "If another LLM reads this document, will it mistake assumptions for facts?" Core Principle: "Detection finds what is; enforcement ensures what should be. In practice: find the missing uncertainty markers before they become confident hallucinations." ---
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -129,7 +129,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills/skills/clarity-gate`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -145,10 +145,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@chrome-extension-developer-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@churn-prevention-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@circleci-automation-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@cirq-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -290,7 +290,7 @@ Clarity Gate **enforces** their presence where epistemically required ("Should u
 
 > **Clarity Gate verifies FORM, not TRUTH.**
 >
-> This skill checks whether claims are properly marked as uncertain—it cannot verify if claims are actually true. 
+> This skill checks whether claims are properly marked as uncertain—it cannot verify if claims are actually true.
 >
 > **Risk:** An LLM can hallucinate facts INTO a document, then "pass" Clarity Gate by adding source markers to false claims.
 >
@@ -660,7 +660,7 @@ After running Clarity Gate, report:
 ### Critical (will cause hallucination)
 - [issue + location + fix]
 
-### Warning (could cause equivocation)  
+### Warning (could cause equivocation)
 - [issue + location + fix]
 
 ### Temporal (date/time issues)
@@ -732,7 +732,7 @@ Reply "confirmed" or flag any I misread.
 #### Imported: What This Skill Does NOT Do
 
 - Does not classify document types (use Stream Coding for that)
-- Does not restructure documents 
+- Does not restructure documents
 - Does not add deep links or references
 - Does not evaluate writing quality
 - **Does not check factual accuracy autonomously** (requires HITL)

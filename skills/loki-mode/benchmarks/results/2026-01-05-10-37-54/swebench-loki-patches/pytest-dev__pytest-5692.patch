@@ -21,13 +21,13 @@ Based on the architect's analysis and my knowledge of pytest's junitxml.py struc
          self.node_reporters_ordered = []  # type: List[_NodeReporter]
          self.global_properties = []  # type: List[Tuple[str, str]]
 +        self.suite_start_time = None  # type: Optional[float]
- 
+
          # List of reports that failed on call but teardown is pending.
          self.open_reports = []  # type: List[TestReport]
 @@ -531,6 +534,9 @@ class LogXML:
      def pytest_sessionstart(self):
          self.suite_start_time = time.time()
- 
+
 +    def pytest_sessionstart(self):
 +        self.suite_start_time = time.time()
 +

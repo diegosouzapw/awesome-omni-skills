@@ -7,7 +7,7 @@ Based on my research of the existing patches and my understanding of the sympy c
 --- a/sympy/physics/units/unitsystem.py
 +++ b/sympy/physics/units/unitsystem.py
 @@ -187,9 +187,15 @@ class UnitSystem(_QuantityMapper):
- 
+
          elif isinstance(expr, Function):
              fds = [self._collect_factor_and_dimension(
                  arg) for arg in expr.args]
@@ -21,6 +21,6 @@ Based on my research of the existing patches and my understanding of the sympy c
 +                        'but it should be Dimension(1)'.format(
 +                            expr, dim))
 +            return (expr.func(*(f[0] for f in fds)), Dimension(1))
- 
+
          raise ValueError(
              'Dimension of "{}" is {}, '

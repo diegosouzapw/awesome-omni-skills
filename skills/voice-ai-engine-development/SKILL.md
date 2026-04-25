@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-19"
+date_updated: "2026-04-25"
 ---
 
 # Voice AI Engine Development
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Voice AI Engine Development
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `references/common_pitfalls.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `references/provider_comparison.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -110,7 +110,7 @@ class BaseTranscriber:
         self.input_queue = asyncio.Queue()   # Audio chunks (bytes)
         self.output_queue = asyncio.Queue()  # Transcriptions
         self.is_muted = False
-    
+
     def send_audio(self, chunk: bytes):
         """Client calls this to send audio"""
         if not self.is_muted:
@@ -118,11 +118,11 @@ class BaseTranscriber:
         else:
             # Send silence instead (prevents echo during bot speech)
             self.input_queue.put_nowait(self.create_silent_chunk(len(chunk)))
-    
+
     def mute(self):
         """Called when bot starts speaking (prevents echo)"""
         self.is_muted = True
-    
+
     def unmute(self):
         """Called when bot stops speaking"""
         self.is_muted = False
@@ -160,7 +160,7 @@ class BaseAgent:
         self.input_queue = asyncio.Queue()   # TranscriptionAgentInput
         self.output_queue = asyncio.Queue()  # AgentResponse
         self.transcript = None               # Conversation history
-    
+
     async def generate_response(self, human_input, is_interrupt, conversation_id):
         """Override this - returns AsyncGenerator of responses"""
         raise NotImplementedError
@@ -204,7 +204,7 @@ class BaseSynthesizer:
 class SynthesisResult:
     chunk_generator: AsyncGenerator[ChunkResult, None]
     get_message_up_to: Callable[[float], str]  # seconds → partial text
-    
+
     class ChunkResult:
         chunk: bytes          # Raw PCM audio
         is_last_chunk: bool
@@ -241,20 +241,20 @@ async def send_speech_to_output(self, message, synthesis_result,
                 chunk_idx * seconds_per_chunk
             )
             return message_sent, True  # cut_off = True
-        
+
         start_time = time.time()
-        
+
         # Send chunk to output device
         self.output_device.consume_nonblocking(chunk_result.chunk)
-        
+
         # CRITICAL: Wait for chunk to play before sending next one
         # This is what makes interrupts work!
         speech_length = seconds_per_chunk
         processing_time = time.time() - start_time
         await asyncio.sleep(max(speech_length - processing_time, 0))
-        
+
         chunk_idx += 1
-    
+
     return message, False  # cut_off = False
 ```
 
@@ -346,22 +346,22 @@ class BaseWorker:
         self.input_queue = input_queue   # asyncio.Queue to consume from
         self.output_queue = output_queue # asyncio.Queue to produce to
         self.active = False
-    
+
     def start(self):
         """Start the worker's processing loop"""
         self.active = True
         asyncio.create_task(self._run_loop())
-    
+
     async def _run_loop(self):
         """Main processing loop - runs forever until terminated"""
         while self.active:
             item = await self.input_queue.get()  # Block until item arrives
             await self.process(item)              # Process the item
-    
+
     async def process(self, item):
         """Override this - does the actual work"""
         raise NotImplementedError
-    
+
     def terminate(self):
         """Stop the worker"""
         self.active = False
@@ -372,7 +372,7 @@ class BaseWorker:
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/voice-ai-engine-development`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -388,10 +388,10 @@ class BaseWorker:
 
 ## Related Skills
 
-- `@trpc-fullstack` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@trust-calibrator` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@turborepo-caching` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@tutorial-engineer` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -458,7 +458,7 @@ def broadcast_interrupt(self):
                 num_interrupts += 1
         except queue.Empty:
             break
-    
+
     # Cancel current tasks
     self.agent.cancel_current_task()              # Stop generating text
     self.agent_responses_worker.cancel_current_task()  # Stop synthesizing
@@ -499,7 +499,7 @@ class InterruptibleEvent:
         self.is_interruptible = is_interruptible
         self.interruption_event = threading.Event()  # Initially not set
         self.interrupted = False
-    
+
     def interrupt(self) -> bool:
         """Interrupt this event"""
         if not self.is_interruptible:
@@ -509,7 +509,7 @@ class InterruptibleEvent:
             self.interrupted = True
             return True
         return False
-    
+
     def is_interrupted(self) -> bool:
         return self.interruption_event.is_set()
 ```
@@ -521,11 +521,11 @@ Support multiple providers with a factory pattern:
 ```python
 class VoiceHandler:
     """Multi-provider factory for voice components"""
-    
+
     def create_transcriber(self, agent_config: Dict):
         """Create transcriber based on transcriberProvider"""
         provider = agent_config.get("transcriberProvider", "deepgram")
-        
+
         if provider == "deepgram":
             return self._create_deepgram_transcriber(agent_config)
         elif provider == "assemblyai":
@@ -536,22 +536,22 @@ class VoiceHandler:
             return self._create_google_transcriber(agent_config)
         else:
             raise ValueError(f"Unknown transcriber provider: {provider}")
-    
+
     def create_agent(self, agent_config: Dict):
         """Create LLM agent based on llmProvider"""
         provider = agent_config.get("llmProvider", "openai")
-        
+
         if provider == "openai":
             return self._create_openai_agent(agent_config)
         elif provider == "gemini":
             return self._create_gemini_agent(agent_config)
         else:
             raise ValueError(f"Unknown LLM provider: {provider}")
-    
+
     def create_synthesizer(self, agent_config: Dict):
         """Create voice synthesizer based on voiceProvider"""
         provider = agent_config.get("voiceProvider", "elevenlabs")
-        
+
         if provider == "elevenlabs":
             return self._create_elevenlabs_synthesizer(agent_config)
         elif provider == "azure":
@@ -574,20 +574,20 @@ Voice AI engines typically use WebSocket for bidirectional audio streaming:
 @app.websocket("/conversation")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
-    
+
     # Create voice components
     voice_handler = VoiceHandler()
     transcriber = voice_handler.create_transcriber(agent_config)
     agent = voice_handler.create_agent(agent_config)
     synthesizer = voice_handler.create_synthesizer(agent_config)
-    
+
     # Create output device
     output_device = WebsocketOutputDevice(
         ws=websocket,
         sampling_rate=16000,
         audio_encoding=AudioEncoding.LINEAR16
     )
-    
+
     # Create conversation orchestrator
     conversation = StreamingConversation(
         output_device=output_device,
@@ -595,10 +595,10 @@ async def websocket_endpoint(websocket: WebSocket):
         agent=agent,
         synthesizer=synthesizer
     )
-    
+
     # Start all workers
     await conversation.start()
-    
+
     try:
         # Receive audio from client
         async for message in websocket.iter_bytes():
@@ -657,10 +657,10 @@ self.transcriber.unmute()
 ```python
 async for chunk in synthesis_result.chunk_generator:
     start_time = time.time()
-    
+
     # Send chunk
     output_device.consume_nonblocking(chunk)
-    
+
     # Wait for chunk duration before sending next
     processing_time = time.time() - start_time
     await asyncio.sleep(max(seconds_per_chunk - processing_time, 0))
@@ -706,15 +706,15 @@ async def _run_loop(self):
 async def terminate(self):
     """Gracefully shut down all workers"""
     self.active = False
-    
+
     # Stop all workers
     self.transcriber.terminate()
     self.agent.terminate()
     self.synthesizer.terminate()
-    
+
     # Wait for queues to drain
     await asyncio.sleep(0.5)
-    
+
     # Close connections
     if self.websocket:
         await self.websocket.close()
@@ -789,13 +789,13 @@ Maintain conversation history for context:
 ```python
 class Transcript:
     event_logs: List[Message] = []
-    
+
     def add_human_message(self, text):
         self.event_logs.append(Message(sender=Sender.HUMAN, text=text))
-    
+
     def add_bot_message(self, text):
         self.event_logs.append(Message(sender=Sender.BOT, text=text))
-    
+
     def to_openai_messages(self):
         return [
             {"role": "user" if msg.sender == Sender.HUMAN else "assistant",
@@ -811,11 +811,11 @@ class Transcript:
 ```python
 async def test_transcriber():
     transcriber = DeepgramTranscriber(config)
-    
+
     # Mock audio input
     audio_chunk = b'\x00\x01\x02...'
     transcriber.send_audio(audio_chunk)
-    
+
     # Check output
     transcription = await transcriber.output_queue.get()
     assert transcription.message == "expected text"
@@ -827,13 +827,13 @@ async def test_transcriber():
 async def test_full_pipeline():
     # Create all components
     conversation = create_test_conversation()
-    
+
     # Send test audio
     conversation.receive_audio(test_audio_chunk)
-    
+
     # Wait for response
     response = await wait_for_audio_output(timeout=5)
-    
+
     assert response is not None
 ```
 
@@ -842,14 +842,14 @@ async def test_full_pipeline():
 ```python
 async def test_interrupt():
     conversation = create_test_conversation()
-    
+
     # Start bot speaking
     await conversation.agent.generate_response("Tell me a long story")
-    
+
     # Interrupt mid-response
     await asyncio.sleep(1)  # Let it speak for 1 second
     conversation.broadcast_interrupt()
-    
+
     # Verify partial message in transcript
     last_message = conversation.transcript.event_logs[-1]
     assert last_message.text != full_expected_message

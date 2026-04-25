@@ -9,7 +9,7 @@ def will_it_fly(q,w):
     The object q will fly if it's balanced (it is a palindromic list) and the sum of its elements is less than or equal the maximum possible weight w.
 
     Example:
-    will_it_fly([1, 2], 5) ➞ False 
+    will_it_fly([1, 2], 5) ➞ False
     # 1+2 is less than the maximum possible weight, but it's unbalanced.
 
     will_it_fly([3, 2, 3], 1) ➞ False
