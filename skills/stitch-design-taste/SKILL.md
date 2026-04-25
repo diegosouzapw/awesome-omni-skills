@@ -10,7 +10,7 @@ tools: ["cursor", "antigravity", "codex-cli", "claude-code", "gemini-cli", "open
 source: community
 author: "Leonxlnx"
 date_added: "2026-04-18"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # Stitch Design Taste — Semantic Design System Skill
@@ -166,10 +166,10 @@ No flexbox percentage math. Generous internal padding.)
 
 ## Related Skills
 
+- `@steve-jobs` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@stitch-loop` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@stitch-ui-design` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@stride-analysis-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@stripe-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

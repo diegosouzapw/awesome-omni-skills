@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-15"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # STEVE JOBS — AGENTE DE SIMULACAO PROFUNDA v2.0
@@ -188,10 +188,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@seo-programmatic` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@seo-schema` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@seo-sitemap` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@seo-snippet-hunter` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@stitch-design-taste` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@stitch-loop` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@stitch-ui-design` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@stride-analysis-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
