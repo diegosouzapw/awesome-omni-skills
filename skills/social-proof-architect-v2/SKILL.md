@@ -170,10 +170,10 @@ The line between persuasion and manipulation is presenting evidence that helps a
 
 ## Related Skills
 
+- `@skill-rails-upgrade-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@skill-router-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@skill-seekers-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@skill-sentinel-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@skill-writer-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
