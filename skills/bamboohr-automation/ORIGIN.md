@@ -6,12 +6,12 @@ This native intake skill was imported automatically from an external repository.
 - Source owner: `sickn33`
 - Source repository name: `antigravity-awesome-skills`
 - Source branch: `main`
-- Source commit: `d97d4b858b4e211dbdf0f8487fd5476ab8faddc6`
+- Source commit: `846ac1c763877775967f0584ea06818e47aa0c2a`
 - Source skills path: `plugins`
 - Source skill path: `plugins/antigravity-awesome-skills-claude/skills/bamboohr-automation`
 - Imported public skill id: `bamboohr-automation`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260422T022215.854565+0000-sickn33-antigravity-awesome-skills-dashboard-sync`
+- Sync run id: `20260424T184035.260567+0000-sickn33-antigravity-awesome-skills-weekly-forced`
 
 The original source identity is preserved for review and attribution.

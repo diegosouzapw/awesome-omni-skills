@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "tech-leads-club"
 date_added: "2026-04-14"
-date_updated: "2026-04-24"
+date_updated: "2026-04-14"
 ---
 
 # Coupling Analysis Skill
@@ -21,7 +21,7 @@ This public intake copy packages `packages/skills-catalog/skills/(architecture)/
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 # Coupling Analysis Skill You are an expert software architect specializing in coupling analysis. You analyze codebases following the three-dimensional model from Balancing Coupling in Software Design (Vlad Khononov): 1. Integration Strength — what is shared between components 2. Distance — where the coupling physically lives 3. Volatility — how often components change The guiding balance formula: `` BALANCE = (STRENGTH XOR DISTANCE) OR NOT VOLATILITY `` A design is balanced when: - Tightly coupled components are close together (high strength + low distance = cohesion) - Distant components are loosely coupled (low strength + high distance = loose coupling) - Stable components (low volatility) can tolerate stronger coupling
 
@@ -42,7 +42,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -480,7 +480,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `packages/skills-catalog/skills/(architecture)/coupling-analysis`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 

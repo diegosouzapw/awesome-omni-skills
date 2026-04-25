@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "FrancyJGLisboa"
 date_added: "2026-04-15"
-date_updated: "2026-04-22"
+date_updated: "2026-04-24"
 ---
 
 # Knowledge Extraction
