@@ -10,7 +10,7 @@
 
 <!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/CATALOG.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-04-25T00:00:00+00:00 -->
 
-> Auto-generated from `skills_index.json` — 2527 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 2558 skills across 17 categories.
 
 Generated: 2026-04-25T00:00:00+00:00
 
@@ -19,22 +19,22 @@ Generated: 2026-04-25T00:00:00+00:00
 ## Table of Contents
 
 - [🧠 Ai Agents (250)](#ai-agents)
-- [🗄️ Backend (263)](#backend)
+- [🗄️ Backend (266)](#backend)
 - [💼 Business (51)](#business)
-- [⚙️ Cli Automation (307)](#cli-automation)
+- [⚙️ Cli Automation (310)](#cli-automation)
 - [💬 Communication (36)](#communication)
 - [🎬 Content Media (79)](#content-media)
-- [🤖 Data Ai (94)](#data-ai)
-- [🎨 Design (70)](#design)
-- [💻 Development (386)](#development)
-- [☁️ Devops (186)](#devops)
+- [🤖 Data Ai (95)](#data-ai)
+- [🎨 Design (80)](#design)
+- [💻 Development (389)](#development)
+- [☁️ Devops (190)](#devops)
 - [📝 Documentation (40)](#documentation)
-- [🖼️ Frontend (297)](#frontend)
+- [🖼️ Frontend (301)](#frontend)
 - [🌐 Fullstack Web (91)](#fullstack-web)
 - [📈 Machine Learning (32)](#machine-learning)
 - [🧭 Product (34)](#product)
-- [🛡️ Testing Security (200)](#testing-security)
-- [🧰 Tools (111)](#tools)
+- [🛡️ Testing Security (202)](#testing-security)
+- [🧰 Tools (112)](#tools)
 
 ---
 
@@ -557,8 +557,11 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`trpc-fullstack`](../../../../skills/trpc-fullstack/SKILL.md) | tRPC Full-Stack workflow skill. Use this skill when the user needs Build end-to-end type-safe APIs with tRPC \u2014 rout | L2 instructions | 100/100 | 86/100 | 90/100 warn |
 | [`trpc-fullstack-v2`](../../../../skills/trpc-fullstack-v2/SKILL.md) | tRPC Full-Stack workflow skill. Use this skill when the user needs Build end-to-end type-safe APIs with tRPC \u2014 rout | L2 instructions | 100/100 | 86/100 | 90/100 warn |
 | [`uniprot-database`](../../../../skills/uniprot-database/SKILL.md) | UniProt Database workflow skill. Use this skill when the user needs Direct REST API access to UniProt. Protein searches, | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`uniprot-database-v2`](../../../../skills/uniprot-database-v2/SKILL.md) | UniProt Database workflow skill. Use this skill when the user needs Direct REST API access to UniProt. Protein searches, | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`upstash-qstash`](../../../../skills/upstash-qstash/SKILL.md) | Upstash QStash workflow skill. Use this skill when the user needs Upstash QStash expert for serverless message queues, s | L2 instructions | 100/100 | 86/100 | 0/100 warn |
+| [`upstash-qstash-v2`](../../../../skills/upstash-qstash-v2/SKILL.md) | Upstash QStash workflow skill. Use this skill when the user needs Upstash QStash expert for serverless message queues, s | L2 instructions | 100/100 | 86/100 | 0/100 warn |
 | [`using-neon`](../../../../skills/using-neon/SKILL.md) | Neon Serverless Postgres workflow skill. Use this skill when the user needs Neon is a serverless Postgres platform that  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`using-neon-v2`](../../../../skills/using-neon-v2/SKILL.md) | Neon Serverless Postgres workflow skill. Use this skill when the user needs Neon is a serverless Postgres platform that  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`zapier-make-patterns`](../../../../skills/zapier-make-patterns/SKILL.md) | Zapier & Make Patterns workflow skill. Use this skill when the user needs No-code automation democratizes workflow build | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 
 ## 💼 Business
@@ -909,8 +912,11 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`typescript-pro`](../../../../skills/typescript-pro/SKILL.md) | typescript-pro workflow skill. Use this skill when the user needs Master TypeScript with advanced types, generics, and s | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`typescript-pro-v2`](../../../../skills/typescript-pro-v2/SKILL.md) | typescript-pro workflow skill. Use this skill when the user needs Master TypeScript with advanced types, generics, and s | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`unsplash-integration`](../../../../skills/unsplash-integration/SKILL.md) | Unsplash Integration Skill workflow skill. Use this skill when the user needs Integration skill for searching and fetchi | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`unsplash-integration-v2`](../../../../skills/unsplash-integration-v2/SKILL.md) | Unsplash Integration Skill workflow skill. Use this skill when the user needs Integration skill for searching and fetchi | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`varlock-claude-skill`](../../../../skills/varlock-claude-skill/SKILL.md) | Varlock Claude Skill workflow skill. Use this skill when the user needs Secure environment variable management ensuring  | L2 instructions | 94/100 | 84/100 | 100/100 passed |
+| [`varlock-claude-skill-v2`](../../../../skills/varlock-claude-skill-v2/SKILL.md) | Varlock Claude Skill workflow skill. Use this skill when the user needs Secure environment variable management ensuring  | L2 instructions | 94/100 | 84/100 | 100/100 passed |
 | [`vercel-automation`](../../../../skills/vercel-automation/SKILL.md) | Vercel Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Vercel tasks via Rube MCP (Co | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`vercel-automation-v2`](../../../../skills/vercel-automation-v2/SKILL.md) | Vercel Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Vercel tasks via Rube MCP (Co | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`vexor-cli`](../../../../skills/vexor-cli/SKILL.md) | Vexor CLI Skill workflow skill. Use this skill when the user needs Semantic file discovery via vexor. Use whenever locat | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`windows-shell-reliability`](../../../../skills/windows-shell-reliability/SKILL.md) | Windows Shell Reliability Patterns workflow skill. Use this skill when the user needs Reliable command execution on Wind | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`wireshark-analysis`](../../../../skills/wireshark-analysis/SKILL.md) | Wireshark Network Traffic Analysis workflow skill. Use this skill when the user needs Execute comprehensive network traf | L2 instructions | 98/100 | 87/100 | 100/100 passed |
@@ -1149,6 +1155,7 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`turborepo-caching`](../../../../skills/turborepo-caching/SKILL.md) | Turborepo Caching workflow skill. Use this skill when the user needs Configure Turborepo for efficient monorepo builds w | L2 instructions | 100/100 | 87/100 | 80/100 warn |
 | [`turborepo-caching-v2`](../../../../skills/turborepo-caching-v2/SKILL.md) | Turborepo Caching workflow skill. Use this skill when the user needs Configure Turborepo for efficient monorepo builds w | L2 instructions | 100/100 | 87/100 | 80/100 warn |
 | [`vector-database-engineer`](../../../../skills/vector-database-engineer/SKILL.md) | Vector Database Engineer workflow skill. Use this skill when the user needs Expert in vector databases, embedding strate | L2 instructions | 99/100 | 89/100 | 100/100 passed |
+| [`vector-database-engineer-v2`](../../../../skills/vector-database-engineer-v2/SKILL.md) | Vector Database Engineer workflow skill. Use this skill when the user needs Expert in vector databases, embedding strate | L2 instructions | 99/100 | 89/100 | 100/100 passed |
 | [`weightloss-analyzer`](../../../../skills/weightloss-analyzer/SKILL.md) | \u51cf\u80a5\u5206\u6790\u6280\u80fd workflow skill. Use this skill when the user needs \u5206\u6790\u51cf\u80a5\u6570\u | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`wellally-tech`](../../../../skills/wellally-tech/SKILL.md) | WellAlly Digital Health Integration workflow skill. Use this skill when the user needs Integrate multiple digital health | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`x-twitter-scraper`](../../../../skills/x-twitter-scraper/SKILL.md) | X (Twitter) Scraper \u2014 Xquik workflow skill. Use this skill when the user needs X (Twitter) data platform skill \u20 | L2 instructions | 99/100 | 88/100 | 100/100 passed |
@@ -1215,15 +1222,25 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`ui-setup`](../../../../skills/ui-setup/SKILL.md) | UI Setup workflow skill. Use this skill when the user needs Interactive StyleSeed setup wizard for choosing app type, br | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`ui-setup-v2`](../../../../skills/ui-setup-v2/SKILL.md) | UI Setup workflow skill. Use this skill when the user needs Interactive StyleSeed setup wizard for choosing app type, br | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`ui-tokens`](../../../../skills/ui-tokens/SKILL.md) | UI Tokens workflow skill. Use this skill when the user needs List, add, and update StyleSeed design tokens while keeping | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`ui-tokens-v2`](../../../../skills/ui-tokens-v2/SKILL.md) | UI Tokens workflow skill. Use this skill when the user needs List, add, and update StyleSeed design tokens while keeping | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`ui-ux-designer`](../../../../skills/ui-ux-designer/SKILL.md) | ui-ux-designer workflow skill. Use this skill when the user needs Create interface designs, wireframes, and design syste | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`ui-ux-designer-v2`](../../../../skills/ui-ux-designer-v2/SKILL.md) | ui-ux-designer workflow skill. Use this skill when the user needs Create interface designs, wireframes, and design syste | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`ui-ux-pro-max`](../../../../skills/ui-ux-pro-max/SKILL.md) | UI/UX Pro Max - Design Intelligence workflow skill. Use this skill when the user needs Comprehensive design guide for we | L3 resources | 100/100 | 96/100 | 96/100 passed |
+| [`ui-ux-pro-max-v2`](../../../../skills/ui-ux-pro-max-v2/SKILL.md) | UI/UX Pro Max - Design Intelligence workflow skill. Use this skill when the user needs Comprehensive design guide for we | L3 resources | 100/100 | 96/100 | 96/100 passed |
 | [`ui-visual-validator`](../../../../skills/ui-visual-validator/SKILL.md) | ui-visual-validator workflow skill. Use this skill when the user needs Rigorous visual validation expert specializing in | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`ui-visual-validator-v2`](../../../../skills/ui-visual-validator-v2/SKILL.md) | ui-visual-validator workflow skill. Use this skill when the user needs Rigorous visual validation expert specializing in | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`ux-audit`](../../../../skills/ux-audit/SKILL.md) | UX Audit workflow skill. Use this skill when the user needs Audit screens against Nielsen's heuristics and mobile UX bes | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`ux-audit-v2`](../../../../skills/ux-audit-v2/SKILL.md) | UX Audit workflow skill. Use this skill when the user needs Audit screens against Nielsen's heuristics and mobile UX bes | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`ux-copy`](../../../../skills/ux-copy/SKILL.md) | UX Copy workflow skill. Use this skill when the user needs Generate UX microcopy in StyleSeed's Toss-inspired voice for  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`ux-copy-v2`](../../../../skills/ux-copy-v2/SKILL.md) | UX Copy workflow skill. Use this skill when the user needs Generate UX microcopy in StyleSeed's Toss-inspired voice for  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`ux-feedback`](../../../../skills/ux-feedback/SKILL.md) | UX Feedback workflow skill. Use this skill when the user needs Add loading, empty, error, and success feedback states to | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`ux-feedback-v2`](../../../../skills/ux-feedback-v2/SKILL.md) | UX Feedback workflow skill. Use this skill when the user needs Add loading, empty, error, and success feedback states to | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`ux-flow`](../../../../skills/ux-flow/SKILL.md) | UX Flow workflow skill. Use this skill when the user needs Design user flows and screen structure using StyleSeed UX pat | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`ux-flow-v2`](../../../../skills/ux-flow-v2/SKILL.md) | UX Flow workflow skill. Use this skill when the user needs Design user flows and screen structure using StyleSeed UX pat | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`ux-persuasion-engineer`](../../../../skills/ux-persuasion-engineer/SKILL.md) | ux-persuasion-engineer workflow skill. Use this skill when the user needs One sentence - what this skill does and when t | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`ux-persuasion-engineer-v2`](../../../../skills/ux-persuasion-engineer-v2/SKILL.md) | ux-persuasion-engineer workflow skill. Use this skill when the user needs One sentence - what this skill does and when t | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`uxui-principles`](../../../../skills/uxui-principles/SKILL.md) | UX/UI Principles workflow skill. Use this skill when the user needs Evaluate interfaces against 168 research-backed UX/U | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`uxui-principles-v2`](../../../../skills/uxui-principles-v2/SKILL.md) | UX/UI Principles workflow skill. Use this skill when the user needs Evaluate interfaces against 168 research-backed UX/U | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`visual-emotion-engineer`](../../../../skills/visual-emotion-engineer/SKILL.md) | visual-emotion-engineer workflow skill. Use this skill when the user needs One sentence - what this skill does and when  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`web-design-guidelines`](../../../../skills/web-design-guidelines/SKILL.md) | Web Interface Guidelines workflow skill. Use this skill when the user needs Review UI code for Web Interface Guidelines  | L2 instructions | 100/100 | 96/100 | 100/100 passed |
 | [`web-design-guidelines--omni`](../../../../skills_omni/web-design-guidelines/SKILL.md) | Web Interface Guidelines workflow skill. Use this skill when the user needs Review UI code for Web Interface Guidelines  | L2 instructions | 100/100 | 96/100 | 100/100 passed |
@@ -1605,8 +1622,11 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`travel-health-analyzer`](../../../../skills/travel-health-analyzer/SKILL.md) | \u65c5\u884c\u5065\u5eb7\u5206\u6790\u6280\u80fd workflow skill. Use this skill when the user needs \u5206\u6790\u65c5\u | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`travel-health-analyzer-v2`](../../../../skills/travel-health-analyzer-v2/SKILL.md) | \u65c5\u884c\u5065\u5eb7\u5206\u6790\u6280\u80fd workflow skill. Use this skill when the user needs \u5206\u6790\u65c5\u | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`uncle-bob-craft`](../../../../skills/uncle-bob-craft/SKILL.md) | Uncle Bob Craft workflow skill. Use this skill when the user needs performing code review, writing or refactoring code,  | L2 instructions | 100/100 | 97/100 | 100/100 passed |
+| [`uncle-bob-craft-v2`](../../../../skills/uncle-bob-craft-v2/SKILL.md) | Uncle Bob Craft workflow skill. Use this skill when the user needs performing code review, writing or refactoring code,  | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`unreal-engine-cpp-pro`](../../../../skills/unreal-engine-cpp-pro/SKILL.md) | Unreal Engine C++ Pro workflow skill. Use this skill when the user needs Expert guide for Unreal Engine 5.x C++ developm | L2 instructions | 100/100 | 96/100 | 100/100 passed |
+| [`unreal-engine-cpp-pro-v2`](../../../../skills/unreal-engine-cpp-pro-v2/SKILL.md) | Unreal Engine C++ Pro workflow skill. Use this skill when the user needs Expert guide for Unreal Engine 5.x C++ developm | L2 instructions | 100/100 | 96/100 | 100/100 passed |
 | [`vexor`](../../../../skills/vexor/SKILL.md) | Vexor workflow skill. Use this skill when the user needs Vector-powered CLI for semantic file search with a Claude/Codex | L2 instructions | 99/100 | 86/100 | 100/100 passed |
+| [`vexor-v2`](../../../../skills/vexor-v2/SKILL.md) | Vexor workflow skill. Use this skill when the user needs Vector-powered CLI for semantic file search with a Claude/Codex | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`vibe-code-auditor`](../../../../skills/vibe-code-auditor/SKILL.md) | Vibe Code Auditor workflow skill. Use this skill when the user needs Audit rapidly generated or AI-produced code for str | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`video-outreach`](../../../../skills/video-outreach/SKILL.md) | Video-First Cold Outreach workflow skill. Use this skill when the user needs When the user wants to build video-first co | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`video-outreach--omni`](../../../../skills_omni/video-outreach/SKILL.md) | Video-First Cold Outreach workflow skill. Use this skill when the user needs When the user wants to build video-first co | L2 instructions | 100/100 | 89/100 | 100/100 passed |
@@ -1804,11 +1824,15 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`threejs-materials`](../../../../skills/threejs-materials/SKILL.md) | Three.js Materials workflow skill. Use this skill when the user needs Three.js materials - PBR, basic, phong, shader mat | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`threejs-materials-v2`](../../../../skills/threejs-materials-v2/SKILL.md) | Three.js Materials workflow skill. Use this skill when the user needs Three.js materials - PBR, basic, phong, shader mat | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`unity-developer`](../../../../skills/unity-developer/SKILL.md) | unity-developer workflow skill. Use this skill when the user needs Build Unity games with optimized C# scripts, efficien | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`unity-developer-v2`](../../../../skills/unity-developer-v2/SKILL.md) | unity-developer workflow skill. Use this skill when the user needs Build Unity games with optimized C# scripts, efficien | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`vector-index-tuning`](../../../../skills/vector-index-tuning/SKILL.md) | Vector Index Tuning workflow skill. Use this skill when the user needs Optimize vector index performance for latency, re | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`vector-index-tuning-v2`](../../../../skills/vector-index-tuning-v2/SKILL.md) | Vector Index Tuning workflow skill. Use this skill when the user needs Optimize vector index performance for latency, re | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`vercel-deploy`](../../../../skills/vercel-deploy/SKILL.md) | Vercel Deploy workflow skill. Use this skill when the user needs Deploy applications and websites to Vercel. Use when th | L3 resources | 99/100 | 97/100 | 80/100 warn |
 | [`vercel-deploy--omni`](../../../../skills_omni/vercel-deploy/SKILL.md) | Vercel Deploy workflow skill. Use this skill when the user needs Deploy applications and websites to Vercel. Use when th | L3 resources | 99/100 | 97/100 | 80/100 warn |
 | [`vercel-deployment`](../../../../skills/vercel-deployment/SKILL.md) | Vercel Deployment workflow skill. Use this skill when the user needs Expert knowledge for deploying to Vercel with Next. | L2 instructions | 98/100 | 86/100 | 40/100 warn |
+| [`vercel-deployment-v2`](../../../../skills/vercel-deployment-v2/SKILL.md) | Vercel Deployment workflow skill. Use this skill when the user needs Expert knowledge for deploying to Vercel with Next. | L2 instructions | 98/100 | 86/100 | 40/100 warn |
 | [`verification-before-completion`](../../../../skills/verification-before-completion/SKILL.md) | Verification Before Completion workflow skill. Use this skill when the user needs Claiming work is complete without veri | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`verification-before-completion-v2`](../../../../skills/verification-before-completion-v2/SKILL.md) | Verification Before Completion workflow skill. Use this skill when the user needs Claiming work is complete without veri | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 
 ## Dokumentacja
 
@@ -2145,9 +2169,13 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`threejs-skills`](../../../../skills/threejs-skills/SKILL.md) | Three.js Skills workflow skill. Use this skill when the user needs Create 3D scenes, interactive experiences, and visual | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`threejs-skills-v2`](../../../../skills/threejs-skills-v2/SKILL.md) | Three.js Skills workflow skill. Use this skill when the user needs Create 3D scenes, interactive experiences, and visual | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`ui-skills`](../../../../skills/ui-skills/SKILL.md) | Ui Skills workflow skill. Use this skill when the user needs Opinionated, evolving constraints to guide agents when buil | L2 instructions | 99/100 | 86/100 | 100/100 passed |
+| [`ui-skills-v2`](../../../../skills/ui-skills-v2/SKILL.md) | Ui Skills workflow skill. Use this skill when the user needs Opinionated, evolving constraints to guide agents when buil | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`unity-ecs-patterns`](../../../../skills/unity-ecs-patterns/SKILL.md) | Unity ECS Patterns workflow skill. Use this skill when the user needs Production patterns for Unity's Data-Oriented Tech | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`unity-ecs-patterns-v2`](../../../../skills/unity-ecs-patterns-v2/SKILL.md) | Unity ECS Patterns workflow skill. Use this skill when the user needs Production patterns for Unity's Data-Oriented Tech | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`using-superpowers`](../../../../skills/using-superpowers/SKILL.md) | Using Skills workflow skill. Use this skill when the user needs starting any conversation - establishes how to find and  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`using-superpowers-v2`](../../../../skills/using-superpowers-v2/SKILL.md) | Using Skills workflow skill. Use this skill when the user needs starting any conversation - establishes how to find and  | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`vercel-ai-sdk-expert`](../../../../skills/vercel-ai-sdk-expert/SKILL.md) | Vercel AI SDK Expert workflow skill. Use this skill when the user needs Expert in the Vercel AI SDK. Covers Core API (ge | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`vercel-ai-sdk-expert-v2`](../../../../skills/vercel-ai-sdk-expert-v2/SKILL.md) | Vercel AI SDK Expert workflow skill. Use this skill when the user needs Expert in the Vercel AI SDK. Covers Core API (ge | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`vr-ar`](../../../../skills/vr-ar/SKILL.md) | VR/AR Development workflow skill. Use this skill when the user needs VR/AR development principles. Comfort, interaction, | L2 instructions | 99/100 | 87/100 | 100/100 passed |
 | [`vr-ar-v2`](../../../../skills/vr-ar-v2/SKILL.md) | VR/AR Development workflow skill. Use this skill when the user needs VR/AR development principles. Comfort, interaction, | L2 instructions | 99/100 | 87/100 | 100/100 passed |
 | [`web-artifacts-builder`](../../../../skills/web-artifacts-builder/SKILL.md) | Web Artifacts Builder workflow skill. Use this skill when the user needs To build powerful frontend claude.ai artifacts, | L3 resources | 100/100 | 99/100 | 95/100 passed |
@@ -2522,7 +2550,9 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`trust-calibrator`](../../../../skills/trust-calibrator/SKILL.md) | trust-calibrator workflow skill. Use this skill when the user needs One sentence - what this skill does and when to invo | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`trust-calibrator-v2`](../../../../skills/trust-calibrator-v2/SKILL.md) | trust-calibrator workflow skill. Use this skill when the user needs One sentence - what this skill does and when to invo | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`unit-testing-test-generate`](../../../../skills/unit-testing-test-generate/SKILL.md) | Automated Unit Test Generation workflow skill. Use this skill when the user needs Generate comprehensive, maintainable u | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`unit-testing-test-generate-v2`](../../../../skills/unit-testing-test-generate-v2/SKILL.md) | Automated Unit Test Generation workflow skill. Use this skill when the user needs Generate comprehensive, maintainable u | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`variant-analysis`](../../../../skills/variant-analysis/SKILL.md) | Variant Analysis workflow skill. Use this skill when the user needs Find similar vulnerabilities and bugs across codebas | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`variant-analysis-v2`](../../../../skills/variant-analysis-v2/SKILL.md) | Variant Analysis workflow skill. Use this skill when the user needs Find similar vulnerabilities and bugs across codebas | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`vibers-code-review`](../../../../skills/vibers-code-review/SKILL.md) | Vibers \u2014 Human Code Review for AI-Generated Projects workflow skill. Use this skill when the user needs Human revie | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`vulnerability-scanner`](../../../../skills/vulnerability-scanner/SKILL.md) | Vulnerability Scanner workflow skill. Use this skill when the user needs Advanced vulnerability analysis principles. OWA | L3 resources | 100/100 | 94/100 | 5/100 warn |
 | [`wcag-audit-patterns`](../../../../skills/wcag-audit-patterns/SKILL.md) | WCAG Audit Patterns workflow skill. Use this skill when the user needs Comprehensive guide to auditing web content again | L2 instructions | 100/100 | 89/100 | 100/100 passed |
@@ -2646,6 +2676,7 @@ Generated: 2026-04-25T00:00:00+00:00
 | [`tool-use-guardian`](../../../../skills/tool-use-guardian/SKILL.md) | Tool Use Guardian workflow skill. Use this skill when the user needs FREE \u2014 Intelligent tool-call reliability wrapp | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`tool-use-guardian-v2`](../../../../skills/tool-use-guardian-v2/SKILL.md) | Tool Use Guardian workflow skill. Use this skill when the user needs FREE \u2014 Intelligent tool-call reliability wrapp | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`upgrading-expo`](../../../../skills/upgrading-expo/SKILL.md) | Upgrading Expo workflow skill. Use this skill when the user needs Upgrade Expo SDK versions and the operator should pres | L2 instructions | 99/100 | 86/100 | 100/100 passed |
+| [`upgrading-expo-v2`](../../../../skills/upgrading-expo-v2/SKILL.md) | Upgrading Expo workflow skill. Use this skill when the user needs Upgrade Expo SDK versions and the operator should pres | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`viral-generator-builder`](../../../../skills/viral-generator-builder/SKILL.md) | Viral Generator Builder workflow skill. Use this skill when the user needs Expert in building shareable generator tools  | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`vizcom`](../../../../skills/vizcom/SKILL.md) | Vizcom Skill workflow skill. Use this skill when the user needs AI-powered product design tool for transforming sketches | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`vscode-extension-guide-en`](../../../../skills/vscode-extension-guide-en/SKILL.md) | VS Code Extension Guide (English) workflow skill. Use this skill when the user needs Guide for VS Code extension develop | L2 instructions | 100/100 | 88/100 | 100/100 passed |
