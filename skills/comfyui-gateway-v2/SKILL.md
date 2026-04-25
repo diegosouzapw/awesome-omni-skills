@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-16"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # ComfyUI Gateway
@@ -235,10 +235,10 @@ Read `references/troubleshooting.md` for detailed guidance on:
 
 ## Related Skills
 
+- `@code-review-checklist-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@code-review-excellence-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@code-reviewer-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@code-simplifier-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@codebase-audit-pre-push-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
