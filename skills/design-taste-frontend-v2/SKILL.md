@@ -10,7 +10,7 @@ tools: ["cursor", "antigravity", "codex-cli", "claude-code", "gemini-cli", "open
 source: community
 author: "Leonxlnx"
 date_added: "2026-04-24"
-date_updated: "2026-04-24"
+date_updated: "2026-04-25"
 ---
 
 # High-Agency Frontend Skill
@@ -145,10 +145,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
+- `@debugger-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@debugging-strategies-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@debugging-toolkit-smart-debug-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@deep-research-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@defi-protocol-templates-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
