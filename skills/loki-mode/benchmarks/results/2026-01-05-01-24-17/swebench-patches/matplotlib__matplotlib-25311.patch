@@ -11,7 +11,7 @@ Here is the patch:
 @@ -1440,6 +1440,18 @@ class DraggableBase:
          self._check_still_parented()
          self.save_offset()
- 
+
 +    def __getstate__(self):
 +        state = self.__dict__.copy()
 +        # Remove references to canvas and callback IDs which cannot be pickled
@@ -24,6 +24,6 @@ Here is the patch:
 +        self.__dict__.update(state)
 +        self.set_canvas(self.ref_artist.figure.canvas)
 +
- 
+
  class DraggableOffsetBox(DraggableBase):
      def __init__(self, ref_artist, offsetbox, use_blit=False):

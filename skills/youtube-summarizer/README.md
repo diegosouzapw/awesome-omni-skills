@@ -208,15 +208,15 @@ The skill recognizes these YouTube URL formats:
 
 ### Videos That Work
 
-✅ Public videos with auto-generated captions  
-✅ Videos with manual subtitles/captions  
+✅ Public videos with auto-generated captions
+✅ Videos with manual subtitles/captions
 ✅ Videos with transcripts in any supported language
 
 ### Videos That Don't Work
 
-❌ Private or unlisted videos  
-❌ Videos with transcripts disabled  
-❌ Age-restricted videos (may require authentication)  
+❌ Private or unlisted videos
+❌ Videos with transcripts disabled
+❌ Age-restricted videos (may require authentication)
 ❌ Videos without any captions/subtitles
 
 ---

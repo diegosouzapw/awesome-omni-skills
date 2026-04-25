@@ -184,10 +184,10 @@ Analyze podcasts, videos, YouTube content:
 
 ## 🎙️ Full Transcription
 
-**[00:00:12 → 00:00:45]** *Speaker 1*  
+**[00:00:12 → 00:00:45]** *Speaker 1*
 Good morning everyone. Let's start with updates from the frontend team.
 
-**[00:00:46 → 00:01:23]** *Speaker 2*  
+**[00:00:46 → 00:01:23]** *Speaker 2*
 We completed the dashboard redesign and deployed to staging yesterday.
 
 ---
@@ -270,7 +270,7 @@ apt install ffmpeg   # Linux
 ```
 
 ### Poor speaker identification
-**Solution:** 
+**Solution:**
 - Ensure clear audio with minimal background noise
 - Use a better microphone for recordings
 - Try the "medium" or "large" Whisper model
@@ -300,22 +300,22 @@ copilot> transcribe audio: recordings/*.wav  # Only WAV files
 
 ## 📚 FAQ
 
-**Q: Does this work offline?**  
+**Q: Does this work offline?**
 A: Yes! 100% local processing, no internet required after initial model download.
 
-**Q: What's the difference between Whisper and Faster-Whisper?**  
+**Q: What's the difference between Whisper and Faster-Whisper?**
 A: Faster-Whisper is 4-5x faster with same quality. Always prefer it if available.
 
-**Q: Can I transcribe YouTube videos?**  
+**Q: Can I transcribe YouTube videos?**
 A: Not directly. Use a YouTube downloader first, then transcribe the audio file. Or use the `youtube-summarizer` skill instead.
 
-**Q: How accurate is speaker identification?**  
+**Q: How accurate is speaker identification?**
 A: Accuracy depends on audio quality. Clear recordings with distinct voices work best. Currently uses simple estimation; future versions will use advanced diarization.
 
-**Q: What languages are supported?**  
+**Q: What languages are supported?**
 A: 99 languages including English, Portuguese, Spanish, French, German, Chinese, Japanese, Arabic, and more.
 
-**Q: Can I edit the meeting minutes format?**  
+**Q: Can I edit the meeting minutes format?**
 A: Yes! Edit the Markdown template in SKILL.md Step 3.
 
 ## 🔗 Related Skills
@@ -325,16 +325,16 @@ A: Yes! Edit the Markdown template in SKILL.md Step 3.
 
 ## 📄 License
 
-This skill is part of the cli-ai-skills repository.  
+This skill is part of the cli-ai-skills repository.
 MIT License - See repository LICENSE file.
 
 ## 🤝 Contributing
 
-Found a bug or have a feature request?  
+Found a bug or have a feature request?
 Open an issue in the [cli-ai-skills repository](https://github.com/yourusername/cli-ai-skills).
 
 ---
 
-**Version:** 1.0.0  
-**Author:** Eric Andrade  
+**Version:** 1.0.0
+**Author:** Eric Andrade
 **Created:** 2026-02-02

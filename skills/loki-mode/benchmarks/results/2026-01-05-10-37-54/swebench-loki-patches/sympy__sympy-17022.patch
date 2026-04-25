@@ -9,7 +9,7 @@ I need to generate a patch based on my knowledge of SymPy's structure without ac
 @@ -530,6 +530,14 @@ class NumPyPrinter(PythonCodePrinter):
              return '{}({})'.format(self._module_format('numpy.average'),
                                     self._print(expr.args[0]))
- 
+
 +    def _print_Identity(self, expr):
 +        shape = expr.shape[0]
 +        if shape.is_Integer:
@@ -18,7 +18,7 @@ I need to generate a patch based on my knowledge of SymPy's structure without ac
 +        raise NotImplementedError("Symbolic dimensions in Identity cannot be "
 +                                  "converted to numpy. Use a concrete integer "
 +                                  "dimension instead.")
- 
+
      def _print_factorial(self, expr):
          return '{}({})'.format(self._module_format('numpy.math.factorial'),
 @@ -570,6 +578,14 @@ class NumPyPrinter(PythonCodePrinter):
@@ -33,6 +33,6 @@ I need to generate a patch based on my knowledge of SymPy's structure without ac
 +                                         self._print(rows), self._print(cols))
 +        raise NotImplementedError("Symbolic dimensions in ZeroMatrix cannot be "
 +                                  "converted to numpy.")
- 
- 
+
+
  for k in NumPyPrinter._kf:

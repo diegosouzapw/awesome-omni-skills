@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-22"
+date_updated: "2026-04-25"
 ---
 
 # Azure Event Hubs SDK for Python
@@ -161,9 +161,9 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 ## Related Skills
 
 - `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 - `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@3d-web-experience` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -238,7 +238,7 @@ producer = EventHubProducerClient(
 with producer:
     # Create batch (handles size limits)
     event_data_batch = producer.create_batch()
-    
+
     for i in range(10):
         try:
             event_data_batch.add(EventData(f"Event {i}"))
@@ -247,7 +247,7 @@ with producer:
             producer.send_batch(event_data_batch)
             event_data_batch = producer.create_batch()
             event_data_batch.add(EventData(f"Event {i}"))
-    
+
     # Send remaining
     producer.send_batch(event_data_batch)
 ```
@@ -327,7 +327,7 @@ import asyncio
 
 async def send_events():
     credential = DefaultAzureCredential()
-    
+
     async with EventHubProducerClient(
         fully_qualified_namespace="<namespace>.servicebus.windows.net",
         eventhub_name="my-eventhub",
@@ -341,7 +341,7 @@ async def receive_events():
     async def on_event(partition_context, event):
         print(event.body_as_str())
         await partition_context.update_checkpoint(event)
-    
+
     async with EventHubConsumerClient(
         fully_qualified_namespace="<namespace>.servicebus.windows.net",
         eventhub_name="my-eventhub",
@@ -377,7 +377,7 @@ with producer:
     info = producer.get_eventhub_properties()
     print(f"Name: {info['name']}")
     print(f"Partitions: {info['partition_ids']}")
-    
+
     for partition_id in info['partition_ids']:
         partition_info = producer.get_partition_properties(partition_id)
         print(f"Partition {partition_id}: {partition_info['last_enqueued_sequence_number']}")

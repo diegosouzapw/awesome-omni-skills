@@ -18,5 +18,5 @@ def order_by_points(nums):
             else:
                 total += int(digit)
         return total
-    
+
     return sorted(nums, key=digit_sum)

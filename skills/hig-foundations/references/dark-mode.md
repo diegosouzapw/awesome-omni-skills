@@ -110,7 +110,7 @@ When people choose the graphite accent color in General settings, macOS causes w
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/dark-mode#Change-log)
 
-Date| Changes  
----|---  
-August 6, 2024| Added art contrasting the light and dark appearances.  
-  
+Date| Changes
+---|---
+August 6, 2024| Added art contrasting the light and dark appearances.
+

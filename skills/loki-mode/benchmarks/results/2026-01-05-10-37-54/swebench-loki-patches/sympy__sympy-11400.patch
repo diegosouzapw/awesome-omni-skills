@@ -9,7 +9,7 @@
  from sympy.printing.codeprinter import CodePrinter
  from sympy.printing.precedence import precedence
 +from sympy.functions.elementary.trigonometric import sin
- 
+
  # dictionary mapping sympy function to (argument_conditions, C_function).
  # Used in CCodePrinter._print_Function(self)
 @@ -207,6 +208,12 @@ class CCodePrinter(CodePrinter):
@@ -44,7 +44,7 @@
                      for e, c in expr.args[:-1]]
              last_line = ": (\n%s\n)" % self._print(expr.args[-1].expr)
              return ": ".join(ecpairs) + last_line + " ".join([")"*(len(ecpairs)-1)])
- 
+
 +    def _print_sinc(self, expr):
 +        from sympy import Piecewise, Ne
 +        _arg = expr.args[0]

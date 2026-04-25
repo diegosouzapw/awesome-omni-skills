@@ -24,13 +24,13 @@ The fix requires modifying the `_print_Mul` method in `sympy/printing/latex.py` 
              tex = "- "
              if expr.is_Add:
 @@ -432,26 +433,42 @@ def _print_Mul(self, expr):
- 
+
          numer, denom = fraction(expr, exact=True)
- 
+
 +        # Get the original separator based on order
          separator = self._settings['mul_symbol_latex']
          numbersep = self._settings['mul_symbol_latex_numbers']
- 
+
          def convert(expr):
 -            if not expr.is_Mul:
 +            if expr.is_Atom:
@@ -62,12 +62,12 @@ The fix requires modifying the `_print_Mul` method in `sympy/printing/latex.py` 
 +                    if term.is_Add and len(args) > 1:
 +                        term_tex = r"\left(%s\right)" % term_tex
 +                    terms.append(term_tex)
- 
+
 -                for i, term in enumerate(args):
 -                    term_tex = self._print(term)
 +                if not terms:
 +                    return "1"
- 
+
 -                    if self._needs_mul_brackets(term, first=(i == 0),
 -                                                last=(i == len(args) - 1)):
 -                        term_tex = r"\left(%s\right)" % term_tex
@@ -76,7 +76,7 @@ The fix requires modifying the `_print_Mul` method in `sympy/printing/latex.py` 
 +                for term_tex in terms[1:]:
 +                    # Use number separator if both are numbers
 +                    _tex += separator + term_tex
- 
+
 -                    if _between_two_numbers_p[0].search(googol term_tex) and \
 -                            _between_two_numbers_p[1].search(last_tex):
 -                        _tex += numbersep
@@ -86,7 +86,7 @@ The fix requires modifying the `_print_Mul` method in `sympy/printing/latex.py` 
 -                    _tex += term_tex
 -                    last_tex = term_tex
                  return _tex
- 
+
          if denom is S.One:
 @@ -461,7 +478,13 @@ def convert(expr):
              snumer = convert(numer)
@@ -122,19 +122,19 @@ Let me reconsider this patch. The issue is more nuanced - I need to look at how 
 @@ -430,7 +430,9 @@ class LatexPrinter(Printer):
          else:
              tex = ""
- 
+
 -        numer, denom = fraction(expr, exact=True)
 +        # Use exact=True and don't auto-expand when extracting fraction
 +        # to preserve structure like 1/(2*(x+y)) vs 1/(2x+2y)
 +        numer, denom = expr.as_numer_denom()
- 
+
          separator = self._settings['mul_symbol_latex']
          numbersep = self._settings['mul_symbol_latex_numbers']
 ```
 
 Actually, after more careful analysis, the core issues are:
 
-1. The `fraction()` function expands expressions, converting `1/(2*(x+y))` to `1/(2*x + 2*y)` 
+1. The `fraction()` function expands expressions, converting `1/(2*(x+y))` to `1/(2*x + 2*y)`
 2. The handling of negative exponents like `exp(-x)` converting them to `1/exp(x)` form
 
 The fix should use `as_numer_denom()` instead of `fraction(expr, exact=True)` and handle negative exponents more carefully. Here's the correct patch:
@@ -144,9 +144,9 @@ The fix should use `as_numer_denom()` instead of `fraction(expr, exact=True)` an
 @@ -430,7 +430,7 @@ class LatexPrinter(Printer):
          else:
              tex = ""
- 
+
 -        numer, denom = fraction(expr, exact=True)
 +        numer, denom = expr.as_numer_denom()
- 
+
          separator = self._settings['mul_symbol_latex']
          numbersep = self._settings['mul_symbol_latex_numbers']

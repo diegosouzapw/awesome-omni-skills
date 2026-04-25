@@ -7,11 +7,11 @@ Based on the architect's analysis and my knowledge of the SymPy codebase structu
 --- a/sympy/polys/domains/polynomialring.py
 +++ b/sympy/polys/domains/polynomialring.py
 @@ -70,7 +70,7 @@ class PolynomialRing(Ring, CompositeDomain):
- 
+
      def get_field(self):
          """Returns a field associated with `self`. """
 -        return self.dom.frac_field(*self.symbols)
 +        return self.dom.get_field().frac_field(*self.symbols)
- 
+
      def is_negative(self, a):
          """Returns True if `LC(a)` is negative. """

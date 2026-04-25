@@ -8,17 +8,17 @@
  import threading
 +import logging
  import weakref
- 
+
  from django.utils.inspect import func_accepts_kwargs
 @@ -6,6 +7,8 @@ from django.utils.inspect import func_accepts_kwargs
  def _make_id(target):
      if hasattr(target, '__func__'):
          return (id(target.__self__), id(target.__func__))
      return id(target)
- 
+
 +logger = logging.getLogger('django.dispatch')
 +
- 
+
  NONE_ID = _make_id(None)
 @@ -206,6 +209,12 @@ class Signal:
                  responses.append((receiver, response))

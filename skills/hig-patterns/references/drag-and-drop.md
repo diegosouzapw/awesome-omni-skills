@@ -97,11 +97,11 @@ Drag and drop is a dynamic process that can result in multiple outcomes. To help
 
 **When possible, launch your app to handle content that people drop into empty space.** When you associate a user activity with draggable app content, your app can open a window or scene that handles the content when people drop it. For example, when people drop a URL into empty space, it launches Safari; when people drop Quick Look–supported content, Quick Look launches to display it. For developer guidance, see [`NSUserActivity`](https://developer.apple.com/documentation/Foundation/NSUserActivity).
 
-Video with custom controls. 
+Video with custom controls.
 
-Content description: A recording that shows a wearer dragging a 3D file named meteor out of a Finder window. The wearer drags the file into empty space, dropping it in an area that's visually near a table in their physical surroundings. The dropped file opens, showing a 3D meteor that appears to float above the table. 
+Content description: A recording that shows a wearer dragging a 3D file named meteor out of a Finder window. The wearer drags the file into empty space, dropping it in an area that's visually near a table in their physical surroundings. The dropped file opens, showing a 3D meteor that appears to float above the table.
 
-Play 
+Play
 
 ## [Resources](https://developer.apple.com/design/human-interface-guidelines/drag-and-drop#Resources)
 
@@ -127,8 +127,8 @@ Play
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/drag-and-drop#Change-log)
 
-Date| Changes  
----|---  
-October 24, 2023| Added artwork.  
-June 21, 2023| Updated to include guidance for visionOS.  
-  
+Date| Changes
+---|---
+October 24, 2023| Added artwork.
+June 21, 2023| Updated to include guidance for visionOS.
+

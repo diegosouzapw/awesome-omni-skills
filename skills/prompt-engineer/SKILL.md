@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-19"
+date_updated: "2026-04-25"
 ---
 
 # prompt-engineer
@@ -21,7 +21,7 @@ This public intake copy packages `plugins/antigravity-awesome-skills-claude/skil
 
 Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
 
-This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
 Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: Purpose, Notes, Limitations.
 
@@ -40,7 +40,7 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 | Situation | Start here | Why it matters |
 | --- | --- | --- |
-| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
 | Workflow execution | `README.md` | Starts with the smallest copied file that materially changes execution |
 | Supporting context | `README.md` | Adds the next most relevant copied source file without loading the entire package |
@@ -84,6 +84,34 @@ This workflow is intentionally editorial and operational at the same time. It ke
 - **Complex tasks:** Long prompts (>200 chars), multiple requirements, conditional logic
 - **Ambiguous tasks:** Generic verbs ("help", "improve"), missing object/context
 - **Structured tasks:** Mentions steps, phases, deliverables, stakeholders
+
+
+### Step 2: Ask Clarifying Questions (Conditional)
+
+**Objective:** Gather missing information only when it is critical to framework selection or prompt quality.
+
+**Trigger Conditions** — ask only if:
+- Task type is completely ambiguous (cannot determine coding vs. writing vs. analysis)
+- Target audience is unknown and materially affects the output
+- Scope is undefined and choosing wrong scope would invalidate the prompt
+- Requested output format conflicts or is missing and cannot be inferred
+
+**Question Limits:**
+- Maximum 3 questions per invocation
+- Combine related questions into one when possible
+- If enough context exists, skip this step entirely (most cases)
+
+**Example Clarifying Exchange:**
+
+```
+User: "help me with AI"
+
+Step 2 (triggered — task type ambiguous):
+"To craft the best prompt, I need one quick clarification:
+1. What do you want to do with AI — build something, learn about it, or use an AI tool for a task?"
+```
+
+**Critical Rule:** When in doubt, skip clarification and generate the best prompt with available context. Over-asking breaks the "magic mode" experience.
 
 
 ### Step 3: Select Framework(s)
@@ -332,7 +360,7 @@ Include a working example to verify the fix.
 ### Problem: The operator skipped the imported context and answered too generically
 
 **Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/prompt-engineer`, fails to mention provenance, or does not use any copied source files at all.
-**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
 
 ### Problem: The imported workflow feels incomplete during review
 
@@ -348,10 +376,10 @@ Include a working example to verify the fix.
 
 ## Related Skills
 
-- `@prompt-engineering` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@prompt-engineering-patterns` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@prompt-library` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@protect-mcp-governance` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

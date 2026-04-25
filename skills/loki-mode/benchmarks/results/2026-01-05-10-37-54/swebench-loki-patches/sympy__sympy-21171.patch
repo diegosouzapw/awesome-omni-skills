@@ -14,7 +14,7 @@ Here's the patch:
 @@ -1968,7 +1968,7 @@ class LatexPrinter(Printer):
              return r"\left(%s\right)^{%s}" % (tex, exp)
          return tex
- 
+
 -    def _print_SingularityFunction(self, expr):
 +    def _print_SingularityFunction(self, expr, exp=None):
          shift = self._print(expr.args[0] - expr.args[1])
@@ -23,5 +23,5 @@ Here's the patch:
 +        if exp is not None:
 +            tex = r"{\left(%s\right)}^{%s}" % (tex, exp)
          return tex
- 
+
      def _print_Heaviside(self, expr, exp=None):

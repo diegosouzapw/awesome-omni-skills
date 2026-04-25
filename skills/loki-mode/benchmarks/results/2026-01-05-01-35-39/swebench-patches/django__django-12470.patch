@@ -96,7 +96,7 @@ The actual fix for this bug (which corresponds to Django ticket #31377) is:
 +        # If ordering by pk, get the actual pk field and preserve the ordering direction
 +        if pieces[-1] == 'pk':
 +            pieces[-1] = opts.pk.name
- 
+
          # If we get to this point and the field is a relation to another model,
          # append the default ordering for that model unless it is the pk
 
@@ -106,7 +106,7 @@ The bug is actually in how the pk gets resolved after joins are set up. Looking 
 +++ b/django/db/models/sql/compiler.py
 @@ -291,7 +291,7 @@ class SQLCompiler:
                      continue
- 
+
                  if isinstance(self.query.get_meta().pk, OneToOneField):
 -                    field = self.query.get_meta().pk.name
 +                    field = self.query.get_meta().pk.name if not descending else '-%s' % self.query.get_meta().pk.name

@@ -9,7 +9,7 @@ Based on the issue description, traceback, and architect's analysis, I can gener
 +++ b/sympy/geometry/util.py
 @@ -520,6 +520,8 @@ def idiff(eq, y, x, n=1):
      ========
- 
+
      """
 +    from sympy.core.relational import Eq as EqClass
 +
@@ -19,7 +19,7 @@ Based on the issue description, traceback, and architect's analysis, I can gener
 @@ -527,6 +529,9 @@ def idiff(eq, y, x, n=1):
          dep = {y}
          y = y
- 
+
 +    if isinstance(eq, EqClass):
 +        eq = eq.lhs - eq.rhs
 +
@@ -43,7 +43,7 @@ Based on the issue description, traceback, and architect's analysis, I can gener
 +    # Check x-dependency - for symbols check .has(), for functions check free_symbols
 +    if isinstance(y, Symbol) and not y.has(x):
          raise ValueError("expecting x-dependent symbol(s) but got: %s" % y)
- 
+
      f = dict([(s, Function(
 ```
 
@@ -53,7 +53,7 @@ Let me provide a cleaner, more accurate patch based on the traceback line number
 +++ b/sympy/geometry/util.py
 @@ -530,6 +530,7 @@ def idiff(eq, y, x, n=1):
      sympy.core.function.diff: explicitly differentiates wrt symbols
- 
+
      """
 +    from sympy.core.relational import Eq
      if is_sequence(y):
@@ -62,13 +62,13 @@ Let me provide a cleaner, more accurate patch based on the traceback line number
 @@ -537,12 +538,20 @@ def idiff(eq, y, x, n=1):
          dep = {y}
          y = y
- 
+
 -    if not y.has(x):
 -        raise ValueError("expecting x-dependent symbol(s) but got: %s" % y)
 +    # Convert Eq to expression lhs - rhs
 +    if isinstance(eq, Eq):
 +        eq = eq.lhs - eq.rhs
- 
+
 -    f = dict([(s, Function(
 -        s.name)(x)) for s in eq.free_symbols if s != x and s in dep])
 -    dydx = Function('dydx')(x)

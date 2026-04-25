@@ -8,7 +8,7 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/PROJECT-STRUCTURE.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-04-23T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/PROJECT-STRUCTURE.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-04-25T00:00:00+00:00 -->
 
 > **Complete directory and file reference for the Awesome Omni Skills monorepo.**
 

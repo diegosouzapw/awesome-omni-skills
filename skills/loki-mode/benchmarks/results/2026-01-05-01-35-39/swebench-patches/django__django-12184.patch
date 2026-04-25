@@ -1,4 +1,4 @@
-Based on my knowledge of the Django codebase and the issue described, I can provide the fix. The issue is in `django/urls/resolvers.py`. 
+Based on my knowledge of the Django codebase and the issue described, I can provide the fix. The issue is in `django/urls/resolvers.py`.
 
 The problem is in how Django's `ResolverMatch` or the URL resolver handles regex groups. When there's a nested group like `(?P<format>(html|json|xml))?`, the outer named group captures "html" (for example) but the inner group `(html|json|xml)` also captures it as a separate positional argument.
 
@@ -13,7 +13,7 @@ The fix should filter out positional arguments that are already included in the 
 @@ -1,6 +1,6 @@
  """
  This module converts requested URLs to callback view functions.
- 
+
  URLResolver is the main class here. Its resolve() method takes a URL (as
  a string) and returns a ResolverMatch object which provides access to all
  attributes of the resolved URL match.

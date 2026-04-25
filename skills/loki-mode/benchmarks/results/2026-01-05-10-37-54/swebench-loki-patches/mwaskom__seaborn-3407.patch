@@ -12,7 +12,7 @@ The fix should flatten MultiIndex columns to string representations at the start
 @@ -1220,6 +1220,12 @@ class PairGrid(Grid):
          """
          super().__init__()
- 
+
 +        # Handle MultiIndex columns by flattening them to strings
 +        if isinstance(data.columns, pd.MultiIndex):
 +            data = data.copy()

@@ -8,7 +8,7 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/users/USAGE.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-04-23T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/users/USAGE.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-04-25T00:00:00+00:00 -->
 
 > **Everything you need to invoke skills, run services, and operate the Awesome Omni Skills runtime.**
 
@@ -24,10 +24,10 @@ For the full end-user command map, see the [🧭 CLI User Guide](../../../../use
 <!-- generated:usage-catalog-reality:start -->
 | Status | Details |
 |:-------|:--------|
-| ✅ **Available now** | 2486 native catalog skills across design, architecture, debugging, docs, OSS, security, DevOps, AI-engineering, data, tools, and machine-learning workflows |
+| ✅ **Available now** | 2495 native catalog skills across design, architecture, debugging, docs, OSS, security, DevOps, AI-engineering, data, tools, and machine-learning workflows |
 | ✨ **Curated surface** | 297 English-only Omni-maintained derivatives in `skills_omni/` |
 | 📦 **Bundles** | `essentials`, `full-stack`, `design`, `security`, `devops`, `ai-engineer`, and `oss-maintainer` are fully backed today |
-| 🧪 **Validation mix** | 2136 native skills pass cleanly today, and 350 remain intentionally warning-grade in the permissive intake surface |
+| 🧪 **Validation mix** | 2144 native skills pass cleanly today, and 351 remain intentionally warning-grade in the permissive intake surface |
 | 🔌 **MCP reach** | 9 install-capable clients, 16 config-capable clients, 33 first-class config targets, 20 config profiles |
 | 🤖 **A2A durability** | Memory, JSON, or SQLite local durability, restart resume, optional process executor, and opt-in leased coordination for shared workers |
 <!-- generated:usage-catalog-reality:end -->

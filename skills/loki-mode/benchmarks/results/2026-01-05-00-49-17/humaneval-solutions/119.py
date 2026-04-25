@@ -23,7 +23,7 @@ def match_parens(lst):
             if count < 0:
                 return False
         return count == 0
-    
+
     s1, s2 = lst[0], lst[1]
     if is_balanced(s1 + s2) or is_balanced(s2 + s1):
         return 'Yes'

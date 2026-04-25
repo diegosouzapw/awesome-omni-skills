@@ -1,6 +1,6 @@
 # Sankhya Dashboard Custom Best Practices
 
-This skill provides a comprehensive set of best practices, advanced patterns, and structural guidelines for developing custom HTML/JSP dashboards within the Sankhya ecosystem. 
+This skill provides a comprehensive set of best practices, advanced patterns, and structural guidelines for developing custom HTML/JSP dashboards within the Sankhya ecosystem.
 
 Sankhya ERP deployments frequently demand the creation of custom visualizations, operational dashboards, and dynamic reports. Developing these components effectively requires adhering to specific architectural patterns, secure querying practices, and consistent user interface designs. This skill serves as a collaborative blueprint, injecting community-driven standards directly into your development workflow.
 

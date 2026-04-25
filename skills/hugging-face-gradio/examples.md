@@ -454,7 +454,7 @@ demo = gr.Interface(
     sort_records,
     gr.Dataframe(
         headers=["Item", "Quantity"],
-        datatype=["str", "number"],  
+        datatype=["str", "number"],
         row_count=3,
         column_count=2,
         column_limits=(2, 2),
@@ -528,7 +528,7 @@ demo = gr.Interface(
         gr.Radio(["Single", "Married", "Divorced"]),
         gr.Dataframe(
             headers=["Item", "Cost", "Deductible"],
-            datatype=["str", "number", "bool"],  
+            datatype=["str", "number", "bool"],
             label="Assets Purchased this Year",
         ),
     ],

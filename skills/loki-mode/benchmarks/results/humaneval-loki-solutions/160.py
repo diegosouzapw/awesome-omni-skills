@@ -5,16 +5,16 @@
 
 def do_algebra(operator, operand):
     """
-    Given two lists operator, and operand. The first list has basic algebra operations, and 
-    the second list is a list of integers. Use the two given lists to build the algebric 
+    Given two lists operator, and operand. The first list has basic algebra operations, and
+    the second list is a list of integers. Use the two given lists to build the algebric
     expression and return the evaluation of this expression.
 
     The basic algebra operations:
-    Addition ( + ) 
-    Subtraction ( - ) 
-    Multiplication ( * ) 
-    Floor division ( // ) 
-    Exponentiation ( ** ) 
+    Addition ( + )
+    Subtraction ( - )
+    Multiplication ( * )
+    Floor division ( // )
+    Exponentiation ( ** )
 
     Example:
     operator['+', '*', '-']

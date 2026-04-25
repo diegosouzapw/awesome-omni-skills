@@ -64,7 +64,7 @@ In iOS, iPadOS, and macOS, Spotlight helps people find content across all apps i
 
 ## [Change log](https://developer.apple.com/design/human-interface-guidelines/searching#Change-log)
 
-Date| Changes  
----|---  
-June 9, 2025| Updated best practices with general guidance from Search fields, and reorganized guidance for systemwide search.  
-  
+Date| Changes
+---|---
+June 9, 2025| Updated best practices with general guidance from Search fields, and reorganized guidance for systemwide search.
+
