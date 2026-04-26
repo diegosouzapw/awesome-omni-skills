@@ -1,6 +1,6 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 3263 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 3264 skills across 17 categories.
 
 Generated: 2026-04-26T00:00:00+00:00
 
@@ -16,7 +16,7 @@ Generated: 2026-04-26T00:00:00+00:00
 - [🎬 Content Media (104)](#content-media)
 - [🤖 Data Ai (122)](#data-ai)
 - [🎨 Design (95)](#design)
-- [💻 Development (488)](#development)
+- [💻 Development (489)](#development)
 - [☁️ Devops (231)](#devops)
 - [📝 Documentation (53)](#documentation)
 - [🖼️ Frontend (382)](#frontend)
@@ -1623,6 +1623,7 @@ Generated: 2026-04-26T00:00:00+00:00
 | [`azure-functions`](../skills/azure-functions/SKILL.md) | Azure Functions workflow skill. Use this skill when the user needs Expert patterns for Azure Functions development inclu | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`azure-functions-v2`](../skills/azure-functions-v2/SKILL.md) | Azure Functions workflow skill. Use this skill when the user needs Expert patterns for Azure Functions development inclu | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`azure-functions-v3`](../skills/azure-functions-v3/SKILL.md) | Azure Functions workflow skill. Use this skill when the user needs Expert patterns for Azure Functions development inclu | L2 instructions | 100/100 | 87/100 | 100/100 passed |
+| [`azure-functions-v3--omni`](../skills_omni/azure-functions-v3/SKILL.md) | Azure Functions workflow skill. Use this skill when the user needs Expert patterns for Azure Functions development inclu | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`azure-keyvault-certificates-rust`](../skills/azure-keyvault-certificates-rust/SKILL.md) | Azure Key Vault Certificates SDK for Rust workflow skill. Use this skill when the user needs Azure Key Vault Certificate | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`azure-keyvault-certificates-rust-v2`](../skills/azure-keyvault-certificates-rust-v2/SKILL.md) | Azure Key Vault Certificates SDK for Rust workflow skill. Use this skill when the user needs Azure Key Vault Certificate | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`azure-maps-search-dotnet`](../skills/azure-maps-search-dotnet/SKILL.md) | Azure Maps (.NET) workflow skill. Use this skill when the user needs Azure Maps SDK for .NET. Location-based services in | L2 instructions | 99/100 | 86/100 | 100/100 passed |
