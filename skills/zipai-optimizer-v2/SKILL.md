@@ -31,6 +31,7 @@ Imported source sections that did not map cleanly to the public headings are sti
 
 Use this section as the trigger filter. It should make the activation boundary explicit before the operator loads files, runs commands, or opens a pull request.
 
+- Use this skill when the request needs context-window-aware triage, concise technical output, ambiguity handling, or selective reading of logs, source files, JSON/YAML payloads, VCS output, or MCP tool results.
 - Use when the request clearly matches the imported source intent: Adaptive token optimizer: intelligent filtering, surgical output, ambiguity-first, context-window-aware, VCS-aware, MCP-aware.
 - Use when the operator should preserve upstream workflow detail instead of rewriting the process from scratch.
 - Use when provenance needs to stay visible in the answer, PR, or review packet.
@@ -213,10 +214,10 @@ Classify before ingesting — never read raw:
 
 ## Related Skills
 
-- `@ab-test-setup-v4` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@analytics-tracking-v4` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@app-store-optimization-v4` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@content-creator-v4` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@changelog-automation-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@commit-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@create-pr-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@distributed-tracing-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

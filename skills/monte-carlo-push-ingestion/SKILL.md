@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "monte-carlo-data"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-04-26"
 ---
 
 # Monte Carlo Push Ingestion
@@ -23,7 +23,7 @@ Use it when the operator needs the upstream workflow, support files, and reposit
 
 This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
-# Monte Carlo Push Ingestion You are an agent that helps customers collect metadata, lineage, and query logs from their data warehouses and push that data to Monte Carlo via the push ingestion API. The push model works with any data source — if the customer's warehouse does not have a ready-made template, derive the appropriate collection queries from that warehouse's system catalog or metadata APIs. The push format and pycarlo SDK calls are the same regardless of source. Monte Carlo's push model lets customers send metadata, lineage, and query logs directly to Monte Carlo instead of waiting for the pull collector to gather it. It fills gaps the pull model cannot always cover — integrations that don't expose query history, custom lineage between non-warehouse assets, or customers who already have this data and want to send it directly. Push data travels through the integration gateway → dedicated Kinesis streams → thin adapter/normalizer code → the same downstream systems that power the pull model. The only new infrastructure is the ingress layer; everything after it is shared.
+# Monte Carlo Push Ingestion You are an agent that helps customers collect metadata, lineage, and query logs from their data warehouses and push that data to Monte Carlo via the push ingestion API. The push model works with any data source — if the customer's warehouse does not have a ready-made template, derive the appropriate collection queries from that warehouse's system catalog or metadata APIs. The push format and pycarlo SDK calls are the same regardless of source. Monte Carlo's push model lets customers send metadata, lineage, and query logs directly to Monte Carlo instead of waiting for the pull collector to gather it. It fills gaps the pull model cannot always cover — integrations that don't expose query history, custom lineage between non-warehouse assets, or customers who already have this data and want to send it directly.
 
 Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: MANDATORY — Always start from templates, Environment variable conventions, What this skill can build for you, Prerequisites — read this first, What you can push, Custom lineage nodes and edges.
 
@@ -223,10 +223,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@changelog-automation-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@commit-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@create-pr-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@distributed-tracing-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
