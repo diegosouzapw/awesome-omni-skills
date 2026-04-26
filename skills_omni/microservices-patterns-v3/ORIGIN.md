@@ -1,0 +1,17 @@
+# Origin for microservices-patterns-v3
+
+This native intake skill was imported automatically from an external repository.
+
+- Source repository: `https://github.com/sickn33/antigravity-awesome-skills`
+- Source owner: `sickn33`
+- Source repository name: `antigravity-awesome-skills`
+- Source branch: `main`
+- Source commit: `9bad53f2426e310c33ef5bacf9f845855197be6a`
+- Source skills path: `plugins`
+- Source skill path: `plugins/antigravity-bundle-architecture-design/skills/microservices-patterns`
+- Imported public skill id: `microservices-patterns-v3`
+- Source license: `MIT`
+- License status: `compatible`
+- Sync run id: `20260426T030001.190390+0000-sickn33-antigravity-awesome-skills-weekly`
+
+The original source identity is preserved for review and attribution.
