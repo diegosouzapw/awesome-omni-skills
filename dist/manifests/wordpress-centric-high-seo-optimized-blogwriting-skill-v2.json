@@ -2,8 +2,8 @@
   "schema_version": "2026-04-12",
   "id": "wordpress-centric-high-seo-optimized-blogwriting-skill-v2",
   "slug": "wordpress-centric-high-seo-optimized-blogwriting-skill-v2",
-  "display_name": "wordpress-centric-high-seo-optimized-blogwriting-skill",
-  "description": "wordpress-centric-high-seo-optimized-blogwriting-skill workflow skill. Use this skill when the user needs the user asks to write a blog post, article, or SEO content. This applies a professional structure, truth boxes, click-bait-free accurate information, and outputs direct WordPress-ready content and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "display_name": "WordPress Centric High SEO Optimized Blog Writing Skill",
+  "description": "WordPress Centric High SEO Optimized Blog Writing Skill workflow skill. Use this skill when the user needs Create long-form, high-quality, SEO-optimized blog posts ready for WordPress with truth boxes and FAQ schema and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
   "version": "0.0.1",
   "category": "content-media",
   "raw_category": "content-media",
@@ -21,15 +21,15 @@
     "wordpress",
     "wordpress-centric-high-seo-optimized-blogwriting-skill-v2",
     "wordpress-centric-high-seo-optimized-blogwriting-skill",
-    "the"
+    "create"
   ],
-  "complexity": "intermediate",
+  "complexity": "advanced",
   "risk": "safe",
   "source": "community",
   "author": "Whoisabhishekadhikari",
   "family": {
     "id": "wordpress-centric-high-seo-optimized-blogwriting-skill",
-    "name": "wordpress-centric-high-seo-optimized-blogwriting-skill"
+    "name": "WordPress Centric High SEO Optimized Blog Writing Skill"
   },
   "variant": {
     "id": "v2",
@@ -48,7 +48,7 @@
   },
   "dates": {
     "added": "2026-04-25",
-    "updated": "2026-04-25"
+    "updated": "2026-04-26"
   },
   "entrypoint": "skills/wordpress-centric-high-seo-optimized-blogwriting-skill-v2/SKILL.md",
   "paths": {
@@ -58,13 +58,21 @@
   },
   "compatibility": {
     "tools": [
+      "cursor",
       "codex-cli",
       "claude-code",
-      "cursor",
       "gemini-cli",
       "opencode"
     ],
     "install_targets": [
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
       {
         "tool": "codex-cli",
         "scope": "user-global",
@@ -80,14 +88,6 @@
         "installer_flag": "--claude",
         "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
         "invocation": ">> /skill-name help me..."
-      },
-      {
-        "tool": "cursor",
-        "scope": "user-global",
-        "default_path": "~/.cursor/skills",
-        "installer_flag": "--cursor",
-        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
-        "invocation": "@skill-name"
       },
       {
         "tool": "gemini-cli",
@@ -123,6 +123,13 @@
     "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
     "recipes": [
       {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
         "tool": "codex-cli",
         "command": "npx awesome-omni-skills --codex",
         "scope": "user-global",
@@ -134,13 +141,6 @@
         "command": "npx awesome-omni-skills --claude",
         "scope": "user-global",
         "default_path": "~/.claude/skills",
-        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
-      },
-      {
-        "tool": "cursor",
-        "command": "npx awesome-omni-skills --cursor",
-        "scope": "user-global",
-        "default_path": "~/.cursor/skills",
         "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
       },
       {
@@ -167,22 +167,22 @@
       "has_extra_files": true
     },
     "best_practices": {
-      "score": 99,
+      "score": 100,
       "tier": "excellent",
       "signals": {
-        "workflow_steps_count": 10,
-        "workflow_section_length": 1361,
-        "when_to_use_section_length": 822,
-        "best_practices_items_count": 6,
-        "best_practices_section_length": 862,
+        "workflow_steps_count": 7,
+        "workflow_section_length": 1943,
+        "when_to_use_section_length": 743,
+        "best_practices_items_count": 12,
+        "best_practices_section_length": 1108,
         "troubleshooting_items_count": 0,
         "troubleshooting_section_length": 1340,
-        "resources_items_count": 0,
-        "resources_section_length": 743,
-        "examples_section_length": 1514,
+        "resources_items_count": 16,
+        "resources_section_length": 6297,
+        "examples_section_length": 1802,
         "examples_code_blocks_count": 8,
-        "related_skills_section_length": 547,
-        "decision_assets_count": 7,
+        "related_skills_section_length": 563,
+        "decision_assets_count": 8,
         "table_count": 14,
         "linked_resource_families_count": 0,
         "linked_resource_families": [],
@@ -195,7 +195,7 @@
         "assets_files_count": 0,
         "tools_count": 5,
         "tags_count": 8,
-        "body_density": 13.39,
+        "body_density": 5.88,
         "real_support_files_count": 0,
         "domain_specific_support_files_count": 0,
         "boilerplate_file_findings_count": 0,
@@ -207,7 +207,7 @@
         "support_findings_count": 0,
         "support_realness_score": 0,
         "domain_specificity_score": 0,
-        "token_efficiency_score": 10,
+        "token_efficiency_score": 8,
         "support_family_assessment": {
           "references": {
             "files_count": 0,
@@ -248,7 +248,7 @@
       }
     },
     "quality": {
-      "score": 88,
+      "score": 89,
       "tier": "platinum",
       "breakdown": {
         "body": 16,
@@ -258,7 +258,7 @@
         "resources": 5,
         "best_practices": 10,
         "semantic_depth": 16,
-        "operational_depth": 9,
+        "operational_depth": 10,
         "support_pack": 2
       }
     },
@@ -299,14 +299,14 @@
     }
   },
   "content": {
-    "body_length": 12822,
-    "content_length": 13769,
-    "body_lines": 140,
-    "word_count": 1874,
+    "body_length": 15643,
+    "content_length": 16505,
+    "body_lines": 386,
+    "word_count": 2269,
     "has_code_blocks": true,
     "typed_code_blocks_count": 0,
     "has_examples_section": true,
-    "example_count": 4,
+    "example_count": 5,
     "has_workflow_section": true,
     "has_when_to_use_section": true,
     "has_best_practices_section": true,
@@ -321,19 +321,19 @@
     "has_local_script_example": false,
     "local_script_example_count": 0,
     "semantic_signals": {
-      "workflow_steps_count": 10,
-      "workflow_section_length": 1361,
-      "when_to_use_section_length": 822,
-      "best_practices_items_count": 6,
-      "best_practices_section_length": 862,
+      "workflow_steps_count": 7,
+      "workflow_section_length": 1943,
+      "when_to_use_section_length": 743,
+      "best_practices_items_count": 12,
+      "best_practices_section_length": 1108,
       "troubleshooting_items_count": 0,
       "troubleshooting_section_length": 1340,
-      "resources_items_count": 0,
-      "resources_section_length": 743,
-      "examples_section_length": 1514,
+      "resources_items_count": 16,
+      "resources_section_length": 6297,
+      "examples_section_length": 1802,
       "examples_code_blocks_count": 8,
-      "related_skills_section_length": 547,
-      "decision_assets_count": 7,
+      "related_skills_section_length": 563,
+      "decision_assets_count": 8,
       "table_count": 14,
       "linked_resource_families_count": 0,
       "linked_resource_families": [],
@@ -346,7 +346,7 @@
       "assets_files_count": 0,
       "tools_count": 5,
       "tags_count": 8,
-      "body_density": 13.39,
+      "body_density": 5.88,
       "real_support_files_count": 0,
       "domain_specific_support_files_count": 0,
       "boilerplate_file_findings_count": 0,
@@ -358,7 +358,7 @@
       "support_findings_count": 0,
       "support_realness_score": 0,
       "domain_specificity_score": 0,
-      "token_efficiency_score": 10,
+      "token_efficiency_score": 8,
       "support_family_assessment": {
         "references": {
           "files_count": 0,
@@ -403,19 +403,19 @@
       "path": "skills/wordpress-centric-high-seo-optimized-blogwriting-skill-v2/ORIGIN.md",
       "kind": "support",
       "size_bytes": 857,
-      "sha256": "40eab933669594408a65fb6d2bdd61b4e714cd27afcc6028730921fd3e1cdf44"
+      "sha256": "e53ce48eec4d9e279c746193d19aa9163c6084a83f0fbf01662aea10b6013466"
     },
     {
       "path": "skills/wordpress-centric-high-seo-optimized-blogwriting-skill-v2/SKILL.md",
       "kind": "entrypoint",
-      "size_bytes": 13769,
-      "sha256": "1300dfe45264d8abd79bc86a1d01a1cc6a418414d9eeb8a626c72c5ae478c1a8"
+      "size_bytes": 16525,
+      "sha256": "bb3f8ac2b627ee6145381b4f11ff53be681d6522661d90ddbf3a783ec1bf4344"
     },
     {
       "path": "skills/wordpress-centric-high-seo-optimized-blogwriting-skill-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 12626,
-      "sha256": "a7c1a43eedf1eb27465ba898ff923628c2a70a5988264e6ecaada6d2d7fed861"
+      "size_bytes": 12598,
+      "sha256": "02c53e7acc3635db04943595bd757f5545b20fbe367e0882f8d0eb8e3a186dea"
     }
   ],
   "archives": [
@@ -423,8 +423,8 @@
       "format": "zip",
       "path": "dist/archives/wordpress-centric-high-seo-optimized-blogwriting-skill-v2.zip",
       "file_name": "wordpress-centric-high-seo-optimized-blogwriting-skill-v2.zip",
-      "size_bytes": 27910,
-      "sha256": "4efe133d88cc19c265c79d9c7f84b19c1fdc82d25e947e93e5bac998c25252ee",
+      "size_bytes": 30638,
+      "sha256": "505a6c9f250ca7136bd77ffe4ea1b26bad40b84bcf0d725d1f591770c244ce65",
       "signature": {
         "status": "unsigned",
         "path": null,
@@ -437,8 +437,8 @@
       "format": "tar.gz",
       "path": "dist/archives/wordpress-centric-high-seo-optimized-blogwriting-skill-v2.tar.gz",
       "file_name": "wordpress-centric-high-seo-optimized-blogwriting-skill-v2.tar.gz",
-      "size_bytes": 30743,
-      "sha256": "44f8a8e81e7ec66e358320d8e367055cc4a15acf0c7b0e1c578824688e4c2ec0",
+      "size_bytes": 40988,
+      "sha256": "3cba264dae6357b593f5b413f2210c660333b1388e7e03d9f9f0b54ed45e11a5",
       "signature": {
         "status": "unsigned",
         "path": null,
@@ -451,7 +451,7 @@
   "archive_checksums": {
     "path": "dist/archives/wordpress-centric-high-seo-optimized-blogwriting-skill-v2.checksums.txt",
     "file_name": "wordpress-centric-high-seo-optimized-blogwriting-skill-v2.checksums.txt",
-    "sha256": "3e29c92bd0f73ae72f68c4898884fd3be738a92ba1aaa0c41ec71f01538f823b",
+    "sha256": "fcb6eaf403917101c51ff444b8734d3c8d755f8c3bb0aae8b130ed0e35b10799",
     "signature": {
       "status": "unsigned",
       "path": null,
@@ -461,7 +461,7 @@
     }
   },
   "checksums": {
-    "entrypoint_sha256": "1300dfe45264d8abd79bc86a1d01a1cc6a418414d9eeb8a626c72c5ae478c1a8",
-    "package_sha256": "8d314e9b2b03c56b30a8a09ddf033df4986957adc758e25c132ca00bf0e4ce88"
+    "entrypoint_sha256": "bb3f8ac2b627ee6145381b4f11ff53be681d6522661d90ddbf3a783ec1bf4344",
+    "package_sha256": "9efb7cfd41449de7820ca10f629f2000770d4ca7cba2a4fa639490af576374ed"
   }
 }

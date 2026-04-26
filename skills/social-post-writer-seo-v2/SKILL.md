@@ -3,14 +3,14 @@ name: social-post-writer-seo-v2
 description: "Social Media Strategist and Content Writer workflow skill. Use this skill when the user needs Social Media Strategist and Content Writer. Creates clear, engaging social media posts for Instagram, LinkedIn, and Facebook and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off."
 version: "0.0.1"
 category: content-media
-tags: ["social-post-writer-seo-v2", "social-post-writer-seo", "social", "media", "strategist", "and", "content", "writer"]
-complexity: beginner
+tags: ["social-media", "marketing", "content-writing", "seo", "growth", "social-post-writer-seo-v2", "social-post-writer-seo", "social"]
+complexity: intermediate
 risk: safe
-tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
+tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "WHOISABHISHEKADHIKARI"
 date_added: "2026-04-25"
-date_updated: "2026-04-25"
+date_updated: "2026-04-26"
 ---
 
 # Social Media Strategist and Content Writer
@@ -25,7 +25,7 @@ This intake keeps the copied upstream files intact and uses the `external_source
 
 # Social Media Strategist and Content Writer
 
-Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: Limitations.
+Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: How It Works, Prompt Template, Limitations, Security & Safety Notes, Common Pitfalls.
 
 ## When to Use This Skill
 
@@ -33,10 +33,10 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 - Use this skill when you need a clear, engaging, and accurate social media post for Instagram, LinkedIn, or Facebook.
 - Use it to transform topics and keywords into audience-focused content with platform-native structure.
-- Topic: {Insert Topic}
-- Primary Keyword: {Insert Keyword}
-- Target Audience: {Global audience or specific group}
-- Platform: {Instagram or LinkedIn or Facebook}
+- Use when the request clearly matches the imported source intent: Social Media Strategist and Content Writer. Creates clear, engaging social media posts for Instagram, LinkedIn, and Facebook.
+- Use when the operator should preserve upstream workflow detail instead of rewriting the process from scratch.
+- Use when provenance needs to stay visible in the answer, PR, or review packet.
+- Use when copied upstream references, examples, or scripts materially improve the answer.
 
 ## Operating Table
 
@@ -62,11 +62,20 @@ This workflow is intentionally editorial and operational at the same time. It ke
 
 ### Imported Workflow Notes
 
-#### Imported: Limitations
+#### Imported: Overview
 
-- This skill does not generate image or video assets.
-- It requires manual copy-pasting to the respective social media platforms.
-- It cannot schedule or post content directly to social media accounts.
+This skill is designed to help users create high-quality, engaging, and platform-optimized social media content. It focuses on clarity, readability, and platform-specific nuances for Instagram, LinkedIn, and Facebook.
+
+#### Imported: How It Works
+
+### Step 1: Input Gathering
+The skill starts by collecting essential details like the topic, primary keyword, target audience, and the specific social media platform.
+
+### Step 2: Content Generation
+Based on the inputs, it follows strict writing rules to ensure simplicity, factual accuracy, and engagement. It structures the post with a hook, context, value, and a call to action.
+
+### Step 3: Platform Optimization
+The output is tailored for the selected platform, adjusting emoji density and tone (e.g., more professional for LinkedIn, more visual/casual for Instagram).
 
 ## Examples
 
@@ -115,26 +124,33 @@ Review @social-post-writer-seo-v2 using the copied upstream files plus provenanc
 
 **Output**:
 ☕️ Your morning coffee just got a clean energy upgrade!
-Did you know commuters throw away billions of cups annually?
-The SolMug keeps your brew hot using only sunlight.
-A small change for your bag, a big win for the planet.
+Meet SolMug, a solar powered coffee mug concept for busy commutes.
+It is designed to keep your drink warm without adding another charger to your bag.
+A small change for your morning routine, with sustainability in mind.
 Check the link in bio to pre-order!
 #ecofriendly #coffee #sustainability #tech #morningroutine
-
----
 
 ## Best Practices
 
 Treat the generated public skill as a reviewable packaging layer around the upstream repository. The goal is to keep provenance explicit and load only the copied source material that materially improves execution.
 
+- ✅ Always include a "Hook" in the first line to capture attention.
+- ✅ Use line breaks frequently to make the post scannable on mobile.
+- ✅ Tailor the tone: LinkedIn should be more professional, Instagram more visual/energetic.
+- ❌ Avoid using more than 10 hashtags; it can look like spam.
+- ❌ Never guess facts; if info isn't provided, stick to general industry knowledge.
 - Keep the imported skill grounded in the upstream repository; do not invent steps that the source material cannot support.
 - Prefer the smallest useful set of support files so the workflow stays auditable and fast to review.
-- Keep provenance, source commit, and imported file paths visible in notes and PR descriptions.
-- Point directly at the copied upstream files that justify the workflow instead of relying on generic review boilerplate.
-- Treat generated examples as scaffolding; adapt them to the concrete task before execution.
-- Route to a stronger native skill when architecture, debugging, design, or security concerns become dominant.
 
+### Imported Operating Notes
 
+#### Imported: Best Practices
+
+- ✅ Always include a "Hook" in the first line to capture attention.
+- ✅ Use line breaks frequently to make the post scannable on mobile.
+- ✅ Tailor the tone: LinkedIn should be more professional, Instagram more visual/energetic.
+- ❌ Avoid using more than 10 hashtags; it can look like spam.
+- ❌ Never guess facts; if info isn't provided, stick to general industry knowledge.
 
 ## Troubleshooting
 
@@ -157,10 +173,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@ab-test-setup-v4` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@analytics-tracking-v4` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@app-store-optimization-v4` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@content-creator-v4` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -173,3 +189,62 @@ Use this support matrix and the linked files below as the operator packet for th
 | `scripts` | upstream helper scripts that change execution or validation | `scripts/n/a` |
 | `agents` | routing or delegation notes that are genuinely part of the imported package | `agents/n/a` |
 | `assets` | supporting assets or schemas copied from the source package | `assets/n/a` |
+
+
+
+### Imported Reference Notes
+
+#### Imported: Prompt Template
+
+Your task is to create a clear, engaging, and accurate social media post that works for a global audience on platforms like Instagram, LinkedIn, and Facebook.
+
+### INPUT:
+- **Topic**: {Insert Topic}
+- **Primary Keyword**: {Insert Keyword}
+- **Target Audience**: {Global audience or specific group}
+- **Platform**: {Instagram or LinkedIn or Facebook}
+- **Tone**: {Professional or simple or storytelling or insightful}
+- **Region Focus**: {Global or specific region if needed}
+- **Brand**: {Optional name}
+
+### GOAL:
+Create a post that is easy to understand, useful, and encourages engagement.
+
+### WRITING RULES:
+- Use simple and clear English
+- Avoid slang and complex words
+- Avoid assumptions that are not verified
+- Do not create or guess facts
+- Only include information that is general, widely known, or provided in the input
+- Keep sentences short
+- Use line breaks for readability
+- Do not use long paragraph
+- Use emojis correctly for each platform (fewer for LinkedIn, more for Instagram)
+- Make it about the reader, not just the brand
+- Provide a clear call to action at the end
+- Include 5-8 relevant hashtags
+
+### STRUCTURE:
+1. **Hook**: One strong line.
+2. **Main Context**: Simple and clear.
+3. **Value/Insight**: Useful information.
+4. **Call to Action**: Check the comment section or follow.
+5. **Hashtags**: 5-8 relevant tags.
+
+#### Imported: Limitations
+
+- This skill does not generate image or video assets.
+- It requires manual copy-pasting to the respective social media platforms.
+- It cannot schedule or post content directly to social media accounts.
+
+#### Imported: Security & Safety Notes
+
+- This skill only generates text content and does not interact with system APIs or run shell commands.
+- Ensure any links included in the generated content are verified by the user before posting.
+
+#### Imported: Common Pitfalls
+
+- **Problem:** Post feels too "salesy".
+  **Solution:** Focus more on the "Value/Insight" section to provide helpful info before the CTA.
+- **Problem:** Low engagement on LinkedIn.
+  **Solution:** Reduce emoji count and ensure the "Hook" addresses a professional pain point.

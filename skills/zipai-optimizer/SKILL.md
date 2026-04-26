@@ -1,6 +1,6 @@
 ---
 name: zipai-optimizer
-description: "ZipAI: Context & Token Optimizer workflow skill. Use this skill when the user needs Adaptive token optimizer: intelligent filtering, surgical output, ambiguity-first, context-window-aware, VCS-aware and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off."
+description: "ZipAI: Context & Token Optimizer workflow skill. Use this skill when the user needs Adaptive token optimizer: intelligent filtering, surgical output, ambiguity-first, context-window-aware, VCS-aware, MCP-aware and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off."
 version: "0.0.1"
 category: ai-agents
 tags: ["zipai-optimizer", "adaptive", "token", "optimizer", "intelligent", "filtering", "surgical", "output"]
@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-04-26"
 ---
 
 # ZipAI: Context & Token Optimizer
@@ -23,15 +23,15 @@ Use it when the operator needs the upstream workflow, support files, and reposit
 
 This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
-# ZipAI: Context & Token Optimizer <rules> <rule id="1" name="Adaptive Verbosity"> <instruction> - Ops/Fixes: technical content only. No filler, no echo, no meta. - Architecture/Analysis: full reasoning authorized and encouraged. - Direct questions: one paragraph max unless exhaustive enumeration explicitly required. - Long sessions: never re-summarize prior context. Assume developer retains full thread memory. </instruction> </rule> <rule id="2" name="Ambiguity-First Execution"> <instruction> Before producing output on any request with 2+ divergent interpretations: ask exactly ONE targeted question. Never ask about obvious intent. Never stack multiple questions. When uncertain between a minor variant and a full rewrite: default to minimal intervention and state the assumption made. </instruction> </rule> <rule id="3" name="Intelligent Input Filtering"> <instruction> Classify before ingesting — never read raw: - Builds/Installs (pip, npm, make, docker): grep -A 10 -B 10 -iE "(error|fail|warn|fatal)" - Errors/Stacktraces (pytest, crashes, stderr): grep -A 10 -B 5 -iE "(error|exception|traceback|failed|assert)" - Large source files (>300 lines): locate with grep -n "def \|class ", read with viewrange. - JSON/YAML payloads: jq 'keys' or head -n 40 before committing to full read. - Files already read this session: use cached in-context version. Do not re-read unless explicitly modified. - VCS Operations (git, gh): - git log → | head -n 20 unless a specific range is requested. - git diff >50 lines → | grep -E "^(\+\+\+|---|@@|\+|-)" to extract hunks only without artificial truncation. - git status → read as-is. - git pull/push with conflicts/errors → grep -A 5 -B 2 "CONFLICT\|error\|rejected\|denied". - git log --graph → | head -n 40. - Context window pressure (session >80% capacity): summarize resolved sub-problems into a single anchor block, drop their raw detail from active reasoning. </instruction> </rule> <rule id="4" name="Surgical Output"> <instruction> - Single-line fix → strreplace only, no reprint. - Multi-location changes in one file → batch strreplace calls in dependency order within single response. - Cross-file refactor → one file per response turn, labeled, in dependency order (leaf dependencies first). - Complex structural diffs → unified diff format (--- a/file / +++ b/file) when strreplace would be ambiguous. - Never silently bundle unrelated changes. </instruction> </rule> <rule id="5" name="Context Pruning & Response Structure"> <instruction> - Never restate the user's input. - Lead with conclusion, follow with reasoning (inverted pyramid). - Distinguish when relevant: [FACT] (verified) vs [ASSUMPTION] (inferred) vs [RISK] (potential side effect). - If a response requires more than 3 sections, provide a structured summary at the top. </instruction> </rule> </rules> <negativeconstraints> - No filler: "Here is", "I understand", "Let me", "Great question", "Certainly", "Of course", "Happy to help". - No blind truncation of stacktraces or error logs. - No full-file reads when targeted grep/viewrange suffices. - No re-reading files already in context. - No multi-question clarification dumps. - No silent bundling of unrelated changes. - No full git diff ingestion on large changesets — extract hunks only. - No git log beyond 20 entries unless a specific range is requested. </negative_constraints>
+# ZipAI: Context & Token Optimizer
 
-Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: Limitations.
+Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: Negative Constraints, Limitations.
 
 ## When to Use This Skill
 
 Use this section as the trigger filter. It should make the activation boundary explicit before the operator loads files, runs commands, or opens a pull request.
 
-- Use when the request clearly matches the imported source intent: Adaptive token optimizer: intelligent filtering, surgical output, ambiguity-first, context-window-aware, VCS-aware.
+- Use when the request clearly matches the imported source intent: Adaptive token optimizer: intelligent filtering, surgical output, ambiguity-first, context-window-aware, VCS-aware, MCP-aware.
 - Use when the operator should preserve upstream workflow detail instead of rewriting the process from scratch.
 - Use when provenance needs to stay visible in the answer, PR, or review packet.
 - Use when copied upstream references, examples, or scripts materially improve the answer.
@@ -61,11 +61,21 @@ This workflow is intentionally editorial and operational at the same time. It ke
 
 ### Imported Workflow Notes
 
-#### Imported: Limitations
+#### Imported: Negative Constraints
 
-- **Ideation Constrained:** Do not use this protocol during pure creative brainstorming or open-ended design phases where exhaustive exploration and maximum token verbosity are required.
-- **Log Blindness Risk:** Intelligent truncation via `grep` and `tail` may occasionally hide underlying root causes located outside the captured error boundaries.
-- **Context Overshadowing:** In extremely long sessions, aggressive anchor summarization might cause the agent to lose track of microscopic variable states dropped during context pruning.
+- No filler: "Here is", "I understand", "Let me", "Great question", "Certainly", "Of course", "Happy to help".
+- No blind truncation of stacktraces or error logs.
+- No full-file reads when targeted `grep`/`view_range` suffices.
+- No re-reading files already in context.
+- No multi-question clarification dumps.
+- No silent bundling of unrelated changes.
+- No full git diff ingestion on large changesets — extract hunks only.
+- No git log beyond 20 entries unless a specific range is requested.
+- No full MCP object inspection when field-level access suffices.
+- No MCP mutations without prior read of current resource state.
+- No SHA reuse across sessions for file updates.
+
+---
 
 ## Examples
 
@@ -107,14 +117,80 @@ Review @zipai-optimizer using the copied upstream files plus provenance, then su
 
 Treat the generated public skill as a reviewable packaging layer around the upstream repository. The goal is to keep provenance explicit and load only the copied source material that materially improves execution.
 
-- Keep the imported skill grounded in the upstream repository; do not invent steps that the source material cannot support.
-- Prefer the smallest useful set of support files so the workflow stays auditable and fast to review.
-- Keep provenance, source commit, and imported file paths visible in notes and PR descriptions.
-- Point directly at the copied upstream files that justify the workflow instead of relying on generic review boilerplate.
-- Treat generated examples as scaffolding; adapt them to the concrete task before execution.
-- Route to a stronger native skill when architecture, debugging, design, or security concerns become dominant.
+- Ops/Fixes: technical content only. No filler, no echo, no meta.
+- Architecture/Analysis: full reasoning authorized and encouraged.
+- Direct questions: one paragraph max unless exhaustive enumeration explicitly required.
+- Long sessions: never re-summarize prior context. Assume developer retains full thread memory.
+- Review mode (code review, PR analysis): structured output with labeled sections ([ISSUE], [SUGGESTION], [NITPICK]) is authorized and preferred.
+- Builds/Installs (pip, npm, make, docker): grep -A 10 -B 10 -iE "(error|fail|warn|fatal)"
+- Errors/Stacktraces (pytest, crashes, stderr): grep -A 10 -B 5 -iE "(error|exception|traceback|failed|assert)"
 
+### Imported Operating Notes
 
+#### Imported: Rules
+
+### Rule 1 — Adaptive Verbosity
+
+- **Ops/Fixes:** technical content only. No filler, no echo, no meta.
+- **Architecture/Analysis:** full reasoning authorized and encouraged.
+- **Direct questions:** one paragraph max unless exhaustive enumeration explicitly required.
+- **Long sessions:** never re-summarize prior context. Assume developer retains full thread memory.
+- **Review mode (code review, PR analysis):** structured output with labeled sections (`[ISSUE]`, `[SUGGESTION]`, `[NITPICK]`) is authorized and preferred.
+
+### Rule 2 — Ambiguity-First Execution
+
+Before producing output on any request with 2+ divergent interpretations: ask exactly ONE targeted question.
+Never ask about obvious intent. Never stack multiple questions.
+When uncertain between a minor variant and a full rewrite: default to minimal intervention and state the assumption made.
+When the scope is ambiguous (file vs. project vs. repo): ask once, scoped to the narrowest useful boundary.
+
+### Rule 3 — Intelligent Input Filtering
+
+Classify before ingesting — never read raw:
+
+- **Builds/Installs (pip, npm, make, docker):** `grep -A 10 -B 10 -iE "(error|fail|warn|fatal)"`
+- **Errors/Stacktraces (pytest, crashes, stderr):** `grep -A 10 -B 5 -iE "(error|exception|traceback|failed|assert)"`
+- **Large source files (>300 lines):** locate with `grep -n "def \|class "`, read with `view_range`.
+- **Medium source files (100–300 lines):** `head -n 60` + targeted `grep` before full read.
+- **JSON/YAML payloads:** `jq 'keys'` or `head -n 40` before committing to full read.
+- **Files already read this session:** use cached in-context version. Do not re-read unless explicitly modified.
+- **VCS Operations (git, gh):**
+  - `git log` → `| head -n 20` unless a specific range is requested.
+  - `git diff` >50 lines → `| grep -E "^(\+\+\+|---|@@|\+|-)"` to extract hunks only without artificial truncation.
+  - `git status` → read as-is.
+  - `git pull/push` with conflicts/errors → `grep -A 5 -B 2 "CONFLICT\|error\|rejected\|denied"`.
+  - `git log --graph` → `| head -n 40`.
+  - `git blame` on targeted lines only — never full file.
+- **MCP tool responses:** treat as structured data. Use field-level access (`result.items`, `result.pageInfo`) rather than full-object inspection. Paginate only when the target entity is not found on the first page.
+- **Context window pressure (session >80% capacity):** summarize resolved sub-problems into a single anchor block, drop their raw detail from active reasoning.
+
+### Rule 4 — Surgical Output
+
+- Single-line fix → `str_replace` only, no reprint.
+- Multi-location changes in one file → batch `str_replace` calls in dependency order within single response.
+- Cross-file refactor → one file per response turn, labeled, in dependency order (leaf dependencies first).
+- Complex structural diffs → unified diff format (`--- a/file / +++ b/file`) when `str_replace` would be ambiguous.
+- Never silently bundle unrelated changes.
+- **Regression guard:** when modifying a function or module, explicitly check and mention if existing tests cover the changed path. If none exist, flag as `[RISK: untested path]`.
+
+### Rule 5 — Context Pruning & Response Structure
+
+- Never restate the user's input.
+- Lead with conclusion, follow with reasoning (inverted pyramid).
+- Distinguish when relevant: `[FACT]` (verified) vs `[ASSUMPTION]` (inferred) vs `[RISK]` (potential side effect) vs `[DEPRECATED]` (known obsolete pattern).
+- If a response requires more than 3 sections, provide a structured summary at the top.
+- In multi-step tasks, emit a minimal progress anchor after each completed step: `✓ Step N done — <one-line result>`.
+
+### Rule 6 — MCP-Aware Tool Usage
+
+- **Resolve IDs before acting:** never assume resource IDs (user, repo, issue, PR). Always resolve via lookup first.
+- **Prefer read-before-write:** fetch current state of a resource before any mutating call.
+- **Paginate lazily:** stop pagination as soon as the target entity is found; do not exhaust all pages by default.
+- **Batch when possible:** prefer single multi-file push over sequential single-file commits.
+- **Treat MCP errors as blocking:** surface error detail immediately, do not silently retry more than once.
+- **SHA discipline:** always retrieve current file SHA before `create_or_update_file`. Never hardcode or cache SHAs across sessions.
+
+---
 
 ## Troubleshooting
 
@@ -137,10 +213,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@ab-test-setup-v4` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@analytics-tracking-v4` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@app-store-optimization-v4` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@content-creator-v4` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -153,3 +229,14 @@ Use this support matrix and the linked files below as the operator packet for th
 | `scripts` | upstream helper scripts that change execution or validation | `scripts/n/a` |
 | `agents` | routing or delegation notes that are genuinely part of the imported package | `agents/n/a` |
 | `assets` | supporting assets or schemas copied from the source package | `assets/n/a` |
+
+
+
+### Imported Reference Notes
+
+#### Imported: Limitations
+
+- **Ideation Constrained:** Do not use this protocol during pure creative brainstorming or open-ended design phases where exhaustive exploration and maximum token verbosity are required.
+- **Log Blindness Risk:** Intelligent truncation via `grep` and `tail` may occasionally hide underlying root causes located outside the captured error boundaries.
+- **Context Overshadowing:** In extremely long sessions, aggressive anchor summarization might cause the agent to lose track of microscopic variable states dropped during context pruning.
+- **MCP Pagination Truncation:** Lazy pagination stops early on first match — may miss duplicate entity names in large datasets. Override by specifying `paginate:full` explicitly in the request.
