@@ -7,10 +7,10 @@ This directory contains an Omni-maintained enhanced derivative of a native upstr
 - Upstream path: `skills/zipai-optimizer-v2/`
 - Upstream author: `sickn33`
 - Upstream source field: `community`
-- Source PR: `#247`
-- Source PR author: `dashboard`
+- Source PR: `#258`
+- Source PR author: `anonymous`
 - Source PR head repository: `diegosouzapw/awesome-omni-skills`
-- Source PR head SHA: `477953aa833cb260e47e4fb725b630d7087ef946`
+- Source PR head SHA: `d0604ae313c1f1052c4ac2a9008c82a1499d6958`
 
 The native upstream skill remains credited to its original contributor and source context.
 The derivative under `skills_omni/` is maintained by `Omni Skills Team` as a separate Omni-authored curation surface.
