@@ -1,0 +1,479 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "ddd-tactical-patterns-v3",
+  "slug": "ddd-tactical-patterns-v3",
+  "display_name": "DDD Tactical Patterns",
+  "description": "DDD Tactical Patterns workflow skill. Use this skill when the user needs Apply DDD tactical patterns in code using entities, value objects, aggregates, repositories, and domain events with explicit invariants and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "development",
+  "raw_category": "development",
+  "taxonomy": {
+    "raw_category": "development",
+    "canonical_category": "development",
+    "inferred_category": "development",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "ddd",
+    "tactical",
+    "aggregates",
+    "value-objects",
+    "domain-events",
+    "ddd-tactical-patterns-v3",
+    "ddd-tactical-patterns",
+    "apply"
+  ],
+  "complexity": "beginner",
+  "risk": "caution",
+  "source": "community",
+  "author": "sickn33",
+  "family": {
+    "id": "ddd-tactical-patterns",
+    "name": "DDD Tactical Patterns"
+  },
+  "variant": {
+    "id": "v3",
+    "label": "Version 3",
+    "is_default": false
+  },
+  "provenance": {
+    "source_type": "community",
+    "source_repo": "",
+    "maintainer": "sickn33",
+    "root_path": "skills/ddd-tactical-patterns-v3",
+    "derived_from": "",
+    "replaces": [
+      "ddd-tactical-patterns"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-26",
+    "updated": "2026-04-26"
+  },
+  "entrypoint": "skills/ddd-tactical-patterns-v3/SKILL.md",
+  "paths": {
+    "root": "skills/ddd-tactical-patterns-v3",
+    "manifest": "dist/manifests/ddd-tactical-patterns-v3.json",
+    "metadata": "skills/ddd-tactical-patterns-v3/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "references"
+    ],
+    "artifacts_count": 4,
+    "references_count": 1,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 99,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 15,
+        "workflow_section_length": 1353,
+        "when_to_use_section_length": 483,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1324,
+        "resources_items_count": 2,
+        "resources_section_length": 882,
+        "examples_section_length": 1746,
+        "examples_code_blocks_count": 10,
+        "related_skills_section_length": 555,
+        "decision_assets_count": 12,
+        "table_count": 14,
+        "linked_resource_families_count": 1,
+        "linked_resource_families": [
+          "references"
+        ],
+        "support_links_count": 2,
+        "support_files_count": 1,
+        "references_files_count": 1,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 8,
+        "body_density": 7.49,
+        "real_support_files_count": 1,
+        "domain_specific_support_files_count": 1,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 10,
+        "domain_specificity_score": 10,
+        "token_efficiency_score": 10,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 1,
+            "real_files_count": 1,
+            "domain_specific_files_count": 1,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "scripts": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "examples": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 95,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 9
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 3,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 8945,
+    "content_length": 9704,
+    "body_lines": 168,
+    "word_count": 1258,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 1,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 2,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 15,
+      "workflow_section_length": 1353,
+      "when_to_use_section_length": 483,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1324,
+      "resources_items_count": 2,
+      "resources_section_length": 882,
+      "examples_section_length": 1746,
+      "examples_code_blocks_count": 10,
+      "related_skills_section_length": 555,
+      "decision_assets_count": 12,
+      "table_count": 14,
+      "linked_resource_families_count": 1,
+      "linked_resource_families": [
+        "references"
+      ],
+      "support_links_count": 2,
+      "support_files_count": 1,
+      "references_files_count": 1,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 8,
+      "body_density": 7.49,
+      "real_support_files_count": 1,
+      "domain_specific_support_files_count": 1,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 10,
+      "domain_specificity_score": 10,
+      "token_efficiency_score": 10,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 1,
+          "real_files_count": 1,
+          "domain_specific_files_count": 1,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "scripts": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "examples": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills/ddd-tactical-patterns-v3/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 775,
+      "sha256": "39b374a38acf42a85b57f17f49d0a6d0ab9a2a49e25578cb477de770032d333a"
+    },
+    {
+      "path": "skills/ddd-tactical-patterns-v3/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 9704,
+      "sha256": "58562ed4c0b9a0fe9b6aa08c4418ec5112986209b3f5a8a37958ad4784a0a775"
+    },
+    {
+      "path": "skills/ddd-tactical-patterns-v3/metadata.json",
+      "kind": "support",
+      "size_bytes": 11957,
+      "sha256": "b72f7537ab7c3a3001c3e006a53739d14530c4d47f8e86b370578363d61e8376"
+    },
+    {
+      "path": "skills/ddd-tactical-patterns-v3/references/tactical-checklist.md",
+      "kind": "reference",
+      "size_bytes": 611,
+      "sha256": "c6fefa0aab72bea6a2c58343d948b2f2af74f68e63e8d1600f907a50eb3ca765"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/ddd-tactical-patterns-v3.zip",
+      "file_name": "ddd-tactical-patterns-v3.zip",
+      "size_bytes": 23697,
+      "sha256": "71ab967f61ce0667be06493a3a6cbf2f5a41ac688e35dd2dade8c7efeda2ee47",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/ddd-tactical-patterns-v3.tar.gz",
+      "file_name": "ddd-tactical-patterns-v3.tar.gz",
+      "size_bytes": 30743,
+      "sha256": "ed44989e2df35a73cf1dfa47cd5b0ce33cb1b33909b1dd142c50b22301758179",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/ddd-tactical-patterns-v3.checksums.txt",
+    "file_name": "ddd-tactical-patterns-v3.checksums.txt",
+    "sha256": "c3eebdd8bd263ff595ba2344ff36f4ab00dc1a5d22374e7c34762babc4e183c0",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "58562ed4c0b9a0fe9b6aa08c4418ec5112986209b3f5a8a37958ad4784a0a775",
+    "package_sha256": "e1d37fc49e539334748cc63b79adff1e5d0e002f2e84335ea6e026653aff49ac"
+  }
+}
