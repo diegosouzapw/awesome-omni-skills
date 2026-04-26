@@ -7,8 +7,8 @@ This directory contains an Omni-maintained enhanced derivative of a native upstr
 - Upstream path: `skills/wordpress-centric-high-seo-optimized-blogwriting-skill-v2/`
 - Upstream author: `Whoisabhishekadhikari`
 - Upstream source field: `community`
-- Source PR: `#245`
-- Source PR author: `anonymous`
+- Source PR: `#243`
+- Source PR author: `dashboard`
 - Source PR head repository: `diegosouzapw/awesome-omni-skills`
 - Source PR head SHA: `59c910f364ee7d716890618a6eee877689b69af4`
 
