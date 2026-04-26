@@ -10,7 +10,7 @@ tools: ["cursor", "codex-cli", "claude-code", "gemini-cli", "opencode"]
 source: community
 author: "monte-carlo-data"
 date_added: "2026-04-25"
-date_updated: "2026-04-25"
+date_updated: "2026-04-26"
 ---
 
 # Setup
@@ -23,7 +23,7 @@ Use it when the operator needs the upstream workflow, support files, and reposit
 
 This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
-> Tip: This skill works well with Sonnet. Run /model sonnet before invoking for faster generation. Generate a SQL Notebook with validation queries for dbt changes. Arguments: $ARGUMENTS Parse the arguments: - Target (required): first argument — a GitHub PR URL or local dbt repo path - MC Base URL (optional): --mc-base-url <URL> — defaults to https://getmontecarlo.com - Models (optional): --models <model1,model2,...> — comma-separated list of model filenames (without .sql extension) to generate queries for. Only these models will be included. By default, all changed models are included up to a maximum of 10. --- # Setup Prerequisites: - gh (GitHub CLI) — required for PR mode. Must be authenticated (gh auth status). - python3 — required for helper scripts. - pyyaml — install with pip3 install pyyaml (or pip install pyyaml, uv pip install pyyaml, etc.) Note: Generated SQL uses ANSI-compatible syntax that works across Snowflake, BigQuery, Redshift, and Athena. Minor adjustments may be needed for specific warehouse quirks. This skill includes two helper scripts in ${CLAUDEPLUGINROOT}/skills/monte-carlo-validation-notebook/scripts/: - resolvedbtschema.py - Resolves dbt model output schemas from dbtproject.yml routing rules and model config overrides. - generatenotebookurl.py - Encodes notebook YAML into a base64 import URL and opens it in the browser. # Mode Detection Auto-detect mode from the target argument: - If target looks like a URL (contains :// or github.com) -> PR mode - If target is a path (., /path/to/repo, relative path) -> Local mode --- # Context This command generates a SQL Notebook containing validation queries for dbt changes. The notebook can be opened in the MC Bridge SQL Notebook interface for interactive validation. The output is an import URL that opens directly in the notebook interface: `` <MCBASEURL>/notebooks/import#<base64-encoded-yaml> ` Key Features: - Database Parameters: Two text parameters (proddb and devdb) for selecting databases - Schema Inference: Automatically infers schema per model from dbtproject.yml and model configs - Single-table queries: Basic validation queries using {{proddb}}.<SCHEMA>.<TABLE> - Comparison queries: Before/after queries comparing {{proddb}} vs {{devdb}} - Flexible usage: Users can set both parameters to the same database for single-database analysis # Notebook YAML Spec Reference Key structure: `yaml version: 1 metadata: id: string # kebab-case + random suffix name: string # display name createdat: string # ISO 8601 updatedat: string # ISO 8601 defaultcontext: # optional database/schema context database: string schema: string cells: - id: string type: sql | markdown | parameter content: string # SQL, markdown, or parameter config (JSON) display_type: table | bar | timeseries ``
+> Tip: This skill works well with Sonnet. Run /model sonnet before invoking for faster generation. Generate a SQL Notebook with validation queries for dbt changes. Arguments: $ARGUMENTS
 
 Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: Parameter Cell Spec, Phase 1: Get Changed Files, Phase 2: Parse Changed Models, Phase 3: Generate Validation Queries, Phase 4: Build Notebook YAML, Phase 5: Generate Import URL.
 
@@ -31,11 +31,12 @@ Imported source sections that did not map cleanly to the public headings are sti
 
 Use this section as the trigger filter. It should make the activation boundary explicit before the operator loads files, runs commands, or opens a pull request.
 
-- Use when the request clearly matches the imported source intent: Generates SQL validation notebooks for dbt PR changes with before/after comparison queries.
-- Use when the operator should preserve upstream workflow detail instead of rewriting the process from scratch.
-- Use when provenance needs to stay visible in the answer, PR, or review packet.
-- Use when copied upstream references, examples, or scripts materially improve the answer.
-- Use when the workflow should remain reviewable in the public intake repo before the private enhancer takes over.
+- Target (required): first argument — a GitHub PR URL or local dbt repo path
+- MC Base URL (optional): --mc-base-url <URL> — defaults to https://getmontecarlo.com
+- Models (optional): --models <model1,model2,...> — comma-separated list of model filenames (without .sql extension) to generate queries for. Only these models will be included. By default, all changed models are included up to a maximum of 10.
+- gh (GitHub CLI) — required for PR mode. Must be authenticated (gh auth status).
+- python3 — required for helper scripts.
+- pyyaml — install with pip3 install pyyaml (or pip install pyyaml, uv pip install pyyaml, etc.)
 
 ## Operating Table
 
@@ -191,10 +192,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@changelog-automation-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@commit-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@create-pr-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@distributed-tracing-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

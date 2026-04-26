@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-04-26"
 ---
 
 # MiniMax CLI — Agent Skill Guide
@@ -31,6 +31,7 @@ Imported source sections that did not map cleanly to the public headings are sti
 
 Use this section as the trigger filter. It should make the activation boundary explicit before the operator loads files, runs commands, or opens a pull request.
 
+- Use this skill when the user wants to generate or inspect text, images, video, speech, music, web-search results, or MiniMax API resources through the mmx terminal CLI.
 - Use when the request clearly matches the imported source intent: Use mmx to generate text, images, video, speech, and music via the MiniMax AI platform. Use when the user wants to create media content, chat with MiniMax models, perform web search, or manage MiniMax API resources....
 - Use when the operator should preserve upstream workflow detail instead of rewriting the process from scratch.
 - Use when provenance needs to stay visible in the answer, PR, or review packet.
@@ -263,10 +264,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@changelog-automation-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@commit-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@create-pr-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@distributed-tracing-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
