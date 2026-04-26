@@ -1,0 +1,216 @@
+---
+name: "ddd-tactical-patterns-v3"
+description: "DDD Tactical Patterns workflow skill. Use this skill when the user needs Apply DDD tactical patterns in code using entities, value objects, aggregates, repositories, and domain events with explicit invariants and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off."
+version: "0.0.1"
+category: "development"
+tags:
+  - "ddd"
+  - "tactical"
+  - "aggregates"
+  - "value-objects"
+  - "domain-events"
+  - "ddd-tactical-patterns-v3"
+  - "ddd-tactical-patterns"
+  - "apply"
+  - "omni-enhanced"
+complexity: "beginner"
+risk: "caution"
+tools:
+  - "codex-cli"
+  - "claude-code"
+  - "cursor"
+  - "gemini-cli"
+  - "opencode"
+source: "omni-team"
+author: "Omni Skills Team"
+date_added: "2026-04-26"
+date_updated: "2026-04-26"
+source_type: "omni-curated"
+maintainer: "Omni Skills Team"
+family_id: "ddd-tactical-patterns-v3"
+family_name: "DDD Tactical Patterns"
+variant_id: "omni"
+variant_label: "Omni Curated"
+is_default_variant: true
+derived_from: "skills/ddd-tactical-patterns-v3"
+upstream_skill: "skills/ddd-tactical-patterns-v3"
+upstream_author: "sickn33"
+upstream_source: "community"
+upstream_pr: "253"
+upstream_head_repo: "diegosouzapw/awesome-omni-skills"
+upstream_head_sha: "9bde1c99ef94d5af2b63ec62a7534e51f683b4f7"
+curation_surface: "skills_omni"
+enhanced_origin: "omni-skills-private"
+source_repo: "diegosouzapw/awesome-omni-skills"
+replaces:
+  - "ddd-tactical-patterns-v3"
+---
+
+# DDD Tactical Patterns
+
+## Overview
+
+This public intake copy packages `plugins/antigravity-bundle-ddd-evented-architecture/skills/ddd-tactical-patterns` from `https://github.com/sickn33/antigravity-awesome-skills` into the native Omni Skills editorial shape without hiding its origin.
+
+Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
+
+This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+
+# DDD Tactical Patterns
+
+Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: Limitations.
+
+## When to Use This Skill
+
+Use this section as the trigger filter. It should make the activation boundary explicit before the operator loads files, runs commands, or opens a pull request.
+
+- Translating domain rules into code structures.
+- Designing aggregate boundaries and invariants.
+- Refactoring an anemic model into behavior-rich domain objects.
+- Defining repository contracts and domain event boundaries.
+- You are still defining strategic boundaries.
+- The task is only API documentation or UI layout.
+
+## Operating Table
+
+| Situation | Start here | Why it matters |
+| --- | --- | --- |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
+| Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
+| Workflow execution | `references/tactical-checklist.md` | Starts with the smallest copied file that materially changes execution |
+| Supporting context | `references/tactical-checklist.md` | Adds the next most relevant copied source file without loading the entire package |
+| Handoff decision | `## Related Skills` | Helps the operator switch to a stronger native skill when the task drifts |
+
+## Workflow
+
+This workflow is intentionally editorial and operational at the same time. It keeps the imported source useful to the operator while still satisfying the public intake standards that feed the downstream enhancer flow.
+
+1. Identify invariants first and design aggregates around them.
+2. Model immutable value objects for validated concepts.
+3. Keep domain behavior in domain objects, not controllers.
+4. Emit domain events for meaningful state transitions.
+5. Keep repositories at aggregate root boundaries.
+6. Confirm the user goal, the scope of the imported workflow, and whether this skill is still the right router for the task.
+7. Read the overview and provenance files before loading any copied upstream support files.
+
+### Imported Workflow Notes
+
+#### Imported: Instructions
+
+1. Identify invariants first and design aggregates around them.
+2. Model immutable value objects for validated concepts.
+3. Keep domain behavior in domain objects, not controllers.
+4. Emit domain events for meaningful state transitions.
+5. Keep repositories at aggregate root boundaries.
+
+If detailed checklists are needed, open `references/tactical-checklist.md`.
+
+#### Imported: Limitations
+
+- This skill does not define deployment architecture.
+- It does not choose databases or transport protocols.
+- It should be paired with testing patterns for invariant coverage.
+
+## Examples
+
+### Example 1: Ask for the upstream workflow directly
+
+```text
+Use @ddd-tactical-patterns-v3 to handle <task>. Start from the copied upstream workflow, load only the files that change the outcome, and keep provenance visible in the answer.
+```
+
+**Explanation:** This is the safest starting point when the operator needs the imported workflow, but not the entire repository.
+
+### Example 2: Ask for a provenance-grounded review
+
+```text
+Review @ddd-tactical-patterns-v3 against metadata.json and ORIGIN.md, then explain which copied upstream files you would load first and why.
+```
+
+**Explanation:** Use this before review or troubleshooting when you need a precise, auditable explanation of origin and file selection.
+
+### Example 3: Narrow the copied support files before execution
+
+```text
+Use @ddd-tactical-patterns-v3 for <task>. Load only the copied references, examples, or scripts that change the outcome, and name the files explicitly before proceeding.
+```
+
+**Explanation:** This keeps the skill aligned with progressive disclosure instead of loading the whole copied package by default.
+
+### Example 4: Build a reviewer packet
+
+```text
+Review @ddd-tactical-patterns-v3 using the copied upstream files plus provenance, then summarize any gaps before merge.
+```
+
+**Explanation:** This is useful when the PR is waiting for human review and you want a repeatable audit packet.
+
+### Imported Usage Notes
+
+#### Imported: Example
+
+```typescript
+class Order {
+  private status: "draft" | "submitted" = "draft";
+
+  submit(itemsCount: number): void {
+    if (itemsCount === 0) throw new Error("Order cannot be submitted empty");
+    if (this.status !== "draft") throw new Error("Order already submitted");
+    this.status = "submitted";
+  }
+}
+```
+
+## Best Practices
+
+Treat the generated public skill as a reviewable packaging layer around the upstream repository. The goal is to keep provenance explicit and load only the copied source material that materially improves execution.
+
+- Keep the imported skill grounded in the upstream repository; do not invent steps that the source material cannot support.
+- Prefer the smallest useful set of support files so the workflow stays auditable and fast to review.
+- Keep provenance, source commit, and imported file paths visible in notes and PR descriptions.
+- Point directly at the copied upstream files that justify the workflow instead of relying on generic review boilerplate.
+- Treat generated examples as scaffolding; adapt them to the concrete task before execution.
+- Route to a stronger native skill when architecture, debugging, design, or security concerns become dominant.
+
+
+
+## Troubleshooting
+
+### Problem: The operator skipped the imported context and answered too generically
+
+**Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-bundle-ddd-evented-architecture/skills/ddd-tactical-patterns`, fails to mention provenance, or does not use any copied source files at all.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Check the `external_source` block first, then restate the provenance before continuing.
+
+### Problem: The imported workflow feels incomplete during review
+
+**Symptoms:** Reviewers can see the generated `SKILL.md`, but they cannot quickly tell which references, examples, or scripts matter for the current task.
+**Solution:** Point at the exact copied references, examples, scripts, or assets that justify the path you took. If the gap is still real, record it in the PR instead of hiding it.
+
+### Problem: The task drifted into a different specialization
+
+**Symptoms:** The imported skill starts in the right place, but the work turns into debugging, architecture, design, security, or release orchestration that a native skill handles better.
+**Solution:** Use the related skills section to hand off deliberately. Keep the imported provenance visible so the next skill inherits the right context instead of starting blind.
+
+
+
+## Related Skills
+
+- `@airflow-dag-patterns-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@aws-serverless-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@bash-linux-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@concise-planning-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+
+## Additional Resources
+
+Use this support matrix and the linked files below as the operator packet for this imported skill. They should reflect real copied source material, not generic scaffolding.
+
+| Resource family | What it gives the reviewer | Example path |
+| --- | --- | --- |
+| `references` | copied reference notes, guides, or background material from upstream | `references/tactical-checklist.md` |
+| `examples` | worked examples or reusable prompts copied from upstream | `examples/n/a` |
+| `scripts` | upstream helper scripts that change execution or validation | `scripts/n/a` |
+| `agents` | routing or delegation notes that are genuinely part of the imported package | `agents/n/a` |
+| `assets` | supporting assets or schemas copied from the source package | `assets/n/a` |
+
+- [tactical-checklist.md](references/tactical-checklist.md)
+- [tactical-checklist.md](references/tactical-checklist.md)
