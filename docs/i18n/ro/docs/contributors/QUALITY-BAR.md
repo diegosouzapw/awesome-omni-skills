@@ -8,7 +8,7 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/contributors/QUALITY-BAR.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-04-25T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/contributors/QUALITY-BAR.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-04-26T00:00:00+00:00 -->
 
 > **Minimum requirements and recommendations for a skill to be accepted into the Awesome Omni Skills repository.**
 

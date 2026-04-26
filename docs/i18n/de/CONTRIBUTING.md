@@ -8,7 +8,7 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=CONTRIBUTING.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-04-25T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=CONTRIBUTING.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-04-26T00:00:00+00:00 -->
 
 > **Awesome Omni Skills is a public repository of skills, a curated repository of improved best-practice derivatives, and the runtime surfaces built on top of that catalog.**
 > Contributions can target either area, but both must stay aligned with the generated artifacts and the current CLI behavior.

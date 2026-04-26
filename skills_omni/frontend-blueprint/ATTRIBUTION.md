@@ -7,10 +7,10 @@ This directory contains an Omni-maintained enhanced derivative of a native upstr
 - Upstream path: `skills/frontend-blueprint/`
 - Upstream author: `Felipe Rodrigues - github.com/felipfr`
 - Upstream source field: `community`
-- Source PR: `#32`
+- Source PR: `#133`
 - Source PR author: `anonymous`
 - Source PR head repository: `diegosouzapw/awesome-omni-skills`
-- Source PR head SHA: `4c47919ff680d27258a8b9713e3f3380befbd2b2`
+- Source PR head SHA: `9f1c34bd96b4fc03578ceb26f6303d8bf2c13b42`
 
 The native upstream skill remains credited to its original contributor and source context.
 The derivative under `skills_omni/` is maintained by `Omni Skills Team` as a separate Omni-authored curation surface.

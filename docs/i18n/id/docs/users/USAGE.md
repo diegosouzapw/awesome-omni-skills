@@ -8,7 +8,7 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/users/USAGE.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-04-25T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/users/USAGE.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-04-26T00:00:00+00:00 -->
 
 > **Everything you need to invoke skills, run services, and operate the Awesome Omni Skills runtime.**
 
