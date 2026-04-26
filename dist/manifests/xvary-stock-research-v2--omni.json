@@ -1,0 +1,572 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "xvary-stock-research-v2--omni",
+  "slug": "xvary-stock-research-v2",
+  "display_name": "XVARY Stock Research Skill",
+  "description": "XVARY Stock Research Skill workflow skill. Use this skill when the user needs Thesis-driven equity analysis from public SEC EDGAR and market data; /analyze, /score, /compare workflows with bundled Python tools (Claude Code, Cursor, Codex) and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "cli-automation",
+  "raw_category": "cli-automation",
+  "taxonomy": {
+    "raw_category": "cli-automation",
+    "canonical_category": "cli-automation",
+    "inferred_category": "cli-automation",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "xvary-stock-research-v2",
+    "xvary-stock-research",
+    "thesis-driven",
+    "equity",
+    "analysis",
+    "public",
+    "sec",
+    "edgar",
+    "omni-enhanced"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
+  "family": {
+    "id": "xvary-stock-research-v2",
+    "name": "XVARY Stock Research Skill"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/xvary-stock-research-v2",
+    "derived_from": "skills/xvary-stock-research-v2",
+    "replaces": [
+      "xvary-stock-research-v2"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-25",
+    "updated": "2026-04-26"
+  },
+  "entrypoint": "skills_omni/xvary-stock-research-v2/SKILL.md",
+  "paths": {
+    "root": "skills_omni/xvary-stock-research-v2",
+    "manifest": "dist/manifests/xvary-stock-research-v2--omni.json",
+    "metadata": "skills_omni/xvary-stock-research-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "assets",
+      "examples",
+      "references",
+      "tests",
+      "tools"
+    ],
+    "artifacts_count": 18,
+    "references_count": 3,
+    "agents_count": 0,
+    "assets_count": 4
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 22,
+        "workflow_section_length": 1780,
+        "when_to_use_section_length": 965,
+        "best_practices_items_count": 13,
+        "best_practices_section_length": 1037,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1306,
+        "resources_items_count": 19,
+        "resources_section_length": 2332,
+        "examples_section_length": 2291,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 547,
+        "decision_assets_count": 5,
+        "table_count": 14,
+        "linked_resource_families_count": 3,
+        "linked_resource_families": [
+          "assets",
+          "examples",
+          "references"
+        ],
+        "support_links_count": 8,
+        "support_files_count": 8,
+        "references_files_count": 3,
+        "scripts_files_count": 0,
+        "examples_files_count": 1,
+        "agents_files_count": 0,
+        "assets_files_count": 4,
+        "tools_count": 5,
+        "tags_count": 9,
+        "body_density": 7.33,
+        "real_support_files_count": 8,
+        "domain_specific_support_files_count": 4,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 10,
+        "domain_specificity_score": 5,
+        "token_efficiency_score": 9,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 3,
+            "real_files_count": 3,
+            "domain_specific_files_count": 3,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "scripts": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "examples": {
+            "files_count": 1,
+            "real_files_count": 1,
+            "domain_specific_files_count": 1,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 4,
+            "real_files_count": 4,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "strong"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 96,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 9
+      }
+    },
+    "security": {
+      "score": 95,
+      "tier": "review",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 12,
+        "script_files": 4,
+        "binary_like_files": 4
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 12168,
+    "content_length": 13678,
+    "body_lines": 239,
+    "word_count": 1752,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 3,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 22,
+      "workflow_section_length": 1780,
+      "when_to_use_section_length": 965,
+      "best_practices_items_count": 13,
+      "best_practices_section_length": 1037,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1306,
+      "resources_items_count": 19,
+      "resources_section_length": 2332,
+      "examples_section_length": 2291,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 547,
+      "decision_assets_count": 5,
+      "table_count": 14,
+      "linked_resource_families_count": 3,
+      "linked_resource_families": [
+        "assets",
+        "examples",
+        "references"
+      ],
+      "support_links_count": 8,
+      "support_files_count": 8,
+      "references_files_count": 3,
+      "scripts_files_count": 0,
+      "examples_files_count": 1,
+      "agents_files_count": 0,
+      "assets_files_count": 4,
+      "tools_count": 5,
+      "tags_count": 9,
+      "body_density": 7.33,
+      "real_support_files_count": 8,
+      "domain_specific_support_files_count": 4,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 10,
+      "domain_specificity_score": 5,
+      "token_efficiency_score": 9,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 3,
+          "real_files_count": 3,
+          "domain_specific_files_count": 3,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "scripts": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "examples": {
+          "files_count": 1,
+          "real_files_count": 1,
+          "domain_specific_files_count": 1,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 4,
+          "real_files_count": 4,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "strong"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills_omni/xvary-stock-research-v2/ATTRIBUTION.md",
+      "kind": "support",
+      "size_bytes": 869,
+      "sha256": "eb1e48639d808c33cb05a25fb153299a4cff9650f81b6694a13aa86ded857dc4"
+    },
+    {
+      "path": "skills_omni/xvary-stock-research-v2/LICENSE",
+      "kind": "support",
+      "size_bytes": 1071,
+      "sha256": "af861bf6c918f07f6c23f60ee228274c5fdbc4ba64ac673629403fb04b31e9cc"
+    },
+    {
+      "path": "skills_omni/xvary-stock-research-v2/OMNI_ENHANCED.json",
+      "kind": "support",
+      "size_bytes": 394,
+      "sha256": "f87c4f984364dbb4b16207d2d4445e19075a302f862aca95dda51165d508a968"
+    },
+    {
+      "path": "skills_omni/xvary-stock-research-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 755,
+      "sha256": "325b31b8b4fbd05909d3b8313eb20669c18fbde8c3f30119b18986c2274b5b23"
+    },
+    {
+      "path": "skills_omni/xvary-stock-research-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 13678,
+      "sha256": "416b0b70f1ff1906c698ee2b5f49fba85926532540cf83bed61063e0587dd1b4"
+    },
+    {
+      "path": "skills_omni/xvary-stock-research-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 12552,
+      "sha256": "57c58a00ae4b726407e9875855452376708f5f07b78bb4d11bcb91a3259a8e1a"
+    },
+    {
+      "path": "skills_omni/xvary-stock-research-v2/assets/nvda-deep-dive-hero.png",
+      "kind": "asset",
+      "size_bytes": 418706,
+      "sha256": "4161b9d0963d65195bac791488c535eb9d316786152c84e748b70fb2f186f249"
+    },
+    {
+      "path": "skills_omni/xvary-stock-research-v2/assets/nvda-deep-dive-scenarios.png",
+      "kind": "asset",
+      "size_bytes": 501245,
+      "sha256": "7500c6a66bfa26ec66805a1b82bde7f48738ccaed11f134256105bd8518aa002"
+    },
+    {
+      "path": "skills_omni/xvary-stock-research-v2/assets/nvda-deep-dive-thesis.png",
+      "kind": "asset",
+      "size_bytes": 504946,
+      "sha256": "34cee8a9303fbf1dac2d14ad8c96c08c5cc4d4cbae7dc7c7a3cde4a9598b8193"
+    },
+    {
+      "path": "skills_omni/xvary-stock-research-v2/assets/social-preview.png",
+      "kind": "asset",
+      "size_bytes": 51450,
+      "sha256": "830ab5a65b1fd8dac49b3dd6b1177558517950291111dd61c1672c95cd3abfc5"
+    },
+    {
+      "path": "skills_omni/xvary-stock-research-v2/examples/nvda-analysis.md",
+      "kind": "support",
+      "size_bytes": 2582,
+      "sha256": "a9312f667418fa9e3a9b844bf9263297b18f2b6eb660e4e9e1cd23b08e446864"
+    },
+    {
+      "path": "skills_omni/xvary-stock-research-v2/references/edgar-guide.md",
+      "kind": "reference",
+      "size_bytes": 1567,
+      "sha256": "ad300fae078e860745adafa678a8638c21a759ce2d0427f1879c032356b634b0"
+    },
+    {
+      "path": "skills_omni/xvary-stock-research-v2/references/methodology.md",
+      "kind": "reference",
+      "size_bytes": 6996,
+      "sha256": "eb289ec3fbd387d3d86f6f9f92a8a95077f4f8781e7feaf5e23995709257a74b"
+    },
+    {
+      "path": "skills_omni/xvary-stock-research-v2/references/scoring.md",
+      "kind": "reference",
+      "size_bytes": 3238,
+      "sha256": "1493893b71afaad4b7ace2e7d0a1f810e37563d6d8c6708882550dab9d2fed4a"
+    },
+    {
+      "path": "skills_omni/xvary-stock-research-v2/tests/test_edgar.py",
+      "kind": "support",
+      "size_bytes": 3030,
+      "sha256": "36f9c4ed367bfd5c578f1509c3a5a9f2767cef567e716476f667d3da8f67ff6b"
+    },
+    {
+      "path": "skills_omni/xvary-stock-research-v2/tests/test_market.py",
+      "kind": "support",
+      "size_bytes": 3503,
+      "sha256": "c0d2f938383fab17b7373d2a626aa525e9ae255920e784935fc2dba540d15543"
+    },
+    {
+      "path": "skills_omni/xvary-stock-research-v2/tools/edgar.py",
+      "kind": "support",
+      "size_bytes": 16404,
+      "sha256": "d15c5ef57d82a1b62934c9ba3d6fb9d346232fe9e7e5c011874f0d68a24b6e38"
+    },
+    {
+      "path": "skills_omni/xvary-stock-research-v2/tools/market.py",
+      "kind": "support",
+      "size_bytes": 8992,
+      "sha256": "73af6be90a5476356c2536c73424675f753f2b12d655ee818b7cbc3d1068470c"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/xvary-stock-research-v2--omni.zip",
+      "file_name": "xvary-stock-research-v2--omni.zip",
+      "size_bytes": 1555158,
+      "sha256": "073d46e0551c4d700db9b3810468aca3b593508db05b981e30c7d756f7c7c70c",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/xvary-stock-research-v2--omni.tar.gz",
+      "file_name": "xvary-stock-research-v2--omni.tar.gz",
+      "size_bytes": 1566958,
+      "sha256": "aa3e9bcb145c92d17364395b737df93884f8234c273c9d186354b0692646c462",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/xvary-stock-research-v2--omni.checksums.txt",
+    "file_name": "xvary-stock-research-v2--omni.checksums.txt",
+    "sha256": "e6e90b2b49f20dad2cc89490ee63970c0b9db0c67a012c2b6042e7a8352e795e",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "416b0b70f1ff1906c698ee2b5f49fba85926532540cf83bed61063e0587dd1b4",
+    "package_sha256": "75a5b98efbb313764224ffb6bfcd544e2d03391baf6008fe3ef37517e4ad7569"
+  }
+}
