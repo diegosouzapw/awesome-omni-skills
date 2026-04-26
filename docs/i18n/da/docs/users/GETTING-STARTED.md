@@ -21,7 +21,7 @@
 <!-- generated:getting-started-catalog-status:start -->
 | Metric | Value |
 |:-------|:------|
-| Native catalog | **3133** skills across 17 active categories, including architecture, design, security, DevOps, AI-engineering, and imported native intake |
+| Native catalog | **3163** skills across 17 active categories, including architecture, design, security, DevOps, AI-engineering, and imported native intake |
 | Curated output | **313** enhanced English derivatives in `skills_omni/` |
 | Defined bundles | **7** (all fully backed by published catalog skills) |
 | Install-capable clients | **9** (Claude Code, Cursor, Gemini CLI, Codex CLI, Kiro, Antigravity, Goose, Qwen Code, OpenCode) |
