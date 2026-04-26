@@ -8,11 +8,11 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/CATALOG.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-04-25T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/CATALOG.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-04-26T00:00:00+00:00 -->
 
 > Auto-generated from `skills_index.json` — 3133 skills across 17 categories.
 
-Generated: 2026-04-25T00:00:00+00:00
+Generated: 2026-04-26T00:00:00+00:00
 
 ---
 
