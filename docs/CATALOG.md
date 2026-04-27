@@ -1,6 +1,6 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 3438 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 3452 skills across 17 categories.
 
 Generated: 2026-04-26T00:00:00+00:00
 
@@ -11,14 +11,14 @@ Generated: 2026-04-26T00:00:00+00:00
 - [🧠 Ai Agents (317)](#ai-agents)
 - [🗄️ Backend (330)](#backend)
 - [💼 Business (91)](#business)
-- [⚙️ Cli Automation (434)](#cli-automation)
+- [⚙️ Cli Automation (437)](#cli-automation)
 - [💬 Communication (46)](#communication)
-- [🎬 Content Media (113)](#content-media)
-- [🤖 Data Ai (132)](#data-ai)
+- [🎬 Content Media (115)](#content-media)
+- [🤖 Data Ai (136)](#data-ai)
 - [🎨 Design (98)](#design)
-- [💻 Development (516)](#development)
-- [☁️ Devops (252)](#devops)
-- [📝 Documentation (54)](#documentation)
+- [💻 Development (517)](#development)
+- [☁️ Devops (255)](#devops)
+- [📝 Documentation (55)](#documentation)
 - [🖼️ Frontend (391)](#frontend)
 - [🌐 Fullstack Web (138)](#fullstack-web)
 - [📈 Machine Learning (42)](#machine-learning)
@@ -886,6 +886,7 @@ Generated: 2026-04-26T00:00:00+00:00
 | [`changelog-automation`](../skills/changelog-automation/SKILL.md) | Changelog Automation workflow skill. Use this skill when the user needs Automate changelog generation from commits, PRs, | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`changelog-automation-v2`](../skills/changelog-automation-v2/SKILL.md) | Changelog Automation workflow skill. Use this skill when the user needs Automate changelog generation from commits, PRs, | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`changelog-automation-v3`](../skills/changelog-automation-v3/SKILL.md) | Changelog Automation workflow skill. Use this skill when the user needs Automate changelog generation from commits, PRs, | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`changelog-automation-v3--omni`](../skills_omni/changelog-automation-v3/SKILL.md) | Changelog Automation workflow skill. Use this skill when the user needs Automate changelog generation from commits, PRs, | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`circleci-automation`](../skills/circleci-automation/SKILL.md) | CircleCI Automation via Rube MCP workflow skill. Use this skill when the user needs Automate CircleCI tasks via Rube MCP | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`circleci-automation-v2`](../skills/circleci-automation-v2/SKILL.md) | CircleCI Automation via Rube MCP workflow skill. Use this skill when the user needs Automate CircleCI tasks via Rube MCP | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`clickup-automation`](../skills/clickup-automation/SKILL.md) | ClickUp Automation via Rube MCP workflow skill. Use this skill when the user needs Automate ClickUp project management i | L2 instructions | 100/100 | 88/100 | 100/100 passed |
@@ -901,6 +902,7 @@ Generated: 2026-04-26T00:00:00+00:00
 | [`create-pr`](../skills/create-pr/SKILL.md) | Alias: create-pr workflow skill. Use this skill when the user needs Alias for sentry-skills:pr-writer. Use when users ex | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`create-pr-v2`](../skills/create-pr-v2/SKILL.md) | Alias: create-pr workflow skill. Use this skill when the user needs Alias for sentry-skills:pr-writer. Use when users ex | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`create-pr-v3`](../skills/create-pr-v3/SKILL.md) | Alias: create-pr workflow skill. Use this skill when the user needs Alias for sentry-skills:pr-writer. Use when users ex | L2 instructions | 99/100 | 86/100 | 100/100 passed |
+| [`create-pr-v3--omni`](../skills_omni/create-pr-v3/SKILL.md) | Alias: create-pr workflow skill. Use this skill when the user needs Alias for sentry-skills:pr-writer. Use when users ex | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`datadog-automation`](../skills/datadog-automation/SKILL.md) | Datadog Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Datadog tasks via Rube MCP ( | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`datadog-automation-v2`](../skills/datadog-automation-v2/SKILL.md) | Datadog Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Datadog tasks via Rube MCP ( | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`dbos-golang`](../skills/dbos-golang/SKILL.md) | DBOS Go Best Practices workflow skill. Use this skill when the user needs Guide for building reliable, fault-tolerant Go | L2 instructions | 100/100 | 96/100 | 100/100 passed |
@@ -956,6 +958,7 @@ Generated: 2026-04-26T00:00:00+00:00
 | [`git-advanced-workflows`](../skills/git-advanced-workflows/SKILL.md) | Git Advanced Workflows workflow skill. Use this skill when the user needs Master advanced Git techniques to maintain cle | L2 instructions | 100/100 | 87/100 | 40/100 warn |
 | [`git-advanced-workflows-v2`](../skills/git-advanced-workflows-v2/SKILL.md) | Git Advanced Workflows workflow skill. Use this skill when the user needs Master advanced Git techniques to maintain cle | L2 instructions | 100/100 | 87/100 | 40/100 warn |
 | [`git-advanced-workflows-v3`](../skills/git-advanced-workflows-v3/SKILL.md) | Git Advanced Workflows workflow skill. Use this skill when the user needs Master advanced Git techniques to maintain cle | L2 instructions | 100/100 | 87/100 | 40/100 warn |
+| [`git-advanced-workflows-v3--omni`](../skills_omni/git-advanced-workflows-v3/SKILL.md) | Git Advanced Workflows workflow skill. Use this skill when the user needs Master advanced Git techniques to maintain cle | L2 instructions | 100/100 | 87/100 | 40/100 warn |
 | [`git-hooks-automation`](../skills/git-hooks-automation/SKILL.md) | Git Hooks Automation workflow skill. Use this skill when the user needs Master Git hooks setup with Husky, lint-staged,  | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`git-hooks-automation-v2`](../skills/git-hooks-automation-v2/SKILL.md) | Git Hooks Automation workflow skill. Use this skill when the user needs Master Git hooks setup with Husky, lint-staged,  | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`git-pr-workflows-pr-enhance`](../skills/git-pr-workflows-pr-enhance/SKILL.md) | Pull Request Enhancement workflow skill. Use this skill when the user needs You are a PR optimization expert specializin | L2 instructions | 100/100 | 89/100 | 100/100 passed |
@@ -1339,7 +1342,9 @@ Generated: 2026-04-26T00:00:00+00:00
 | [`makepad-widgets-v3`](../skills/makepad-widgets-v3/SKILL.md) | Makepad Widgets Skill workflow skill. Use this skill when the user needs Version: makepad-widgets (dev branch) &#124; La | L2 instructions | 99/100 | 87/100 | 100/100 passed |
 | [`makepad-widgets-v3--omni`](../skills_omni/makepad-widgets-v3/SKILL.md) | Makepad Widgets Skill workflow skill. Use this skill when the user needs Version: makepad-widgets (dev branch) &#124; La | L2 instructions | 99/100 | 87/100 | 100/100 passed |
 | [`mmx-cli`](../skills/mmx-cli/SKILL.md) | MiniMax CLI \u2014 Agent Skill Guide workflow skill. Use this skill when the user needs Use mmx to generate text, images | L2 instructions | 99/100 | 86/100 | 100/100 passed |
+| [`mmx-cli--omni`](../skills_omni/mmx-cli/SKILL.md) | MiniMax CLI \\u2014 Agent Skill Guide workflow skill. Use this skill when the user needs Use mmx to generate text, image | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`mmx-cli-v2`](../skills/mmx-cli-v2/SKILL.md) | MiniMax CLI \u2014 Agent Skill Guide workflow skill. Use this skill when the user needs Use mmx to generate text, images | L2 instructions | 99/100 | 86/100 | 100/100 passed |
+| [`mmx-cli-v2--omni`](../skills_omni/mmx-cli-v2/SKILL.md) | MiniMax CLI \\u2014 Agent Skill Guide workflow skill. Use this skill when the user needs Use mmx to generate text, image | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`nanobanana-ppt-skills`](../skills/nanobanana-ppt-skills/SKILL.md) | Nanobanana Ppt Skills workflow skill. Use this skill when the user needs AI-powered PPT generation with document analysi | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`nanobanana-ppt-skills-v2`](../skills/nanobanana-ppt-skills-v2/SKILL.md) | Nanobanana Ppt Skills workflow skill. Use this skill when the user needs AI-powered PPT generation with document analysi | L2 instructions | 99/100 | 86/100 | 100/100 passed |
 | [`pptx-official`](../skills/pptx-official/SKILL.md) | PPTX creation, editing, and analysis workflow skill. Use this skill when the user needs A user may ask you to create, ed | L3 resources | 100/100 | 99/100 | 50/100 warn |
@@ -1484,9 +1489,13 @@ Generated: 2026-04-26T00:00:00+00:00
 | [`monte-carlo-prevent`](../skills/monte-carlo-prevent/SKILL.md) | Monte Carlo Prevent Skill workflow skill. Use this skill when the user needs Surfaces Monte Carlo data observability con | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`monte-carlo-prevent-v2`](../skills/monte-carlo-prevent-v2/SKILL.md) | Monte Carlo Prevent Skill workflow skill. Use this skill when the user needs Surfaces Monte Carlo data observability con | L2 instructions | 100/100 | 97/100 | 100/100 passed |
 | [`monte-carlo-push-ingestion`](../skills/monte-carlo-push-ingestion/SKILL.md) | Monte Carlo Push Ingestion workflow skill. Use this skill when the user needs Expert guide for pushing metadata, lineage | L3 resources | 100/100 | 99/100 | 95/100 passed |
+| [`monte-carlo-push-ingestion--omni`](../skills_omni/monte-carlo-push-ingestion/SKILL.md) | Monte Carlo Push Ingestion workflow skill. Use this skill when the user needs Expert guide for pushing metadata, lineage | L3 resources | 100/100 | 99/100 | 95/100 passed |
 | [`monte-carlo-push-ingestion-v2`](../skills/monte-carlo-push-ingestion-v2/SKILL.md) | Monte Carlo Push Ingestion workflow skill. Use this skill when the user needs Expert guide for pushing metadata, lineage | L3 resources | 100/100 | 99/100 | 95/100 passed |
+| [`monte-carlo-push-ingestion-v2--omni`](../skills_omni/monte-carlo-push-ingestion-v2/SKILL.md) | Monte Carlo Push Ingestion workflow skill. Use this skill when the user needs Expert guide for pushing metadata, lineage | L3 resources | 100/100 | 99/100 | 95/100 passed |
 | [`monte-carlo-validation-notebook`](../skills/monte-carlo-validation-notebook/SKILL.md) | Setup workflow skill. Use this skill when the user needs Generates SQL validation notebooks for dbt PR changes with befo | L3 resources | 100/100 | 96/100 | 95/100 passed |
+| [`monte-carlo-validation-notebook--omni`](../skills_omni/monte-carlo-validation-notebook/SKILL.md) | Setup workflow skill. Use this skill when the user needs Generates SQL validation notebooks for dbt PR changes with befo | L3 resources | 100/100 | 96/100 | 95/100 passed |
 | [`monte-carlo-validation-notebook-v2`](../skills/monte-carlo-validation-notebook-v2/SKILL.md) | Setup workflow skill. Use this skill when the user needs Generates SQL validation notebooks for dbt PR changes with befo | L3 resources | 100/100 | 96/100 | 95/100 passed |
+| [`monte-carlo-validation-notebook-v2--omni`](../skills_omni/monte-carlo-validation-notebook-v2/SKILL.md) | Setup workflow skill. Use this skill when the user needs Generates SQL validation notebooks for dbt PR changes with befo | L3 resources | 100/100 | 96/100 | 95/100 passed |
 | [`native-data-fetching`](../skills/native-data-fetching/SKILL.md) | Expo Networking workflow skill. Use this skill when the user needs implementing or debugging ANY network request, API ca | L2 instructions | 97/100 | 85/100 | 0/100 warn |
 | [`native-data-fetching-v2`](../skills/native-data-fetching-v2/SKILL.md) | Expo Networking workflow skill. Use this skill when the user needs implementing or debugging ANY network request, API ca | L2 instructions | 97/100 | 85/100 | 0/100 warn |
 | [`nutrition-analyzer`](../skills/nutrition-analyzer/SKILL.md) | \u8425\u517b\u5206\u6790\u5668\u6280\u80fd workflow skill. Use this skill when the user needs \u5206\u6790\u8425\u517b\u | L2 instructions | 100/100 | 86/100 | 100/100 passed |
@@ -1782,6 +1791,7 @@ Generated: 2026-04-26T00:00:00+00:00
 | [`commit`](../skills/commit/SKILL.md) | Sentry Commit Messages workflow skill. Use this skill when the user needs ALWAYS use this skill when committing code cha | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`commit-v2`](../skills/commit-v2/SKILL.md) | Sentry Commit Messages workflow skill. Use this skill when the user needs ALWAYS use this skill when committing code cha | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`commit-v3`](../skills/commit-v3/SKILL.md) | Sentry Commit Messages workflow skill. Use this skill when the user needs ALWAYS use this skill when committing code cha | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`commit-v3--omni`](../skills_omni/commit-v3/SKILL.md) | Sentry Commit Messages workflow skill. Use this skill when the user needs ALWAYS use this skill when committing code cha | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`component-common-domain-detection`](../skills/component-common-domain-detection/SKILL.md) | Common Domain Component Detection workflow skill. Use this skill when the user needs Finds duplicate business logic spre | L2 instructions | 100/100 | 86/100 | 90/100 warn |
 | [`component-common-domain-detection--omni`](../skills_omni/component-common-domain-detection/SKILL.md) | Common Domain Component Detection workflow skill. Use this skill when the user needs Finds duplicate business logic spre | L2 instructions | 100/100 | 86/100 | 90/100 warn |
 | [`concise-planning`](../skills/concise-planning/SKILL.md) | Concise Planning workflow skill. Use this skill when the user needs a user asks for a plan for a coding task, to generat | L2 instructions | 100/100 | 89/100 | 100/100 passed |
@@ -2235,6 +2245,7 @@ Generated: 2026-04-26T00:00:00+00:00
 | [`distributed-tracing`](../skills/distributed-tracing/SKILL.md) | Distributed Tracing workflow skill. Use this skill when the user needs Implement distributed tracing with Jaeger and Tem | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`distributed-tracing-v2`](../skills/distributed-tracing-v2/SKILL.md) | Distributed Tracing workflow skill. Use this skill when the user needs Implement distributed tracing with Jaeger and Tem | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`distributed-tracing-v3`](../skills/distributed-tracing-v3/SKILL.md) | Distributed Tracing workflow skill. Use this skill when the user needs Implement distributed tracing with Jaeger and Tem | L2 instructions | 100/100 | 87/100 | 100/100 passed |
+| [`distributed-tracing-v3--omni`](../skills_omni/distributed-tracing-v3/SKILL.md) | Distributed Tracing workflow skill. Use this skill when the user needs Implement distributed tracing with Jaeger and Tem | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`docker-expert`](../skills/docker-expert/SKILL.md) | Docker Expert workflow skill. Use this skill when the user needs You are an advanced Docker containerization expert with | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`docker-expert-v2`](../skills/docker-expert-v2/SKILL.md) | Docker Expert workflow skill. Use this skill when the user needs You are an advanced Docker containerization expert with | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`docker-expert-v3`](../skills/docker-expert-v3/SKILL.md) | Docker Expert workflow skill. Use this skill when the user needs You are an advanced Docker containerization expert with | L2 instructions | 100/100 | 87/100 | 100/100 passed |
@@ -2288,6 +2299,7 @@ Generated: 2026-04-26T00:00:00+00:00
 | [`incident-responder`](../skills/incident-responder/SKILL.md) | incident-responder workflow skill. Use this skill when the user needs Expert SRE incident responder specializing in rapi | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`incident-responder-v2`](../skills/incident-responder-v2/SKILL.md) | incident-responder workflow skill. Use this skill when the user needs Expert SRE incident responder specializing in rapi | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`incident-responder-v3`](../skills/incident-responder-v3/SKILL.md) | incident-responder workflow skill. Use this skill when the user needs Expert SRE incident responder specializing in rapi | L2 instructions | 100/100 | 89/100 | 100/100 passed |
+| [`incident-responder-v3--omni`](../skills_omni/incident-responder-v3/SKILL.md) | incident-responder workflow skill. Use this skill when the user needs Expert SRE incident responder specializing in rapi | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`incident-response-incident-response`](../skills/incident-response-incident-response/SKILL.md) | incident-response-incident-response workflow skill. Use this skill when the user needs working with incident response in | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`incident-response-incident-response-v2`](../skills/incident-response-incident-response-v2/SKILL.md) | incident-response-incident-response workflow skill. Use this skill when the user needs working with incident response in | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`it-manager-pro`](../skills/it-manager-pro/SKILL.md) | IT Manager Pro (Elite Leadership Advisor) workflow skill. Use this skill when the user needs Elite IT Management Advisor | L2 instructions | 100/100 | 97/100 | 100/100 passed |
@@ -2344,6 +2356,7 @@ Generated: 2026-04-26T00:00:00+00:00
 | [`odoo-docker-deployment`](../skills/odoo-docker-deployment/SKILL.md) | Odoo Docker Deployment workflow skill. Use this skill when the user needs Production-ready Docker and docker-compose set | L2 instructions | 99/100 | 88/100 | 60/100 warn |
 | [`odoo-docker-deployment-v2`](../skills/odoo-docker-deployment-v2/SKILL.md) | Odoo Docker Deployment workflow skill. Use this skill when the user needs Production-ready Docker and docker-compose set | L2 instructions | 99/100 | 88/100 | 60/100 warn |
 | [`odoo-docker-deployment-v3`](../skills/odoo-docker-deployment-v3/SKILL.md) | Odoo Docker Deployment workflow skill. Use this skill when the user needs Production-ready Docker and docker-compose set | L2 instructions | 99/100 | 88/100 | 60/100 warn |
+| [`odoo-docker-deployment-v3--omni`](../skills_omni/odoo-docker-deployment-v3/SKILL.md) | Odoo Docker Deployment workflow skill. Use this skill when the user needs Production-ready Docker and docker-compose set | L2 instructions | 99/100 | 88/100 | 60/100 warn |
 | [`on-call-handoff-patterns`](../skills/on-call-handoff-patterns/SKILL.md) | On-Call Handoff Patterns workflow skill. Use this skill when the user needs Effective patterns for on-call shift transit | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`on-call-handoff-patterns-v2`](../skills/on-call-handoff-patterns-v2/SKILL.md) | On-Call Handoff Patterns workflow skill. Use this skill when the user needs Effective patterns for on-call shift transit | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`performance-engineer`](../skills/performance-engineer/SKILL.md) | performance-engineer workflow skill. Use this skill when the user needs Expert performance engineer specializing in mode | L2 instructions | 100/100 | 88/100 | 100/100 passed |
@@ -2433,6 +2446,7 @@ Generated: 2026-04-26T00:00:00+00:00
 | [`documentation-templates`](../skills/documentation-templates/SKILL.md) | Documentation Templates workflow skill. Use this skill when the user needs Documentation templates and structure guideli | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`documentation-templates-v2`](../skills/documentation-templates-v2/SKILL.md) | Documentation Templates workflow skill. Use this skill when the user needs Documentation templates and structure guideli | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`documentation-templates-v3`](../skills/documentation-templates-v3/SKILL.md) | Documentation Templates workflow skill. Use this skill when the user needs Documentation templates and structure guideli | L2 instructions | 100/100 | 87/100 | 100/100 passed |
+| [`documentation-templates-v3--omni`](../skills_omni/documentation-templates-v3/SKILL.md) | Documentation Templates workflow skill. Use this skill when the user needs Documentation templates and structure guideli | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`documentation-v2`](../skills/documentation-v2/SKILL.md) | Documentation Workflow Bundle workflow skill. Use this skill when the user needs Documentation generation workflow cover | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`excalidraw-studio`](../skills/excalidraw-studio/SKILL.md) | Excalidraw Studio workflow skill. Use this skill when the user needs Generate Excalidraw diagrams from natural language  | L3 resources | 100/100 | 98/100 | 90/100 warn |
 | [`excalidraw-studio--omni`](../skills_omni/excalidraw-studio/SKILL.md) | Excalidraw Studio workflow skill. Use this skill when the user needs Generate Excalidraw diagrams from natural language  | L3 resources | 100/100 | 98/100 | 90/100 warn |
