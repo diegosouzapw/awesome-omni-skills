@@ -6,12 +6,12 @@ This native intake skill was imported automatically from an external repository.
 - Source owner: `sickn33`
 - Source repository name: `antigravity-awesome-skills`
 - Source branch: `main`
-- Source commit: `89e9867f32697aab54aab1de41eb28bf380ba1d6`
+- Source commit: `7599751ded79b696fdf3d9b6e2ef32fa5777a663`
 - Source skills path: `plugins`
 - Source skill path: `plugins/antigravity-bundle-typescript-javascript/skills/javascript-pro`
 - Imported public skill id: `javascript-pro-v3`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260427T050815.205278+0000-sickn33-antigravity-awesome-skills-dashboard-sync`
+- Sync run id: `20260427T065810.582479+0000-sickn33-antigravity-awesome-skills-dashboard-sync`
 
 The original source identity is preserved for review and attribution.
