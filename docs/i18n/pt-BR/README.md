@@ -10,7 +10,7 @@
 
 <!-- generated:i18n-doc: project=awesome-omni-skills; source=README.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-04-28T00:00:00+00:00 -->
 <!-- generated:project-meta:start -->
-<!-- awesome-omni-skills: version=0.12.9; native_skills=3754; curated_skills=744; updated_at=2026-04-28 -->
+<!-- awesome-omni-skills: version=0.12.9; native_skills=3816; curated_skills=806; updated_at=2026-04-28 -->
 <!-- generated:project-meta:end -->
 
 <div align="center">
@@ -87,12 +87,12 @@ CLI · API · MCP · A2A — all from a single `npx` command.
 <!-- generated:readme-project-at-a-glance:start -->
 | | Metric | Value |
 |:--|:-------|:------|
-| 📦 | **Published Skills** | `3754` native skills across 17 active categories |
+| 📦 | **Published Skills** | `3816` native skills across 17 active categories |
 | 🎯 | **Bundles** | `7` fully backed curated bundles |
 | 🖥️ | **Install Clients** | `9` install-capable AI coding assistants |
 | 🔌 | **MCP Clients** | `16` MCP config-capable clients across `33` first-class targets |
-| 🔐 | **Curated Output** | `744` enhanced English derivatives in `skills_omni` |
-| 🧪 | **Validation Mix** | `3232` passed · `522` warn · `0` errors |
+| 🔐 | **Curated Output** | `806` enhanced English derivatives in `skills_omni` |
+| 🧪 | **Validation Mix** | `3289` passed · `527` warn · `0` errors |
 | 📋 | **Current Release** | `v0.12.9` |
 <!-- generated:readme-project-at-a-glance:end -->
 
@@ -385,11 +385,11 @@ npx awesome-omni-skills config-mcp --target windsurf-user --transport sse --url 
 <!-- generated:readme-published-catalog-snapshot:start -->
 | Metric | Current State |
 |:-------|:--------------|
-| 🧠 Native intake skills | **3754** |
+| 🧠 Native intake skills | **3816** |
 | 📂 Active categories | **17** |
 | 📦 Fully backed bundles | **7** |
-| ✨ Curated derivatives | **744** in `skills_omni` |
-| 🧪 Validation | **3232 passed / 522 warn / 0 errors** |
+| ✨ Curated derivatives | **806** in `skills_omni` |
+| 🧪 Validation | **3289 passed / 527 warn / 0 errors** |
 | 📋 Release | **v0.12.9** |
 <!-- generated:readme-published-catalog-snapshot:end -->
 
