@@ -1,0 +1,523 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "cold-email--omni",
+  "slug": "cold-email",
+  "display_name": "Cold Email Writing",
+  "description": "Cold Email Writing workflow skill. Use this skill when the user needs Write B2B cold emails and follow-up sequences that earn replies. Use when creating outbound prospecting emails, SDR outreach, personalized opening lines, subject lines, CTAs, and multi-touch follow-up sequences and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "ai-agents",
+  "raw_category": "ai-agents",
+  "taxonomy": {
+    "raw_category": "ai-agents",
+    "canonical_category": "ai-agents",
+    "inferred_category": "ai-agents",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "cold-email",
+    "write",
+    "b2b",
+    "cold",
+    "emails",
+    "and",
+    "follow-up",
+    "sequences",
+    "omni-enhanced"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
+  "family": {
+    "id": "cold-email",
+    "name": "Cold Email Writing"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/cold-email",
+    "derived_from": "skills/cold-email",
+    "replaces": [
+      "cold-email"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-04-28"
+  },
+  "entrypoint": "skills_omni/cold-email/SKILL.md",
+  "paths": {
+    "root": "skills_omni/cold-email",
+    "manifest": "dist/manifests/cold-email--omni.json",
+    "metadata": "skills_omni/cold-email/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "evals",
+      "references"
+    ],
+    "artifacts_count": 11,
+    "references_count": 5,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 12,
+        "workflow_section_length": 1990,
+        "when_to_use_section_length": 876,
+        "best_practices_items_count": 7,
+        "best_practices_section_length": 2081,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1317,
+        "resources_items_count": 44,
+        "resources_section_length": 5217,
+        "examples_section_length": 1326,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 559,
+        "decision_assets_count": 8,
+        "table_count": 14,
+        "linked_resource_families_count": 1,
+        "linked_resource_families": [
+          "references"
+        ],
+        "support_links_count": 14,
+        "support_files_count": 5,
+        "references_files_count": 5,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 9,
+        "body_density": 7.81,
+        "real_support_files_count": 5,
+        "domain_specific_support_files_count": 5,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 10,
+        "domain_specificity_score": 10,
+        "token_efficiency_score": 10,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 5,
+            "real_files_count": 5,
+            "domain_specific_files_count": 5,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "scripts": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "examples": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 97,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 10,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 15251,
+    "content_length": 16690,
+    "body_lines": 291,
+    "word_count": 2272,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 14,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 12,
+      "workflow_section_length": 1990,
+      "when_to_use_section_length": 876,
+      "best_practices_items_count": 7,
+      "best_practices_section_length": 2081,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1317,
+      "resources_items_count": 44,
+      "resources_section_length": 5217,
+      "examples_section_length": 1326,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 559,
+      "decision_assets_count": 8,
+      "table_count": 14,
+      "linked_resource_families_count": 1,
+      "linked_resource_families": [
+        "references"
+      ],
+      "support_links_count": 14,
+      "support_files_count": 5,
+      "references_files_count": 5,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 9,
+      "body_density": 7.81,
+      "real_support_files_count": 5,
+      "domain_specific_support_files_count": 5,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 10,
+      "domain_specificity_score": 10,
+      "token_efficiency_score": 10,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 5,
+          "real_files_count": 5,
+          "domain_specific_files_count": 5,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "scripts": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "examples": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills_omni/cold-email/ATTRIBUTION.md",
+      "kind": "support",
+      "size_bytes": 822,
+      "sha256": "96f59f165a9a36e7d21c8f2d3b6d2a87b43aef8a1fdd5d9d557d61185f977e3d"
+    },
+    {
+      "path": "skills_omni/cold-email/OMNI_ENHANCED.json",
+      "kind": "support",
+      "size_bytes": 381,
+      "sha256": "7cfc6ec2399d6ceec70cbfcd0adb30c54e8b663de1eb0c6e571ae63a467f4961"
+    },
+    {
+      "path": "skills_omni/cold-email/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 726,
+      "sha256": "45dc27fd59699bf21719f01f9c49402482c2f0aed8cc5b334e6d8cb5aa0be161"
+    },
+    {
+      "path": "skills_omni/cold-email/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 16754,
+      "sha256": "bab01960d18c87eca62b12800b059b6123f9a5f6a31bbab70328d026bbec6e92"
+    },
+    {
+      "path": "skills_omni/cold-email/metadata.json",
+      "kind": "support",
+      "size_bytes": 12213,
+      "sha256": "43c50d5e1efd4077fef938044dc3c5b29833dd14ab1be3e075745241d35e0133"
+    },
+    {
+      "path": "skills_omni/cold-email/evals/evals.json",
+      "kind": "support",
+      "size_bytes": 7057,
+      "sha256": "80d7b362f84e1a40b6e7dbeb09e2f50dc89aa64677e63aa10d7ac5acd25aea64"
+    },
+    {
+      "path": "skills_omni/cold-email/references/benchmarks.md",
+      "kind": "reference",
+      "size_bytes": 5817,
+      "sha256": "3dc1d38a2d1f4fbb2706be7ca3d40156b66a3d7078c183a930ff373c3bb04c09"
+    },
+    {
+      "path": "skills_omni/cold-email/references/follow-up-sequences.md",
+      "kind": "reference",
+      "size_bytes": 3875,
+      "sha256": "87e14749104b0c5bcd865e55d33513a161edb8e6773b2a2d9802b5460f2f7369"
+    },
+    {
+      "path": "skills_omni/cold-email/references/frameworks.md",
+      "kind": "reference",
+      "size_bytes": 5403,
+      "sha256": "b29fb89922f96ae1c6911675a7e173a8f7c6a40999c9a18b14ac7f357b5f5a03"
+    },
+    {
+      "path": "skills_omni/cold-email/references/personalization.md",
+      "kind": "reference",
+      "size_bytes": 4437,
+      "sha256": "08f18652938e14143402786fbdb8e1a6269650bb5eef9106898f1cdf31e47e36"
+    },
+    {
+      "path": "skills_omni/cold-email/references/subject-lines.md",
+      "kind": "reference",
+      "size_bytes": 3015,
+      "sha256": "f71f31b1151d972bb19ff03791ffb9d24941a8ccea8b913e5a5c7aca439b45ce"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/cold-email--omni.zip",
+      "file_name": "cold-email--omni.zip",
+      "size_bytes": 62162,
+      "sha256": "1c679465939e0a4b3bda37f6518726f88a35570161ca0b070232776ce391403c",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/cold-email--omni.tar.gz",
+      "file_name": "cold-email--omni.tar.gz",
+      "size_bytes": 71708,
+      "sha256": "3aebed52a94bcd0c12b800b9e40dc71b96f84cb0f09db353fb2d4096f11fc051",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/cold-email--omni.checksums.txt",
+    "file_name": "cold-email--omni.checksums.txt",
+    "sha256": "a981428b52a30f1c330077a6f3ed48a11ba58cc2b2c5a8a113d56319b7032a9a",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "bab01960d18c87eca62b12800b059b6123f9a5f6a31bbab70328d026bbec6e92",
+    "package_sha256": "6f7a7d0e227c5a569065d2bb706189535e17ead9a5740d53d6cfef86022182ac"
+  }
+}
