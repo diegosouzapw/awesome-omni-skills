@@ -6,12 +6,12 @@ This native intake skill was imported automatically from an external repository.
 - Source owner: `sickn33`
 - Source repository name: `antigravity-awesome-skills`
 - Source branch: `main`
-- Source commit: `89e9867f32697aab54aab1de41eb28bf380ba1d6`
+- Source commit: `93c57b25288ab5b40c93597dafa1947e3d94def2`
 - Source skills path: `plugins`
 - Source skill path: `plugins/antigravity-bundle-startup-founder/skills/launch-strategy`
 - Imported public skill id: `launch-strategy-v3`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260427T050815.205278+0000-sickn33-antigravity-awesome-skills-dashboard-sync`
+- Sync run id: `20260427T075350.061668+0000-sickn33-antigravity-awesome-skills-dashboard-sync`
 
 The original source identity is preserved for review and attribution.
