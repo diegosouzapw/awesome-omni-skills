@@ -1,0 +1,56 @@
+{
+  "schema_version": "2026-03-27",
+  "skill_id": "firebase-v2",
+  "purpose": "Map workload traits to recommended Firebase product boundaries.",
+  "decision_nodes": [
+    {
+      "trait": "document_app_data_with_known_query_patterns",
+      "recommend": "firestore",
+      "why": "Firestore fits query-driven document access when denormalization is acceptable.",
+      "watchpoints": ["composite_indexes", "read_cost", "listener_cost", "rules_query_alignment"]
+    },
+    {
+      "trait": "realtime_tree_sync_or_simple_presence_patterns",
+      "recommend": "realtime-database",
+      "why": "Choose only when the workload is naturally tree-shaped or sync-oriented and does not benefit from Firestore's query model.",
+      "watchpoints": ["rules_model_difference", "tree_hotspots", "data_shape_discipline"]
+    },
+    {
+      "trait": "binary_uploads_or_large_files",
+      "recommend": "storage",
+      "why": "Object storage is the correct boundary for files, media, and blobs instead of Firestore documents.",
+      "watchpoints": ["storage_rules", "metadata_validation", "signed_access_patterns"]
+    },
+    {
+      "trait": "needs_secrets_or_privileged_server_logic",
+      "recommend": "functions-2nd-gen",
+      "why": "Privileged operations, external API calls, and mediated workflows belong in backend code.",
+      "watchpoints": ["region", "concurrency", "minInstances", "timeout", "secrets", "idempotency"]
+    },
+    {
+      "trait": "static_site_or_framework_frontend_delivery",
+      "recommend": "hosting",
+      "why": "Hosting fits frontend delivery and framework integration paths.",
+      "watchpoints": ["custom_domains", "rewrite_rules", "function_integration"]
+    },
+    {
+      "trait": "public_client_needs_abuse_resistance",
+      "recommend": "app-check",
+      "why": "App Check helps reduce abuse from illegitimate app clients.",
+      "watchpoints": ["not_authentication", "not_authorization", "rollout_compatibility"]
+    },
+    {
+      "trait": "join_heavy_relational_reporting_or_sql_transactions",
+      "recommend": "data-connect-or-sql-path",
+      "why": "Relational workloads should not be forced into Firestore-only design.",
+      "watchpoints": ["schema_normalization", "reporting_queries", "transaction_semantics"]
+    }
+  ],
+  "operator_prompts": [
+    "What are the exact read and write paths?",
+    "Which operations must be allowed directly from the client?",
+    "Which operations require trusted backend mediation?",
+    "Will this workload need joins, reporting, or SQL-style transactions?",
+    "What is the expected read volume per screen, per listener, and per session?"
+  ]
+}
