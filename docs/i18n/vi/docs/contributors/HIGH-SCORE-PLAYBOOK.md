@@ -8,7 +8,7 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/contributors/HIGH-SCORE-PLAYBOOK.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-04-28T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/contributors/HIGH-SCORE-PLAYBOOK.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-05-04T00:00:00+00:00 -->
 
 > **What an Awesome Omni Skills `SKILL.md` needs in practice to reach high maturity, best-practices, quality, and security scores.**
 
@@ -33,7 +33,7 @@ This is the contributor-facing companion to:
 Current benchmark for the live native catalog:
 
 <!-- generated:high-score-benchmark:start -->
-- 4027 published native skills, with 980 curated English derivatives in `skills_omni/`
+- 4178 published native skills, with 1131 curated English derivatives in `skills_omni/`
 - native quality spread: `78` to `99`
 - native best-practices spread: `53` to `100`
 - current top end: `omni-figma` at `100/100` quality and `100/100` best practices
