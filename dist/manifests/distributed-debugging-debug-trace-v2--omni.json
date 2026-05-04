@@ -1,0 +1,800 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "distributed-debugging-debug-trace-v2--omni",
+  "slug": "distributed-debugging-debug-trace-v2",
+  "display_name": "Debug and Trace Configuration",
+  "description": "Debug and Trace Configuration workflow skill. Use this skill when the user needs You are a debugging expert specializing in setting up comprehensive debugging environments, distributed tracing, and diagnostic tools. Configure debugging workflows, implement tracing solutions, and establish troubleshooting practices for development and production environments and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "development",
+  "raw_category": "development",
+  "taxonomy": {
+    "raw_category": "development",
+    "canonical_category": "development",
+    "inferred_category": "development",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "distributed-debugging-debug-trace-v2",
+    "distributed-debugging-debug-trace",
+    "you",
+    "are",
+    "debugging",
+    "expert",
+    "specializing",
+    "setting",
+    "omni-enhanced"
+  ],
+  "complexity": "beginner",
+  "risk": "caution",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
+  "family": {
+    "id": "distributed-debugging-debug-trace-v2",
+    "name": "Debug and Trace Configuration"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/distributed-debugging-debug-trace-v2",
+    "derived_from": "skills/distributed-debugging-debug-trace-v2",
+    "replaces": [
+      "distributed-debugging-debug-trace-v2"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-16",
+    "updated": "2026-05-04"
+  },
+  "entrypoint": "skills_omni/distributed-debugging-debug-trace-v2/SKILL.md",
+  "paths": {
+    "root": "skills_omni/distributed-debugging-debug-trace-v2",
+    "manifest": "dist/manifests/distributed-debugging-debug-trace-v2--omni.json",
+    "metadata": "skills_omni/distributed-debugging-debug-trace-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "resources"
+    ],
+    "artifacts_count": 6,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 12,
+        "workflow_section_length": 1371,
+        "when_to_use_section_length": 472,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1319,
+        "resources_items_count": 7,
+        "resources_section_length": 1471,
+        "examples_section_length": 1430,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 11,
+        "table_count": 14,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 9,
+        "body_density": 7.82,
+        "real_support_files_count": 0,
+        "domain_specific_support_files_count": 0,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 0,
+        "domain_specificity_score": 0,
+        "token_efficiency_score": 10,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "scripts": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "examples": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 89,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 2
+      }
+    },
+    "security": {
+      "score": 0,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 31,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "if (process.env.NODE_ENV === 'development') {",
+          "line": 146
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "if (process.env.NODE_ENV === 'development') {",
+          "line": 156
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "endpoint: process.env.JAEGER_ENDPOINT || 'http://localhost:14268/api/traces',",
+          "line": 294
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "[SemanticResourceAttributes.SERVICE_VERSION]: process.env.SERVICE_VERSION || '1.0.0',",
+          "line": 300
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "[SemanticResourceAttributes.DEPLOYMENT_ENVIRONMENT]: process.env.NODE_ENV || 'development',",
+          "line": 301
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "this.level = process.env.LOG_LEVEL || 'debug';",
+          "line": 435
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "if (process.env.NODE_ENV === 'development') {",
+          "line": 447
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "if (process.env.DEBUG_LOG_FILE) {",
+          "line": 461
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "filename: process.env.DEBUG_LOG_FILE,",
+          "line": 464
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "if (process.env.ELASTICSEARCH_URL) {",
+          "line": 473
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "node: process.env.ELASTICSEARCH_URL,",
+          "line": 478
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "environment: process.env.NODE_ENV,",
+          "line": 490
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "authToken: process.env.SENTRY_AUTH_TOKEN,",
+          "line": 604
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "release: process.env.RELEASE_VERSION,",
+          "line": 610
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "if (process.env.NODE_ENV === 'production') {",
+          "line": 622
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "remoteDebugging: process.env.ENABLE_REMOTE_DEBUG === 'true',",
+          "line": 890
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "tracing: process.env.ENABLE_TRACING === 'true',",
+          "line": 891
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "profiling: process.env.ENABLE_PROFILING === 'true',",
+          "line": 892
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "memoryMonitoring: process.env.ENABLE_MEMORY_MONITORING === 'true',",
+          "line": 893
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "jaeger: process.env.JAEGER_ENDPOINT || 'http://localhost:14268',",
+          "line": 898
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "elasticsearch: process.env.ELASTICSEARCH_URL || 'http://localhost:9200',",
+          "line": 899
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "sentry: process.env.SENTRY_DSN,",
+          "line": 900
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "traces: parseFloat(process.env.TRACE_SAMPLING_RATE || '0.1'),",
+          "line": 905
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "profiles: parseFloat(process.env.PROFILE_SAMPLING_RATE || '0.01'),",
+          "line": 906
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "logs: parseFloat(process.env.LOG_SAMPLING_RATE || '1.0'),",
+          "line": 907
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const level = process.env.DEBUG_LEVEL || 'info';",
+          "line": 917
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "if (process.env.NODE_ENV === 'development') {",
+          "line": 947
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "this.enabled = process.env.PRODUCTION_DEBUG === 'true';",
+          "line": 1003
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "this.authToken = process.env.DEBUG_AUTH_TOKEN;",
+          "line": 1004
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "this.allowedIPs = (process.env.DEBUG_ALLOWED_IPS || '').split(',');",
+          "line": 1005
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "if (process.env.NODE_ENV === 'production') {",
+          "line": 1079
+        }
+      ],
+      "signals": {
+        "scanned_files": 5,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 9572,
+    "content_length": 11296,
+    "body_lines": 170,
+    "word_count": 1330,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 12,
+      "workflow_section_length": 1371,
+      "when_to_use_section_length": 472,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1319,
+      "resources_items_count": 7,
+      "resources_section_length": 1471,
+      "examples_section_length": 1430,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 11,
+      "table_count": 14,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 9,
+      "body_density": 7.82,
+      "real_support_files_count": 0,
+      "domain_specific_support_files_count": 0,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 0,
+      "domain_specificity_score": 0,
+      "token_efficiency_score": 10,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "scripts": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "examples": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills_omni/distributed-debugging-debug-trace-v2/ATTRIBUTION.md",
+      "kind": "support",
+      "size_bytes": 911,
+      "sha256": "e13d1a5b384042dc4c6a7c1a95e4170c75caf934b8559ec9eea51ec37a18175f"
+    },
+    {
+      "path": "skills_omni/distributed-debugging-debug-trace-v2/OMNI_ENHANCED.json",
+      "kind": "support",
+      "size_bytes": 407,
+      "sha256": "e0627120c080d2ed6152d836aef8146d679fc1fafc99a37bf34fb516855fc266"
+    },
+    {
+      "path": "skills_omni/distributed-debugging-debug-trace-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 807,
+      "sha256": "a5e4ee4d42cee5f19edafb04a70456f6d534a2e3b204a6e875e283e7f5afe035"
+    },
+    {
+      "path": "skills_omni/distributed-debugging-debug-trace-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 11296,
+      "sha256": "bc74ab5c878ccde831e0c095384c4d511b8705c2de999d453203fa84c5dafc1d"
+    },
+    {
+      "path": "skills_omni/distributed-debugging-debug-trace-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 29527,
+      "sha256": "000024fe94fffad5f2a513e468a9a9b443af687cbd401a4b6f1e283cf8adde95"
+    },
+    {
+      "path": "skills_omni/distributed-debugging-debug-trace-v2/resources/implementation-playbook.md",
+      "kind": "support",
+      "size_bytes": 39262,
+      "sha256": "5c906e4c6172174a7d6185aba366a4b9c1da00fd8a71b9df1db649ba0c9882a6"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/distributed-debugging-debug-trace-v2--omni.zip",
+      "file_name": "distributed-debugging-debug-trace-v2--omni.zip",
+      "size_bytes": 83400,
+      "sha256": "144d737c454a2ec39b450cc5b104032b54d2b4d01298bca735969f85233c0b51",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/distributed-debugging-debug-trace-v2--omni.tar.gz",
+      "file_name": "distributed-debugging-debug-trace-v2--omni.tar.gz",
+      "size_bytes": 92193,
+      "sha256": "21feab1fc3f55977572636b282cbf1c908c60d988133be8b8d5b375e62f279fb",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/distributed-debugging-debug-trace-v2--omni.checksums.txt",
+    "file_name": "distributed-debugging-debug-trace-v2--omni.checksums.txt",
+    "sha256": "ed52c4f3fd77995fd6293a4c8c2780e2b38ab4bb9c39d59fe58bbe4c12914ae0",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "bc74ab5c878ccde831e0c095384c4d511b8705c2de999d453203fa84c5dafc1d",
+    "package_sha256": "5db7fce2c9dca3eca6bdbcae7118980ec5ee5c6ddf2913de2f55f2f6d47dbf33"
+  }
+}
