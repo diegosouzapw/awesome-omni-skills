@@ -1,0 +1,555 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "hugging-face-community-evals-v2--omni",
+  "slug": "hugging-face-community-evals-v2",
+  "display_name": "Overview",
+  "description": "Overview workflow skill. Use this skill when the user needs Run local evaluations for Hugging Face Hub models with inspect-ai or lighteval and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "machine-learning",
+  "raw_category": "machine-learning",
+  "taxonomy": {
+    "raw_category": "machine-learning",
+    "canonical_category": "machine-learning",
+    "inferred_category": "machine-learning",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "hugging-face-community-evals-v2",
+    "hugging-face-community-evals",
+    "run",
+    "local",
+    "evaluations",
+    "for",
+    "hugging",
+    "face",
+    "omni-enhanced"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
+  "family": {
+    "id": "hugging-face-community-evals-v2",
+    "name": "Overview"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/hugging-face-community-evals-v2",
+    "derived_from": "skills/hugging-face-community-evals-v2",
+    "replaces": [
+      "hugging-face-community-evals-v2"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-16",
+    "updated": "2026-05-10"
+  },
+  "entrypoint": "skills_omni/hugging-face-community-evals-v2/SKILL.md",
+  "paths": {
+    "root": "skills_omni/hugging-face-community-evals-v2",
+    "manifest": "dist/manifests/hugging-face-community-evals-v2--omni.json",
+    "metadata": "skills_omni/hugging-face-community-evals-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "examples",
+      "scripts"
+    ],
+    "artifacts_count": 9,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 3,
+      "skill_level_label": "resources",
+      "has_scripts": true,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 10,
+        "workflow_section_length": 1479,
+        "when_to_use_section_length": 424,
+        "best_practices_items_count": 6,
+        "best_practices_section_length": 862,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1314,
+        "resources_items_count": 46,
+        "resources_section_length": 4643,
+        "examples_section_length": 1410,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 5,
+        "table_count": 19,
+        "linked_resource_families_count": 2,
+        "linked_resource_families": [
+          "examples",
+          "scripts"
+        ],
+        "support_links_count": 6,
+        "support_files_count": 4,
+        "references_files_count": 0,
+        "scripts_files_count": 3,
+        "examples_files_count": 1,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 9,
+        "body_density": 6.15,
+        "real_support_files_count": 4,
+        "domain_specific_support_files_count": 4,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 10,
+        "domain_specificity_score": 10,
+        "token_efficiency_score": 8,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "scripts": {
+            "files_count": 3,
+            "real_files_count": 3,
+            "domain_specific_files_count": 3,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "examples": {
+            "files_count": 1,
+            "real_files_count": 1,
+            "domain_specific_files_count": 1,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 97,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 10,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 60,
+      "tier": "risky",
+      "status": "warn",
+      "findings_count": 4,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/hugging-face-community-evals-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "| Workflow execution | `examples/.env.example` | Starts with the smallest copied file that materially changes executi...",
+          "line": 80
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/hugging-face-community-evals-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "| `examples` | worked examples or reusable prompts copied from upstream | `examples/.env.example` |",
+          "line": 196
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/hugging-face-community-evals-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- [.env.example](examples/.env.example)",
+          "line": 201
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/hugging-face-community-evals-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- [.env.example](examples/.env.example)",
+          "line": 206
+        }
+      ],
+      "signals": {
+        "scanned_files": 8,
+        "script_files": 3,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/hugging-face-community-evals-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/hugging-face-community-evals-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/hugging-face-community-evals-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/hugging-face-community-evals-v2/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 12523,
+    "content_length": 13965,
+    "body_lines": 288,
+    "word_count": 1772,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 5,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 3,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 10,
+      "workflow_section_length": 1479,
+      "when_to_use_section_length": 424,
+      "best_practices_items_count": 6,
+      "best_practices_section_length": 862,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1314,
+      "resources_items_count": 46,
+      "resources_section_length": 4643,
+      "examples_section_length": 1410,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 5,
+      "table_count": 19,
+      "linked_resource_families_count": 2,
+      "linked_resource_families": [
+        "examples",
+        "scripts"
+      ],
+      "support_links_count": 6,
+      "support_files_count": 4,
+      "references_files_count": 0,
+      "scripts_files_count": 3,
+      "examples_files_count": 1,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 9,
+      "body_density": 6.15,
+      "real_support_files_count": 4,
+      "domain_specific_support_files_count": 4,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 10,
+      "domain_specificity_score": 10,
+      "token_efficiency_score": 8,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "scripts": {
+          "files_count": 3,
+          "real_files_count": 3,
+          "domain_specific_files_count": 3,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "examples": {
+          "files_count": 1,
+          "real_files_count": 1,
+          "domain_specific_files_count": 1,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills_omni/hugging-face-community-evals-v2/ATTRIBUTION.md",
+      "kind": "support",
+      "size_bytes": 875,
+      "sha256": "b15e39cbcbb1e0af20a21a05c4cd4def031e3c3ee1d292fd436be2f9193b9898"
+    },
+    {
+      "path": "skills_omni/hugging-face-community-evals-v2/OMNI_ENHANCED.json",
+      "kind": "support",
+      "size_bytes": 402,
+      "sha256": "1357fc5fbf734264b7b5dc3d216134ddb60262d4acb736fafa022776d698f26a"
+    },
+    {
+      "path": "skills_omni/hugging-face-community-evals-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 792,
+      "sha256": "9f88a6d6b01751284d36dceeb91464b381b749fc009f5c787be531e9d8e3a8d3"
+    },
+    {
+      "path": "skills_omni/hugging-face-community-evals-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 13965,
+      "sha256": "64c89a549be01147509f06e556e68fb8d875ced3ed56c5b046397ef620fbf392"
+    },
+    {
+      "path": "skills_omni/hugging-face-community-evals-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 14221,
+      "sha256": "4c7caa3bfc1c3fafa065d8dc22bb88fee5e2b762cf9b87b16d1673768dd9be6b"
+    },
+    {
+      "path": "skills_omni/hugging-face-community-evals-v2/examples/USAGE_EXAMPLES.md",
+      "kind": "support",
+      "size_bytes": 2062,
+      "sha256": "fa467e3f597179be4c9e5554f7586ecbcecb44d91a4a20a0b10944059954f692"
+    },
+    {
+      "path": "skills_omni/hugging-face-community-evals-v2/scripts/inspect_eval_uv.py",
+      "kind": "support",
+      "size_bytes": 3004,
+      "sha256": "d0afcf668aa37f74fc25eacb945b6b2015d581d387af75c0c7a8760cca574ae7"
+    },
+    {
+      "path": "skills_omni/hugging-face-community-evals-v2/scripts/inspect_vllm_uv.py",
+      "kind": "support",
+      "size_bytes": 9119,
+      "sha256": "dd7366b3201efa0586f3c0315a182b8ccb425038b2e6778a8481d8195fd053e0"
+    },
+    {
+      "path": "skills_omni/hugging-face-community-evals-v2/scripts/lighteval_vllm_uv.py",
+      "kind": "support",
+      "size_bytes": 9204,
+      "sha256": "eebf5ac94c121f9fa866861207d073bc661e83e175d97cb7d50a8d3438e7af0b"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/hugging-face-community-evals-v2--omni.zip",
+      "file_name": "hugging-face-community-evals-v2--omni.zip",
+      "size_bytes": 55370,
+      "sha256": "c3e88f84efbfdacfa1e784b40f778e3ef279cdbb08fc9c323ceaaaf250c8d5f3",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/hugging-face-community-evals-v2--omni.tar.gz",
+      "file_name": "hugging-face-community-evals-v2--omni.tar.gz",
+      "size_bytes": 61468,
+      "sha256": "95e5cf359428ea1fe7aaf74aba8f902f941dac3cc89f0f3381ff3c423c1cf397",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/hugging-face-community-evals-v2--omni.checksums.txt",
+    "file_name": "hugging-face-community-evals-v2--omni.checksums.txt",
+    "sha256": "ce45faeaa72945890d558f38b5e4ab08d9588b7aa712c898809d2f3d917f3206",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "64c89a549be01147509f06e556e68fb8d875ced3ed56c5b046397ef620fbf392",
+    "package_sha256": "142214f6b3d0704e9f79a9487b13c9ac4c94c40bda748bba5a310496f75ef8c4"
+  }
+}
