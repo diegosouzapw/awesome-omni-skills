@@ -8,7 +8,7 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/contributors/SKILL-ANATOMY.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-04-28T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/contributors/SKILL-ANATOMY.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-05-10T00:00:00+00:00 -->
 
 > **Structure and quality expectations for an Awesome Omni Skills `SKILL.md` — the authoring format that powers the entire catalog.**
 
