@@ -24,7 +24,7 @@ tools:
 source: "omni-team"
 author: "Omni Skills Team"
 date_added: "2026-04-14"
-date_updated: "2026-05-04"
+date_updated: "2026-05-10"
 source_type: "omni-curated"
 maintainer: "Omni Skills Team"
 family_id: "event-store-design"

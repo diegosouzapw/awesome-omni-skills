@@ -1,0 +1,84 @@
+{
+  "$schema_version": "2026-03-27",
+  "normalized_error_type": "UiApiError",
+  "target_fields": {
+    "kind": "error category for UI branching",
+    "status": "HTTP status when available",
+    "code": "stable machine-readable backend or problem type identifier",
+    "title": "short user-facing summary",
+    "detail": "longer detail when safe to show",
+    "retriable": "whether generic retry UI may be offered",
+    "requestId": "backend or gateway request correlation identifier",
+    "fieldErrors": "optional field-to-messages mapping"
+  },
+  "mappings": {
+    "problem_details": {
+      "match": {
+        "content_type_contains": "application/problem+json"
+      },
+      "map": {
+        "kind": "http",
+        "status": "$response.status",
+        "code": "$body.type",
+        "title": "$body.title",
+        "detail": "$body.detail",
+        "requestId": "$headers.x-request-id",
+        "fieldErrors": "$body.errors"
+      }
+    },
+    "validation_payload_generic": {
+      "match": {
+        "status_in": [400, 409, 422]
+      },
+      "map": {
+        "kind": "http",
+        "status": "$response.status",
+        "code": "$body.code",
+        "title": "$body.title",
+        "detail": "$body.message",
+        "requestId": "$headers.x-request-id",
+        "fieldErrors": "$body.errors"
+      }
+    },
+    "network_failure": {
+      "match": {
+        "exception_name": "TypeError"
+      },
+      "map": {
+        "kind": "network",
+        "title": "Network error",
+        "detail": "The request could not reach the server.",
+        "retriable": true
+      }
+    },
+    "abort_failure": {
+      "match": {
+        "exception_name": "AbortError"
+      },
+      "map": {
+        "kind": "abort",
+        "title": "Request cancelled",
+        "retriable": false
+      }
+    },
+    "parse_failure": {
+      "match": {
+        "phase": "response-parse"
+      },
+      "map": {
+        "kind": "parse",
+        "title": "Invalid server response",
+        "detail": "The server returned a response that could not be parsed.",
+        "retriable": false
+      }
+    }
+  },
+  "retriable_rules": {
+    "http_statuses": [408, 425, 429, 500, 502, 503, 504],
+    "notes": [
+      "Transport-level retriable classification does not override unsafe mutation semantics.",
+      "POST and PATCH should not be blindly retried without backend replay guarantees.",
+      "Retry-After should be honored when present."
+    ]
+  }
+}

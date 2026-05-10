@@ -8,9 +8,9 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=README.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-05-04T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=README.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-05-10T00:00:00+00:00 -->
 <!-- generated:project-meta:start -->
-<!-- awesome-omni-skills: version=0.12.9; native_skills=4339; curated_skills=1292; updated_at=2026-05-04 -->
+<!-- awesome-omni-skills: version=0.12.9; native_skills=4474; curated_skills=1427; updated_at=2026-05-10 -->
 <!-- generated:project-meta:end -->
 
 <div align="center">
@@ -87,12 +87,12 @@ CLI · API · MCP · A2A — all from a single `npx` command.
 <!-- generated:readme-project-at-a-glance:start -->
 | | Metric | Value |
 |:--|:-------|:------|
-| 📦 | **Published Skills** | `4339` native skills across 17 active categories |
+| 📦 | **Published Skills** | `4474` native skills across 17 active categories |
 | 🎯 | **Bundles** | `7` fully backed curated bundles |
 | 🖥️ | **Install Clients** | `9` install-capable AI coding assistants |
 | 🔌 | **MCP Clients** | `16` MCP config-capable clients across `33` first-class targets |
-| 🔐 | **Curated Output** | `1292` enhanced English derivatives in `skills_omni` |
-| 🧪 | **Validation Mix** | `3749` passed · `590` warn · `0` errors |
+| 🔐 | **Curated Output** | `1427` enhanced English derivatives in `skills_omni` |
+| 🧪 | **Validation Mix** | `3875` passed · `599` warn · `0` errors |
 | 📋 | **Current Release** | `v0.12.9` |
 <!-- generated:readme-project-at-a-glance:end -->
 
@@ -385,11 +385,11 @@ npx awesome-omni-skills config-mcp --target windsurf-user --transport sse --url 
 <!-- generated:readme-published-catalog-snapshot:start -->
 | Metric | Current State |
 |:-------|:--------------|
-| 🧠 Native intake skills | **4339** |
+| 🧠 Native intake skills | **4474** |
 | 📂 Active categories | **17** |
 | 📦 Fully backed bundles | **7** |
-| ✨ Curated derivatives | **1292** in `skills_omni` |
-| 🧪 Validation | **3749 passed / 590 warn / 0 errors** |
+| ✨ Curated derivatives | **1427** in `skills_omni` |
+| 🧪 Validation | **3875 passed / 599 warn / 0 errors** |
 | 📋 Release | **v0.12.9** |
 <!-- generated:readme-published-catalog-snapshot:end -->
 
