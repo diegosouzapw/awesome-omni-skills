@@ -1,6 +1,6 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 4028 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 4029 skills across 17 categories.
 
 Generated: 2026-05-10T00:00:00+00:00
 
@@ -16,7 +16,7 @@ Generated: 2026-05-10T00:00:00+00:00
 - [🎬 Content Media (139)](#content-media)
 - [🤖 Data Ai (152)](#data-ai)
 - [🎨 Design (102)](#design)
-- [💻 Development (619)](#development)
+- [💻 Development (620)](#development)
 - [☁️ Devops (284)](#devops)
 - [📝 Documentation (58)](#documentation)
 - [🖼️ Frontend (442)](#frontend)
@@ -2499,6 +2499,7 @@ Generated: 2026-05-10T00:00:00+00:00
 | [`systems-programming-rust-project`](../skills/systems-programming-rust-project/SKILL.md) | Rust Project Scaffolding workflow skill. Use this skill when the user needs You are a Rust project architecture expert s | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`systems-programming-rust-project-v2`](../skills/systems-programming-rust-project-v2/SKILL.md) | Rust Project Scaffolding workflow skill. Use this skill when the user needs You are a Rust project architecture expert s | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`tactical-ddd`](../skills/tactical-ddd/SKILL.md) | Tactical DDD \u2014 Rich Domain Modeling workflow skill. Use this skill when the user needs Detects anemic domain models | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`tactical-ddd--omni`](../skills_omni/tactical-ddd/SKILL.md) | Tactical DDD \\u2014 Rich Domain Modeling workflow skill. Use this skill when the user needs Detects anemic domain model | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`tdd-orchestrator`](../skills/tdd-orchestrator/SKILL.md) | tdd-orchestrator workflow skill. Use this skill when the user needs Master TDD orchestrator specializing in red-green-re | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`tdd-orchestrator-v2`](../skills/tdd-orchestrator-v2/SKILL.md) | tdd-orchestrator workflow skill. Use this skill when the user needs Master TDD orchestrator specializing in red-green-re | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`tdd-workflow`](../skills/tdd-workflow/SKILL.md) | TDD Workflow workflow skill. Use this skill when the user needs Test-Driven Development workflow principles. RED-GREEN-R | L2 instructions | 98/100 | 86/100 | 100/100 passed |
