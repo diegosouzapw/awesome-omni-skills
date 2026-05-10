@@ -1,111 +1,159 @@
-# Worked SEO Audit Example
+# Worked Example: SEO Audit Finding Set
 
-This example shows how to transform a vague SEO complaint into an evidence-led audit output.
+This example shows the expected quality bar for a scoped, evidence-based SEO audit.
 
 ## Scenario
 
-**Business context:** Ecommerce site, product detail pages drive revenue.
+A retailer reports a 35% drop in non-brand organic sessions to product pages two weeks after a platform redesign.
 
-**User complaint:**
+### Available inputs
+- 25 sample product URLs
+- robots.txt
+- XML sitemap index and product sitemap
+- exported HTML from old and new product templates
+- Search Console page indexing summaries provided by the user
 
-```text
-Organic traffic to product pages dropped after a frontend release two weeks ago.
-Search Console shows many product URLs as "Crawled - currently not indexed".
-Developers say the pages load fine in the browser.
-```
+### Stated constraints
+- No production changes during the audit
+- No server log access
+- Report should identify likely technical causes and priority order only
 
-**Available evidence:**
+## Example audit output
 
-- Search Console property access
-- Sample of 25 affected product URLs
-- Sample of 10 healthy product URLs
-- Release note: product description module moved to client-side rendering
+### Scope and limitations
 
-## Good Audit Approach
+Scope covers the `/products/` section on the primary domain. Evidence includes supplied template exports, public URL checks, sitemap review, and Search Console summaries. No log access was available, so crawl-frequency conclusions remain limited.
 
-### 1. Scope statement
+### Executive summary
 
-```text
-Audit scope: /products/ URL pattern on the primary ecommerce domain.
-Objective: determine whether the post-release traffic decline is caused by crawl, indexation, rendering, canonical, or quality issues.
-Constraint: no server logs available.
-```
+The strongest technical issue is a template-level canonical regression affecting product pages. Product URLs remain reachable and return 200, but many now declare category URLs as canonical targets. This likely suppresses product-page indexation and aligns with the timing of the traffic drop. Secondary issues include weaker internal linking to long-tail products and invalid product structured data on sampled pages.
 
-### 2. Evidence summary
+### Top issues by severity
 
-```text
-- Search Console Page Indexing shows a sharp increase in "Crawled - currently not indexed" beginning within 3 days of the release.
-- URL Inspection on sampled affected URLs shows successful crawl but inconsistent rendered availability of core description content.
-- Healthy product URLs retain substantial text in initial HTML and have stronger internal link visibility from category pages.
-- Affected URLs return 200 status and self-referencing canonicals; no robots blocking was found.
-```
+1. High — Product pages canonicalized to category URLs
+2. Medium — Product sitemap includes URLs with conflicting canonical targets
+3. Medium — Product structured data missing required price/availability fields on sampled pages
+4. Low — Filter pages consume navigation prominence and dilute links to product detail pages
 
-### 3. Structured finding
+---
 
-**Finding:** Product detail pages rely too heavily on client-side rendering for primary descriptive content after the release.
+## Detailed findings
 
-**Why it matters:** Google can crawl these URLs, but if the pages expose weak or incomplete product content before or during rendering, they are more likely to be judged as low-value or deprioritized for indexation. This aligns with the observed increase in `Crawled - currently not indexed`.
+### Finding 1
+
+**Issue:** Product pages canonicalized to category URLs
+
+**Severity:** High
+
+**Affected scope:** Sample indicates a template-level issue across the product detail page set; user estimates ~4,800 product URLs.
 
 **Evidence:**
+- Five sampled product URLs return HTTP 200 and are linked from category pages.
+- Each sampled product page contains a canonical tag pointing to its parent category URL rather than to itself.
+- The product sitemap lists the product URLs directly, creating a signal conflict.
+- Search Console summaries supplied by the user show a rise in "Alternate page with proper canonical tag" for product URLs after the redesign.
 
-- Timing of the exclusion increase aligns with the frontend release.
-- Affected URLs expose substantially less descriptive text in initial HTML than healthy control URLs.
-- Browser-visible content depends on client-side execution of the new module.
-- No robots, noindex, or redirect issue explains the pattern.
+**Likely cause:**
+The redesigned product template appears to reuse the category canonical rule instead of emitting a self-referential canonical for unique product pages.
 
-**Affected scope:** Product detail page template for the `/products/` section; likely sitewide across newly rendered variants.
+**SEO impact:**
+Search engines may treat category pages as the preferred representative and exclude many product detail pages from independent indexing. This can reduce long-tail visibility and lower organic entrances to product pages.
 
-**Priority:** High
+**Confidence:** High
 
-**Confidence:** Medium-High
+**Recommended next validation step:**
+Confirm canonical generation logic on the product template, then recheck a wider sample of product URLs and resubmit representative pages for recrawl after correction.
 
-**Recommended next action:** Validate that essential product text, internal links, and key metadata are available consistently without depending on delayed client-side execution. Re-test a controlled sample of affected URLs after template adjustment.
+### Finding 2
 
-## What a Weak Audit Would Say
+**Issue:** Product sitemap includes URLs that conflict with page-level canonical signals
 
-```text
-Google probably has a crawling problem. Add more keywords, resubmit the sitemap, and wait for rankings to recover.
-```
+**Severity:** Medium
 
-Why this is weak:
+**Affected scope:** Product sitemap entries sampled from the current sitemap export.
 
-- Confuses crawl access with indexation quality.
-- Does not use the release timing.
-- Does not compare affected URLs with healthy controls.
-- Promises recovery without evidence.
-- Recommends generic actions that may not address the actual defect.
+**Evidence:**
+- Sampled sitemap entries list product URLs as canonical candidates.
+- The live HTML of those same URLs points canonical to category URLs.
+- No redirect explains the mismatch.
 
-## Example Final Output Snippet
+**Likely cause:**
+Sitemap generation still assumes product URLs should be indexed, while page templates now emit conflicting canonical instructions.
 
-```text
-Audit scope
-- Product detail pages under /products/
-- Focused on post-release indexation decline
+**SEO impact:**
+Conflicting signals can slow diagnosis and weaken confidence in which URLs should be indexed.
 
-Observed symptoms
-- Sharp growth in "Crawled - currently not indexed"
-- Organic traffic decline concentrated on product URLs
+**Confidence:** High
 
-Key findings
-1. High priority: primary product content now depends on client-side rendering
-   - Evidence: affected URLs expose less useful initial HTML than healthy controls; timing matches release
-   - Impact: likely reduces indexation confidence for important revenue pages
-   - Confidence: Medium-High
+**Recommended next validation step:**
+Align sitemap inclusion rules with corrected canonical behavior and re-sample product URLs after deployment.
 
-2. Medium priority: internal link prominence to affected products appears weaker on category templates
-   - Evidence: affected URLs are linked less consistently from category pages than healthy controls
-   - Impact: may reduce discovery and reinforce low-priority treatment
-   - Confidence: Medium
+### Finding 3
 
-Prioritized remediation queue
-- Confirm template parity for initial HTML and rendered content on product pages
-- Validate internal linking consistency from category and related-product modules
-- Re-inspect a representative URL set after changes
+**Issue:** Product structured data is incomplete on sampled templates
 
-Confidence and evidence limits
-- No server logs were available, so crawl-budget and host-load conclusions remain tentative
-```
+**Severity:** Medium
 
-## Operator Takeaway
+**Affected scope:** 8 of 10 sampled product pages.
 
-A good audit does not stop at the exclusion label. It uses timing, controls, template comparison, and evidence hierarchy to explain the most likely cause and to keep recommendations narrow and testable.
+**Evidence:**
+- Product schema is present, but sampled pages omit price and availability fields.
+- Visible page content includes both values, so the gap appears template-driven rather than content-driven.
+
+**Likely cause:**
+The schema template is not mapping commerce attributes consistently after redesign.
+
+**SEO impact:**
+This may reduce eligibility for rich product presentation, though it is not the primary cause of the reported traffic drop.
+
+**Confidence:** Medium
+
+**Recommended next validation step:**
+Validate the structured data template against a larger sample and compare required fields with visible content outputs.
+
+### Finding 4
+
+**Issue:** Filter pages receive stronger navigation exposure than deeper product pages
+
+**Severity:** Low
+
+**Affected scope:** Category navigation on sampled template set.
+
+**Evidence:**
+- Category pages expose multiple filter combinations through crawlable links.
+- Product pages deeper in the hierarchy receive fewer persistent links from navigation modules.
+
+**Likely cause:**
+Navigation emphasizes filtering and discovery tools over direct reinforcement of product detail pages.
+
+**SEO impact:**
+This may dilute crawl focus and internal link equity, but it is secondary to the canonical problem.
+
+**Confidence:** Medium
+
+**Recommended next validation step:**
+Review link-module design and compare internal-link counts for category, filter, and product detail pages.
+
+---
+
+## Fix now / validate next / monitor
+
+### Fix now
+- Resolve product-page canonical logic.
+- Reconcile sitemap entries with intended canonical targets.
+
+### Validate next
+- Check whether corrected canonicals change Search Console indexing states on a representative sample.
+- Expand structured data validation across additional product templates.
+
+### Monitor
+- Organic entrances to product pages after technical corrections.
+- Distribution of indexed product URLs versus category URLs.
+
+## Why this is a strong example
+
+- It states scope and limitations.
+- It avoids claiming a penalty or algorithm hit.
+- It ties each issue to evidence and affected scope.
+- It separates the likely primary cause from secondary quality issues.
+- It gives concrete next validation steps instead of vague advice.

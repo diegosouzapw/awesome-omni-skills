@@ -55,276 +55,288 @@ replaces:
 
 Use this skill to improve completion rate and submission quality for forms that are **not** signup or account-registration flows.
 
-This skill preserves the upstream intent: optimize forms without blindly removing fields, without treating conversion as copy-only work, and without breaking business usefulness, accessibility, autofill, or measurement.
+Preserve the upstream intent:
 
-Treat Form CRO as a combined **UX + implementation + instrumentation** workflow:
+- do **not** blindly remove fields
+- do **not** optimize forms without business context
+- do **not** trade accessibility, trust, consent clarity, or data quality for a short-term lift
+- do **measure before and after** changes
+- do keep upstream workflow, copied support files, and provenance intact when handing off
 
-- diagnose where users drop off
-- reduce unnecessary friction
-- preserve semantic HTML and progressive enhancement
-- make validation recoverable and accessible
-- improve mobile entry speed
-- measure the effect of changes
+Treat Form CRO as a combined **UX + implementation + instrumentation** workflow. A good form change is only complete when the operator can explain:
+
+1. what friction exists now,
+2. what business or compliance constraint must remain,
+3. what specific changes were made,
+4. how the form behaves on mobile and with assistive technology, and
+5. how success will be measured after release.
 
 ## When to Use
 
-Use this skill when the user needs help with any of the following:
+Use this skill when the form is already defined and the task is to improve completion behavior, submission quality, or user recovery from friction.
 
-- lead capture forms
+Typical form types:
+
 - contact forms
+- lead capture forms
 - demo request forms
 - quote request forms
-- application forms
-- survey forms
-- checkout forms
-- multi-step or long single-page forms with noticeable abandonment
-- forms that feel slow, confusing, error-prone, or hard to complete on mobile
-- forms with low start-to-submit conversion and available analytics or session evidence
+- loan or service application forms
+- survey or intake forms
+- support request forms
+- checkout or payment-adjacent forms
+- booking or reservation forms
 
-Use this skill especially when the operator can inspect or change one or more of these layers:
+Use this skill when the operator needs to:
 
-- field list and field order
-- labels, help text, and submit CTA copy
-- validation behavior and error recovery
-- semantic HTML attributes
-- mobile input behavior
-- analytics events or funnel tracking
-- step structure, review step, or progressive disclosure
+- reduce abandonment or hesitation
+- improve field clarity and completion speed
+- improve mobile entry and autofill success
+- improve validation and error recovery
+- improve trust cues, consent language, or expectation setting
+- preserve required business data while lowering friction
+- review implementation details such as labels, field types, grouping, and submission states
 
-## Do Not Use
+## When **Not** to Use
 
 Do **not** use this skill as the primary workflow for:
 
-- account creation or registration forms
-- login, password reset, MFA, or authentication-specific UX
-- backend anti-fraud or identity verification redesign
-- payment processor internals or unsupported platform-specific checkout APIs
-- legal/compliance policy decisions that need specialist review
-- experiments that cannot be measured at all
+- signup or account-registration flows
+- authentication, password reset, or MFA flows
+- identity verification or high-assurance KYC workflows where security policy dominates CRO
+- major analytics architecture work not tied to a specific form
+- broad landing-page CRO where the form itself is not the main bottleneck
 
-If the task is mainly signup or registration optimization, route to the more appropriate signup-focused skill instead of forcing this workflow.
+Escalate or narrow scope when:
 
-## Success Criteria
+- no baseline metrics exist and the user expects a guaranteed lift
+- the form is legally constrained and required disclosures cannot be changed
+- backend validation rules are unknown and the operator cannot safely change field behavior
+- success is defined only as “fewer fields” without regard to lead quality or downstream operations
 
-A good Form CRO pass should improve one or more of these measurable outcomes **without reducing required data quality**:
+## Inputs to Gather First
 
-- higher form start rate
-- higher completion/submission rate
-- lower abandonment at a known step or field cluster
-- fewer validation failures per submission attempt
-- faster median completion time
-- better mobile completion rate
-- fewer duplicate or low-quality submissions caused by unclear design
+Before changing the form, collect as many of these as possible:
+
+- form URL or source markup/component
+- form type and business goal
+- primary conversion event
+- current metrics: starts, completions, error rate, abandonment, step drop-off, mobile/desktop split
+- required fields versus nice-to-have fields
+- known validation rules and backend constraints
+- traffic source or campaign context
+- consent/privacy requirements
+- known accessibility requirements
+- device, browser, or locale issues already reported
+
+If metrics are missing, say so explicitly and treat recommendations as hypothesis-driven rather than validated.
 
 ## Workflow
 
-1. **Define the form type, business goal, and hard constraints.**
-   - Identify the form category: lead, contact, demo, quote, application, survey, or checkout.
-   - Separate required business/legal fields from "nice to have" fields.
-   - Confirm whether the operator may change markup, copy, validation, analytics, or only content.
+1. **Classify the form and success criteria**
+   - Identify the form type, primary audience, and true success event.
+   - Define whether success means more submissions, higher-quality submissions, faster completion, fewer support contacts, or some combination.
+   - Separate hard requirements from historical preferences.
 
-2. **Map the current funnel before changing anything.**
-   - Identify measurable stages such as `view -> start -> field interaction -> validation error -> submit attempt -> success`.
-   - Look for device splits, especially mobile vs desktop.
-   - If analytics are weak, use available evidence such as event logs, screenshots, recordings, support tickets, or QA notes.
+2. **Map current friction before editing**
+   - Walk through the form on desktop and mobile.
+   - Note excessive field count, unclear labels, optional/required confusion, poor grouping, weak error handling, trust gaps, and multi-step drop-off risks.
+   - Check whether the current UI blocks progress without helping recovery.
 
-3. **Inspect form semantics and implementation quality.**
-   - Confirm it uses a real HTML `<form>` with proper labels and submit behavior.
-   - Check field names, stable identifiers, input types, `autocomplete`, `inputmode`, and error messaging.
-   - Verify that validation does not erase entered values after failure.
-   - Open `references/domain-notes.md` for the field and validation matrix while reviewing markup.
+3. **Inspect implementation semantics**
+   - Verify every control has a programmatically associated label.
+   - Check `type`, `name`, `autocomplete`, `inputmode`, `required`, `aria-describedby`, and grouping with `fieldset`/`legend` where appropriate.
+   - Confirm validation messaging appears near the field, is understandable, and is announced to assistive technology when relevant.
+   - Use the reference notes for high-friction patterns and semantic checks: [references/domain-notes.md](references/domain-notes.md).
 
-4. **Prioritize friction by severity, not by taste.**
-   - Find blockers first: broken submit path, hidden required fields, inaccessible errors, poor mobile keyboard choice, impossible validation rules.
-   - Then find high-likelihood conversion drags: unclear labels, over-collection, redundant questions, premature mandatory fields, weak trust signals.
-   - Distinguish between issues that hurt all users and issues limited to a specific form type or device.
+4. **Prioritize changes by impact and safety**
+   - Remove only fields that are unneeded for the stated goal.
+   - When a field must stay, reduce friction through clearer labels, better defaults, examples, masks only when justified, and better keyboard/autofill behavior.
+   - Prefer reversible front-end changes before risky schema or backend changes.
+   - Distinguish quick wins from changes that need experiment design or stakeholder approval.
 
-5. **Propose narrowly scoped changes with a rationale.**
-   - For each change, state the expected benefit, affected metric, and implementation risk.
-   - Prefer reversible changes that preserve semantics and user data.
-   - Avoid removing fields that are operationally required unless the user explicitly approves the tradeoff.
+5. **Redesign for completion and recovery**
+   - Improve layout, sequencing, and visual hierarchy.
+   - Put easier fields first when it helps momentum, but do not hide critical disclosures.
+   - Use inline help only where users genuinely hesitate.
+   - Design validation to prevent avoidable errors and help users recover quickly when errors occur.
+   - Make submit states, loading states, and success/failure outcomes explicit.
 
-6. **Optimize field behavior and flow.**
-   - Use native input types and autofill-friendly attributes.
-   - Reduce typing effort through better defaults, grouping, conditional reveal, or clearer examples.
-   - For long forms, decide whether a single page, stepper, or hybrid review flow is best.
+6. **Protect trust, consent, and data quality**
+   - Make purpose statements specific: what the user gets, what happens next, and how quickly.
+   - Keep consent language separate from core action when legally appropriate.
+   - Do not pre-check consent boxes unless policy explicitly permits it.
+   - Avoid deceptive urgency, hidden enrollment, or vague follow-up promises.
 
-7. **Improve validation and error recovery.**
-   - Make validation specific, visible, and tied to the field.
-   - Preserve previous input after an error or server-side rejection.
-   - Move users directly to actionable fixes instead of forcing a full restart.
+7. **Define measurement and release plan**
+   - Record baseline metrics and the exact variants or code changes being proposed.
+   - Define what should improve and what must not regress: completion rate, valid submission rate, average time, field error rate, downstream qualification, accessibility defects.
+   - If experimentation is unavailable, still specify how post-release monitoring will detect regressions.
 
-8. **Tune mobile entry and perceived effort.**
-   - Match the mobile keyboard to the expected value.
-   - Keep labels visible; do not rely on placeholders as the only instruction.
-   - Reduce awkward scrolling, dense field clusters, and accidental taps near the submit CTA.
+8. **Document rationale and handoff**
+   - Summarize the main friction points, changes made, expected impact, and risks.
+   - Preserve provenance and any upstream support files.
+   - Include unresolved constraints, especially backend validation or compliance blockers.
 
-9. **Define instrumentation for the recommended changes.**
-   - Ensure the revised flow can measure starts, field-level friction, submit attempts, and success.
-   - Add or recommend event naming that supports before/after comparison.
-   - If implementation is out of scope, explicitly list the events needed for validation.
+## Optimization Areas
 
-10. **Deliver the CRO plan with evidence and safeguards.**
-   - Provide prioritized findings, proposed changes, expected effect, and follow-up metrics.
-   - Include accessibility and semantic implementation notes.
-   - If helpful, model the output after `examples/worked-example.md`.
+### Field-level optimization
 
-## Form-Specific Guidance
+Focus on necessity, clarity, and ease of entry.
 
-### Lead / Contact / Demo Request
+- Remove only fields that do not support the business goal or downstream process.
+- Rewrite labels to be explicit and unambiguous.
+- Prefer persistent labels over placeholder-only instructions.
+- Split combined questions only when it reduces confusion.
+- Use appropriate input types and input modes for email, phone, numeric, postal code, and date-related entry.
+- Configure `autocomplete` tokens where supported.
+- Mark optional fields clearly instead of forcing users to infer.
 
-Focus on reducing uncertainty and unnecessary qualification friction.
+### Layout and flow
 
-- Ask only for data needed for the next business step.
-- Prefer one clear goal over several competing CTAs.
-- If sales qualification is required, consider delaying some questions until after the initial submit.
-- Clarify response expectations such as "We reply within 1 business day."
+- Group related inputs logically.
+- Keep one-column layouts unless there is a strong reason otherwise.
+- Avoid visually dense blocks that make scanning hard on mobile.
+- For multi-step forms, ensure each step has a clear purpose and avoid hiding major effort until late in the flow.
+- Show progress only when it is truthful and stable.
 
-### Quote Request
+### Validation and error recovery
 
-Focus on progressive disclosure and context.
+- Prevent obvious errors early when possible.
+- Do not rely only on color to signal errors.
+- Keep error text specific, adjacent to the field, and actionable.
+- Preserve user-entered values after validation failure.
+- Do not trap the user in loops caused by front-end and backend rule mismatch.
 
-- Collect just enough information to produce or route a quote.
-- Use conditional sections instead of showing every possible option up front.
-- Explain why specialized questions are being asked.
+### Trust and expectation setting
 
-### Application Forms
+- Explain why sensitive data is needed.
+- State follow-up timing where relevant.
+- Make pricing, eligibility, or contact expectations visible before submission.
+- Remove copy that sounds manipulative or evasive.
 
-Focus on resumability, clarity, and error recovery.
+### Submission experience
 
-- Long forms need strong sectioning and clear progress.
-- Preserve data aggressively after validation or timeout issues.
-- Avoid hidden requirements discovered only at submission time.
-
-### Survey Forms
-
-Focus on completion momentum and respondent confidence.
-
-- Keep answer formats consistent where possible.
-- Avoid unnecessary required questions.
-- Use branching only when it reduces effort more than it adds complexity.
-
-### Checkout Forms
-
-Focus on trust, speed, and recoverability.
-
-- Minimize distractions near the transaction path.
-- Use payment, address, and contact semantics correctly.
-- Keep totals, fees, and shipping expectations visible.
-- Never let validation failures wipe out critical checkout progress.
+- Make the primary action label explicit, such as `Request quote` instead of `Submit` when the action is specific.
+- Disable duplicate submissions safely.
+- Show loading states when requests take noticeable time.
+- Return a confirmation state that explains next steps.
 
 ## Best Practices
 
-### Do
+Do:
 
-- Do measure the current funnel before recommending redesigns.
-- Do preserve semantic HTML forms and native browser capabilities.
-- Do use specific `autocomplete` tokens where they fit the field.
-- Do use appropriate `type`, `inputmode`, and `enterkeyhint` values for mobile entry.
-- Do keep labels persistently visible and connect them programmatically to inputs.
-- Do make error messages specific, local to the field, and easy to recover from.
-- Do preserve user-entered values after validation or server-side failures.
-- Do state the business tradeoff when suggesting field removal or deferral.
-- Do separate required data from data that is merely convenient for internal teams.
-- Do make every recommendation traceable to an expected metric impact.
+- measure the current form before changing it
+- optimize for both completion rate and submission quality
+- use proper labels, field grouping, and standards-based input semantics
+- make mobile keyboard choice intentional with correct `type` and `inputmode`
+- preserve values and focus users on the first actionable error after validation failure
+- state required versus optional fields clearly
+- verify the happy path and the error path on mobile and desktop
+- test with autofill where name, email, phone, address, or payment-adjacent fields are involved
+- keep consent and purpose text understandable and specific
+- document which changes are safe UI refinements versus backend-dependent changes
 
-### Do Not
+Do not:
 
-- Do not optimize only for fewer fields; optimize for successful completion and usable submissions.
-- Do not replace semantic form controls with custom widgets unless there is a strong reason.
-- Do not use placeholders as the only label or instruction.
-- Do not use vague validation like "Invalid input" when the actual fix can be stated.
-- Do not clear the form after a failed submit.
-- Do not break autofill by using unstable names, odd field splitting, or incorrect tokens.
-- Do not hide key costs, commitments, or follow-up expectations near submission.
-- Do not recommend A/B testing language if there is no practical way to measure outcomes.
-
-## Examples
-
-### Example 1: Lead Form Review
-
-**Input**
-
-```text
-A B2B demo request form has 11 fields on one page. Mobile completion is much lower than desktop. Users often abandon after phone number and company size. Errors appear only at the top after submit.
-```
-
-**Expected output characteristics**
-
-```text
-- Identify the likely friction points by field and device context.
-- Recommend which fields can be deferred or made optional.
-- Replace top-only generic error handling with field-level recovery.
-- Specify better mobile attributes for phone/email fields.
-- Propose a funnel/event plan for before-vs-after measurement.
-```
-
-### Example 2: Markup-Level Fix
-
-**Before**
-
-```html
-<input placeholder="Email" name="userEmail">
-<input placeholder="Phone" name="phoneField">
-<button>Send</button>
-```
-
-**After**
-
-```html
-<label for="email">Work email</label>
-<input id="email" name="email" type="email" autocomplete="email" inputmode="email">
-
-<label for="tel">Phone number</label>
-<input id="tel" name="tel" type="tel" autocomplete="tel" inputmode="tel">
-
-<button type="submit">Request demo</button>
-```
-
-**Why this is better**
-
-```text
-- Visible labels improve clarity and accessibility.
-- Native types and autocomplete improve autofill and mobile entry.
-- Stable, conventional field naming reduces implementation friction.
-- CTA text matches the user outcome instead of generic "Send" wording.
-```
-
-### Example 3: Worked CRO Plan
-
-Open `examples/worked-example.md` when the operator needs a concrete end-to-end example showing diagnosis, recommendation format, field-level fixes, and success metrics for a realistic form.
+- remove fields without understanding why downstream teams use them
+- replace labels with placeholders as the only instructions
+- use custom controls that reduce accessibility or keyboard usability without strong justification
+- block submission with generic messages like `Invalid input` when field-specific guidance is possible
+- introduce formatting masks that fight paste, autofill, or international formats unless truly required
+- treat all abandonment as a field-count problem
+- hide legal, pricing, eligibility, or consent information until after the user has committed
+- assume a conversion lift is valid if lead quality or successful fulfillment drops
 
 ## Troubleshooting
 
-**Symptoms:** The form already has decent copy, but completion is still poor.
+**Symptoms:** Autofill does not populate expected fields, or users report repeated manual entry.
 
-**Solution:** Check implementation and measurement quality before rewriting text again. Common causes are wrong mobile keyboards, broken autofill, inaccessible validation, hidden required fields, or a missing distinction between start and submit in analytics.
+**Solution:** Check for correct `autocomplete` tokens, stable field names, proper label association, and realistic field splitting. Avoid decorative wrappers or custom widgets that break browser heuristics. Review the semantic checklist in [references/domain-notes.md](references/domain-notes.md).
 
-**Symptoms:** Stakeholders want to remove many fields, but operations still need the data.
+**Symptoms:** Mobile users abandon on numeric, phone, or date-like fields.
 
-**Solution:** Reframe the problem as timing and necessity. Recommend deferring non-essential questions, using conditional reveal, or collecting follow-up information after submission instead of cutting critical data blindly.
+**Solution:** Verify `type` and `inputmode` match the expected input. Remove unnecessary masks, reduce forced punctuation, and confirm the mobile keyboard supports the intended format. Test copy-and-paste behavior, not just manual typing.
 
-**Symptoms:** Users see errors only after pressing submit.
+**Symptoms:** Users hit validation errors repeatedly and cannot tell how to recover.
 
-**Solution:** Add clear field-level error association, preserve entered values, and move focus to the first actionable issue after failed submission. Ensure the error text explains the fix, not just the failure.
+**Solution:** Make errors field-specific, adjacent, and actionable. Preserve entered values, move focus to the first unresolved issue after submit, and ensure frontend rules do not conflict with backend validation requirements.
 
-**Symptoms:** Mobile completion is much worse than desktop.
+**Symptoms:** Multi-step forms have sharp drop-off after the first or second step.
 
-**Solution:** Audit `type`, `inputmode`, tap spacing, keyboard flow, field grouping, and step length. Check whether the form forces excessive typing or uses desktop-oriented layouts that become awkward on small screens.
+**Solution:** Re-check whether the step split reflects user mental models. Move low-value fields later, surface effort earlier, and make progress indicators truthful. If a later step contains surprise requirements, expose them sooner.
 
-**Symptoms:** Checkout or application users drop off late in the flow.
+**Symptoms:** Submission count improves, but lead quality or completion validity worsens.
 
-**Solution:** Review trust, transparency, and recoverability near the final step. Show costs, requirements, and next-step expectations clearly. Ensure users do not lose progress after server-side errors or payment/validation failures.
+**Solution:** Rebalance the optimization target. Restore or redesign qualifying questions instead of removing them outright. Compare valid submissions, downstream qualification, and support burden alongside raw completion rate.
 
-**Symptoms:** Autofill stopped working after a redesign.
+**Symptoms:** Accessibility review flags unclear instructions or poor screen-reader error announcements.
 
-**Solution:** Inspect field names, labels, `autocomplete` tokens, and custom components. Restore semantically correct input types and stable field identity before making visual changes.
+**Solution:** Add explicit labels, connect help and errors with `aria-describedby` where needed, group related controls with `fieldset` and `legend`, and ensure error states are perceivable without relying only on color or placeholder text.
+
+## Examples
+
+### Example 1: Lead capture form review
+
+```text
+Input
+- Form type: demo request
+- Fields: name, work email, company, phone, team size, free-text message
+- Problem: strong mobile drop-off on phone field and repeated validation failures
+- Constraint: sales requires company and work email; phone is optional
+
+Expected optimization direction
+- Keep company and work email
+- Mark phone clearly optional
+- Change phone input to mobile-friendly semantics
+- Remove strict formatting mask if backend accepts normalized numbers
+- Add inline error text explaining accepted formats only when validation fails
+- Update submit label from "Submit" to "Request demo"
+- Measure phone-field error rate and mobile completion rate after release
+```
+
+### Example 2: Quote request form with trust friction
+
+```html
+<!-- Before -->
+<input placeholder="Email">
+<input placeholder="Phone">
+<textarea placeholder="Tell us what you need"></textarea>
+<button>Submit</button>
+```
+
+```html
+<!-- After -->
+<label for="email">Work email</label>
+<input id="email" name="email" type="email" autocomplete="work email" required>
+
+<label for="phone">Phone (optional)</label>
+<input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel">
+
+<label for="details">Project details</label>
+<textarea id="details" name="details" aria-describedby="details-help"></textarea>
+<p id="details-help">Include timeline, budget range, or scope if known.</p>
+
+<p>We use this information to prepare an accurate quote. We reply within 1 business day.</p>
+<button type="submit">Request quote</button>
+```
+
+Expected outcome:
+
+- clearer field purpose
+- improved autofill and mobile entry
+- reduced ambiguity around optional phone collection
+- stronger trust through explicit expectation setting
+
+### Example 3: Worked optimization plan
+
+Open [examples/worked-example.md](examples/worked-example.md) for a full before/after review with concrete findings, proposed edits, and measurement notes.
 
 ## Additional Resources
 
-- `references/domain-notes.md` — Open this during implementation or review for the field semantics matrix, validation guidance, mobile-entry attributes, and an error-recovery checklist.
-- `examples/worked-example.md` — Open this when you need a concrete model for turning observations into a prioritized CRO recommendation set with measurable success criteria.
+- [references/domain-notes.md](references/domain-notes.md) — open during implementation or review for semantic field setup, autocomplete guidance, validation and accessibility checks, and high-friction pattern notes.
+- [examples/worked-example.md](examples/worked-example.md) — open when you need a realistic end-to-end example showing how to turn a form audit into concrete changes and measurable outcomes.
 
 ## Related Skills
 
-No local related skills were provided in the source context. Do not invent them; route manually if the task turns out to be signup-specific or primarily analytics-platform-specific.
+No confirmed local related skills were provided in the source context.

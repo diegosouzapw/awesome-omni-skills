@@ -1,171 +1,90 @@
 # Node.js Review Criteria
 
-Use this rubric when you need a compact, repeatable way to assess a Node.js codebase. Score each area as:
+Use this checklist when reviewing a Node.js codebase, service, worker, or CLI. Mark each item as **Good**, **Concern**, or **Investigate**.
 
-- **Acceptable** — no immediate action needed
-- **Needs change soon** — should be corrected before the next meaningful release window
-- **Block release** — unacceptable for the stated runtime or deployment context
+## 1. Runtime and Release-Line Fit
 
-## 1. Package and module boundaries
+- Is the target Node major version explicitly defined in repository and CI artifacts?
+- Is the project on a currently supported release line appropriate for its risk profile?
+- Do local development, CI, containers, and deployment environments agree on the runtime major version?
+- Are features used in code compatible with the declared runtime, rather than only with a developer machine?
 
-### Review questions
+## 2. Event-Loop Safety
 
-- Does `package.json` clearly declare module intent, such as `"type": "module"`, or is CommonJS chosen deliberately?
-- If this is a library, are supported entrypoints exposed intentionally through `exports`?
-- Are internal files imported through private deep paths that bypass package boundaries?
-- Is import-time behavior predictable, or do modules perform hidden side effects during load?
+- Does the hot path avoid sync filesystem calls, heavy parsing, compression, crypto, or other blocking work?
+- Is CPU-heavy work isolated into workers, queues, subprocesses, or separate services when justified?
+- Are stream and backpressure semantics respected for large payloads?
+- Is concurrency bounded for fan-out operations, background jobs, and bulk processing?
 
-### Evidence to gather
+## 3. Async Correctness
 
-- `package.json`
-- entrypoint files
-- import graph examples
-- build or bundler configuration
+- Do outbound calls have explicit timeout behavior?
+- Are retries bounded and idempotency-aware?
+- Are promise rejections surfaced and handled at the correct layer?
+- Is cancellation or shutdown behavior defined for long-running work?
+- Is request-scoped or job-scoped context preserved across async boundaries where needed?
 
-### Severity guide
+## 4. Platform Fit: Built-in vs Third-Party
 
-- **Acceptable:** one intentional module system, stable entrypoints, minimal side effects
-- **Needs change soon:** mixed ESM/CommonJS or deep imports with a known migration plan
-- **Block release:** boundary confusion likely to break consumers or production startup behavior
+- Is a dependency used for something Node already provides adequately?
+- Does the framework solve a real complexity problem, or is it only fashion/convenience?
+- Could built-in `node:test`, built-in `fetch`, `AsyncLocalStorage`, `diagnostics_channel`, `--env-file`, or permissions reduce package sprawl or operational risk?
+- If a third-party package remains justified, is the justification clear: ecosystem compatibility, stronger ergonomics, or missing platform capability?
 
-## 2. Async safety and concurrency
+## 5. Configuration and Startup Discipline
 
-### Review questions
+- Are required configuration values validated at startup?
+- Is configuration centralized instead of being read ad hoc throughout the codebase?
+- Are secrets handled through appropriate environment or platform controls rather than hardcoded or committed values?
+- Are unsafe defaults prevented when configuration is missing or malformed?
 
-- Are promise lifecycles explicit, or is work started without ownership?
-- Are there unhandled rejections, swallowed errors, or retry loops without limits?
-- If request correlation, tenant context, or tracing context is required, is `AsyncLocalStorage` or equivalent explicit context propagation used?
-- Is CPU-heavy work isolated from the main event loop when latency matters?
+## 6. Dependency and Supply-Chain Hygiene
 
-### Evidence to gather
+- Is a lockfile present and treated as authoritative?
+- Does CI use reproducible installation flows rather than floating installs?
+- Is package count proportionate to the actual problem being solved?
+- Are dependency additions reviewed as architectural choices rather than casual convenience?
+- Are vulnerability and package-integrity checks handled with judgment, not blind upgrading?
+- Where relevant, is package provenance or publisher trust part of the review?
 
-- server request handlers
-- queue consumers
-- worker code
-- log correlation patterns
-- performance incident notes if available
+## 7. Testing Strategy
 
-### Severity guide
+- Do tests exist at the right level: unit, integration, contract, and failure path?
+- Are async failure modes tested, including timeouts, partial failures, and retries?
+- Are shutdown, startup, and configuration validation behaviors tested?
+- Is the testing approach simple enough to maintain, or has the tooling stack become part of the risk?
 
-- **Acceptable:** failures propagate predictably, context handling is deliberate, CPU work is isolated appropriately
-- **Needs change soon:** a few unsafe async patterns exist but are low-frequency or non-critical
-- **Block release:** shared globals for request state, unowned background work, or event-loop blocking on hot paths
+## 8. Diagnostics and Observability
 
-### Notes
+- Are logs structured and meaningful under incident conditions?
+- Can requests or jobs be correlated across async boundaries?
+- Are health, readiness, and error signals clear enough for operations?
+- Are diagnostics produced by stable mechanisms rather than scattered `console.log` statements?
+- Is there enough information to distinguish application bugs from environment or dependency failures?
 
-`async`/`await` improves readability but does not make code non-blocking. Heavy synchronous JSON transforms, crypto, compression, and parsing can still stall the event loop.
+## 9. Security and Boundary Control
 
-## 3. Test and dependency reproducibility
+- Is all external input validated at trust boundaries?
+- Are file paths, subprocess inputs, and network destinations constrained appropriately?
+- Is secret exposure minimized in logs, errors, and configuration files?
+- Are permissions or environment restrictions considered for higher-risk tools or CLIs?
+- Is deserialization, template rendering, or command construction handled safely?
 
-### Review questions
+## 10. Shutdown and Operational Resilience
 
-- Is the lockfile committed and used as the source of truth?
-- Does CI use `npm ci` where deterministic installs are expected?
-- Are dependency additions justified by capability gaps instead of convenience duplication?
-- Is there any inventory or SBOM process for shipped artifacts?
+- Does the service handle termination signals predictably?
+- Are in-flight requests, jobs, or streams drained or failed intentionally during shutdown?
+- Are duplicate processing and partial-commit risks understood for retries or restarts?
+- Is crash behavior observable and recoverable rather than silent or corrupting?
 
-### Evidence to gather
+## High-Weight Findings
 
-- lockfile presence
-- CI workflows
-- Dockerfile build steps
-- package count and overlap
+Escalate findings quickly when you see:
 
-### Severity guide
-
-- **Acceptable:** deterministic install path, sensible dependency surface, visible update policy
-- **Needs change soon:** reproducibility mostly exists but is inconsistently enforced
-- **Block release:** install path is nondeterministic for production builds or release artifacts
-
-## 4. Runtime security and permissions
-
-### Review questions
-
-- Are secrets injected at runtime instead of baked into source or images?
-- Is external input validated before use in filesystem, SQL, shell, template, or deserialization paths?
-- Are child processes narrowly scoped and free from dangerous interpolation?
-- Is the Node Permission Model relevant for this application’s threat model?
-
-### Evidence to gather
-
-- configuration loading code
-- child process and filesystem usage
-- container build files
-- runtime flags or startup docs
-
-### Severity guide
-
-- **Acceptable:** minimal secret exposure, validated input, bounded process and file access
-- **Needs change soon:** some broad access assumptions remain but can be reduced without redesign
-- **Block release:** command injection risk, secrets embedded in artifacts, or uncontrolled privileged access
-
-### Notes
-
-Do not force the Permission Model everywhere. Use it when it meaningfully reduces risk and the application can tolerate explicit access declarations.
-
-## 5. Diagnostics and incident readiness
-
-### Review questions
-
-- Are logs structured enough to support filtering and correlation?
-- Are correlation IDs or request IDs present where they matter?
-- Can operators capture useful crash artifacts such as process reports?
-- Are event-loop lag or utilization metrics visible for latency-sensitive services?
-- Is startup failure loud and actionable?
-
-### Evidence to gather
-
-- logging examples
-- health endpoint behavior
-- process signal handlers
-- observability docs or dashboards if available
-
-### Severity guide
-
-- **Acceptable:** failures are visible, correlation exists, investigation paths are practical
-- **Needs change soon:** diagnostics are partially present but inconsistent
-- **Block release:** major incidents would be difficult to investigate due to weak logs and no crash diagnostics path
-
-## 6. Container and deployment behavior
-
-### Review questions
-
-- Does the image use multi-stage builds when useful to reduce attack surface and artifact size?
-- Does the runtime image avoid root execution?
-- Are secrets excluded from image layers and build history?
-- Does the Node process handle SIGTERM and shutdown gracefully?
-- Are readiness and liveness semantics aligned with actual service state?
-
-### Evidence to gather
-
-- Dockerfile
-- entrypoint scripts
-- orchestrator manifests
-- shutdown code
-
-### Severity guide
-
-- **Acceptable:** non-root runtime, graceful shutdown, no secret leakage in image construction
-- **Needs change soon:** container basics exist but signal handling or readiness behavior is weak
-- **Block release:** root runtime, unsafe build practices, or shutdown behavior likely to drop work
-
-## Recommended output structure
-
-For each important finding, record:
-
-1. **Finding** — concise statement of the issue
-2. **Evidence** — what in the repo or deployment path supports it
-3. **Risk** — reliability, security, maintainability, or operability impact
-4. **Severity** — acceptable, needs change soon, or block release
-5. **Remediation** — smallest credible next action
-
-## Primary topic anchors
-
-Use official documentation on these topics when validating edge cases:
-
-- Node package/module resolution and package `exports`
-- Node test runner
-- `AsyncLocalStorage`, `AsyncResource`, and worker threads
-- npm `ci` and SBOM generation
-- Node Permission Model and security guidance
-- Docker multi-stage builds, non-root containers, and signal handling guidance
+- event-loop blocking work on request paths
+- missing timeouts around outbound network calls
+- unbounded concurrency or queue growth
+- runtime version drift between CI and production
+- dependency sprawl with weak lockfile discipline
+- no clear shutdown semantics for servers or workers
+- weak trust-boundary validation on external input

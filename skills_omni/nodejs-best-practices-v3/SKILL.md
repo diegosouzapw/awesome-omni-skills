@@ -7,7 +7,7 @@ tags:
   - "nodejs-best-practices-v3"
   - "nodejs-best-practices"
   - "node"
-  - "development"
+  - "node.js"
   - "architecture"
   - "async"
   - "security"
@@ -51,257 +51,189 @@ replaces:
 
 ## Overview
 
-This skill preserves the upstream intent: teach operators how to make good Node.js decisions instead of memorizing snippets or blindly following framework trends.
+This skill preserves the upstream intent: teach operators how to make sound Node.js decisions instead of copying fashionable patterns.
 
-In this curated form, the skill is strongest as a **review and decision workflow** for modern Node.js services, CLIs, and workers. Use it to judge whether a codebase is safe, maintainable, diagnosable, and operationally predictable.
+In this curated form, the skill is optimized for **analysis and review** of Node.js codebases, services, workers, CLIs, and internal tooling. It is especially useful when you need to assess:
 
-Focus the review on:
+- runtime and release-line fit
+- event-loop safety and async correctness
+- framework necessity versus built-in platform features
+- dependency and supply-chain discipline
+- testing, diagnostics, and observability maturity
+- security posture and operational readiness
 
-- package and module boundaries
-- async correctness and request-context propagation
-- dependency reproducibility and supply-chain hygiene
-- runtime security and secret handling
-- diagnostics readiness for production incidents
-- container packaging and shutdown behavior
+This is a **decision-making skill**, not a code-generation template. Use it to produce a justified review, recommendation, or architecture direction.
 
 ## When to Use
 
-Use this skill when you need to:
+Use this skill when:
 
-- review a Node.js repository before merge, release, or migration
-- compare architectural options such as framework choice, worker threads, or built-in vs third-party tooling
-- assess whether a service is production-ready
-- explain why a Node.js implementation is risky even if tests currently pass
-- turn broad “best practices” requests into a concrete review report
+- a team asks whether a Node.js service is production-ready
+- you need to review architecture, framework choice, or async patterns
+- a repository shows latency spikes, blocking work, or unstable concurrency behavior
+- you need to judge whether built-in Node features can replace unnecessary dependencies
+- you need a structured review of security, testing, diagnostics, or release hygiene
+- the user wants best practices with rationale, trade-offs, and review criteria
 
-Do **not** use this skill as a generic JavaScript style guide or as a substitute for framework-specific documentation.
+Do **not** use this skill as the primary workflow when:
+
+- the task is language-agnostic and not meaningfully Node-specific
+- the user only wants implementation code with no review or architecture component
+- the dominant problem is infrastructure-only and not connected to Node runtime behavior
+- the codebase is browser-only JavaScript with no Node runtime concerns
 
 ## Workflow
 
-1. **Set the review boundary**
-   - Identify the runtime target: API server, worker, CLI, cron, or library.
-   - Confirm Node version policy from `package.json`, container image, CI config, or docs.
-   - Decide whether the task is architecture review, pre-release review, incident hardening, or migration review.
+1. **Establish the review target**
+   - Identify whether the subject is an API server, CLI, worker, monolith, library, or mixed repository.
+   - Record the Node version policy from `.nvmrc`, `.node-version`, `package.json`, CI config, Dockerfile, or deployment manifests.
+   - Confirm whether the question is about architecture, correctness, performance, security, or release readiness.
 
-2. **Inspect package and module structure**
-   - Check whether `package.json` declares an intentional module mode such as `"type": "module"` or a deliberate CommonJS choice.
-   - Review `exports` usage for libraries and internal boundary clarity for applications.
-   - Flag deep imports, hidden entrypoints, mixed module systems without a migration reason, and brittle path aliases.
+2. **Map runtime responsibilities**
+   - Separate I/O-bound work from CPU-bound work.
+   - Note where the process handles HTTP, queues, cron jobs, file I/O, streams, child processes, or crypto/compression.
+   - Flag any work that appears likely to block the event loop.
 
-3. **Review async behavior and concurrency choices**
-   - Trace request flow through `async`/`await`, timers, streams, queues, and event handlers.
-   - Look for unhandled promise rejections, fire-and-forget work, and error swallowing.
-   - Verify whether request-scoped state uses `AsyncLocalStorage` when correlation IDs, tracing context, or tenant context must survive async hops.
-   - If CPU-heavy work exists, verify whether it is isolated with worker threads or external processing instead of blocking the event loop.
+3. **Review platform-fit decisions**
+   - Check whether the codebase uses built-in capabilities appropriately before adding dependencies.
+   - Look for valid use of modern Node facilities such as `node:test`, `AsyncLocalStorage`, `diagnostics_channel`, built-in `fetch`, `--env-file`, and permissions where relevant.
+   - Challenge framework or library choices that add abstraction without solving a concrete problem.
 
-4. **Assess build, test, and dependency reproducibility**
-   - Check for deterministic installs with lockfiles and `npm ci` in CI.
-   - Review whether dependency updates are constrained, observable, and tested.
-   - Check whether the built-in test runner is sufficient or whether heavier test tooling is justified by requirements.
-   - Prefer SBOM generation and dependency visibility over ad hoc package sprawl.
+4. **Assess correctness and maintainability**
+   - Review async boundaries, error propagation, cancellation, shutdown behavior, and timeouts.
+   - Check whether configuration is explicit, validated, and environment-specific.
+   - Verify that modules, services, and adapters are separated cleanly enough to test and replace.
 
-5. **Assess runtime security and operational safety**
-   - Review secret handling, input validation, deserialization, child process usage, and filesystem/network access.
-   - Check whether the Node Permission Model is relevant for the runtime and whether permission usage is explicit.
-   - For containers, verify non-root execution, multi-stage builds, signal handling, and secret-safe image construction.
-   - Ensure debug endpoints, stack traces, and reports do not expose sensitive data by default.
+5. **Assess dependency and supply-chain discipline**
+   - Review lockfile presence, install reproducibility, dependency sprawl, and package freshness.
+   - Prefer `npm ci`-style reproducible installs in CI over drift-prone install flows.
+   - Check whether dependency risk is controlled with minimal package count, provenance-aware publishing or consumption where applicable, and actionable audit handling rather than blind upgrades.
 
-6. **Assess diagnostics and failure handling**
-   - Verify structured logging, correlation IDs, health endpoints, and startup failure visibility.
-   - Check readiness for production investigation using process reports, event-loop metrics, and clear shutdown hooks.
-   - Review whether crashes are fail-fast and observable instead of partially swallowed.
+6. **Assess testing and diagnostics**
+   - Check whether tests cover behavior at the right level: unit, integration, contract, and failure-path tests.
+   - Look for observability support: structured logs, request or job correlation, health signals, metrics hooks, and useful crash diagnostics.
+   - Review whether production debugging relies on stable mechanisms instead of ad hoc `console.log` sprawl.
 
-7. **Produce a decision-oriented report**
-   - Separate findings into `keep`, `change soon`, and `block release`.
-   - For each finding, state: evidence, risk, recommended action, and what would count as acceptable remediation.
-   - Avoid taste-based comments unless they clearly affect reliability, security, or maintainability.
+7. **Assess operational safety**
+   - Review input validation, secret handling, permissions, file-system scope, subprocess usage, and network exposure.
+   - Confirm graceful shutdown, backpressure handling, and retry logic do not create duplicate work or data corruption.
+   - Check whether defaults are safe under failure, not only under happy-path traffic.
 
-For a compact scoring rubric, open [`references/review-criteria.md`](references/review-criteria.md).
+8. **Produce a decision-oriented output**
+   - Summarize findings as **keep**, **change**, or **investigate**.
+   - Prioritize by impact: correctness and security first, then operability, then maintainability.
+   - Recommend the smallest safe change that materially improves the system.
 
-## Review Priorities
+## Review Output Format
 
-### 1. Module and package boundaries
+Use this structure when presenting results:
 
-Prefer explicit boundaries over convenience.
-
-Good signals:
-
-- deliberate module mode selection
-- stable entrypoints
-- limited reliance on side effects at import time
-- libraries exposing supported paths via `exports`
-- applications organized by domain boundaries instead of large utility dumps
-
-Risk signals:
-
-- mixed ESM/CommonJS without migration notes
-- deep imports into private files
-- circular dependencies hidden by runtime behavior
-- global mutable singletons used for request-scoped data
-
-### 2. Async correctness
-
-Prefer code that makes failure and sequencing obvious.
-
-Good signals:
-
-- `await` used for meaningful sequencing
-- explicit timeout, retry, and cancellation behavior where relevant
-- errors rethrown or mapped with context
-- request context propagated intentionally
-
-Risk signals:
-
-- orphaned promises
-- `Array.prototype.forEach(async ...)` for ordered or failure-sensitive work
-- broad `try/catch` that logs and continues without policy
-- CPU-heavy parsing or crypto in the main event loop under request load
-
-### 3. Dependency and build hygiene
-
-Prefer boring, reproducible builds.
-
-Good signals:
-
-- lockfile committed
-- `npm ci` in CI or release automation
-- dependency additions justified by capability gaps
-- upgrade cadence visible in automation or policy
-
-Risk signals:
-
-- deleting the lockfile during builds
-- `npm install` in CI when deterministic installs are expected
-- unnecessary framework or utility overlap
-- no inventory of transitive risk for production systems
-
-### 4. Security posture
-
-Prefer explicit restriction over ambient trust.
-
-Good signals:
-
-- secrets injected at runtime, not baked into images
-- validated external input
-- narrow process spawning
-- container runs as non-root
-- permission model evaluated for the threat model
-
-Risk signals:
-
-- shell interpolation with user input
-- secrets in Docker layers or source control
-- broad filesystem access assumptions
-- debug behavior exposing internals in production
-
-### 5. Diagnostics and production readiness
-
-Prefer systems that are easy to investigate under stress.
-
-Good signals:
-
-- structured logs with request IDs
-- health and readiness behavior aligned to actual dependencies
-- graceful shutdown for HTTP servers, queues, and workers
-- event-loop lag or utilization visibility for latency-sensitive systems
-
-Risk signals:
-
-- logs without correlation context
-- SIGTERM ignored in containers
-- no crash artifacts or incident diagnostics path
-- health checks that always return success regardless of dependency failure
+- **Context:** what the service does and what Node is responsible for
+- **Strengths:** practices worth preserving
+- **Critical risks:** issues that can cause outages, corruption, or security exposure
+- **Important improvements:** changes that improve resilience or clarity
+- **Optional refinements:** nice-to-have improvements with lower urgency
+- **Decision summary:** whether the current approach is acceptable, conditionally acceptable, or should be changed
 
 ## Examples
 
-### Example 1: Short review finding
-
-**Input**
+### Example 1: Short review summary
 
 ```text
-Service: payments-api
-Observed: Express app stores request metadata on a mutable global object, uses npm install in CI, and Dockerfile runs as root.
+Target: Express-based internal API on Node 22
+Decision: Conditionally acceptable
+
+Strengths:
+- Uses LTS runtime in CI and production
+- Has a lockfile and reproducible CI install
+- Uses structured logging and graceful shutdown hooks
+
+Critical risks:
+- Image processing runs inline on request path and blocks the event loop
+- Request timeouts are missing on outbound fetch calls
+- Input validation is inconsistent across routes
+
+Important improvements:
+- Move CPU-heavy image work to a worker or separate service
+- Wrap outbound I/O with explicit timeout and retry policy
+- Centralize schema validation at the edge
 ```
 
-**Expected review output**
+### Example 2: Framework challenge
 
 ```text
-Block release:
-1. Request-scoped state is stored globally. Concurrent requests can overwrite correlation or tenant context. Use AsyncLocalStorage or explicit parameter passing.
-2. CI uses npm install instead of npm ci. Reproducibility is weaker and lockfile drift can change shipped dependencies.
-3. Container runs as root. Rebuild with a non-root runtime stage and verify writable paths explicitly.
+Question: Should this small JSON API keep a large framework stack?
 
-Change soon:
-4. No evidence of graceful SIGTERM shutdown for HTTP connections.
+Observed facts:
+- 12 routes, minimal middleware, no SSR, no plugin ecosystem dependency
+- Most code is validation, auth checks, and data access
+- Team cites convenience, not a hard technical requirement
+
+Reasoned recommendation:
+- Re-evaluate framework weight versus built-in HTTP support or a lighter server layer
+- Keep the current framework only if it provides proven operational value such as standardized plugins, hooks, or team-wide conventions
+- Do not rewrite purely for fashion; rewrite only if complexity reduction is measurable
 ```
 
-### Example 2: Architecture decision note
+For deeper worked examples, open:
 
-**Input**
-
-```text
-Question: Should this internal API adopt a heavy test stack immediately?
-Context: Node 22 service, mostly unit and integration tests, no browser automation, no custom mocking constraints.
-```
-
-**Expected review output**
-
-```text
-Recommendation: Start with the built-in Node test runner unless required capabilities are missing.
-Reasoning: It reduces dependency surface and is often sufficient for server-side unit and integration coverage.
-Upgrade trigger: Introduce a heavier framework only when you need capabilities the built-in runner does not provide cleanly in this codebase.
-```
-
-For a longer worked example with findings and remediation, open [`examples/review-example.md`](examples/review-example.md).
+- `examples/review-example.md`
+- `examples/decision-scenarios.md`
 
 ## Best Practices
 
-Do:
+### Do
 
-- define the runtime and operational context before giving advice
-- prefer explicit module boundaries and package entrypoints
-- use `AsyncLocalStorage` only when request context is truly needed, and review where context may be lost
-- keep installs deterministic with lockfiles and `npm ci`
-- review container shutdown, signal handling, and user privileges as part of Node review, not as a separate concern
-- distinguish architecture preferences from release-blocking risks
-- recommend the smallest toolchain that satisfies the requirement
+- Prefer current supported Node release lines and document the target runtime explicitly.
+- Distinguish CPU-bound work from I/O-bound work before discussing performance.
+- Use built-in platform features when they meet the requirement cleanly.
+- Require explicit timeouts, cancellation strategy, and error handling for outbound I/O.
+- Keep request handlers thin; move business rules into testable modules.
+- Preserve correlation context across async boundaries when tracing request or job flow matters.
+- Use reproducible installs and review dependency additions as architecture decisions, not convenience-only changes.
+- Treat observability as part of correctness: if failures cannot be diagnosed, the system is not truly production-ready.
 
-Do not:
+### Do Not
 
-- recommend frameworks by popularity alone
-- treat passing tests as proof of async safety under concurrency
-- add packages when the Node standard library or built-in runner already covers the need
-- ignore operational diagnostics until after an incident
-- approve root-running containers, secret-baking builds, or broad shell execution patterns without strong justification
-- mix ESM and CommonJS casually in new code
+- Recommend a framework because it is popular without tying it to delivery or operational benefit.
+- Assume async code is safe just because it uses `await`.
+- Put compression, crypto, large JSON transforms, image manipulation, or heavy parsing directly on hot request paths without justification.
+- Accept unbounded concurrency, unbounded queues, or unbounded payload handling.
+- Add packages for features already provided adequately by Node unless the package clearly reduces risk or complexity.
+- Treat `npm audit` output as a mechanical upgrade queue; evaluate exploitability, reachability, and breakage risk.
+- Rely on scattered environment variables with no validation or startup checks.
 
 ## Troubleshooting
 
-**Symptoms:** Request IDs appear in some logs but disappear after queue hops or background callbacks.
+**Symptoms:** Latency spikes under moderate traffic, CPU rises sharply, and unrelated requests slow down.
 
-**Solution:** Review context propagation boundaries. Check whether request state relies on globals or closure tricks. Use `AsyncLocalStorage` or explicit context passing where correlation must survive async transitions.
+**Solution:** Review for event-loop blocking work such as sync filesystem calls, large JSON parsing/stringifying, crypto/compression on the request path, regex backtracking, or CPU-heavy transforms. Move CPU-bound work to workers, queues, or another service boundary where justified.
 
-**Symptoms:** The service behaves differently between local installs and CI or between two developer machines.
+**Symptoms:** The service appears "async" but still hangs or times out unpredictably.
 
-**Solution:** Check whether CI uses `npm ci`, whether the lockfile is committed, and whether postinstall behavior changes the dependency graph. Reproduce from a clean install instead of an incrementally mutated `node_modules` tree.
+**Solution:** Inspect outbound I/O for missing timeouts, retries without bounds, unresolved promises, and connection-pool exhaustion. Verify that every network call has explicit timeout behavior and failure handling.
 
-**Symptoms:** CPU spikes cause latency collapse even though the code is fully `async`/`await`.
+**Symptoms:** Logs are present, but incidents are still hard to trace across requests or jobs.
 
-**Solution:** Async syntax does not prevent event-loop blocking. Inspect for CPU-heavy JSON work, compression, crypto, image processing, or synchronous filesystem calls. Move suitable work to worker threads or external jobs.
+**Solution:** Check whether correlation IDs or async context propagation are preserved consistently. Prefer structured logs and stable context propagation over ad hoc string logging.
 
-**Symptoms:** Containerized shutdown causes dropped requests or duplicate job processing.
+**Symptoms:** CI passes, but production fails after dependency updates or environment changes.
 
-**Solution:** Review SIGTERM handling, connection draining, queue consumer shutdown, and readiness transitions. Node process exit should be coordinated with the orchestrator instead of relying on abrupt termination.
+**Solution:** Check for non-reproducible installs, weak lockfile discipline, runtime version drift, and configuration assumptions hidden in shell environments. Confirm that CI and production use the same Node major line and installation strategy.
 
-**Symptoms:** A security review flags excessive filesystem or process access but the team argues that the app “needs Node defaults.”
+**Symptoms:** Memory growth appears gradual and hard to reproduce.
 
-**Solution:** Reassess the threat model. Identify which reads, writes, child processes, or network targets are truly required. Evaluate whether the Permission Model or narrower runtime/container boundaries reduce risk without breaking the app.
+**Solution:** Review long-lived caches, event listeners, stream lifecycle handling, and request-scoped state retained beyond completion. Check whether backpressure is ignored or whether large objects remain referenced in closures.
+
+For a faster diagnosis matrix, open `references/troubleshooting-matrix.md`.
 
 ## Additional Resources
 
-- [`references/review-criteria.md`](references/review-criteria.md) — open this when you need a compact, repeatable rubric for review findings and release readiness.
-- [`examples/review-example.md`](examples/review-example.md) — open this when you need a worked example of how to turn observations into a decision-oriented review report.
+- `references/review-criteria.md` — Open this when you need a compact but concrete Node.js review checklist with decision criteria.
+- `references/troubleshooting-matrix.md` — Open this when symptoms are operational and you need likely causes plus targeted review checks.
+- `examples/review-example.md` — Open this when you need a worked example of a review with findings and prioritization.
+- `examples/decision-scenarios.md` — Open this when the user is asking "should we use X?" and you need scenario-based decisions.
 
-## Related Skills
+## Scope Notes
 
-No local related skills were provided in the source context. Keep framework-specific follow-up work in the target repository’s own documentation or dedicated skills.
+This skill favors **judgment and review quality** over style debates. The best output is usually not "rewrite everything," but "keep what is working, change the parts that create measurable risk, and justify each recommendation in Node-specific terms."

@@ -11,8 +11,9 @@ tags:
   - "indexation"
   - "crawlability"
   - "search-console"
-  - "javascript-seo"
   - "canonicalization"
+  - "javascript-seo"
+  - "structured-data"
   - "core-web-vitals"
   - "omni-enhanced"
 complexity: "advanced"
@@ -55,225 +56,209 @@ replaces:
 
 This skill preserves the intent of the upstream SEO audit workflow while making it more reliable to execute as a disciplined diagnostic review.
 
-Use it when the goal is to **identify, explain, and prioritize SEO issues** affecting crawlability, indexation, rendering, canonicalization, content quality, and organic performance. The output should be **evidence-led, scoped, and decision-oriented**. The operator should diagnose and rank issues by impact and confidence, **not promise ranking gains** and **not implement fixes unless explicitly requested**.
+Use it when the goal is to **identify, explain, and prioritize SEO issues** affecting crawlability, indexation, rendering, canonicalization, structured data, content quality, and organic performance. Outputs should be **evidence-led, scoped, and decision-oriented**.
 
-This skill is strongest when the audit is **Search Console-first**, tied to a defined business scope, and clear about the boundary between:
+This is an **audit skill**, not an implementation skill.
 
-- **Crawling problems**
-- **Indexing problems**
-- **Rendering problems**
-- **Relevance/ranking problems**
-- **Measurement/reporting gaps**
-
-If the request is vague, turn it into an explicit audit brief before producing findings.
+- Diagnose before recommending fixes.
+- Separate confirmed technical issues from ranking hypotheses.
+- Do not claim penalties, algorithm hits, or causation without direct evidence.
+- Prioritize by business impact, scope, and confidence.
+- Preserve upstream workflow intent and provenance when handing off or merging findings.
 
 ## When to Use
 
-Use this skill when:
+Use this skill when the user asks for any of the following:
 
-- A site has lost organic visibility and the user needs a structured diagnosis.
-- Important URLs are not indexed, have dropped from indexation, or are indexed under the wrong canonical.
-- JavaScript-rendered content may not be discoverable or rendered consistently.
-- Search Console shows spikes in exclusions, crawl anomalies, mobile usability concerns, or performance decline.
-- The user wants a prioritized SEO findings report rather than code changes.
-- You need to review a migration, platform change, template rollout, robots/canonical update, or major content change for SEO risk.
+- A technical SEO audit of a site, section, template, or migration.
+- Investigation of crawlability, indexation, canonicalization, rendering, or sitemap problems.
+- Review of structured data eligibility, page experience signals, or mobile usability concerns.
+- Diagnosis of organic traffic loss where technical causes are plausible.
+- A severity-ranked findings report with evidence, likely cause, and next validation step.
 
 Do **not** use this skill as the primary workflow when:
 
-- The request is to directly implement code, CMS, or server fixes.
-- The user wants guaranteed ranking outcomes or traffic forecasts without evidence.
-- No target property, URL set, or business scope is available and the user refuses to define one.
-- The task is purely editorial copywriting, link outreach, or keyword ideation with no audit component.
+- The user only wants copywriting, metadata writing, or content generation.
+- The task is pure implementation of fixes with no audit or diagnosis phase.
+- The user wants guarantees about rankings, penalties, or recovery timelines.
+- Access is too limited to support meaningful conclusions and the user has not accepted a constrained audit.
 
 ## Scope Gate
 
-Before auditing, confirm or request these inputs if they are missing:
+Before starting, confirm the operating boundary. Ask for missing inputs first.
 
-1. **Property scope**: domain, subdomain, folder, country/language, or site section.
-2. **Business priority**: revenue pages, lead-gen pages, editorial pages, local pages, or support content.
-3. **Primary symptoms**: indexing loss, ranking drop, traffic decline, rendering issue, CWV concern, or rich result loss.
-4. **Change window**: migrations, launches, robots changes, template changes, JS framework changes, redirects, server incidents.
-5. **Available evidence**: Search Console access, analytics exports, crawl exports, sample URLs, log evidence, screenshots.
-6. **Success condition**: triage memo, stakeholder-ready audit, remediation backlog, or executive summary.
+1. **Target scope**: domain, subdomain, folder, country/language variant, or page set.
+2. **Business context**: key templates, critical pages, recent migrations, traffic drop timing, release history.
+3. **Access available**: Search Console, analytics, crawl exports, CMS, server logs, CDN rules, robots.txt, sitemap files.
+4. **Constraints**: production-only review, no implementation, limited time, sample-based audit, regulated content.
+5. **Success criteria**: blocker identification, launch readiness, root-cause diagnosis, or prioritized roadmap.
 
-If these are absent, ask focused questions first instead of guessing.
+If core access is missing, continue only with an explicit limitation statement such as:
+
+> "This is a constrained SEO audit based on public evidence and supplied artifacts only. Findings may miss issues that require Search Console, logs, or authenticated crawling data."
+
+## Required Output Format
+
+Return findings in a structure that supports action and review:
+
+1. **Audit scope and limitations**
+2. **Executive summary**
+3. **Top issues by severity**
+4. **Detailed findings** with:
+   - issue title
+   - severity
+   - affected scope
+   - evidence
+   - likely cause
+   - SEO impact
+   - confidence level
+   - recommended next validation step
+5. **Open questions / missing access**
+6. **Priority order**: fix now, validate next, monitor
+
+A useful finding is specific enough that another operator can verify it without guessing.
 
 ## Workflow
 
-1. **Define the audit question and scope**
-   - State what is being audited: entire site, section, template family, or representative URLs.
-   - Separate reported symptoms from assumptions.
-   - Record constraints such as missing access, incomplete exports, or limited URL samples.
+1. **Confirm scope and access**
+   - Define what is in scope and what is out.
+   - Record available evidence sources.
+   - Note whether the audit is full, sample-based, or hypothesis-led.
 
-2. **Establish baseline evidence**
-   - Prefer Search Console reports and URL Inspection outputs when available.
-   - Capture the affected URL patterns, affected countries/devices, and timing of the problem.
-   - Note whether the issue is isolated, template-level, or sitewide.
+2. **Collect baseline evidence**
+   - Capture representative URLs by template and business importance.
+   - Gather robots.txt, sitemap locations, canonical targets, response behavior, rendered HTML evidence, and Search Console signals if available.
+   - Note historical context such as redesigns, migrations, robots changes, or JavaScript framework changes.
 
-3. **Classify the problem correctly**
-   - Decide whether the primary issue is crawl, indexing, canonicalization, rendering, mobile parity, page quality, structured data eligibility, or performance.
-   - Avoid collapsing all SEO symptoms into “ranking issue.”
-   - Use the evidence matrix in `references/review-criteria.md` to match symptoms to the right diagnostic path.
+3. **Audit crawl and index controls**
+   - Check whether important URLs are discoverable through links, sitemaps, and internal architecture.
+   - Review robots directives, noindex usage, canonicals, redirect chains, soft-404 patterns, and status-code anomalies.
+   - Distinguish between pages that are blocked from crawling versus crawled but excluded from indexing.
 
-4. **Inspect representative URLs**
-   - Review at least one healthy URL and one affected URL when possible.
-   - Compare declared canonical, selected canonical, robots rules, response status, render output, internal links, and structured data presence.
-   - Check whether page content available to users is also available to Googlebot after rendering.
+4. **Audit rendering and page quality signals**
+   - Compare raw and rendered states when JavaScript may affect links, content, canonicals, metadata, or structured data.
+   - Review mobile presentation, page experience concerns, and template-level issues that suppress content or navigation.
+   - Check whether important content is present, unique enough, and aligned with search intent.
 
-5. **Evaluate site-level patterns**
-   - Look for recurring exclusion states, soft 404 behavior, duplicate clusters, redirect chains, parameter noise, mobile/desktop parity gaps, or server instability.
-   - Distinguish page-specific defects from systemic patterns.
-   - Escalate only the patterns that materially affect important pages.
+5. **Audit search appearance and structured signals**
+   - Validate titles, descriptions, heading patterns, hreflang where relevant, structured data quality, and duplication signals.
+   - Confirm that metadata supports indexing and interpretation rather than conflicting with canonicals or redirects.
 
-6. **Prioritize findings by impact, confidence, and reversibility**
-   - Mark each finding with severity, confidence, affected scope, and evidence source.
-   - Prefer findings that explain observed symptoms over speculative “SEO opportunities.”
-   - Separate immediate blockers from longer-horizon optimization ideas.
+6. **Assess internal linking and architecture**
+   - Evaluate whether priority pages receive crawl paths and anchor support.
+   - Look for orphaned pages, excessive depth, faceted traps, parameter sprawl, and duplicate route patterns.
 
-7. **Write the audit output**
-   - For each finding, include: symptom, evidence, likely cause, affected scope, business impact, confidence, and recommended next action.
-   - Make recommendations narrow and testable.
-   - If implementation was not requested, stop at diagnosis and prioritization.
+7. **Prioritize findings**
+   - Rank issues by affected scope, business value, reversibility, and confidence.
+   - Separate sitewide blockers from local optimizations.
+   - Flag hypotheses that need validation instead of presenting them as confirmed causes.
 
-8. **State open questions and follow-up evidence needed**
-   - Identify what could change the conclusion: logs, additional URL inspections, analytics segmentation, or implementation confirmation.
-   - Explicitly note when confidence is reduced because evidence is missing.
+8. **Produce the audit report**
+   - Summarize what is broken, why it matters, how certain you are, and what should happen next.
+   - Preserve provenance if findings are merged into a repository workflow or handoff packet.
 
-## Output Structure
+## Review Dimensions
 
-Use this structure in your final audit response:
+At minimum, review these issue families:
 
-- **Audit scope**
-- **Observed symptoms**
-- **Key findings**
-- **Prioritized remediation queue**
-- **Confidence and evidence limits**
-- **Open questions / next checks**
+- **Crawlability**: robots blocking, inaccessible navigation, crawl traps, broken discovery paths.
+- **Indexation**: noindex misuse, excluded duplicates, soft 404s, weak canonical signals, thin or duplicative pages.
+- **Canonicalization**: conflicting canonicals, self-canonical gaps, canonical-to-redirect patterns, duplicate route handling.
+- **Rendering**: JS-dependent content or links not reliably exposed, delayed rendering of key elements, raw/render mismatch.
+- **Information architecture**: orphan pages, excessive click depth, poor internal linking to priority pages.
+- **On-page signals**: title duplication, weak headings, intent mismatch, thin template content.
+- **Structured data**: invalid markup, policy-risk markup, missing required properties, mismatch with visible content.
+- **Performance and mobile usability**: issues that materially affect crawl, rendering, or user access.
 
-For each finding, prefer this compact format:
+## Severity Model
 
-- **Finding**
-- **Why it matters**
-- **Evidence**
-- **Affected scope**
-- **Priority**: Critical / High / Medium / Low
-- **Confidence**: High / Medium / Low
-- **Recommended next action**
+Use a simple and defensible severity scale:
+
+- **Critical**: prevents crawl, indexing, or correct canonical selection for high-value pages or large site sections.
+- **High**: materially suppresses discoverability, indexing quality, or search appearance across important templates.
+- **Medium**: meaningful quality issue with moderate scope or uncertain impact.
+- **Low**: localized issue, hygiene problem, or optimization opportunity.
+- **Monitor**: no confirmed defect yet; track with a validation method.
+
+Severity should reflect **business impact plus scope**, not just technical purity.
 
 ## Examples
 
-### Example 1: Indexing loss after template change
+### Example 1: Good finding
 
-**Input**
-
-```text
-User reports that ~2,000 product URLs dropped from organic traffic after a frontend release.
-Search Console shows many URLs as "Crawled - currently not indexed" and some as alternate canonical.
+```md
+Issue: Product pages excluded because canonical points to category URLs
+Severity: High
+Affected scope: ~3,200 product detail pages
+Evidence:
+- Sample product URLs return 200 and are internally linked
+- HTML canonical points to parent category URL
+- Search Console coverage for sampled pages shows alternate page with proper canonical tag
+Likely cause: Template-level canonical logic inherited category canonical setting
+SEO impact: Product pages are unlikely to be indexed as independent landing pages
+Confidence: High
+Recommended next validation step: Confirm the canonical tag rule across templates and sample recrawl after correction
 ```
 
-**Expected audit direction**
+### Example 2: Weak finding to avoid
 
-```text
-- Confirm the affected URL pattern and release window.
-- Compare a healthy product URL and an affected product URL.
-- Check response status, canonical tags, rendered content, and internal linking.
-- Determine whether the issue is quality duplication, canonical conflict, or render incompleteness.
-- Produce a ranked findings list instead of claiming Google will reindex after fixes.
+```md
+Issue: Google may be penalizing the site
+Severity: Critical
+Evidence: Traffic went down
+Why weak: No direct evidence, no technical mechanism, no separation between correlation and cause
 ```
 
-### Example 2: JavaScript rendering suspicion
-
-**Input**
-
-```text
-Category pages look complete in the browser, but Google is not indexing pagination-linked product cards.
-```
-
-**Expected audit direction**
-
-```text
-- Verify what content and links exist in the initial HTML versus rendered DOM.
-- Check whether critical product links depend on delayed client-side execution.
-- Review whether important text and navigation are absent or degraded before rendering completes.
-- Report whether the problem is likely render discoverability or a separate indexation issue.
-```
-
-### Example 3: Canonical mismatch
-
-**Input**
-
-```text
-The page declares a self-referencing canonical, but Search Console-selected canonical points to another URL.
-```
-
-**Expected audit direction**
-
-```text
-- Compare duplicate candidates for content similarity, internal links, redirects, hreflang alignment, and canonical consistency.
-- Determine whether the declared canonical is unsupported by stronger consolidation signals.
-- Recommend reducing conflicting signals rather than repeating the tag alone.
-```
-
-A fuller worked example is available in `examples/review-example.md`.
+For a fuller worked example, open [`examples/review-example.md`](examples/review-example.md).
 
 ## Best Practices
 
-Do:
+- **Do** start with scope, access, and known business events before reviewing symptoms.
+- **Do** use representative URL samples across templates instead of relying on one page.
+- **Do** distinguish public-web evidence from Search Console-only evidence.
+- **Do** state limitations when access gaps reduce confidence.
+- **Do** tie every major finding to proof, affected scope, and next validation step.
+- **Do** identify whether an issue is page-level, template-level, or architecture-level.
+- **Do** prioritize blockers before metadata refinements.
 
-- Start with **scope, symptom, and timing** before proposing causes.
-- Use **Search Console and URL-level evidence** before generalized SEO advice.
-- Separate **indexing** from **ranking** unless evidence supports both.
-- Compare an **affected URL** against a **healthy control URL** whenever possible.
-- Prioritize issues that affect **important templates or business-critical pages**.
-- Treat Core Web Vitals using current metrics, including **INP** rather than outdated FID framing.
-- Note that rich result opportunities and content-system guidance change over time; assess eligibility against current Google behavior, not old checklists.
-- Write recommendations that are **testable and reversible**.
-
-Do not:
-
-- Promise ranking recovery, reindexation timing, or traffic outcomes.
-- Call every exclusion state an error; some exclusions are expected.
-- Assume a robots.txt rule, noindex, or canonical is the only signal involved.
-- Diagnose JavaScript SEO solely from “it works in my browser.”
-- Recommend deleting, redirecting, or canonicalizing at scale without identifying affected patterns and tradeoffs.
-- Overweight third-party scorecards when first-party evidence shows a different root cause.
-- Confuse structured data presence with guaranteed rich results.
+- **Do not** promise ranking lifts, recovery timelines, or penalty explanations without direct evidence.
+- **Do not** mark every issue High; calibrate by impact and breadth.
+- **Do not** confuse canonical preference with indexation guarantee.
+- **Do not** treat all Core Web Vitals or performance issues as primary SEO blockers if crawl/index signals are healthy.
+- **Do not** recommend broad robots blocking or noindex changes without clearly stating the risk.
+- **Do not** claim JavaScript SEO failure unless raw/render evidence shows missing or altered critical signals.
 
 ## Troubleshooting
 
-**Symptoms:** Many important URLs are reported as `Crawled - currently not indexed`.
+**Symptoms:** Many important URLs are absent from search results, but pages load normally in the browser.
 
-**Solution:** Check whether affected pages are thin, duplicative, weakly linked, delayed in rendering critical content, or part of a low-value URL pattern. Compare healthy and affected examples. Do not assume crawl access alone should lead to indexation.
+**Solution:** Check indexation evidence first: noindex directives, canonicals, redirects, duplicate clusters, sitemap inclusion, and Search Console page indexing states. A page being reachable is not the same as being indexable.
 
-**Symptoms:** Search Console-selected canonical does not match the declared canonical.
+**Symptoms:** Search Console shows "Crawled - currently not indexed" on many pages.
 
-**Solution:** Review duplicate similarity, redirects, internal linking, sitemap inclusion, hreflang consistency, and parameterized variants. The selected canonical often follows the stronger aggregate signal set rather than the tag alone.
+**Solution:** Avoid a single-cause explanation. Review duplication, thin template content, weak internal linking, soft-404 characteristics, and canonical ambiguity. Treat this as a diagnostic state, not a verdict.
 
-**Symptoms:** Important content is visible to users but not reliably indexed.
+**Symptoms:** Important content exists after user interaction but not reliably in initial HTML.
 
-**Solution:** Test whether essential text, links, and metadata are available in the initial HTML or only after client-side rendering. Check for delayed hydration, blocked resources, or rendering-dependent navigation.
+**Solution:** Compare raw versus rendered output for content, links, canonicals, metadata, and structured data. If critical elements depend on delayed JS execution, classify it as a rendering risk and scope the affected templates.
 
-**Symptoms:** Large numbers of URLs are excluded as soft 404.
+**Symptoms:** Sitemaps exist, but discovery and indexing remain poor.
 
-**Solution:** Inspect whether pages return `200` with near-empty, placeholder, expired, or low-value content. Confirm whether the content matches user intent for the URL type and whether thin templates are being generated at scale.
+**Solution:** Check whether sitemap URLs are canonical, indexable, return valid status codes, and align with internal linking. Sitemaps support discovery; they do not override poor canonical or quality signals.
 
-**Symptoms:** Mobile performance or indexing differs from desktop expectations.
+**Symptoms:** Structured data is present but rich result eligibility is inconsistent.
 
-**Solution:** Audit mobile-first parity: content, structured data, internal links, metadata, and interactive blockers. Do not assume desktop completeness means mobile indexing parity.
+**Solution:** Validate syntax, required properties, policy fit, and consistency with visible content. Separate markup validity from search feature eligibility.
 
-**Symptoms:** Traffic dropped after a migration or redirect rollout.
+**Symptoms:** Organic traffic dropped after a migration or redesign.
 
-**Solution:** Review redirect chains, final status codes, canonical alignment, sitemap freshness, internal links, and major template regressions. Separate migration mechanics from broader ranking shifts.
-
-**Symptoms:** Crawl rate or coverage worsened during server instability.
-
-**Solution:** Check whether 5xx errors, timeouts, or overload patterns affect important sections. Prioritize server reliability before making speculative on-page recommendations.
+**Solution:** Compare pre/post behavior for redirects, canonicals, status codes, internal links, robots rules, sitemap coverage, and rendering changes. Prioritize migration regressions before broader content theories.
 
 ## Additional Resources
 
-- `references/review-criteria.md` — Open this when you need a compact symptom-to-evidence matrix for crawl, indexing, canonical, rendering, mobile parity, structured data, server, and CWV checks.
-- `examples/review-example.md` — Open this when you need a model of a concise, evidence-led audit finding with prioritization and next actions.
+- [`references/review-criteria.md`](references/review-criteria.md) — open this during the audit to classify issue families, evidence standards, severity logic, and validation paths consistently.
+- [`examples/review-example.md`](examples/review-example.md) — open this when you need a concrete example of a scoped, evidence-based SEO audit write-up.
 
 ## Related Skills
 
-No confirmed related local skills were provided in the source context.
+No related local skills were supplied in the source context.

@@ -1,114 +1,200 @@
 # SEO Audit Review Criteria
 
-Use this matrix to match the reported symptom to the right evidence and avoid misclassifying ranking, crawl, indexation, and rendering issues.
+Use this rubric while evaluating evidence and drafting findings. It is designed to keep audits consistent, scoped, and defensible.
 
-## Symptom-to-Evidence Matrix
+## 1. Evidence Standard
 
-| Symptom | Primary evidence to check | What it usually means | Validation steps | Source note |
-|---|---|---|---|---|
-| Important URL is missing from search and not indexed | URL Inspection result, Page Indexing report, sitemap presence | Usually an indexation decision, not automatically a crawl failure | Confirm live URL status, inspect indexation state, compare healthy vs affected URL, check sitemap/internal links | Google Search Console and indexation guidance |
-| `Blocked by robots.txt` or disallowed crawling | robots.txt rules, crawl behavior, affected path pattern | Google cannot crawl blocked URLs, so many downstream signals cannot be confirmed | Verify exact matching rule, test whether important assets or pages are unintentionally blocked, assess pattern scope | robots exclusion protocol / Google robots guidance |
-| `Crawled - currently not indexed` at scale | Page Indexing trend, sample URL inspections, content similarity, internal links | Often quality duplication, weak distinct value, render incompleteness, or low-priority URL patterns | Compare healthy and affected templates, inspect rendered content, assess link prominence, determine whether the URLs deserve indexing | Google indexing guidance |
-| `Discovered - currently not indexed` | Discovery state, crawl demand, server health, internal links | URL is known but not yet crawled at useful depth; may involve crawl efficiency, server load, or low priority | Check server reliability, internal linking depth, sitemap quality, and whether URL patterns are high-value or noisy | Google crawling and host-load concepts |
-| Google-selected canonical differs from user-declared canonical | URL Inspection canonical fields, redirects, internal links, sitemap, hreflang | Tag alone is weaker than a consistent signal cluster | Compare duplicate candidates, check redirect/canonical consistency, inspect internal links and sitemap targets | Google canonicalization guidance |
-| Page looks complete in browser but indexed content is incomplete | Rendered HTML vs initial HTML, blocked resources, link extraction | Usually a rendering/discoverability gap rather than pure ranking | Check whether critical text, links, metadata, and structured data exist before/after rendering; inspect delayed hydration patterns | Google JavaScript SEO guidance |
-| Large soft 404 population | Search Console exclusion state, sample page usefulness, content uniqueness | URL returns success status but appears empty, expired, placeholder, or low-value | Review content depth, page intent match, thin template generation, and whether stale pages should exist | Google soft 404 guidance |
-| Rich result loss or ineligibility | Structured data validity, policy compliance, page content parity | Markup may be invalid, unsupported for that experience, or policy-ineligible | Confirm required fields, content parity, and whether the feature still has current search support | Google structured data/rich result guidance |
-| Mobile indexing mismatch | Mobile rendering parity, metadata parity, content differences | Mobile-first indexing evaluates the mobile experience representation | Compare mobile-visible content, links, structured data, and metadata against desktop; inspect blocked resources or hidden content | Google mobile-first guidance |
-| Organic decline after migration | Redirect mapping, final status codes, canonical targets, internal links, sitemap updates | Migration mechanics may be breaking URL consolidation or discovery | Validate top templates and high-value URLs, identify redirect chains/loops, check canonical and internal link alignment | Google site move and URL handling guidance |
-| Coverage decline during outages | 5xx errors, timeouts, crawl stats, incident timing | Server instability can reduce crawl efficiency and confidence | Check whether important sections return intermittent server errors; prioritize reliability before optimization | HTTP/server behavior and Google crawl health guidance |
-| Poor CWV visibility or UX concern | Field performance data, template patterns, rendering behavior | Performance can affect experience and some search systems, but does not explain every ranking loss | Use field data where available, identify template-level regressions, and frame CWV as one signal among others; use INP rather than FID framing | Current Core Web Vitals guidance |
+A strong finding usually includes all of the following:
 
-## Review Heuristics
+- **Observed state**: what was seen on the page, template, crawl sample, or report.
+- **Affected scope**: one URL, one template, one site section, or sitewide.
+- **Mechanism**: how the issue can affect crawling, indexing, canonical selection, rendering, or search appearance.
+- **Proof source**: public HTML, rendered HTML, response headers, sitemap contents, internal links, Search Console state, or supplied exports.
+- **Next validation step**: what would confirm the root cause or verify recovery.
 
-### 1. Separate crawl, index, and rank
-A page can be:
+Avoid findings that only say performance dropped or rankings fell without a technical mechanism.
 
-- crawlable but not indexed,
-- indexed but not ranking well,
-- discoverable only after rendering,
-- canonicalized away despite a self-referencing tag.
+## 2. Severity Calibration
 
-Do not treat these as the same problem.
+Use severity based on **scope x business importance x confidence**.
 
-### 2. Compare affected URLs with a control URL
-For any meaningful diagnosis, compare:
+### Critical
+Use when important pages or templates are effectively prevented from discovery, indexing, or correct canonical selection.
 
-- one affected URL,
-- one healthy URL from the same template or intent class,
-- one likely duplicate or competing canonical when relevant.
+Typical patterns:
+- robots rules block required crawling paths
+- noindex applied across key templates
+- canonicals point major landing pages elsewhere
+- migration redirects fail on important URL sets
+- server behavior returns non-200 responses for priority content
 
-This reduces speculative recommendations.
+### High
+Use when discoverability or index quality is materially suppressed, but not a complete blocker.
 
-### 3. Favor pattern-level findings over isolated anomalies
-Escalate an issue when it affects:
+Typical patterns:
+- widespread duplicate clusters with ambiguous canonicals
+- key pages buried with weak internal linking
+- rendering issues hide important content or links on major templates
+- sitemap and canonical conflicts affect large page groups
 
-- a key template family,
-- a high-value business section,
-- a recurring exclusion state,
-- a post-launch or post-migration pattern.
+### Medium
+Use when the issue matters but has narrower scope, lower confidence, or lower direct impact.
 
-Do not over-prioritize one-off anomalies unless the page is business-critical.
+Typical patterns:
+- title duplication across secondary templates
+- moderate click-depth issues
+- structured data gaps on pages where eligibility matters but indexing is intact
 
-### 4. Treat Search Console states as diagnostic clues, not standalone verdicts
-Examples:
+### Low
+Use for hygiene issues or localized defects with limited organic consequence.
 
-- `Alternate page with proper canonical tag` may be expected or may indicate over-consolidation.
-- `Soft 404` may reflect genuinely weak pages, not just status-code mistakes.
-- `Crawled - currently not indexed` often needs content and pattern review, not only technical checks.
+### Monitor
+Use when there is a plausible risk but the evidence is not yet sufficient to confirm impact.
 
-### 5. Canonical strength is cumulative
-Declared canonical is only one signal. Stronger conflicting signals can include:
+## 3. Review Criteria by Issue Family
 
-- redirects to another URL,
-- internal links favoring a different version,
-- sitemap inclusion mismatch,
-- parameterized duplicates,
-- near-identical content clusters,
-- hreflang inconsistency.
+## Crawlability
 
-### 6. Rendering diagnosis must inspect what Google can actually use
-Check whether the page exposes, in a timely and stable way:
+Check:
+- Are important URLs reachable through HTML links?
+- Are there crawl traps from facets, parameters, calendars, or infinite spaces?
+- Do robots rules block assets or paths needed for understanding pages?
+- Are redirects or status codes interrupting discovery paths?
 
-- primary text,
-- navigation links,
-- product or article entities,
-- metadata,
-- structured data,
-- pagination or faceted discovery links.
+Evidence that strengthens the finding:
+- robots.txt excerpts
+- sample internal-link paths
+- response-code samples
+- sample orphan URLs or very deep URLs
 
-If essential elements appear only after fragile client-side execution, treat that as a real audit risk.
+Do not overstate:
+- A URL not ranking is not proof of a crawl block.
 
-## Prioritization Model
+## Indexation
 
-Use this lightweight model in your audit output:
+Check:
+- Can sampled URLs be indexed in principle: 200 status, indexable directives, self-consistent canonical signal?
+- Are important pages excluded due to duplication, noindex, soft-404 behavior, or low-value templates?
+- Are XML sitemaps listing only canonical, indexable URLs?
 
-- **Critical** — Blocks crawling/indexing or causes widespread canonical misassignment on important pages.
-- **High** — Strongly degrades discovery, rendering, mobile parity, or migration stability for valuable sections.
-- **Medium** — Material quality, duplication, performance, or markup issue with measurable but not existential impact.
-- **Low** — Limited-scope issue, weak evidence, or low-value URL pattern.
+Evidence that strengthens the finding:
+- page-level directive samples
+- canonical clusters
+- Search Console page indexing states if supplied
+- sitemap-to-page mismatch examples
 
-Confidence bands:
+Do not overstate:
+- Indexation loss is not always caused by robots.txt.
 
-- **High** — Multiple evidence sources agree and affected pattern is clear.
-- **Medium** — Evidence is directionally strong but incomplete.
-- **Low** — Plausible explanation, but more data is required.
+## Canonicalization and Duplication
 
-## Reporting Rules
+Check:
+- Does each important page declare a sensible canonical target?
+- Do canonicals conflict with redirects, hreflang, pagination patterns, or internal linking?
+- Are duplicate route variants created by parameters, sort orders, or alternate paths?
 
-In every major finding, include:
+Evidence that strengthens the finding:
+- side-by-side canonical samples
+- duplicate URL pairs or clusters
+- self-canonical presence/absence by template
+- canonical target returning redirect or non-200
 
-1. exact symptom,
-2. evidence source,
-3. affected scope,
-4. likely cause,
-5. confidence level,
-6. next validation or remediation action.
+Do not overstate:
+- A canonical is a strong signal, not an absolute guarantee.
 
-Avoid these common mistakes:
+## Rendering and JavaScript SEO
 
-- claiming Google will reindex on a specific timeline,
-- promising rankings after fixes,
-- calling every excluded URL a defect,
-- prescribing bulk canonical or redirect changes without pattern validation,
-- using outdated CWV language that centers FID instead of INP.
+Check:
+- Are critical content, links, metadata, canonicals, or structured data present in raw HTML, rendered HTML, or both?
+- Does client-side rendering delay or omit important crawl/index signals?
+- Are links real crawlable anchors or only interaction-driven elements?
+
+Evidence that strengthens the finding:
+- raw vs rendered comparisons
+- missing anchor examples
+- altered head elements after hydration
+- blocked or delayed loaded content samples
+
+Do not overstate:
+- JavaScript alone is not an issue; missing critical output is.
+
+## Internal Linking and Architecture
+
+Check:
+- Do priority pages receive internal links from relevant sections?
+- Is click depth reasonable for high-value pages?
+- Are there orphaned URLs or template islands?
+- Does navigation concentrate authority on the wrong pages?
+
+Evidence that strengthens the finding:
+- representative click paths
+- orphan examples
+- depth comparisons across templates
+- navigation/link module samples
+
+## On-Page Signals and Content Quality
+
+Check:
+- Do titles and headings help differentiate pages?
+- Is the content sufficiently unique and useful for the query intent it targets?
+- Are there thin or near-duplicate templates competing with each other?
+
+Evidence that strengthens the finding:
+- title/heading duplication samples
+- repeated body-content patterns
+- low-differentiation template examples
+
+Do not overstate:
+- E-E-A-T is not a binary checklist; focus on observable quality and trust signals.
+
+## Structured Data
+
+Check:
+- Is the markup valid and aligned with visible page content?
+- Are required properties present for the intended schema type?
+- Is the chosen schema type appropriate for the page purpose?
+
+Evidence that strengthens the finding:
+- markup snippets
+- validation output summaries
+- visible-content mismatch examples
+
+Do not overstate:
+- Valid markup does not guarantee a rich result.
+
+## Performance and Mobile Usability
+
+Check:
+- Do performance or mobile issues materially affect crawling, rendering, or access to important content?
+- Are key templates impaired on mobile-first presentation?
+
+Evidence that strengthens the finding:
+- template-level screenshots or summaries
+- repeated layout/interaction failures
+- field or lab metrics only when tied to business pages
+
+Do not overstate:
+- Not every poor metric is a top-priority SEO defect.
+
+## 4. Recommended Finding Structure
+
+Use this pattern:
+
+1. **Issue**
+2. **Severity**
+3. **Affected scope**
+4. **Evidence**
+5. **Likely cause**
+6. **SEO impact**
+7. **Confidence**
+8. **Next validation step**
+
+## 5. Quality Checks Before Finalizing the Audit
+
+Ask:
+- Did I separate confirmed defects from hypotheses?
+- Did I explain why the issue matters for search behavior, not just why it is technically imperfect?
+- Did I state the size of the problem clearly?
+- Did I avoid unsupported claims about penalties or algorithm impacts?
+- Did I prioritize sitewide blockers before local enhancements?
+- Did I include at least one next validation step for major findings?

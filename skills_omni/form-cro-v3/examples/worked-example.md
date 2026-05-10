@@ -2,182 +2,178 @@
 
 ## Scenario
 
-A B2B SaaS company has a demo request form with these fields on one page:
+A B2B software site has a **demo request** form with lower-than-expected mobile completion.
 
-1. First name
-2. Last name
-3. Work email
+### Current form fields
+
+1. Full name
+2. Work email
+3. Company name
 4. Phone number
-5. Company name
-6. Company size
-7. Job title
-8. Country
-9. Product interest
-10. Free-text use case
-11. Consent checkbox
+5. Company size
+6. Country
+7. Free-text message
+8. Marketing consent checkbox
 
-Observed issues:
+### Reported problems
 
-- Mobile completion is 38% lower than desktop.
-- Many sessions reach the phone field and then abandon.
-- Validation errors appear in a summary at the top only after submit.
-- The form uses placeholders as the main visible instruction for several fields.
-- The CTA says `Submit`.
-- Analytics can measure page view and successful submit, but not form start or failed attempts.
+- mobile users drop off heavily at the phone field
+- users often trigger validation errors on phone and company size
+- sales wants to keep company name and work email
+- legal requires consent language to remain clear and reviewable
+- analytics exist for form start and submit, but not per-field errors
 
-## Example Output
+## Step 1: Define success
 
-### 1. Goal and Constraints
+Primary success metric:
 
-- **Primary business goal:** create qualified demo requests for the sales team.
-- **Hard constraints:** consent must remain; sales still needs company context.
-- **Optimization principle:** improve completion without lowering lead usefulness.
+- increase valid demo requests submitted
 
-### 2. Funnel Diagnosis
+Guardrail metrics:
 
-Current measurable funnel:
+- no drop in lead quality accepted by sales
+- no increase in invalid or duplicate submissions
+- no new accessibility defects
 
-- page view
-- successful submit
+## Step 2: Friction audit findings
 
-Missing instrumentation that should be added or requested:
+### UX findings
 
-- form start
-- first field interaction
-- validation error occurrence
-- submit attempt
-- success
-- abandonment by device class
+- Phone is visually presented as required even though sales says it is optional.
+- Company size uses a long dropdown with vague ranges.
+- Consent text is dense and visually merged with the submit action.
+- Submit button says `Submit`, which does not reinforce the value exchange.
 
-Initial risk assessment:
+### Implementation findings
 
-- The biggest measurable blind spot is the gap between page view and success.
-- Mobile underperformance suggests input friction, poor keyboard matching, or high typing burden.
-- Phone and company-size questions are likely acting as qualification friction.
+- Several inputs rely on placeholders more than labels.
+- Phone field uses a rigid formatting mask that rejects pasted international numbers.
+- Error messages are generic: `Invalid field`.
+- `autocomplete` is missing on name, email, organization, phone, and country.
+- Mobile keyboard for phone is not optimized.
 
-### 3. Prioritized Findings
+## Step 3: Proposed changes
 
-#### High Priority
+### Keep
 
-1. **Phone field likely creates avoidable friction early in the flow.**
-   - Many users abandon around this field.
-   - If sales can follow up first by email, phone should be optional or deferred.
+- Full name
+- Work email
+- Company name
+- Company size
+- Country
+- Message
+- Consent
 
-2. **Error recovery is weak.**
-   - Users only see a summary after submit.
-   - They must scan back through the form to find the exact problem.
+### Change
 
-3. **Placeholder-led labeling reduces clarity and accessibility.**
-   - Once the user starts typing, the cue disappears.
-   - This is especially harmful in long mobile forms.
+1. **Phone**
+   - make clearly optional in label text
+   - remove rigid mask if backend can normalize or validate more flexibly
+   - use `type="tel"` and `inputmode="tel"`
+   - show field-specific guidance only on validation failure
 
-#### Medium Priority
+2. **Labels and semantics**
+   - add explicit labels for all controls
+   - add `autocomplete` tokens where applicable
+   - attach help and error text with `aria-describedby` where needed
 
-4. **CTA is generic.**
-   - `Submit` does not reinforce the user outcome.
+3. **Company size**
+   - rewrite options into clearer, mutually exclusive ranges
+   - keep the list short and meaningful
 
-5. **Instrumentation is insufficient for before/after evaluation.**
-   - The team cannot confirm whether changes improve start-to-submit conversion or just page traffic quality.
+4. **Consent and trust copy**
+   - visually separate consent from the main CTA
+   - add a short expectation statement such as response timing
 
-### 4. Recommended Changes
+5. **Submit action**
+   - change button text from `Submit` to `Request demo`
 
-#### A. Reorder and reduce immediate friction
+## Step 4: Example before/after
 
-- Move `Work email` and `Company name` earlier.
-- Make `Phone number` optional or move it below the main business-context questions.
-- Evaluate whether `Company size` can become optional or a later follow-up question.
-
-**Expected effect:** lower abandonment in the early-middle part of the form, especially on mobile.
-
-#### B. Replace placeholder-only fields with visible labels
-
-**Before**
+### Before
 
 ```html
-<input name="email" placeholder="Work email">
-<input name="phone" placeholder="Phone number">
+<input placeholder="Full name">
+<input placeholder="Work email">
+<input placeholder="Company">
+<input placeholder="Phone">
+<select>
+  <option>1-10</option>
+  <option>10-50</option>
+  <option>50-500</option>
+  <option>500+</option>
+</select>
+<textarea placeholder="Message"></textarea>
+<label><input type="checkbox"> I agree to receive updates and communications...</label>
+<button>Submit</button>
 ```
 
-**After**
+### After
 
 ```html
-<label for="email">Work email</label>
-<input id="email" name="email" type="email" autocomplete="email" inputmode="email">
+<label for="full-name">Full name</label>
+<input id="full-name" name="fullName" autocomplete="name" required>
 
-<label for="tel">Phone number (optional)</label>
-<input id="tel" name="tel" type="tel" autocomplete="tel" inputmode="tel">
+<label for="work-email">Work email</label>
+<input id="work-email" name="email" type="email" autocomplete="email" required>
+
+<label for="company">Company name</label>
+<input id="company" name="company" autocomplete="organization" required>
+
+<label for="phone">Phone (optional)</label>
+<input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" aria-describedby="phone-help">
+<p id="phone-help">Include country code if outside our primary market.</p>
+
+<label for="company-size">Company size</label>
+<select id="company-size" name="companySize" required>
+  <option value="">Select one</option>
+  <option>1–9 employees</option>
+  <option>10–49 employees</option>
+  <option>50–249 employees</option>
+  <option>250+ employees</option>
+</select>
+
+<label for="country">Country</label>
+<input id="country" name="country" autocomplete="country-name" required>
+
+<label for="message">What would you like to discuss?</label>
+<textarea id="message" name="message" aria-describedby="message-help"></textarea>
+<p id="message-help">Share your goals, timeline, or current tools if helpful.</p>
+
+<p>We use this information to prepare your demo. A specialist replies within 1 business day.</p>
+
+<label for="consent">
+  <input id="consent" type="checkbox" name="consent">
+  I agree to receive follow-up communications as described in the privacy notice.
+</label>
+
+<button type="submit">Request demo</button>
 ```
 
-**Expected effect:** better clarity, autofill support, and mobile entry.
+## Step 5: Measurement plan
 
-#### C. Improve validation and recovery
+Baseline to capture before release:
 
-- Show field-level errors next to or associated with the relevant field.
-- Preserve all entered values after a failed submit.
-- Move focus to the first error after a submission failure.
-
-**Example error rewrite**
-
-- Weak: `Invalid input`
-- Better: `Enter a valid work email address, for example name@company.com`
-
-**Expected effect:** fewer failed retries and lower frustration on long or mobile sessions.
-
-#### D. Strengthen CTA and expectation setting
-
-- Change CTA from `Submit` to `Request demo`.
-- Add brief reassurance such as `We’ll contact you within 1 business day.` if operationally true.
-
-**Expected effect:** clearer outcome and reduced uncertainty.
-
-#### E. Add minimum viable instrumentation
-
-Recommend tracking these events:
-
-- `demo_form_view`
-- `demo_form_start`
-- `demo_form_submit_attempt`
-- `demo_form_validation_error`
-- `demo_form_submit_success`
-
-Recommended dimensions:
-
-- device class
-- page variant
-- error field name
-
-**Expected effect:** enables before/after measurement rather than opinion-based iteration.
-
-### 5. Suggested Priority Order
-
-1. Fix labels, semantic attributes, and validation recovery.
-2. Revisit field order and optionality for phone/company size.
-3. Update CTA and expectation-setting copy.
-4. Add instrumentation for start, attempt, and validation errors.
-
-### 6. Success Metrics
-
-Measure before vs after for at least:
-
-- form start rate
-- submit success rate
+- form starts
+- form submissions
+- valid submissions accepted by backend
 - mobile completion rate
-- validation error rate per attempt
-- abandonment rate around phone and company-size interactions
+- phone-field validation error rate
+- company-size selection error rate
 
-### 7. Non-Goals for This Pass
+Expected outcomes:
 
-- No redesign of sales qualification rules beyond field timing and necessity.
-- No backend CRM workflow changes.
-- No signup/account flow work.
+- lower mobile abandonment on phone field
+- fewer generic validation loops
+- improved clarity on optional versus required information
+- stable or improved lead quality because qualifying fields were preserved
 
-## Why This Example Is Useful
+## Step 6: Handoff note example
 
-This example shows the expected shape of a strong Form CRO deliverable:
+Use wording like this in a handoff:
 
-- clear business goal
-- measurable diagnosis
-- field-level implementation detail
-- accessibility and recovery improvements
-- prioritized recommendations
-- explicit success metrics
+> Optimized the demo request form for completion quality rather than raw field reduction. Kept sales-critical fields, clarified phone as optional, improved semantic input setup, removed a high-friction formatting mask, strengthened trust copy, and changed the CTA to reflect the actual action. Post-release monitoring should compare mobile completion, valid submission rate, and downstream lead quality against baseline.
+
+## Why this example matters
+
+This example demonstrates the core rule of this skill: **do not optimize forms by stripping information blindly**. Reduce friction first, protect trust and accessibility, and measure the effect using both conversion and quality outcomes.
