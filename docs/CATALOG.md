@@ -1,15 +1,15 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 4668 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 4669 skills across 17 categories.
 
-Generated: 2026-05-10T00:00:00+00:00
+Generated: 2026-05-12T00:00:00+00:00
 
 ---
 
 ## Table of Contents
 
 - [🧠 Ai Agents (402)](#ai-agents)
-- [🗄️ Backend (489)](#backend)
+- [🗄️ Backend (490)](#backend)
 - [💼 Business (119)](#business)
 - [⚙️ Cli Automation (601)](#cli-automation)
 - [💬 Communication (72)](#communication)
@@ -788,6 +788,7 @@ Generated: 2026-05-10T00:00:00+00:00
 | [`golang-pro--omni`](../skills_omni/golang-pro/SKILL.md) | golang-pro workflow skill. Use this skill when the user needs Master Go 1.21+ with modern patterns, advanced concurrency | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`golang-pro-v2`](../skills/golang-pro-v2/SKILL.md) | golang-pro workflow skill. Use this skill when the user needs Master Go 1.21+ with modern patterns, advanced concurrency | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`golang-pro-v3`](../skills/golang-pro-v3/SKILL.md) | golang-pro workflow skill. Use this skill when the user needs Master Go 1.21+ with modern patterns, advanced concurrency | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`golang-pro-v3--omni`](../skills_omni/golang-pro-v3/SKILL.md) | golang-pro workflow skill. Use this skill when the user needs Master Go 1.21+ with modern patterns, advanced concurrency | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`google-calendar-automation`](../skills/google-calendar-automation/SKILL.md) | Google Calendar workflow skill. Use this skill when the user needs Lightweight Google Calendar integration with standalo | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`google-calendar-automation--omni`](../skills_omni/google-calendar-automation/SKILL.md) | Google Calendar workflow skill. Use this skill when the user needs Lightweight Google Calendar integration with standalo | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`google-calendar-automation-v2`](../skills/google-calendar-automation-v2/SKILL.md) | Google Calendar workflow skill. Use this skill when the user needs Lightweight Google Calendar integration with standalo | L2 instructions | 100/100 | 88/100 | 100/100 passed |

@@ -24,7 +24,7 @@ tools:
 source: "omni-team"
 author: "Omni Skills Team"
 date_added: "2026-04-27"
-date_updated: "2026-05-10"
+date_updated: "2026-05-12"
 source_type: "omni-curated"
 maintainer: "Omni Skills Team"
 family_id: "security-auditor-v3"
