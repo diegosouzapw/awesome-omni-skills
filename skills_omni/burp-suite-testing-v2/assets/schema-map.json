@@ -1,0 +1,46 @@
+{
+  "schema_version": "2026-03-27",
+  "purpose": "Quick operator lookup for common web/API request patterns during Burp interception, replay, and manual validation.",
+  "request_patterns": [
+    {
+      "content_type": "application/json",
+      "common_auth_locations": ["Authorization: Bearer <token>", "Cookie: session=<value>"],
+      "preserve_on_replay": ["valid JSON structure", "required fields", "content-type header", "anti-CSRF tokens when applicable"],
+      "common_security_checks": ["object-level authorization", "role/function authorization", "mass assignment suspicion", "server-side validation"],
+      "burp_focus": ["Proxy", "HTTP history", "Repeater", "Scanner (targeted)"],
+      "cautions": ["avoid malformed JSON unless intentionally testing parser behavior", "status code alone is not proof of state change"]
+    },
+    {
+      "content_type": "application/x-www-form-urlencoded",
+      "common_auth_locations": ["Cookie: session=<value>", "hidden form token"],
+      "preserve_on_replay": ["parameter names", "required hidden fields", "CSRF tokens", "origin/referer when relevant"],
+      "common_security_checks": ["parameter tampering", "workflow bypass", "cross-user actions", "input validation"],
+      "burp_focus": ["Proxy", "Repeater", "Comparer"],
+      "cautions": ["missing hidden fields can create false negatives", "some apps bind token and session tightly"]
+    },
+    {
+      "content_type": "multipart/form-data",
+      "common_auth_locations": ["Cookie: session=<value>", "Authorization header"],
+      "preserve_on_replay": ["multipart boundaries", "filename fields", "content disposition metadata", "all required parts"],
+      "common_security_checks": ["file upload validation", "content-type trust", "path/extension handling", "access control on uploaded objects"],
+      "burp_focus": ["Proxy", "Repeater"],
+      "cautions": ["boundary corruption often produces parser noise", "file-processing side effects may require cautious validation"]
+    },
+    {
+      "content_type": "application/xml",
+      "common_auth_locations": ["Authorization header", "Cookie: session=<value>"],
+      "preserve_on_replay": ["well-formed XML", "required namespaces if present", "declared content-type"],
+      "common_security_checks": ["server-side validation", "parser differences", "authorization on action elements"],
+      "burp_focus": ["Proxy", "Repeater"],
+      "cautions": ["well-formedness errors can hide the actual business-logic path"]
+    },
+    {
+      "content_type": "websocket",
+      "common_auth_locations": ["initial HTTP upgrade headers", "session cookie", "token in message payload"],
+      "preserve_on_replay": ["session continuity", "message format", "sequence expectations"],
+      "common_security_checks": ["authorization on actions", "message tampering", "cross-user event exposure"],
+      "burp_focus": ["Proxy history", "message inspection"],
+      "cautions": ["message order may matter", "replay can be unrepresentative if the server expects prior state"]
+    }
+  ]
+}

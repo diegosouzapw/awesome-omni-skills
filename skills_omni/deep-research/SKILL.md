@@ -1,0 +1,287 @@
+---
+name: "deep-research"
+description: "Gemini Deep Research Skill workflow skill. Use this skill when the user needs Run autonomous research tasks that plan, search, read, and synthesize information into comprehensive reports and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off."
+version: "0.0.1"
+category: "cli-automation"
+tags:
+  - "deep-research"
+  - "run"
+  - "autonomous"
+  - "research"
+  - "tasks"
+  - "plan"
+  - "search"
+  - "read"
+  - "omni-enhanced"
+complexity: "beginner"
+risk: "safe"
+tools:
+  - "codex-cli"
+  - "claude-code"
+  - "cursor"
+  - "gemini-cli"
+  - "opencode"
+source: "omni-team"
+author: "Omni Skills Team"
+date_added: "2026-04-14"
+date_updated: "2026-05-10"
+source_type: "omni-curated"
+maintainer: "Omni Skills Team"
+family_id: "deep-research"
+family_name: "Gemini Deep Research Skill"
+variant_id: "omni"
+variant_label: "Omni Curated"
+is_default_variant: true
+derived_from: "skills/deep-research"
+upstream_skill: "skills/deep-research"
+upstream_author: "sickn33"
+upstream_source: "community"
+upstream_pr: "271"
+upstream_head_repo: "diegosouzapw/awesome-omni-skills"
+upstream_head_sha: "93ab394af5645f7127d5003ee02c9566ae5353cd"
+curation_surface: "skills_omni"
+enhanced_origin: "omni-skills-private"
+source_repo: "diegosouzapw/awesome-omni-skills"
+replaces:
+  - "deep-research"
+---
+
+# Gemini Deep Research Skill
+
+## Overview
+
+This public intake copy packages `plugins/antigravity-awesome-skills-claude/skills/deep-research` from `https://github.com/sickn33/antigravity-awesome-skills` into the native Omni Skills editorial shape without hiding its origin.
+
+Use it when the operator needs the upstream workflow, support files, and repository context to stay intact while the public validator and private enhancer continue their normal downstream flow.
+
+This intake keeps the copied upstream files intact and uses `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
+
+# Gemini Deep Research Skill Run autonomous research tasks that plan, search, read, and synthesize information into comprehensive reports.
+
+Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: Requirements, Output Formats, Cost & Time, Best Use Cases, Exit Codes, Limitations.
+
+## When to Use This Skill
+
+Use this section as the trigger filter. It should make the activation boundary explicit before the operator loads files, runs commands, or opens a pull request.
+
+- Performing market analysis
+- Conducting competitive landscaping
+- Creating literature reviews
+- Doing technical research
+- Performing due diligence
+- Need detailed, cited research reports
+
+## Operating Table
+
+| Situation | Start here | Why it matters |
+| --- | --- | --- |
+| First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path before touching the copied workflow |
+| Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
+| Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
+| Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
+| Handoff decision | `## Related Skills` | Helps the operator switch to a stronger native skill when the task drifts |
+
+## Workflow
+
+This workflow is intentionally editorial and operational at the same time. It keeps the imported source useful to the operator while still satisfying the public intake standards that feed the downstream enhancer flow.
+
+1. Get a Gemini API key from Google AI Studio
+2. Set the environment variable:
+3. User requests research → Run --query "..."
+4. Inform user of estimated time (2-10 minutes)
+5. Monitor with --stream or poll with --status
+6. Return formatted results
+7. Use --continue for follow-up questions
+
+### Imported Workflow Notes
+
+#### Imported: Setup
+
+1. Get a Gemini API key from [Google AI Studio](https://aistudio.google.com/)
+2. Set the environment variable:
+   ```bash
+   export GEMINI_API_KEY=your-api-key-here
+   ```
+   Or create a `.env` file in the skill directory.
+
+#### Imported: Workflow
+
+1. User requests research → Run `--query "..."`
+2. Inform user of estimated time (2-10 minutes)
+3. Monitor with `--stream` or poll with `--status`
+4. Return formatted results
+5. Use `--continue` for follow-up questions
+
+#### Imported: Requirements
+
+- Python 3.8+
+- httpx: `pip install -r requirements.txt`
+- GEMINI_API_KEY environment variable
+
+## Examples
+
+### Example 1: Ask for the upstream workflow directly
+
+```text
+Use @deep-research to handle <task>. Start from the copied upstream workflow, load only the files that change the outcome, and keep provenance visible in the answer.
+```
+
+**Explanation:** This is the safest starting point when the operator needs the imported workflow, but not the entire repository.
+
+### Example 2: Ask for a provenance-grounded review
+
+```text
+Review @deep-research against metadata.json and ORIGIN.md, then explain which copied upstream files you would load first and why.
+```
+
+**Explanation:** Use this before review or troubleshooting when you need a precise, auditable explanation of origin and file selection.
+
+### Example 3: Narrow the copied support files before execution
+
+```text
+Use @deep-research for <task>. Load only the copied references, examples, or scripts that change the outcome, and name the files explicitly before proceeding.
+```
+
+**Explanation:** This keeps the skill aligned with progressive disclosure instead of loading the whole copied package by default.
+
+### Example 4: Build a reviewer packet
+
+```text
+Review @deep-research using the copied upstream files plus provenance, then summarize any gaps before merge.
+```
+
+**Explanation:** This is useful when the PR is waiting for human review and you want a repeatable audit packet.
+
+### Imported Usage Notes
+
+#### Imported: Usage
+
+### Start a research task
+```bash
+python3 scripts/research.py --query "Research the history of Kubernetes"
+```
+
+### With structured output format
+```bash
+python3 scripts/research.py --query "Compare Python web frameworks" \
+  --format "1. Executive Summary\n2. Comparison Table\n3. Recommendations"
+```
+
+### Stream progress in real-time
+```bash
+python3 scripts/research.py --query "Analyze EV battery market" --stream
+```
+
+### Start without waiting
+```bash
+python3 scripts/research.py --query "Research topic" --no-wait
+```
+
+### Check status of running research
+```bash
+python3 scripts/research.py --status <interaction_id>
+```
+
+### Wait for completion
+```bash
+python3 scripts/research.py --wait <interaction_id>
+```
+
+### Continue from previous research
+```bash
+python3 scripts/research.py --query "Elaborate on point 2" --continue <interaction_id>
+```
+
+### List recent research
+```bash
+python3 scripts/research.py --list
+```
+
+## Best Practices
+
+Treat the generated public skill as a reviewable packaging layer around the upstream repository. The goal is to keep provenance explicit and load only the copied source material that materially improves execution.
+
+- Keep the imported skill grounded in the upstream repository; do not invent steps that the source material cannot support.
+- Prefer the smallest useful set of support files so the workflow stays auditable and fast to review.
+- Keep provenance, source commit, and imported file paths visible in notes and PR descriptions.
+- Point directly at the copied upstream files that justify the workflow instead of relying on generic review boilerplate.
+- Treat generated examples as scaffolding; adapt them to the concrete task before execution.
+- Route to a stronger native skill when architecture, debugging, design, or security concerns become dominant.
+
+
+
+## Troubleshooting
+
+### Problem: The operator skipped the imported context and answered too generically
+
+**Symptoms:** The result ignores the upstream workflow in `plugins/antigravity-awesome-skills-claude/skills/deep-research`, fails to mention provenance, or does not use any copied source files at all.
+**Solution:** Re-open `metadata.json`, `ORIGIN.md`, and the most relevant copied upstream files. Load only the files that materially change the answer, then restate the provenance before continuing.
+
+### Problem: The imported workflow feels incomplete during review
+
+**Symptoms:** Reviewers can see the generated `SKILL.md`, but they cannot quickly tell which references, examples, or scripts matter for the current task.
+**Solution:** Point at the exact copied references, examples, scripts, or assets that justify the path you took. If the gap is still real, record it in the PR instead of hiding it.
+
+### Problem: The task drifted into a different specialization
+
+**Symptoms:** The imported skill starts in the right place, but the work turns into debugging, architecture, design, security, or release orchestration that a native skill handles better.
+**Solution:** Use the related skills section to hand off deliberately. Keep the imported provenance visible so the next skill inherits the right context instead of starting blind.
+
+
+
+## Related Skills
+
+- `@conductor-validator` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@confluence-automation` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@content-creator` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@content-marketer` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+
+## Additional Resources
+
+Use this support matrix and the linked files below as the operator packet for this imported skill. They should reflect real copied source material, not generic scaffolding.
+
+| Resource family | What it gives the reviewer | Example path |
+| --- | --- | --- |
+| `references` | copied reference notes, guides, or background material from upstream | `references/n/a` |
+| `examples` | worked examples or reusable prompts copied from upstream | `examples/n/a` |
+| `scripts` | upstream helper scripts that change execution or validation | `scripts/n/a` |
+| `agents` | routing or delegation notes that are genuinely part of the imported package | `agents/n/a` |
+| `assets` | supporting assets or schemas copied from the source package | `assets/n/a` |
+
+
+
+### Imported Reference Notes
+
+#### Imported: Output Formats
+
+- **Default**: Human-readable markdown report
+- **JSON** (`--json`): Structured data for programmatic use
+- **Raw** (`--raw`): Unprocessed API response
+
+#### Imported: Cost & Time
+
+| Metric | Value |
+|--------|-------|
+| Time | 2-10 minutes per task |
+| Cost | $2-5 per task (varies by complexity) |
+| Token usage | ~250k-900k input, ~60k-80k output |
+
+#### Imported: Best Use Cases
+
+- Market analysis and competitive landscaping
+- Technical literature reviews
+- Due diligence research
+- Historical research and timelines
+- Comparative analysis (frameworks, products, technologies)
+
+#### Imported: Exit Codes
+
+- **0**: Success
+- **1**: Error (API error, config issue, timeout)
+- **130**: Cancelled by user (Ctrl+C)
+
+#### Imported: Limitations
+
+- Use this skill only when the task clearly matches the scope described above.
+- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
+- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

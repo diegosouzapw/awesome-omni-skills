@@ -8,7 +8,7 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/contributors/QUALITY-BAR.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-04-28T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/contributors/QUALITY-BAR.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-05-12T00:00:00+00:00 -->
 
 > **Minimum requirements and recommendations for a skill to be accepted into the Awesome Omni Skills repository.**
 
@@ -18,11 +18,11 @@ For the curated `skills_omni/` package model, see [Enhanced Skill Standard](../.
 Current benchmark for the native catalog:
 
 <!-- generated:quality-bar-benchmark:start -->
-- 4027 published native skills, plus 980 curated English derivatives in `skills_omni/`
-- average quality score `88.4`
-- average best-practices score `99.2`
-- average security score `92.9`
-- validation mix `3472` passed, `555` warn, `0` failed
+- 4671 published native skills, plus 1623 curated English derivatives in `skills_omni/`
+- average quality score `88.5`
+- average best-practices score `99.3`
+- average security score `93.1`
+- validation mix `4037` passed, `634` warn, `0` failed
 <!-- generated:quality-bar-benchmark:end -->
 
 ---

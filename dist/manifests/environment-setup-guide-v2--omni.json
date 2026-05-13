@@ -1,0 +1,712 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "environment-setup-guide-v2--omni",
+  "slug": "environment-setup-guide-v2",
+  "display_name": "Environment Setup Guide",
+  "description": "Environment Setup Guide workflow skill. Use this skill when the user needs Guide developers through setting up development environments with proper tools, dependencies, and configurations and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "tools",
+  "raw_category": "tools",
+  "taxonomy": {
+    "raw_category": "tools",
+    "canonical_category": "tools",
+    "inferred_category": "tools",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "environment-setup-guide-v2",
+    "environment-setup-guide",
+    "guide",
+    "developers",
+    "setting",
+    "development",
+    "environments",
+    "proper",
+    "omni-enhanced"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
+  "family": {
+    "id": "environment-setup-guide-v2",
+    "name": "Environment Setup Guide"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/environment-setup-guide-v2",
+    "derived_from": "skills/environment-setup-guide-v2",
+    "replaces": [
+      "environment-setup-guide-v2"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-16",
+    "updated": "2026-05-10"
+  },
+  "entrypoint": "skills_omni/environment-setup-guide-v2/SKILL.md",
+  "paths": {
+    "root": "skills_omni/environment-setup-guide-v2",
+    "manifest": "dist/manifests/environment-setup-guide-v2--omni.json",
+    "metadata": "skills_omni/environment-setup-guide-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [],
+    "artifacts_count": 5,
+    "references_count": 0,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 23,
+        "workflow_section_length": 3786,
+        "when_to_use_section_length": 520,
+        "best_practices_items_count": 25,
+        "best_practices_section_length": 1914,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1309,
+        "resources_items_count": 35,
+        "resources_section_length": 8120,
+        "examples_section_length": 1492,
+        "examples_code_blocks_count": 9,
+        "related_skills_section_length": 575,
+        "decision_assets_count": 5,
+        "table_count": 14,
+        "linked_resource_families_count": 0,
+        "linked_resource_families": [],
+        "support_links_count": 0,
+        "support_files_count": 0,
+        "references_files_count": 0,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 9,
+        "body_density": 4.39,
+        "real_support_files_count": 0,
+        "domain_specific_support_files_count": 0,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 0,
+        "domain_specificity_score": 0,
+        "token_efficiency_score": 6,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "scripts": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "examples": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 86,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 15,
+        "operational_depth": 9,
+        "support_pack": 1
+      }
+    },
+    "security": {
+      "score": 0,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 24,
+      "findings": [
+        {
+          "id": "downloadstring-exec",
+          "kind": "dangerous-command",
+          "severity": "high",
+          "path": "skills_omni/environment-setup-guide-v2/SKILL.md",
+          "message": "In-memory remote script execution pattern detected.",
+          "evidence": "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.Se...",
+          "line": 353
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/environment-setup-guide-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "2. -f .env ]; then echo \"📝 Creating .env file...\" cp .env.example .env echo \"⚠️ Please edit .env with your configurat...",
+          "line": 89
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/environment-setup-guide-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "if [ ! -f .env ]; then",
+          "line": 118
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/environment-setup-guide-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "echo \"📝 Creating .env file...\"",
+          "line": 119
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/environment-setup-guide-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "cp .env.example .env",
+          "line": 120
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/environment-setup-guide-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "echo \"⚠️ Please edit .env with your configuration\"",
+          "line": 121
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/environment-setup-guide-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- Environment variables (.env files)",
+          "line": 171
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/environment-setup-guide-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- Create .env.example - Show required environment variables",
+          "line": 232
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/environment-setup-guide-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "- **Create .env.example** - Show required environment variables",
+          "line": 246
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/environment-setup-guide-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "Create a \\`.env\\` file:",
+          "line": 379
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/environment-setup-guide-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "cp .env.example .env",
+          "line": 382
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/environment-setup-guide-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "nano .env",
+          "line": 385
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/environment-setup-guide-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "Example \\`.env\\` content:",
+          "line": 388
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/environment-setup-guide-v2/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "Create \\`.env\\` file:",
+          "line": 480
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills_omni/environment-setup-guide-v2/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "- **Don't Use Sudo with npm** - Fix permissions instead",
+          "line": 259
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills_omni/environment-setup-guide-v2/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo apt update",
+          "line": 343
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills_omni/environment-setup-guide-v2/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -",
+          "line": 346
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills_omni/environment-setup-guide-v2/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo apt install -y nodejs",
+          "line": 347
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills_omni/environment-setup-guide-v2/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "**Solution:** Don't use sudo with npm. Fix permissions:",
+          "line": 411
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills_omni/environment-setup-guide-v2/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo apt update",
+          "line": 435
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills_omni/environment-setup-guide-v2/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo apt install python3.11 python3.11-venv python3-pip",
+          "line": 436
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills_omni/environment-setup-guide-v2/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo sh get-docker.sh",
+          "line": 516
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills_omni/environment-setup-guide-v2/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo usermod -aG docker $USER",
+          "line": 519
+        },
+        {
+          "id": "sudo-required",
+          "kind": "privilege-escalation",
+          "severity": "low",
+          "path": "skills_omni/environment-setup-guide-v2/SKILL.md",
+          "message": "Command requires elevated privileges; review necessity carefully.",
+          "evidence": "sudo systemctl status postgresql",
+          "line": 644
+        }
+      ],
+      "signals": {
+        "scanned_files": 4,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security high: In-memory remote script execution pattern detected. [skills_omni/environment-setup-guide-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/environment-setup-guide-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/environment-setup-guide-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/environment-setup-guide-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/environment-setup-guide-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/environment-setup-guide-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/environment-setup-guide-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/environment-setup-guide-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/environment-setup-guide-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/environment-setup-guide-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/environment-setup-guide-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/environment-setup-guide-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/environment-setup-guide-v2/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/environment-setup-guide-v2/SKILL.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 19600,
+    "content_length": 21081,
+    "body_lines": 606,
+    "word_count": 2661,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 6,
+    "has_examples_section": true,
+    "example_count": 7,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 7,
+    "troubleshooting_pairs_count": 5,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 23,
+      "workflow_section_length": 3786,
+      "when_to_use_section_length": 520,
+      "best_practices_items_count": 25,
+      "best_practices_section_length": 1914,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1309,
+      "resources_items_count": 35,
+      "resources_section_length": 8120,
+      "examples_section_length": 1492,
+      "examples_code_blocks_count": 9,
+      "related_skills_section_length": 575,
+      "decision_assets_count": 5,
+      "table_count": 14,
+      "linked_resource_families_count": 0,
+      "linked_resource_families": [],
+      "support_links_count": 0,
+      "support_files_count": 0,
+      "references_files_count": 0,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 9,
+      "body_density": 4.39,
+      "real_support_files_count": 0,
+      "domain_specific_support_files_count": 0,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 0,
+      "domain_specificity_score": 0,
+      "token_efficiency_score": 6,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "scripts": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "examples": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills_omni/environment-setup-guide-v2/ATTRIBUTION.md",
+      "kind": "support",
+      "size_bytes": 875,
+      "sha256": "ebe535f7eac64a575fc29ae24afbbf39ed02ee13b6383799f9fda44842859a28"
+    },
+    {
+      "path": "skills_omni/environment-setup-guide-v2/OMNI_ENHANCED.json",
+      "kind": "support",
+      "size_bytes": 397,
+      "sha256": "9fba23559738ff537aa259df75a180b2909ddf3280e25a70c2dc916b8d995b44"
+    },
+    {
+      "path": "skills_omni/environment-setup-guide-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 777,
+      "sha256": "f850a427b4e85e1e73677b2bf3bbcb806c1f848dae1bfecb4c99f989c88d96fc"
+    },
+    {
+      "path": "skills_omni/environment-setup-guide-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 21143,
+      "sha256": "52bb3bba41491211c7a0a8c20747745316fd7e4261d5386ce1171c40010d49b1"
+    },
+    {
+      "path": "skills_omni/environment-setup-guide-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 21980,
+      "sha256": "62b69d6eff0721ca010e1e7f15034584550b032f8cd9e70365fa27c88357db54"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/environment-setup-guide-v2--omni.zip",
+      "file_name": "environment-setup-guide-v2--omni.zip",
+      "size_bytes": 46028,
+      "sha256": "42ec8549370fe822cd6597b7ba2e19f9289aab85d5af28f079f0e7c701c8c060",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/environment-setup-guide-v2--omni.tar.gz",
+      "file_name": "environment-setup-guide-v2--omni.tar.gz",
+      "size_bytes": 51228,
+      "sha256": "fbe01c0d71abe9c3c60d0c01f62fb67356d5e0e969a4f236eb4a342f287b12ab",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/environment-setup-guide-v2--omni.checksums.txt",
+    "file_name": "environment-setup-guide-v2--omni.checksums.txt",
+    "sha256": "550da4db86e180cce3162bc088d3530fc6da78e167b36c1b9014d4482182bf87",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "52bb3bba41491211c7a0a8c20747745316fd7e4261d5386ce1171c40010d49b1",
+    "package_sha256": "e3d68ebed87c547d0972b99905ea8cf2e0a19c06e00661cedd1247ef7979fc57"
+  }
+}
