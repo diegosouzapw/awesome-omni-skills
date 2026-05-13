@@ -10,7 +10,7 @@
 
 <!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/CATALOG.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-05-12T00:00:00+00:00 -->
 
-> Auto-generated from `skills_index.json` — 4669 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 4671 skills across 17 categories.
 
 Generated: 2026-05-12T00:00:00+00:00
 
@@ -26,7 +26,7 @@ Generated: 2026-05-12T00:00:00+00:00
 - [🎬 Content Media (156)](#content-media)
 - [🤖 Data Ai (184)](#data-ai)
 - [🎨 Design (131)](#design)
-- [💻 Development (706)](#development)
+- [💻 Development (708)](#development)
 - [☁️ Devops (339)](#devops)
 - [📝 Documentation (69)](#documentation)
 - [🖼️ Frontend (545)](#frontend)
@@ -2888,6 +2888,8 @@ Generated: 2026-05-12T00:00:00+00:00
 | [`sympy-v2`](../../../../skills/sympy-v2/SKILL.md) | SymPy - Symbolic Mathematics in Python workflow skill. Use this skill when the user needs SymPy is a Python library for  | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`systems-programming-rust-project`](../../../../skills/systems-programming-rust-project/SKILL.md) | Rust Project Scaffolding workflow skill. Use this skill when the user needs You are a Rust project architecture expert s | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`systems-programming-rust-project-v2`](../../../../skills/systems-programming-rust-project-v2/SKILL.md) | Rust Project Scaffolding workflow skill. Use this skill when the user needs You are a Rust project architecture expert s | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`tactical-ddd`](../../../../skills/tactical-ddd/SKILL.md) | Tactical DDD \u2014 Rich Domain Modeling workflow skill. Use this skill when the user needs Detects anemic domain models | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`tactical-ddd--omni`](../../../../skills_omni/tactical-ddd/SKILL.md) | Tactical DDD \\u2014 Rich Domain Modeling workflow skill. Use this skill when the user needs Detects anemic domain model | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`tdd-orchestrator`](../../../../skills/tdd-orchestrator/SKILL.md) | tdd-orchestrator workflow skill. Use this skill when the user needs Master TDD orchestrator specializing in red-green-re | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`tdd-orchestrator-v2`](../../../../skills/tdd-orchestrator-v2/SKILL.md) | tdd-orchestrator workflow skill. Use this skill when the user needs Master TDD orchestrator specializing in red-green-re | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`tdd-workflow`](../../../../skills/tdd-workflow/SKILL.md) | TDD Workflow workflow skill. Use this skill when the user needs Test-Driven Development workflow principles. RED-GREEN-R | L2 instructions | 98/100 | 86/100 | 100/100 passed |
