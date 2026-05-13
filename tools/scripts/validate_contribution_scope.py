@@ -28,6 +28,15 @@ ALLOWED_CURATED_SUPPORT_PREFIXES = (
     "dist/manifests/",
 )
 
+DEPENDENCY_MANIFEST_FILENAMES = {
+    ".yarnrc.yml",
+    "npm-shrinkwrap.json",
+    "package-lock.json",
+    "package.json",
+    "pnpm-lock.yaml",
+    "yarn.lock",
+}
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -106,6 +115,19 @@ def is_allowed_curated_pr(event: dict, repository: str) -> bool:
     )
 
 
+def is_dependabot_dependency_pr(event: dict) -> bool:
+    pr = event.get("pull_request") or {}
+    user = pr.get("user") or {}
+    head = pr.get("head") or {}
+    login = user.get("login") or ""
+    head_ref = head.get("ref") or ""
+    return login in {"dependabot[bot]", "app/dependabot"} or head_ref.startswith("dependabot/")
+
+
+def is_dependency_manifest_path(path: str) -> bool:
+    return Path(path).name in DEPENDENCY_MANIFEST_FILENAMES
+
+
 def main() -> int:
     args = parse_args()
     event = load_event(Path(args.event_path).resolve())
@@ -119,6 +141,18 @@ def main() -> int:
         if not args.base_sha or not args.head_sha:
             raise SystemExit("Either --changed-path or both --base-sha/--head-sha are required.")
         changed_paths = git_changed_paths(args.base_sha, args.head_sha)
+
+    if is_dependabot_dependency_pr(event) and all(is_dependency_manifest_path(path) for path in changed_paths):
+        print(
+            json.dumps(
+                {
+                    "dependency_manifest_count": len(changed_paths),
+                    "status": "ok",
+                },
+                ensure_ascii=False,
+            )
+        )
+        return 0
 
     native, curated, other = classify_paths(changed_paths)
 
