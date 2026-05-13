@@ -128,6 +128,10 @@ def is_dependency_manifest_path(path: str) -> bool:
     return Path(path).name in DEPENDENCY_MANIFEST_FILENAMES
 
 
+def is_allowed_dependabot_dependency_path(path: str) -> bool:
+    return is_dependency_manifest_path(path) or is_allowed_curated_support_path(path)
+
+
 def main() -> int:
     args = parse_args()
     event = load_event(Path(args.event_path).resolve())
@@ -142,11 +146,11 @@ def main() -> int:
             raise SystemExit("Either --changed-path or both --base-sha/--head-sha are required.")
         changed_paths = git_changed_paths(args.base_sha, args.head_sha)
 
-    if is_dependabot_dependency_pr(event) and all(is_dependency_manifest_path(path) for path in changed_paths):
+    if is_dependabot_dependency_pr(event) and all(is_allowed_dependabot_dependency_path(path) for path in changed_paths):
         print(
             json.dumps(
                 {
-                    "dependency_manifest_count": len(changed_paths),
+                    "dependabot_dependency_path_count": len(changed_paths),
                     "status": "ok",
                 },
                 ensure_ascii=False,
