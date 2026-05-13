@@ -1000,6 +1000,59 @@ print(json.dumps(payload))
     /Direct public contribution to skills_omni\/ is not allowed/,
     "manual public changes to skills_omni should be rejected",
   );
+  fs.writeFileSync(
+    contributionScopeEvent,
+    JSON.stringify(
+      {
+        pull_request: {
+          title: "build(deps): bump the npm_and_yarn group",
+          user: { login: "dependabot[bot]" },
+          head: {
+            ref: "dependabot/npm_and_yarn/npm_and_yarn-19916f891b",
+            repo: { full_name: "diegosouzapw/awesome-omni-skills" },
+          },
+        },
+      },
+      null,
+      2,
+    ),
+    "utf-8",
+  );
+  childProcess.execFileSync(
+    "python3",
+    [
+      path.resolve(__dirname, "../validate_contribution_scope.py"),
+      "--repository",
+      "diegosouzapw/awesome-omni-skills",
+      "--event-path",
+      contributionScopeEvent,
+      "--changed-path",
+      "package-lock.json",
+      "--changed-path",
+      "skills/loki-mode/examples/todo-app-generated/backend/package.json",
+      "--changed-path",
+      "skills_omni/loki-mode/examples/todo-app-generated/backend/package-lock.json",
+    ],
+    { encoding: "utf-8" },
+  );
+  assert.throws(
+    () =>
+      childProcess.execFileSync(
+        "python3",
+        [
+          path.resolve(__dirname, "../validate_contribution_scope.py"),
+          "--repository",
+          "diegosouzapw/awesome-omni-skills",
+          "--event-path",
+          contributionScopeEvent,
+          "--changed-path",
+          "skills_omni/example/SKILL.md",
+        ],
+        { encoding: "utf-8" },
+      ),
+    /Direct public contribution to skills_omni\/ is not allowed/,
+    "dependabot should not bypass curated content scope for non-dependency files",
+  );
 
   const rankedSearch = core.searchSkills({
     sort: "quality",
