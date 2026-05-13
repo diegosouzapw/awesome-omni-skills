@@ -1,0 +1,812 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "dbos-typescript--omni",
+  "slug": "dbos-typescript",
+  "display_name": "DBOS TypeScript Best Practices",
+  "description": "DBOS TypeScript Best Practices workflow skill. Use this skill when the user needs Guide for building reliable, fault-tolerant TypeScript applications with DBOS durable workflows. Use when adding DBOS to existing TypeScript code, creating workflows and steps, or using queues for concurrency control and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "cli-automation",
+  "raw_category": "cli-automation",
+  "taxonomy": {
+    "raw_category": "cli-automation",
+    "canonical_category": "cli-automation",
+    "inferred_category": "cli-automation",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "dbos-typescript",
+    "guide",
+    "for",
+    "building",
+    "reliable",
+    "fault-tolerant",
+    "typescript",
+    "applications",
+    "omni-enhanced"
+  ],
+  "complexity": "advanced",
+  "risk": "safe",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
+  "family": {
+    "id": "dbos-typescript",
+    "name": "DBOS TypeScript Best Practices"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/dbos-typescript",
+    "derived_from": "skills/dbos-typescript",
+    "replaces": [
+      "dbos-typescript"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-14",
+    "updated": "2026-05-10"
+  },
+  "entrypoint": "skills_omni/dbos-typescript/SKILL.md",
+  "paths": {
+    "root": "skills_omni/dbos-typescript",
+    "manifest": "dist/manifests/dbos-typescript--omni.json",
+    "metadata": "skills_omni/dbos-typescript/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "references"
+    ],
+    "artifacts_count": 39,
+    "references_count": 32,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 100,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 7,
+        "workflow_section_length": 1231,
+        "when_to_use_section_length": 431,
+        "best_practices_items_count": 11,
+        "best_practices_section_length": 2333,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1322,
+        "resources_items_count": 11,
+        "resources_section_length": 1479,
+        "examples_section_length": 1346,
+        "examples_code_blocks_count": 8,
+        "related_skills_section_length": 554,
+        "decision_assets_count": 4,
+        "table_count": 25,
+        "linked_resource_families_count": 1,
+        "linked_resource_families": [
+          "references"
+        ],
+        "support_links_count": 4,
+        "support_files_count": 32,
+        "references_files_count": 32,
+        "scripts_files_count": 0,
+        "examples_files_count": 0,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 9,
+        "body_density": 6.15,
+        "real_support_files_count": 32,
+        "domain_specific_support_files_count": 32,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 10,
+        "domain_specificity_score": 10,
+        "token_efficiency_score": 8,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 32,
+            "real_files_count": 32,
+            "domain_specific_files_count": 32,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "scripts": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "examples": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 97,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 0,
+      "tier": "blocked",
+      "status": "warn",
+      "findings_count": 12,
+      "findings": [
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/dbos-typescript/SKILL.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "systemDatabaseUrl: process.env.DBOS_SYSTEM_DATABASE_URL,",
+          "line": 192
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/dbos-typescript/references/advanced-versioning.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "systemDatabaseUrl: process.env.DBOS_SYSTEM_DATABASE_URL,",
+          "line": 17
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/dbos-typescript/references/advanced-versioning.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "systemDatabaseUrl: process.env.DBOS_SYSTEM_DATABASE_URL,",
+          "line": 27
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/dbos-typescript/references/client-enqueue.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "systemDatabaseUrl: process.env.DBOS_SYSTEM_DATABASE_URL,",
+          "line": 25
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/dbos-typescript/references/client-setup.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "systemDatabaseUrl: process.env.DBOS_SYSTEM_DATABASE_URL,",
+          "line": 26
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/dbos-typescript/references/lifecycle-config.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "systemDatabaseUrl: process.env.DBOS_SYSTEM_DATABASE_URL,",
+          "line": 38
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/dbos-typescript/references/lifecycle-express.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "systemDatabaseUrl: process.env.DBOS_SYSTEM_DATABASE_URL,",
+          "line": 50
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/dbos-typescript/references/queue-listening.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "systemDatabaseUrl: process.env.DBOS_SYSTEM_DATABASE_URL,",
+          "line": 24
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/dbos-typescript/references/queue-listening.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const workerType = process.env.WORKER_TYPE; // \"cpu\" or \"gpu\"",
+          "line": 38
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/dbos-typescript/references/queue-listening.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "systemDatabaseUrl: process.env.DBOS_SYSTEM_DATABASE_URL,",
+          "line": 42
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/dbos-typescript/references/step-transactions.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const config = { client: \"pg\", connection: process.env.DBOS_DATABASE_URL };",
+          "line": 35
+        },
+        {
+          "id": "sensitive-path-reference",
+          "kind": "suspicious-path",
+          "severity": "medium",
+          "path": "skills_omni/dbos-typescript/references/test-setup.md",
+          "message": "Sensitive OS or credential path referenced.",
+          "evidence": "const databaseUrl = process.env.DBOS_TEST_DATABASE_URL;",
+          "line": 79
+        }
+      ],
+      "signals": {
+        "scanned_files": 38,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/dbos-typescript/SKILL.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/dbos-typescript/references/advanced-versioning.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/dbos-typescript/references/advanced-versioning.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/dbos-typescript/references/client-enqueue.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/dbos-typescript/references/client-setup.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/dbos-typescript/references/lifecycle-config.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/dbos-typescript/references/lifecycle-express.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/dbos-typescript/references/queue-listening.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/dbos-typescript/references/queue-listening.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/dbos-typescript/references/queue-listening.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/dbos-typescript/references/step-transactions.md]",
+        "security medium: Sensitive OS or credential path referenced. [skills_omni/dbos-typescript/references/test-setup.md]"
+      ],
+      "status": "warn"
+    }
+  },
+  "content": {
+    "body_length": 10470,
+    "content_length": 11995,
+    "body_lines": 234,
+    "word_count": 1440,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 3,
+    "has_examples_section": true,
+    "example_count": 4,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 3,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 4,
+    "has_local_support_links": true,
+    "local_support_links_count": 4,
+    "has_local_script_example": true,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 7,
+      "workflow_section_length": 1231,
+      "when_to_use_section_length": 431,
+      "best_practices_items_count": 11,
+      "best_practices_section_length": 2333,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1322,
+      "resources_items_count": 11,
+      "resources_section_length": 1479,
+      "examples_section_length": 1346,
+      "examples_code_blocks_count": 8,
+      "related_skills_section_length": 554,
+      "decision_assets_count": 4,
+      "table_count": 25,
+      "linked_resource_families_count": 1,
+      "linked_resource_families": [
+        "references"
+      ],
+      "support_links_count": 4,
+      "support_files_count": 32,
+      "references_files_count": 32,
+      "scripts_files_count": 0,
+      "examples_files_count": 0,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 9,
+      "body_density": 6.15,
+      "real_support_files_count": 32,
+      "domain_specific_support_files_count": 32,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 10,
+      "domain_specificity_score": 10,
+      "token_efficiency_score": 8,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 32,
+          "real_files_count": 32,
+          "domain_specific_files_count": 32,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "scripts": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "examples": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills_omni/dbos-typescript/AGENTS.md",
+      "kind": "support",
+      "size_bytes": 2728,
+      "sha256": "6ef25d14db9650c17286089ae53e0e35060310e7b833778c3f4a197772ec64e3"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/ATTRIBUTION.md",
+      "kind": "support",
+      "size_bytes": 849,
+      "sha256": "eee55a5680620f192468652c7f818ec4468d4b51f4888c9a8789a24558d015dc"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/CLAUDE.md",
+      "kind": "support",
+      "size_bytes": 2728,
+      "sha256": "6ef25d14db9650c17286089ae53e0e35060310e7b833778c3f4a197772ec64e3"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/OMNI_ENHANCED.json",
+      "kind": "support",
+      "size_bytes": 386,
+      "sha256": "18ac60ec92dbec6f6f73fd3aaf15878dad7a836f99d83fc0f0dd570add37f206"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 741,
+      "sha256": "4a694c6f7904abcb92c87cae840855917186070356881e8804a83fd158f85303"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 11995,
+      "sha256": "171077e859601b5394cc42b36572d23148894c503b983e534bb1462595764e34"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/metadata.json",
+      "kind": "support",
+      "size_bytes": 19052,
+      "sha256": "d89968fc15aa096e324545bdf88da78d22f60e05bbfbbaf73c886a5fb2136907"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/_sections.md",
+      "kind": "reference",
+      "size_bytes": 1444,
+      "sha256": "2c62fa6efbac05221c80f08ee6b560e3c6bdcb93c03e36b23b815eb9a2da9370"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/advanced-patching.md",
+      "kind": "reference",
+      "size_bytes": 2054,
+      "sha256": "23ef42128dd7f0d27f23794a7d9913db006f80b1b92f1e292a2febd6584e6c51"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/advanced-versioning.md",
+      "kind": "reference",
+      "size_bytes": 1779,
+      "sha256": "517d755f7174f38d3b98af03e1a38988cd1fb5bc72c3ec340656cf490eb745de"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/client-enqueue.md",
+      "kind": "reference",
+      "size_bytes": 2125,
+      "sha256": "ae8e773e5c048d8a7aed56edb7f492e91924b52be07a1630dc5d25ec8ee9a0b6"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/client-setup.md",
+      "kind": "reference",
+      "size_bytes": 1867,
+      "sha256": "7489cffcc66d154ae8e04ccf6170d92c8099357bae7d20f4f9a0b9ea03c78ace"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/comm-events.md",
+      "kind": "reference",
+      "size_bytes": 2113,
+      "sha256": "5d23a8b1fbc3ee0d79ba0c58020e17b52d455abba3d5cb3297ce544c6bad783b"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/comm-messages.md",
+      "kind": "reference",
+      "size_bytes": 1956,
+      "sha256": "4d3b95349f793e21c5ecee7d562e4370b91876aa1926addab2274b167c6307ca"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/comm-streaming.md",
+      "kind": "reference",
+      "size_bytes": 1942,
+      "sha256": "afab505d657a1bb5e03fd9c04a9b470c797aab568ebb8d42cd5f8a3e56972ad9"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/lifecycle-config.md",
+      "kind": "reference",
+      "size_bytes": 1189,
+      "sha256": "75344dfd751be82a495173b16707cfa15a849ab453c7d5f7976550ab80b7ed84"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/lifecycle-express.md",
+      "kind": "reference",
+      "size_bytes": 1490,
+      "sha256": "2ef3bbd1581dca212abef446ea8cc31f179e5275939d3e426bb4d12a7c9a8566"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/pattern-classes.md",
+      "kind": "reference",
+      "size_bytes": 2041,
+      "sha256": "f48ed4a4f7abac8f1be47dde88351215fba7497caf65b25bb34ace41ffdf41d1"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/pattern-debouncing.md",
+      "kind": "reference",
+      "size_bytes": 1929,
+      "sha256": "7c8f2841c15ef52ca51f049a203a2191bd7fd8c1860a910c154ec0e54fe3ba7d"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/pattern-idempotency.md",
+      "kind": "reference",
+      "size_bytes": 1915,
+      "sha256": "4745dd71862708694385701bf8efba99b3661b53c2582543afa5f16b7b7cdcdf"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/pattern-scheduled.md",
+      "kind": "reference",
+      "size_bytes": 2283,
+      "sha256": "fc853628f0f4cfad3efcffda50eca0e1abbb1ec53b1032cb7892fc1e29b9b24c"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/pattern-sleep.md",
+      "kind": "reference",
+      "size_bytes": 1655,
+      "sha256": "f7deaa37b4104ed7dfa519c21d1d7720353341caacab7dba1493d95ca0116c6b"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/queue-basics.md",
+      "kind": "reference",
+      "size_bytes": 1620,
+      "sha256": "445217b9d294304a74cecc0c7966f5a8145b71f889ff7a469b0dafdfd9bddf87"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/queue-concurrency.md",
+      "kind": "reference",
+      "size_bytes": 1728,
+      "sha256": "5eb81f48791f9c6678b870be635d469f9db9ebb0b7b9ac42276c160bf7735bb7"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/queue-deduplication.md",
+      "kind": "reference",
+      "size_bytes": 1621,
+      "sha256": "f977574455737d47465e4809da33cea281f3231861461a19f7bf3dfd4c4b8653"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/queue-listening.md",
+      "kind": "reference",
+      "size_bytes": 1786,
+      "sha256": "14bf01afb793187281749e0e381a68ea3d9d09513c49e99a940327696d08bc91"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/queue-partitioning.md",
+      "kind": "reference",
+      "size_bytes": 1916,
+      "sha256": "7eb69598e9d0e268dcf5b7c0ec1c1197c56e1703aa14e820ce54b49fa3d13612"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/queue-priority.md",
+      "kind": "reference",
+      "size_bytes": 1376,
+      "sha256": "f3e3ff0dc35c81136e3ee42ebd6812d311ff5b6dedb2e0b8da2af5952ffbc42f"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/queue-rate-limiting.md",
+      "kind": "reference",
+      "size_bytes": 1186,
+      "sha256": "690fad1da5ca3287de333e0b9faf118da85cd1d13d2bb2f5ef8c7695caf4a578"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/step-basics.md",
+      "kind": "reference",
+      "size_bytes": 1938,
+      "sha256": "48e887fb42b04a8ed73ef086af2bda0d7f99910e11c69cbdeb45d2a7dee20282"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/step-retries.md",
+      "kind": "reference",
+      "size_bytes": 1958,
+      "sha256": "f2f2b3e9c6b58b60e1f43855072d9696e3c6cb9a9e3d0fc60b3cbf25f1afe461"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/step-transactions.md",
+      "kind": "reference",
+      "size_bytes": 2207,
+      "sha256": "0d42104a5a28947552571df70c339d37840cf9208bdb5225fad078d660ac1543"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/test-setup.md",
+      "kind": "reference",
+      "size_bytes": 3023,
+      "sha256": "102c2a88e067783b760281408cc519778bc04fe27e01bc4314c96013fd59eb7d"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/workflow-background.md",
+      "kind": "reference",
+      "size_bytes": 1460,
+      "sha256": "1808a464bd6fbd049fef27d2586abe7f43a520eced4402d201b6045b1b69d79d"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/workflow-constraints.md",
+      "kind": "reference",
+      "size_bytes": 1955,
+      "sha256": "9f581a5a8df7c032742f45bd9599aebd3a8f5db3b3460f8360aa6dc79f9bf09e"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/workflow-control.md",
+      "kind": "reference",
+      "size_bytes": 2039,
+      "sha256": "5e90ce420e899bcc391da60460c5cd0b27509e83d5ce0dd957d5d8a52de16122"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/workflow-determinism.md",
+      "kind": "reference",
+      "size_bytes": 1664,
+      "sha256": "66766a10bfb8eb129c89d9acbfa8218026fe2211e6d70282994d4fe64523cc59"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/workflow-introspection.md",
+      "kind": "reference",
+      "size_bytes": 1827,
+      "sha256": "2f88148bf3c9983aa9137f1df435fd662bc3519e73ac669028bc5c4d0d08e440"
+    },
+    {
+      "path": "skills_omni/dbos-typescript/references/workflow-timeout.md",
+      "kind": "reference",
+      "size_bytes": 1358,
+      "sha256": "3e664ffbbfc1a2f8675eb54bcb79daf00c40f6ba6eecf0402e1d470d08b170e3"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/dbos-typescript--omni.zip",
+      "file_name": "dbos-typescript--omni.zip",
+      "size_bytes": 103683,
+      "sha256": "4ee2aed46571fc16bfd8cfb63b38b3b53c5314d12f292c8e8b2a81df6e18dddc",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/dbos-typescript--omni.tar.gz",
+      "file_name": "dbos-typescript--omni.tar.gz",
+      "size_bytes": 133158,
+      "sha256": "7ec00fd3cb31b0ab23ac5a0ac2f2e3836f62c3309bb45624444b3a78d333c016",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/dbos-typescript--omni.checksums.txt",
+    "file_name": "dbos-typescript--omni.checksums.txt",
+    "sha256": "179cfeb06f500d47cd2c556c6e8f37b0a31e676a6105fd26266bae1bdf80fe60",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "171077e859601b5394cc42b36572d23148894c503b983e534bb1462595764e34",
+    "package_sha256": "fd0b1f7141b806d5c479aa0d59740d01808f536f204c433c0e6407a58187d16f"
+  }
+}

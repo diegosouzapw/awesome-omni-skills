@@ -1,0 +1,511 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "frontend-api-integration-patterns-v2--omni",
+  "slug": "frontend-api-integration-patterns-v2",
+  "display_name": "Frontend API Integration Patterns",
+  "description": "Frontend API Integration Patterns workflow skill. Use this skill when the user needs production-ready patterns for integrating frontend applications with backend APIs, including race condition handling, request cancellation, retry strategies, error normalization, and UI state management, while preserving upstream workflow intent and provenance.",
+  "version": "0.0.1",
+  "category": "frontend",
+  "raw_category": "frontend",
+  "taxonomy": {
+    "raw_category": "frontend",
+    "canonical_category": "frontend",
+    "inferred_category": "frontend",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "frontend",
+    "api-integration",
+    "javascript",
+    "react",
+    "fetch",
+    "abortcontroller",
+    "retry",
+    "error-handling",
+    "ui-state",
+    "omni-enhanced"
+  ],
+  "complexity": "intermediate",
+  "risk": "caution",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
+  "family": {
+    "id": "frontend-api-integration-patterns-v2",
+    "name": "Frontend API Integration Patterns"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/frontend-api-integration-patterns-v2",
+    "derived_from": "skills/frontend-api-integration-patterns-v2",
+    "replaces": [
+      "frontend-api-integration-patterns-v2"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-25",
+    "updated": "2026-05-10"
+  },
+  "entrypoint": "skills_omni/frontend-api-integration-patterns-v2/SKILL.md",
+  "paths": {
+    "root": "skills_omni/frontend-api-integration-patterns-v2",
+    "manifest": "dist/manifests/frontend-api-integration-patterns-v2--omni.json",
+    "metadata": "skills_omni/frontend-api-integration-patterns-v2/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "cursor",
+      "codex-cli",
+      "claude-code",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "assets",
+      "examples",
+      "references"
+    ],
+    "artifacts_count": 8,
+    "references_count": 1,
+    "agents_count": 0,
+    "assets_count": 1
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 98,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 36,
+        "workflow_section_length": 3437,
+        "when_to_use_section_length": 1029,
+        "best_practices_items_count": 16,
+        "best_practices_section_length": 1184,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1932,
+        "resources_items_count": 3,
+        "resources_section_length": 461,
+        "examples_section_length": 1447,
+        "examples_code_blocks_count": 6,
+        "related_skills_section_length": 71,
+        "decision_assets_count": 1,
+        "table_count": 0,
+        "linked_resource_families_count": 3,
+        "linked_resource_families": [
+          "assets",
+          "examples",
+          "references"
+        ],
+        "support_links_count": 3,
+        "support_files_count": 3,
+        "references_files_count": 1,
+        "scripts_files_count": 0,
+        "examples_files_count": 1,
+        "agents_files_count": 0,
+        "assets_files_count": 1,
+        "tools_count": 5,
+        "tags_count": 10,
+        "body_density": 5.89,
+        "real_support_files_count": 3,
+        "domain_specific_support_files_count": 3,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 10,
+        "domain_specificity_score": 10,
+        "token_efficiency_score": 8,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 1,
+            "real_files_count": 1,
+            "domain_specific_files_count": 1,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "scripts": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "examples": {
+            "files_count": 1,
+            "real_files_count": 1,
+            "domain_specific_files_count": 1,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 1,
+            "real_files_count": 1,
+            "domain_specific_files_count": 1,
+            "findings_count": 0,
+            "status": "strong"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 96,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 7,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 14547,
+    "content_length": 16142,
+    "body_lines": 327,
+    "word_count": 1927,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 3,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 0,
+    "troubleshooting_pairs_count": 5,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": true,
+    "related_skills_count": 0,
+    "has_local_support_links": true,
+    "local_support_links_count": 1,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 36,
+      "workflow_section_length": 3437,
+      "when_to_use_section_length": 1029,
+      "best_practices_items_count": 16,
+      "best_practices_section_length": 1184,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1932,
+      "resources_items_count": 3,
+      "resources_section_length": 461,
+      "examples_section_length": 1447,
+      "examples_code_blocks_count": 6,
+      "related_skills_section_length": 71,
+      "decision_assets_count": 1,
+      "table_count": 0,
+      "linked_resource_families_count": 3,
+      "linked_resource_families": [
+        "assets",
+        "examples",
+        "references"
+      ],
+      "support_links_count": 3,
+      "support_files_count": 3,
+      "references_files_count": 1,
+      "scripts_files_count": 0,
+      "examples_files_count": 1,
+      "agents_files_count": 0,
+      "assets_files_count": 1,
+      "tools_count": 5,
+      "tags_count": 10,
+      "body_density": 5.89,
+      "real_support_files_count": 3,
+      "domain_specific_support_files_count": 3,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 10,
+      "domain_specificity_score": 10,
+      "token_efficiency_score": 8,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 1,
+          "real_files_count": 1,
+          "domain_specific_files_count": 1,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "scripts": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "examples": {
+          "files_count": 1,
+          "real_files_count": 1,
+          "domain_specific_files_count": 1,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 1,
+          "real_files_count": 1,
+          "domain_specific_files_count": 1,
+          "findings_count": 0,
+          "status": "strong"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills_omni/frontend-api-integration-patterns-v2/ATTRIBUTION.md",
+      "kind": "support",
+      "size_bytes": 916,
+      "sha256": "d110a46fb5489393c640f5ab762a6d4923e061697bce76356eea54fa3fae3548"
+    },
+    {
+      "path": "skills_omni/frontend-api-integration-patterns-v2/OMNI_ENHANCED.json",
+      "kind": "support",
+      "size_bytes": 407,
+      "sha256": "bf3172961c21d9f5890bf8c34f99ae5517179b855ab1f6c8448645a88360865c"
+    },
+    {
+      "path": "skills_omni/frontend-api-integration-patterns-v2/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 807,
+      "sha256": "2746e00c7eb9fe00f306a7af80e2ad9c78ce2b9bee6962dfdd2f36e4e86afd6e"
+    },
+    {
+      "path": "skills_omni/frontend-api-integration-patterns-v2/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 16170,
+      "sha256": "0b21c4e5e848c19dbca9a444163e1ef0914f8e664464f41d67d04f1a86d05060"
+    },
+    {
+      "path": "skills_omni/frontend-api-integration-patterns-v2/metadata.json",
+      "kind": "support",
+      "size_bytes": 12777,
+      "sha256": "96f0db6682ea6e535d0524937646248e5d0eb4d7a7d97d3ad7169584e8b0b438"
+    },
+    {
+      "path": "skills_omni/frontend-api-integration-patterns-v2/assets/schema-map.json",
+      "kind": "asset",
+      "size_bytes": 2427,
+      "sha256": "39551454790e039dd33249079e8f4e3508284dab35f836b55c41d640ad6ef756"
+    },
+    {
+      "path": "skills_omni/frontend-api-integration-patterns-v2/examples/request-response-example.md",
+      "kind": "support",
+      "size_bytes": 3849,
+      "sha256": "d0c3bd77bb3f398e4dac8d9b6912acb34f88bae55adfee48df26aa3384f953a0"
+    },
+    {
+      "path": "skills_omni/frontend-api-integration-patterns-v2/references/integration-patterns.md",
+      "kind": "reference",
+      "size_bytes": 4958,
+      "sha256": "4d6f46c4b33f5cfd6ea8c044c413d0c18ebb94f3a676b066b69b29ca01d52040"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/frontend-api-integration-patterns-v2--omni.zip",
+      "file_name": "frontend-api-integration-patterns-v2--omni.zip",
+      "size_bytes": 43937,
+      "sha256": "31bd72696b588e85bdc490b8c16ce0b4cac4ffc558a36260167f4f5508f066f8",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/frontend-api-integration-patterns-v2--omni.tar.gz",
+      "file_name": "frontend-api-integration-patterns-v2--omni.tar.gz",
+      "size_bytes": 51228,
+      "sha256": "11d0b03b2153d97fbb46b486d04403b0b44f0d25c91112c977d0cca1816b0a41",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/frontend-api-integration-patterns-v2--omni.checksums.txt",
+    "file_name": "frontend-api-integration-patterns-v2--omni.checksums.txt",
+    "sha256": "c1cacd3d242e4f9d80ac622609b88aadb8f8590d7cf65dfee7c7dc9c3232ae7d",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "0b21c4e5e848c19dbca9a444163e1ef0914f8e664464f41d67d04f1a86d05060",
+    "package_sha256": "c4962c7b0ec5b2855e7776a72d1536e72ca2dc9e2e9a941d7d4ea69fb15fc2d6"
+  }
+}

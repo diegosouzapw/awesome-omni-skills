@@ -1,0 +1,513 @@
+{
+  "schema_version": "2026-04-12",
+  "id": "nodejs-best-practices-v3--omni",
+  "slug": "nodejs-best-practices-v3",
+  "display_name": "Node.js Best Practices",
+  "description": "Node.js Best Practices workflow skill. Use this skill when the user needs Node.js development principles and decision-making. Framework selection, async patterns, security, and architecture. Teaches thinking, not copying and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "version": "0.0.1",
+  "category": "development",
+  "raw_category": "development",
+  "taxonomy": {
+    "raw_category": "development",
+    "canonical_category": "development",
+    "inferred_category": "development",
+    "category_source": "frontmatter"
+  },
+  "tags": [
+    "nodejs-best-practices-v3",
+    "nodejs-best-practices",
+    "node",
+    "node.js",
+    "architecture",
+    "async",
+    "security",
+    "review",
+    "omni-enhanced"
+  ],
+  "complexity": "advanced",
+  "risk": "caution",
+  "source": "omni-team",
+  "author": "Omni Skills Team",
+  "family": {
+    "id": "nodejs-best-practices-v3",
+    "name": "Node.js Best Practices"
+  },
+  "variant": {
+    "id": "omni",
+    "label": "Omni Curated",
+    "is_default": true
+  },
+  "provenance": {
+    "source_type": "omni-curated",
+    "source_repo": "diegosouzapw/awesome-omni-skills",
+    "maintainer": "Omni Skills Team",
+    "root_path": "skills_omni/nodejs-best-practices-v3",
+    "derived_from": "skills/nodejs-best-practices-v3",
+    "replaces": [
+      "nodejs-best-practices-v3"
+    ]
+  },
+  "dates": {
+    "added": "2026-04-27",
+    "updated": "2026-05-12"
+  },
+  "entrypoint": "skills_omni/nodejs-best-practices-v3/SKILL.md",
+  "paths": {
+    "root": "skills_omni/nodejs-best-practices-v3",
+    "manifest": "dist/manifests/nodejs-best-practices-v3--omni.json",
+    "metadata": "skills_omni/nodejs-best-practices-v3/metadata.json"
+  },
+  "compatibility": {
+    "tools": [
+      "codex-cli",
+      "claude-code",
+      "cursor",
+      "gemini-cli",
+      "opencode"
+    ],
+    "install_targets": [
+      {
+        "tool": "codex-cli",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "installer_flag": "--codex",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "claude-code",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "installer_flag": "--claude",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": ">> /skill-name help me..."
+      },
+      {
+        "tool": "cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "installer_flag": "--cursor",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "@skill-name"
+      },
+      {
+        "tool": "gemini-cli",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "installer_flag": "--gemini",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "Use @skill-name to..."
+      },
+      {
+        "tool": "opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "installer_flag": "--opencode",
+        "current_installer_behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset.",
+        "invocation": "opencode run @skill-name"
+      }
+    ]
+  },
+  "resources": {
+    "sub_resources": [
+      "examples",
+      "references"
+    ],
+    "artifacts_count": 9,
+    "references_count": 2,
+    "agents_count": 0,
+    "assets_count": 0
+  },
+  "dependencies": {
+    "skills": [],
+    "external": []
+  },
+  "install": {
+    "strategy": "copy-skill-directory",
+    "current_installer": "npx awesome-omni-skills installs the full library by default today, and also supports selective installation with --skill and --bundle.",
+    "recipes": [
+      {
+        "tool": "codex-cli",
+        "command": "npx awesome-omni-skills --codex",
+        "scope": "user-global",
+        "default_path": "~/.codex/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "claude-code",
+        "command": "npx awesome-omni-skills --claude",
+        "scope": "user-global",
+        "default_path": "~/.claude/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "cursor",
+        "command": "npx awesome-omni-skills --cursor",
+        "scope": "user-global",
+        "default_path": "~/.cursor/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "gemini-cli",
+        "command": "npx awesome-omni-skills --gemini",
+        "scope": "user-global",
+        "default_path": "~/.gemini/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      },
+      {
+        "tool": "opencode",
+        "command": "npx awesome-omni-skills --opencode",
+        "scope": "project-local",
+        "default_path": ".opencode/skills",
+        "behavior": "Installs the full Awesome Omni Skills library by default. Use --skill or --bundle to install only a selected subset."
+      }
+    ]
+  },
+  "classification": {
+    "maturity": {
+      "skill_level": 2,
+      "skill_level_label": "instructions",
+      "has_scripts": false,
+      "has_extra_files": true
+    },
+    "best_practices": {
+      "score": 98,
+      "tier": "excellent",
+      "signals": {
+        "workflow_steps_count": 32,
+        "workflow_section_length": 2888,
+        "when_to_use_section_length": 859,
+        "best_practices_items_count": 15,
+        "best_practices_section_length": 1453,
+        "troubleshooting_items_count": 0,
+        "troubleshooting_section_length": 1696,
+        "resources_items_count": 4,
+        "resources_section_length": 519,
+        "examples_section_length": 1419,
+        "examples_code_blocks_count": 4,
+        "related_skills_section_length": 0,
+        "decision_assets_count": 5,
+        "table_count": 0,
+        "linked_resource_families_count": 2,
+        "linked_resource_families": [
+          "examples",
+          "references"
+        ],
+        "support_links_count": 0,
+        "support_files_count": 4,
+        "references_files_count": 2,
+        "scripts_files_count": 0,
+        "examples_files_count": 2,
+        "agents_files_count": 0,
+        "assets_files_count": 0,
+        "tools_count": 5,
+        "tags_count": 9,
+        "body_density": 7.58,
+        "real_support_files_count": 4,
+        "domain_specific_support_files_count": 4,
+        "boilerplate_file_findings_count": 0,
+        "trivial_script_findings_count": 0,
+        "empty_template_findings_count": 0,
+        "generic_reference_findings_count": 0,
+        "generic_agent_findings_count": 0,
+        "orphan_asset_findings_count": 0,
+        "support_findings_count": 0,
+        "support_realness_score": 10,
+        "domain_specificity_score": 10,
+        "token_efficiency_score": 10,
+        "support_family_assessment": {
+          "references": {
+            "files_count": 2,
+            "real_files_count": 2,
+            "domain_specific_files_count": 2,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "scripts": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "examples": {
+            "files_count": 2,
+            "real_files_count": 2,
+            "domain_specific_files_count": 2,
+            "findings_count": 0,
+            "status": "strong"
+          },
+          "agents": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          },
+          "assets": {
+            "files_count": 0,
+            "real_files_count": 0,
+            "domain_specific_files_count": 0,
+            "findings_count": 0,
+            "status": "absent"
+          }
+        }
+      }
+    },
+    "quality": {
+      "score": 97,
+      "tier": "platinum",
+      "breakdown": {
+        "body": 16,
+        "description": 10,
+        "metadata": 12,
+        "recency": 8,
+        "resources": 5,
+        "best_practices": 10,
+        "semantic_depth": 16,
+        "operational_depth": 10,
+        "support_pack": 10
+      }
+    },
+    "security": {
+      "score": 100,
+      "tier": "hardened",
+      "status": "passed",
+      "findings_count": 0,
+      "findings": [],
+      "signals": {
+        "scanned_files": 8,
+        "script_files": 0,
+        "binary_like_files": 0
+      },
+      "scanners": {
+        "static": {
+          "enabled": true,
+          "status": "completed"
+        },
+        "clamav": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "clamav",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and OMNI_SKILLS_ENABLE_CLAMAV=1 to embed local ClamAV results."
+        },
+        "virustotal": {
+          "enabled": false,
+          "status": "disabled",
+          "provider": "virustotal",
+          "details": "Set OMNI_SKILLS_EMBED_OPTIONAL_SECURITY_RESULTS=1 and VT_API_KEY to embed optional VirusTotal hash lookups."
+        }
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [],
+      "status": "passed"
+    }
+  },
+  "content": {
+    "body_length": 10537,
+    "content_length": 12075,
+    "body_lines": 190,
+    "word_count": 1440,
+    "has_code_blocks": true,
+    "typed_code_blocks_count": 0,
+    "has_examples_section": true,
+    "example_count": 2,
+    "has_workflow_section": true,
+    "has_when_to_use_section": true,
+    "has_best_practices_section": true,
+    "has_troubleshooting_section": true,
+    "problem_count": 0,
+    "troubleshooting_pairs_count": 3,
+    "has_additional_resources_section": true,
+    "has_related_skills_section": false,
+    "related_skills_count": 0,
+    "has_local_support_links": false,
+    "local_support_links_count": 0,
+    "has_local_script_example": false,
+    "local_script_example_count": 0,
+    "semantic_signals": {
+      "workflow_steps_count": 32,
+      "workflow_section_length": 2888,
+      "when_to_use_section_length": 859,
+      "best_practices_items_count": 15,
+      "best_practices_section_length": 1453,
+      "troubleshooting_items_count": 0,
+      "troubleshooting_section_length": 1696,
+      "resources_items_count": 4,
+      "resources_section_length": 519,
+      "examples_section_length": 1419,
+      "examples_code_blocks_count": 4,
+      "related_skills_section_length": 0,
+      "decision_assets_count": 5,
+      "table_count": 0,
+      "linked_resource_families_count": 2,
+      "linked_resource_families": [
+        "examples",
+        "references"
+      ],
+      "support_links_count": 0,
+      "support_files_count": 4,
+      "references_files_count": 2,
+      "scripts_files_count": 0,
+      "examples_files_count": 2,
+      "agents_files_count": 0,
+      "assets_files_count": 0,
+      "tools_count": 5,
+      "tags_count": 9,
+      "body_density": 7.58,
+      "real_support_files_count": 4,
+      "domain_specific_support_files_count": 4,
+      "boilerplate_file_findings_count": 0,
+      "trivial_script_findings_count": 0,
+      "empty_template_findings_count": 0,
+      "generic_reference_findings_count": 0,
+      "generic_agent_findings_count": 0,
+      "orphan_asset_findings_count": 0,
+      "support_findings_count": 0,
+      "support_realness_score": 10,
+      "domain_specificity_score": 10,
+      "token_efficiency_score": 10,
+      "support_family_assessment": {
+        "references": {
+          "files_count": 2,
+          "real_files_count": 2,
+          "domain_specific_files_count": 2,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "scripts": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "examples": {
+          "files_count": 2,
+          "real_files_count": 2,
+          "domain_specific_files_count": 2,
+          "findings_count": 0,
+          "status": "strong"
+        },
+        "agents": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        },
+        "assets": {
+          "files_count": 0,
+          "real_files_count": 0,
+          "domain_specific_files_count": 0,
+          "findings_count": 0,
+          "status": "absent"
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "skills_omni/nodejs-best-practices-v3/ATTRIBUTION.md",
+      "kind": "support",
+      "size_bytes": 868,
+      "sha256": "c5748e652e53f653bdceda201d643a7e0821e89b620132a027abde913cbdb277"
+    },
+    {
+      "path": "skills_omni/nodejs-best-practices-v3/OMNI_ENHANCED.json",
+      "kind": "support",
+      "size_bytes": 395,
+      "sha256": "da0e9f00180e71e3dc20c5a1eba47bf583c90f3c85f7c0b33ec30dae15214e51"
+    },
+    {
+      "path": "skills_omni/nodejs-best-practices-v3/ORIGIN.md",
+      "kind": "support",
+      "size_bytes": 772,
+      "sha256": "b9c77bd818472d439b26d7de515f04e23c7ab9006ee926ceb2a43998738b5cf5"
+    },
+    {
+      "path": "skills_omni/nodejs-best-practices-v3/SKILL.md",
+      "kind": "entrypoint",
+      "size_bytes": 12083,
+      "sha256": "78117cbf3a610fc314055b8063123fb35cb851806dc1121c033a320ac5ebd357"
+    },
+    {
+      "path": "skills_omni/nodejs-best-practices-v3/metadata.json",
+      "kind": "support",
+      "size_bytes": 12242,
+      "sha256": "eb692afb44b1aa489a0f9d65cb473d22a200011879ea11d5fc16b5d6237aabf0"
+    },
+    {
+      "path": "skills_omni/nodejs-best-practices-v3/examples/decision-scenarios.md",
+      "kind": "support",
+      "size_bytes": 2735,
+      "sha256": "f4c7410c4a97f4fc0df93dfda8d5e5e502432f8191671abcfde6e87384638df0"
+    },
+    {
+      "path": "skills_omni/nodejs-best-practices-v3/examples/review-example.md",
+      "kind": "support",
+      "size_bytes": 2974,
+      "sha256": "b5f0aa9eed8e00c8250be9e877f442b743f7bd85ff9c78e0f140ce3675a48712"
+    },
+    {
+      "path": "skills_omni/nodejs-best-practices-v3/references/review-criteria.md",
+      "kind": "reference",
+      "size_bytes": 4748,
+      "sha256": "53072cfa77d2820bc0fc7f6e81741df914ae6583806451e5e14bb97e16289d7a"
+    },
+    {
+      "path": "skills_omni/nodejs-best-practices-v3/references/troubleshooting-matrix.md",
+      "kind": "reference",
+      "size_bytes": 2819,
+      "sha256": "3b059194f8bd67ddb0f8a8d1f9c1de99adf031b1af6340930353f725b1433e11"
+    }
+  ],
+  "archives": [
+    {
+      "format": "zip",
+      "path": "dist/archives/nodejs-best-practices-v3--omni.zip",
+      "file_name": "nodejs-best-practices-v3--omni.zip",
+      "size_bytes": 41266,
+      "sha256": "f8fe2659599b340e8e61df5bcef314f2d9b709c9f25ca57b214957c94173a7aa",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    },
+    {
+      "format": "tar.gz",
+      "path": "dist/archives/nodejs-best-practices-v3--omni.tar.gz",
+      "file_name": "nodejs-best-practices-v3--omni.tar.gz",
+      "size_bytes": 51228,
+      "sha256": "d0d63279f5922c1fcadda851262439f715f0663b8d9eeac78f34c01650b4e1d9",
+      "signature": {
+        "status": "unsigned",
+        "path": null,
+        "sha256": null,
+        "public_key_path": null,
+        "algorithm": "sha256"
+      }
+    }
+  ],
+  "archive_checksums": {
+    "path": "dist/archives/nodejs-best-practices-v3--omni.checksums.txt",
+    "file_name": "nodejs-best-practices-v3--omni.checksums.txt",
+    "sha256": "3ba097d7d1df02ce7f0af1c6f2e1f59625e056a2a1a4e5bbc4fa1704474c7d26",
+    "signature": {
+      "status": "unsigned",
+      "path": null,
+      "sha256": null,
+      "public_key_path": null,
+      "algorithm": "sha256"
+    }
+  },
+  "checksums": {
+    "entrypoint_sha256": "78117cbf3a610fc314055b8063123fb35cb851806dc1121c033a320ac5ebd357",
+    "package_sha256": "8b52dc99745783186d11a3e84d1a8ae34fb6e3f67c3440101fba7c374396d110"
+  }
+}
