@@ -10,7 +10,7 @@
 
 <!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/CATALOG.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-05-17T00:00:00+00:00 -->
 
-> Auto-generated from `skills_index.json` — 4714 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 4715 skills across 17 categories.
 
 Generated: 2026-05-17T00:00:00+00:00
 
@@ -23,7 +23,7 @@ Generated: 2026-05-17T00:00:00+00:00
 - [💼 Business (121)](#business)
 - [⚙️ Cli Automation (605)](#cli-automation)
 - [💬 Communication (72)](#communication)
-- [🎬 Content Media (157)](#content-media)
+- [🎬 Content Media (158)](#content-media)
 - [🤖 Data Ai (186)](#data-ai)
 - [🎨 Design (131)](#design)
 - [💻 Development (718)](#development)
@@ -1623,7 +1623,7 @@ Generated: 2026-05-17T00:00:00+00:00
 | [`typescript-advanced-types-v2`](../../../../skills/typescript-advanced-types-v2/SKILL.md) | TypeScript Advanced Types workflow skill. Use this skill when the user needs Comprehensive guidance for mastering TypeSc | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`typescript-expert`](../../../../skills/typescript-expert/SKILL.md) | TypeScript Expert workflow skill. Use this skill when the user needs TypeScript and JavaScript expert with deep knowledg | L3 resources | 100/100 | 97/100 | 75/100 warn |
 | [`typescript-expert-v2`](../../../../skills/typescript-expert-v2/SKILL.md) | TypeScript Expert workflow skill. Use this skill when the user needs TypeScript and JavaScript expert with deep knowledg | L3 resources | 100/100 | 97/100 | 75/100 warn |
-| [`typescript-expert-v3`](../../../../skills/typescript-expert-v3/SKILL.md) | TypeScript Expert workflow skill. Use this skill when the user needs TypeScript and JavaScript expert with deep knowledg | L3 resources | 100/100 | 95/100 | 75/100 warn |
+| [`typescript-expert-v3`](../../../../skills/typescript-expert-v3/SKILL.md) | TypeScript Expert workflow skill. Use this skill when the user needs TypeScript and JavaScript expert with deep knowledg | L3 resources | 100/100 | 97/100 | 75/100 warn |
 | [`typescript-expert-v3--omni`](../../../../skills_omni/typescript-expert-v3/SKILL.md) | TypeScript Expert workflow skill. Use this skill when the user needs TypeScript and JavaScript expert with deep knowledg | L3 resources | 100/100 | 95/100 | 75/100 warn |
 | [`typescript-pro`](../../../../skills/typescript-pro/SKILL.md) | typescript-pro workflow skill. Use this skill when the user needs Master TypeScript with advanced types, generics, and s | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`typescript-pro-v2`](../../../../skills/typescript-pro-v2/SKILL.md) | typescript-pro workflow skill. Use this skill when the user needs Master TypeScript with advanced types, generics, and s | L2 instructions | 100/100 | 88/100 | 100/100 passed |
@@ -1921,6 +1921,7 @@ Generated: 2026-05-17T00:00:00+00:00
 | [`wordpress-centric-high-seo-optimized-blogwriting-skill-v2`](../../../../skills/wordpress-centric-high-seo-optimized-blogwriting-skill-v2/SKILL.md) | WordPress Centric High SEO Optimized Blog Writing Skill workflow skill. Use this skill when the user needs Create long-f | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`wordpress-centric-high-seo-optimized-blogwriting-skill-v2--omni`](../../../../skills_omni/wordpress-centric-high-seo-optimized-blogwriting-skill-v2/SKILL.md) | wordpress-centric-high-seo-optimized-blogwriting-skill workflow skill. Use this skill when the user needs the user asks  | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`xiaohongshu-content-strategist`](../../../../skills/xiaohongshu-content-strategist/SKILL.md) | Xiaohongshu Content Strategist workflow skill. Use this skill when the user needs Create viral Xiaohongshu (\u5c0f\u7ea2 | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`xiaohongshu-content-strategist-v2`](../../../../skills/xiaohongshu-content-strategist-v2/SKILL.md) | Xiaohongshu Content Strategist workflow skill. Use this skill when the user needs Create viral Xiaohongshu (\u5c0f\u7ea2 | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`youtube-summarizer`](../../../../skills/youtube-summarizer/SKILL.md) | youtube-summarizer workflow skill. Use this skill when the user needs Extract transcripts from YouTube videos and genera | L3 resources | 100/100 | 94/100 | 92/100 passed |
 | [`youtube-summarizer-v2`](../../../../skills/youtube-summarizer-v2/SKILL.md) | youtube-summarizer workflow skill. Use this skill when the user needs Extract transcripts from YouTube videos and genera | L3 resources | 100/100 | 94/100 | 92/100 passed |
 | [`youtube-summarizer-v2--omni`](../../../../skills_omni/youtube-summarizer-v2/SKILL.md) | youtube-summarizer workflow skill. Use this skill when the user needs Extract transcripts from YouTube videos and genera | L3 resources | 100/100 | 94/100 | 92/100 passed |
@@ -2113,7 +2114,7 @@ Generated: 2026-05-17T00:00:00+00:00
 | [`wellally-tech`](../../../../skills/wellally-tech/SKILL.md) | WellAlly Digital Health Integration workflow skill. Use this skill when the user needs Integrate multiple digital health | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`wellally-tech-v2`](../../../../skills/wellally-tech-v2/SKILL.md) | WellAlly Digital Health Integration workflow skill. Use this skill when the user needs Integrate multiple digital health | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`x-twitter-scraper`](../../../../skills/x-twitter-scraper/SKILL.md) | X (Twitter) Scraper - Xquik workflow skill. Use this skill when the user needs X/Twitter automation skill for tweet sear | L2 instructions | 99/100 | 88/100 | 100/100 passed |
-| [`x-twitter-scraper-v2`](../../../../skills/x-twitter-scraper-v2/SKILL.md) | X (Twitter) Scraper \u2014 Xquik workflow skill. Use this skill when the user needs X (Twitter) data platform skill \u20 | L2 instructions | 99/100 | 88/100 | 100/100 passed |
+| [`x-twitter-scraper-v2`](../../../../skills/x-twitter-scraper-v2/SKILL.md) | X (Twitter) Scraper - Xquik workflow skill. Use this skill when the user needs X/Twitter automation skill for tweet sear | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`x-twitter-scraper-v2--omni`](../../../../skills_omni/x-twitter-scraper-v2/SKILL.md) | X (Twitter) Scraper \\u2014 Xquik workflow skill. Use this skill when the user needs X (Twitter) data platform skill \\u | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 
 ## 🎨 Design
@@ -3115,7 +3116,7 @@ Generated: 2026-05-17T00:00:00+00:00
 | [`docker-expert--omni`](../../../../skills_omni/docker-expert/SKILL.md) | Docker Expert workflow skill. Use this skill when the user needs You are an advanced Docker containerization expert with | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`docker-expert-v2`](../../../../skills/docker-expert-v2/SKILL.md) | Docker Expert workflow skill. Use this skill when the user needs You are an advanced Docker containerization expert with | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`docker-expert-v2--omni`](../../../../skills_omni/docker-expert-v2/SKILL.md) | Docker Expert workflow skill. Use this skill when the user needs You are an advanced Docker containerization expert with | L2 instructions | 100/100 | 87/100 | 100/100 passed |
-| [`docker-expert-v3`](../../../../skills/docker-expert-v3/SKILL.md) | Docker Expert workflow skill. Use this skill when the user needs You are an advanced Docker containerization expert with | L2 instructions | 100/100 | 87/100 | 100/100 passed |
+| [`docker-expert-v3`](../../../../skills/docker-expert-v3/SKILL.md) | Docker Expert workflow skill. Use this skill when the user needs You are an advanced Docker containerization expert with | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`docker-expert-v3--omni`](../../../../skills_omni/docker-expert-v3/SKILL.md) | Docker Expert workflow skill. Use this skill when the user needs You are an advanced Docker containerization expert with | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`dotnet-architect`](../../../../skills/dotnet-architect/SKILL.md) | dotnet-architect workflow skill. Use this skill when the user needs Expert .NET backend architect specializing in C#, AS | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`dotnet-architect--omni`](../../../../skills_omni/dotnet-architect/SKILL.md) | dotnet-architect workflow skill. Use this skill when the user needs Expert .NET backend architect specializing in C#, AS | L2 instructions | 100/100 | 89/100 | 100/100 passed |

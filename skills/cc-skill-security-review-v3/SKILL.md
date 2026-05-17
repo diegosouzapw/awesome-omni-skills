@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-27"
-date_updated: "2026-04-27"
+date_updated: "2026-05-17"
 ---
 
 # Security Review Skill
@@ -535,10 +535,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@ab-test-setup-v5` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@api-security-best-practices-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@async-python-patterns-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@auth-implementation-patterns-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-search-documents-py-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@backend-dev-guidelines-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@browser-automation-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@docker-expert-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -566,6 +566,9 @@ Use this support matrix and the linked files below as the operator packet for th
 ---
 
 **Remember**: Security is not optional. One vulnerability can compromise the entire platform. When in doubt, err on the side of caution.
+
+### When to Use
+This skill is applicable to execute the workflow or actions described in the overview.
 
 #### Imported: Security Testing
 

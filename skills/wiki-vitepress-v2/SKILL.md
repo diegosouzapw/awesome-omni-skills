@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-25"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
 # Wiki VitePress Packager
@@ -156,10 +156,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@wiki-page-writer-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@wiki-qa-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@wiki-researcher-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@windows-privilege-escalation-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-search-documents-py-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@backend-dev-guidelines-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@browser-automation-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@cc-skill-security-review-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -286,6 +286,9 @@ Output goes to `wiki-site/.vitepress/dist/`.
 - `isCustomElement` compiler option for bare `<T>` causes worse crashes — do NOT use it
 - Node text in Mermaid uses inline `style` with highest specificity — CSS alone won't fix it
 - `enhanceApp()` runs during SSR where `document` doesn't exist — use `setup()` only
+
+### When to Use
+This skill is applicable to execute the workflow or actions described in the overview.
 
 #### Imported: Limitations
 

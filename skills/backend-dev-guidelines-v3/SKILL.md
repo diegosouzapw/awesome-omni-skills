@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-26"
-date_updated: "2026-04-26"
+date_updated: "2026-05-17"
 ---
 
 # Backend Development Guidelines
@@ -25,7 +25,7 @@ This intake keeps the copied upstream files intact and uses the `external_source
 
 # Backend Development Guidelines (Node.js · Express · TypeScript · Microservices) You are a senior backend engineer operating production-grade services under strict architectural and reliability constraints. Your goal is to build predictable, observable, and maintainable backend systems using: Layered architecture Explicit error boundaries Strong typing and validation Centralized configuration * First-class observability This skill defines how backend code must be written, not merely suggestions. ---
 
-Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: 3. Core Architecture Doctrine (Non-Negotiable), 4. Directory Structure (Canonical), 5. Naming Conventions (Strict), 8. Async & Error Handling, 9. Observability & Monitoring, 10. Testing Discipline.
+Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: 2. Core Architecture Doctrine (Non-Negotiable), 3. Directory Structure (Canonical), 4. Naming Conventions (Strict), 7. Async & Error Handling, 8. Observability & Monitoring, 9. Testing Discipline.
 
 ## When to Use This Skill
 
@@ -62,7 +62,7 @@ This workflow is intentionally editorial and operational at the same time. It ke
 
 ### Imported Workflow Notes
 
-#### Imported: 3. Core Architecture Doctrine (Non-Negotiable)
+#### Imported: 2. Core Architecture Doctrine (Non-Negotiable)
 
 ### 1. Layered Architecture Is Mandatory
 
@@ -228,7 +228,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ### Imported Operating Notes
 
-#### Imported: 6. Dependency Injection Rules
+#### Imported: 5. Dependency Injection Rules
 
 * Services receive dependencies via constructor
 * No importing repositories directly inside controllers
@@ -244,7 +244,7 @@ export class UserService {
 
 ---
 
-#### Imported: 7. Prisma & Repository Rules
+#### Imported: 6. Prisma & Repository Rules
 
 * Prisma client **never used directly in controllers**
 * Repositories:
@@ -280,10 +280,10 @@ await userRepository.findActiveUsers();
 
 ## Related Skills
 
-- `@2d-games-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@3d-games-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@algolia-search-v4` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@algorithmic-art-v4` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-search-documents-py-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@browser-automation-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@cc-skill-security-review-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@docker-expert-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -339,7 +339,7 @@ BFRI = (Architectural Fit + Testability) − (Complexity + Data Risk + Operation
 
 ---
 
-#### Imported: 4. Directory Structure (Canonical)
+#### Imported: 3. Directory Structure (Canonical)
 
 ```
 src/
@@ -360,7 +360,7 @@ src/
 
 ---
 
-#### Imported: 5. Naming Conventions (Strict)
+#### Imported: 4. Naming Conventions (Strict)
 
 | Layer      | Convention                |
 | ---------- | ------------------------- |
@@ -372,7 +372,7 @@ src/
 
 ---
 
-#### Imported: 8. Async & Error Handling
+#### Imported: 7. Async & Error Handling
 
 ### asyncErrorWrapper Required
 
@@ -391,7 +391,7 @@ No unhandled promise rejections.
 
 ---
 
-#### Imported: 9. Observability & Monitoring
+#### Imported: 8. Observability & Monitoring
 
 ### Required
 
@@ -403,7 +403,7 @@ Every critical path must be observable.
 
 ---
 
-#### Imported: 10. Testing Discipline
+#### Imported: 9. Testing Discipline
 
 ### Required Tests
 
@@ -423,7 +423,7 @@ No tests → no merge.
 
 ---
 
-#### Imported: 11. Anti-Patterns (Immediate Rejection)
+#### Imported: 10. Anti-Patterns (Immediate Rejection)
 
 ❌ Business logic in routes
 ❌ Skipping service layer
@@ -435,7 +435,7 @@ No tests → no merge.
 
 ---
 
-#### Imported: 12. Integration With Other Skills
+#### Imported: 11. Integration With Other Skills
 
 * **frontend-dev-guidelines** → API contract alignment
 * **error-tracking** → Sentry standards
@@ -445,7 +445,7 @@ No tests → no merge.
 
 ---
 
-#### Imported: 13. Operator Validation Checklist
+#### Imported: 12. Operator Validation Checklist
 
 Before finalizing backend work:
 
@@ -459,11 +459,14 @@ Before finalizing backend work:
 
 ---
 
-#### Imported: 14. Skill Status
+#### Imported: 13. Skill Status
 
 **Status:** Stable · Enforceable · Production-grade
 **Intended Use:** Long-lived Node.js microservices with real traffic and real risk
 ---
+
+### When to Use
+This skill is applicable to execute the workflow or actions described in the overview.
 
 #### Imported: Limitations
 

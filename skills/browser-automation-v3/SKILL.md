@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-27"
-date_updated: "2026-04-27"
+date_updated: "2026-05-17"
 ---
 
 # Browser Automation
@@ -258,10 +258,10 @@ export default defineConfig({
 
 ## Related Skills
 
-- `@ab-test-setup-v5` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@api-security-best-practices-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@async-python-patterns-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@auth-implementation-patterns-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-search-documents-py-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@backend-dev-guidelines-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@cc-skill-security-review-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@docker-expert-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -809,8 +809,7 @@ Recommended fix:
 
 # Use stealth plugins:
 
-#### Imported: Puppeteer Stealth (best option):
-
+### Puppeteer Stealth (best option):
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 
@@ -821,15 +820,13 @@ const browser = await puppeteer.launch({
   args: ['--disable-blink-features=AutomationControlled'],
 });
 
-#### Imported: Playwright Stealth:
-
+### Playwright Stealth:
 import { chromium } from 'playwright-extra';
 import stealth from 'puppeteer-extra-plugin-stealth';
 
 chromium.use(stealth());
 
-#### Imported: Manual (partial):
-
+### Manual (partial):
 await page.evaluateOnNewDocument(() => {
   Object.defineProperty(navigator, 'webdriver', {
     get: () => undefined,
@@ -859,8 +856,7 @@ Recommended fix:
 
 # Each test must be fully isolated:
 
-#### Imported: Playwright Test (automatic isolation):
-
+### Playwright Test (automatic isolation):
 test('first test', async ({ page }) => {
   // Fresh context, fresh page
 });
@@ -869,8 +865,7 @@ test('second test', async ({ page }) => {
   // Completely isolated from first test
 });
 
-#### Imported: Manual isolation:
-
+### Manual isolation:
 const context = await browser.newContext();  // Fresh context
 const page = await context.newPage();
 // ... test code ...
@@ -909,8 +904,7 @@ Recommended fix:
 
 # Enable traces for failures:
 
-#### Imported: playwright.config.ts:
-
+### playwright.config.ts:
 export default defineConfig({
   use: {
     trace: 'retain-on-failure',    # Keep trace on failure
@@ -920,12 +914,10 @@ export default defineConfig({
   outputDir: './test-results',
 });
 
-#### Imported: View trace locally:
-
+### View trace locally:
 npx playwright show-trace test-results/path/to/trace.zip
 
-#### Imported: In CI, upload test-results as artifact:
-
+### In CI, upload test-results as artifact:
 # GitHub Actions:
 - uses: actions/upload-artifact@v3
   if: failure()
@@ -1060,8 +1052,7 @@ Recommended fix:
 
 # Wait for popup BEFORE triggering it:
 
-#### Imported: New window/tab:
-
+### New window/tab:
 const pagePromise = context.waitForEvent('page');
 await page.getByRole('link', { name: 'Open in new tab' }).click();
 const newPage = await pagePromise;
@@ -1073,15 +1064,13 @@ await expect(newPage.getByRole('heading')).toBeVisible();
 // Close when done
 await newPage.close();
 
-#### Imported: Popup windows:
-
+### Popup windows:
 const popupPromise = page.waitForEvent('popup');
 await page.getByRole('button', { name: 'Open popup' }).click();
 const popup = await popupPromise;
 await popup.waitForLoadState();
 
-#### Imported: Multiple windows:
-
+### Multiple windows:
 const pages = context.pages();  // Get all open pages
 
 ### Can't Interact with Elements in iframes
@@ -1104,8 +1093,7 @@ Recommended fix:
 
 # Get frame by name or selector:
 
-#### Imported: By frame name:
-
+### By frame name:
 const frame = page.frame('payment-iframe');
 await frame.getByRole('textbox', { name: 'Card number' }).fill('4242...');
 
@@ -1114,14 +1102,12 @@ await frame.getByRole('textbox', { name: 'Card number' }).fill('4242...');
 const frame = page.frameLocator('iframe#payment');
 await frame.getByRole('textbox', { name: 'Card number' }).fill('4242...');
 
-#### Imported: Nested iframes:
-
+### Nested iframes:
 const outer = page.frameLocator('iframe#outer');
 const inner = outer.frameLocator('iframe#inner');
 await inner.getByRole('button').click();
 
-#### Imported: Wait for iframe to load:
-
+### Wait for iframe to load:
 await page.waitForSelector('iframe#payment');
 const frame = page.frameLocator('iframe#payment');
 await frame.getByText('Secure Payment').waitFor();

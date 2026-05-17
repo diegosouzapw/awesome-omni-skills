@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-27"
-date_updated: "2026-04-27"
+date_updated: "2026-05-17"
 ---
 
 # Node.js Best Practices
@@ -25,7 +25,7 @@ This intake keeps the copied upstream files intact and uses the `external_source
 
 # Node.js Best Practices > Principles and decision-making for Node.js development in 2025. > Learn to THINK, not memorize code patterns.
 
-Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: ⚠️ How to Use This Skill, 1. Framework Selection (2025), 2. Runtime Considerations (2025), 10. Anti-Patterns to Avoid, 11. Decision Checklist, Limitations.
+Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: ⚠️ How to Use This Skill, 1. Framework Selection (2025), 2. Runtime Considerations (2025), 9. Anti-Patterns to Avoid, 10. Decision Checklist, Limitations.
 
 ## When to Use This Skill
 
@@ -341,10 +341,10 @@ node --test src/**/*.test.ts
 
 ## Related Skills
 
-- `@competitive-landscape-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@competitor-alternatives-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@copywriting-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@cpp-pro-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-search-documents-py-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@backend-dev-guidelines-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@browser-automation-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@cc-skill-security-review-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -439,7 +439,7 @@ CommonJS (require)
 
 ---
 
-#### Imported: 10. Anti-Patterns to Avoid
+#### Imported: 9. Anti-Patterns to Avoid
 
 ### ❌ DON'T:
 - Use Express for new edge projects (use Hono)
@@ -460,7 +460,7 @@ CommonJS (require)
 
 ---
 
-#### Imported: 11. Decision Checklist
+#### Imported: 10. Decision Checklist
 
 Before implementing:
 
