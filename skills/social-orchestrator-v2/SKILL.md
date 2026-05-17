@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-25"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
 # SOCIAL-ORCHESTRATOR: Canais Unificados
@@ -151,10 +151,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@production-audit-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@production-scheduling-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@quality-nonconformance-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@react-best-practices-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -346,7 +346,7 @@ Responda para saber mais 😊"
 
 ---
 
-#### Imported: 6. Horarios Otimizados
+#### Imported: 3. Horarios Otimizados
 
 | Canal | Horarios de Pico | Dias Melhores |
 |-------|-----------------|---------------|
@@ -356,7 +356,7 @@ Responda para saber mais 😊"
 
 ---
 
-#### Imported: 7. Formato De Resposta
+#### Imported: 4. Formato De Resposta
 
 Para cada operacao cross-canal, reportar:
 
@@ -382,7 +382,7 @@ SOCIAL-ORCHESTRATOR — [acao]
 
 ---
 
-#### Imported: 8. Gestao De Erros Cross-Canal
+#### Imported: 5. Gestao De Erros Cross-Canal
 
 Se um canal falha:
 
@@ -397,7 +397,7 @@ Estrategia: Publish-or-Skip (nao cancela toda campanha)
 
 ---
 
-#### Imported: 9. Integracao Com Ecossistema
+#### Imported: 6. Integracao Com Ecossistema
 
 | Skill | Quando usar |
 |-------|------------|

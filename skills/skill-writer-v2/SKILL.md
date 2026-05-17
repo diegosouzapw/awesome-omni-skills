@@ -4,13 +4,13 @@ description: "Skill Writer workflow skill. Use this skill when the user needs Cr
 version: "0.0.1"
 category: ai-agents
 tags: ["skill-writer-v2", "skill-writer", "create", "and", "improve", "following", "the", "specification"]
-complexity: intermediate
+complexity: advanced
 risk: safe
 tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-25"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
 # Skill Writer
@@ -44,8 +44,8 @@ Use this section as the trigger filter. It should make the activation boundary e
 | --- | --- | --- |
 | First-time use | `metadata.json` | Confirms repository, branch, commit, and imported path through the `external_source` block before touching the copied workflow |
 | Provenance review | `ORIGIN.md` | Gives reviewers a plain-language audit trail for the imported source |
-| Workflow execution | `SKILL.md` | Starts with the smallest copied file that materially changes execution |
-| Supporting context | `SKILL.md` | Adds the next most relevant copied source file without loading the entire package |
+| Workflow execution | `references/authoring-path.md` | Starts with the smallest copied file that materially changes execution |
+| Supporting context | `references/description-optimization.md` | Adds the next most relevant copied source file without loading the entire package |
 | Handoff decision | `## Related Skills` | Helps the operator switch to a stronger native skill when the task drifts |
 
 ## Workflow
@@ -186,10 +186,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@production-audit-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@production-scheduling-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@quality-nonconformance-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@react-best-practices-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -197,13 +197,18 @@ Use this support matrix and the linked files below as the operator packet for th
 
 | Resource family | What it gives the reviewer | Example path |
 | --- | --- | --- |
-| `references` | copied reference notes, guides, or background material from upstream | `references/n/a` |
+| `references` | copied reference notes, guides, or background material from upstream | `references/authoring-path.md` |
 | `examples` | worked examples or reusable prompts copied from upstream | `examples/n/a` |
 | `scripts` | upstream helper scripts that change execution or validation | `scripts/n/a` |
 | `agents` | routing or delegation notes that are genuinely part of the imported package | `agents/n/a` |
 | `assets` | supporting assets or schemas copied from the source package | `assets/n/a` |
 
-
+- [authoring-path.md](references/authoring-path.md)
+- [description-optimization.md](references/description-optimization.md)
+- [design-principles.md](references/design-principles.md)
+- [evaluation-path.md](references/evaluation-path.md)
+- [authoring-path.md](references/authoring-path.md)
+- [description-optimization.md](references/description-optimization.md)
 
 ### Imported Reference Notes
 

@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-25"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
 # Production Scheduling
@@ -29,9 +29,7 @@ Imported source sections that did not map cleanly to the public headings are sti
 
 Use this section as the trigger filter. It should make the activation boundary explicit before the operator loads files, runs commands, or opens a pull request.
 
-- Sequencing jobs, balancing lines, and optimising changeovers in discrete or batch manufacturing.
-- Responding to disruptions (machine breakdowns, shortages, quality holds, absenteeism) while protecting the bottleneck and customer commitments.
-- Building scheduling rules, KPIs, and communication patterns between planning, production, maintenance, and quality teams.
+- Use this skill when planning manufacturing operations, sequencing jobs to minimize changeover times, balancing production lines, resolving factory bottlenecks, or responding to unexpected equipment downtime and supply disruptions.
 - Use when provenance needs to stay visible in the answer, PR, or review packet.
 - Use when copied upstream references, examples, or scripts materially improve the answer.
 - Use when the workflow should remain reviewable in the public intake repo before the private enhancer takes over.
@@ -134,10 +132,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@production-audit-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@quality-nonconformance-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@react-best-practices-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@react-patterns-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -165,6 +163,13 @@ Use this support matrix and the linked files below as the operator packet for th
 - For detailed decision frameworks, scheduling algorithms, and optimisation methodologies, see [decision-frameworks.md](references/decision-frameworks.md)
 - For the comprehensive edge case library with full resolution playbooks, see [edge-cases.md](references/edge-cases.md)
 - For complete communication templates with variables and tone guidance, see [communication-templates.md](references/communication-templates.md)
+
+### When to Use
+Use this skill when you need to **design or adjust production schedules and constraint‑focused execution plans**:
+
+- Sequencing jobs, balancing lines, and optimising changeovers in discrete or batch manufacturing.
+- Responding to disruptions (machine breakdowns, shortages, quality holds, absenteeism) while protecting the bottleneck and customer commitments.
+- Building scheduling rules, KPIs, and communication patterns between planning, production, maintenance, and quality teams.
 
 #### Imported: Core Knowledge
 

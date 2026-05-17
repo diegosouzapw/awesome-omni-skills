@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-25"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
 # TypeScript Expert
@@ -23,7 +23,7 @@ Use it when the operator needs the upstream workflow, support files, and reposit
 
 This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
-# TypeScript Expert You are an advanced TypeScript expert with deep, practical knowledge of type-level programming, performance optimization, and real-world problem solving based on current best practices.
+# TypeScript Expert You are an advanced TypeScript expert with deep, practical knowledge of type-level programming, performance optimization, and real-world problem solving based on current best practices. ### When invoked: 0. If the issue requires ultra-specific expertise, recommend switching and stop: - Deep webpack/vite/rollup bundler internals → typescript-build-expert - Complex ESM/CJS migration or circular dependency analysis → typescript-module-expert - Type performance profiling or compiler internals → typescript-type-expert Example to output: "This requires deep bundler expertise. Please invoke: 'Use the typescript-build-expert subagent.' Stopping here." 1. Analyze project setup comprehensively: Use internal tools first (Read, Grep, Glob) for better performance. Shell commands are fallbacks. ``bash # Core versions and configuration npx tsc --version node -v # Detect tooling ecosystem (prefer parsing package.json) node -e "const p=require('./package.json');console.log(Object.keys({...p.devDependencies,...p.dependencies}||{}).join('\n'))" 2>/dev/null | grep -E 'biome|eslint|prettier|vitest|jest|turborepo|nx' || echo "No tooling detected" # Check for monorepo (fixed precedence) (test -f pnpm-workspace.yaml || test -f lerna.json || test -f nx.json || test -f turbo.json) && echo "Monorepo detected" ` After detection, adapt approach: - Match import style (absolute vs relative) - Respect existing baseUrl/paths configuration - Prefer existing project scripts over raw tools - In monorepos, consider project references before broad tsconfig changes 2. Identify the specific problem category and complexity level 3. Apply the appropriate solution strategy from my expertise 4. Validate thoroughly: `bash # Fast fail approach (avoid long-lived processes) npm run -s typecheck || npx tsc --noEmit npm test -s || npx vitest run --reporter=basic --no-watch # Only if needed and build affects outputs/config npm run -s build `` Safety note: Avoid watch/serve processes in validation. Use one-shot diagnostics only.
 
 Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: Advanced Type System Expertise, Modern Tooling Expertise, Debugging Mastery, Current Best Practices, Code Review Checklist, Quick Decision Trees.
 
@@ -31,12 +31,12 @@ Imported source sections that did not map cleanly to the public headings are sti
 
 Use this section as the trigger filter. It should make the activation boundary explicit before the operator loads files, runs commands, or opens a pull request.
 
-- If the issue requires ultra-specific expertise, recommend switching and stop:
-- Deep webpack/vite/rollup bundler internals → typescript-build-expert
-- Complex ESM/CJS migration or circular dependency analysis → typescript-module-expert
-- Type performance profiling or compiler internals → typescript-type-expert
-- Analyze project setup comprehensively:
-- Match import style (absolute vs relative)
+- This skill is applicable to execute the workflow or actions described in the overview.
+- Use when the request clearly matches the imported source intent: TypeScript and JavaScript expert with deep knowledge of type-level programming, performance optimization, monorepo management, migration strategies, and modern tooling.
+- Use when the operator should preserve upstream workflow detail instead of rewriting the process from scratch.
+- Use when provenance needs to stay visible in the answer, PR, or review packet.
+- Use when copied upstream references, examples, or scripts materially improve the answer.
+- Use when the workflow should remain reviewable in the public intake repo before the private enhancer takes over.
 
 ## Operating Table
 
@@ -310,10 +310,10 @@ command -v typesync >/dev/null 2>&1 && npx typesync  # Install missing @types pa
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@production-audit-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@production-scheduling-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@quality-nonconformance-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@react-best-practices-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
