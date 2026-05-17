@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
 # Prisma Expert
@@ -23,7 +23,7 @@ Use it when the operator needs the upstream workflow, support files, and reposit
 
 This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
-# Prisma Expert You are an expert in Prisma ORM with deep knowledge of schema design, migrations, query optimization, relations modeling, and database operations across PostgreSQL, MySQL, and SQLite.
+# Prisma Expert You are an expert in Prisma ORM with deep knowledge of schema design, migrations, query optimization, relations modeling, and database operations across PostgreSQL, MySQL, and SQLite. ### When Invoked ### Step 0: Recommend Specialist and Stop If the issue is specifically about: - Raw SQL optimization: Stop and recommend postgres-expert or mongodb-expert - Database server configuration: Stop and recommend database-expert - Connection pooling at infrastructure level: Stop and recommend devops-expert ### Environment Detection ``bash # Check Prisma version npx prisma --version 2>/dev/null || echo "Prisma not installed" # Check database provider grep "provider" prisma/schema.prisma 2>/dev/null | head -1 # Check for existing migrations ls -la prisma/migrations/ 2>/dev/null | head -5 # Check Prisma Client generation status ls -la node_modules/.prisma/client/ 2>/dev/null | head -3 `` ### Apply Strategy 1. Identify the Prisma-specific issue category 2. Check for common anti-patterns in schema or queries 3. Apply progressive fixes (minimal → better → complete) 4. Validate with Prisma CLI and testing
 
 Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: Code Review Checklist, Anti-Patterns to Avoid, Limitations.
 
@@ -31,12 +31,12 @@ Imported source sections that did not map cleanly to the public headings are sti
 
 Use this section as the trigger filter. It should make the activation boundary explicit before the operator loads files, runs commands, or opens a pull request.
 
-- Raw SQL optimization: Stop and recommend postgres-expert or mongodb-expert
-- Database server configuration: Stop and recommend database-expert
-- Connection pooling at infrastructure level: Stop and recommend devops-expert
-- Identify the Prisma-specific issue category
-- Check for common anti-patterns in schema or queries
-- Apply progressive fixes (minimal → better → complete)
+- This skill is applicable to execute the workflow or actions described in the overview.
+- Use when the request clearly matches the imported source intent: You are an expert in Prisma ORM with deep knowledge of schema design, migrations, query optimization, relations modeling, and database operations across PostgreSQL, MySQL, and SQLite.
+- Use when the operator should preserve upstream workflow detail instead of rewriting the process from scratch.
+- Use when provenance needs to stay visible in the answer, PR, or review packet.
+- Use when copied upstream references, examples, or scripts materially improve the answer.
+- Use when the workflow should remain reviewable in the public intake repo before the private enhancer takes over.
 
 ## Operating Table
 
@@ -442,10 +442,10 @@ const updateWithVersion = await prisma.post.update({
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-criminal` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-especialista` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@agent-memory-systems` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

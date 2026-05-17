@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-14"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
 # AMAZON ALEXA — Voz Inteligente com Claude
@@ -25,7 +25,7 @@ This intake keeps the copied upstream files intact and uses the `external_source
 
 # AMAZON ALEXA — Voz Inteligente com Claude
 
-Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: How It Works, 1. Visao Geral Do Ecossistema, Componentes Da Arquitetura Auri, 2.1 Pre-Requisitos, Ask Cli, Aws Cli.
+Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: How It Works, 1. Visao Geral Do Ecossistema, Componentes Da Arquitetura Auri, Ask Cli, Aws Cli, Criar Skill Com Template.
 
 ## When to Use This Skill
 
@@ -162,10 +162,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-criminal` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-especialista` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@agent-memory-systems` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -215,7 +215,7 @@ Use this support matrix and the linked files below as the operator packet for th
 
 ---
 
-#### Imported: 2.1 Pre-Requisitos
+### 2.1 Pre-Requisitos
 
 ```bash
 
@@ -387,7 +387,7 @@ def chat_handler(handler_input: HandlerInput) -> Response:
         handler_input.attributes_manager.persistent_attributes = attrs
         handler_input.attributes_manager.save_persist
 
-#### Imported: 4.2 Variaveis De Ambiente Lambda
+### 4.2 Variaveis De Ambiente Lambda
 
 ```
 ANTHROPIC_API_KEY=sk-...  (armazenar em Secrets Manager)
@@ -395,7 +395,7 @@ DYNAMODB_TABLE=auri-users
 AWS_REGION=us-east-1
 ```
 
-#### Imported: 4.3 Requirements.Txt
+### 4.3 Requirements.Txt
 
 ```
 ask-sdk-core>=1.19.0
@@ -406,7 +406,7 @@ boto3>=1.34.0
 
 ---
 
-#### Imported: 5.1 Criar Tabela
+### 5.1 Criar Tabela
 
 ```bash
 aws dynamodb create-table \
@@ -417,7 +417,7 @@ aws dynamodb create-table \
   --region us-east-1
 ```
 
-#### Imported: 5.2 Schema Do Usuario
+### 5.2 Schema Do Usuario
 
 ```json
 {
@@ -441,7 +441,7 @@ aws dynamodb create-table \
 }
 ```
 
-#### Imported: 5.3 Ttl Automatico (Expirar Dados Antigos)
+### 5.3 Ttl Automatico (Expirar Dados Antigos)
 
 ```python
 import time
@@ -453,7 +453,7 @@ attrs["ttl"] = int(time.time()) + (180 * 24 * 3600)
 
 ---
 
-#### Imported: 6.1 Vozes Disponiveis (Portugues)
+### 6.1 Vozes Disponiveis (Portugues)
 
 | Voice | Idioma | Tipo | Recomendado |
 |-------|--------|------|-------------|
@@ -462,7 +462,7 @@ attrs["ttl"] = int(time.time()) + (180 * 24 * 3600)
 | `Ricardo` | pt-BR | Standard | Masculino |
 | `Ines` | pt-PT | Neural | Portugal |
 
-#### Imported: 6.2 Integrar Polly Na Resposta
+### 6.2 Integrar Polly Na Resposta
 
 ```python
 import boto3
@@ -488,7 +488,7 @@ def speak_with_polly(handler_input, text, voice_id="Vitoria"):
     return handler_input.response_builder.speak(ssml)
 ```
 
-#### Imported: 6.3 Ssml Para Controle De Voz
+### 6.3 Ssml Para Controle De Voz
 
 ```xml
 <speak>
@@ -502,7 +502,7 @@ def speak_with_polly(handler_input, text, voice_id="Vitoria"):
 
 ---
 
-#### Imported: 7.1 Template De Chat
+### 7.1 Template De Chat
 
 ```json
 {
@@ -548,7 +548,7 @@ def speak_with_polly(handler_input, text, voice_id="Vitoria"):
 }
 ```
 
-#### Imported: 7.2 Adicionar Apl Na Resposta
+### 7.2 Adicionar Apl Na Resposta
 
 ```python
 @sb.request_handler(can_handle_func=is_intent_name("ChatIntent"))
@@ -573,7 +573,7 @@ def chat_with_apl(handler_input: HandlerInput) -> Response:
 
 ---
 
-#### Imported: 8.1 Ativar Smart Home Skill
+### 8.1 Ativar Smart Home Skill
 
 No `skill.json`, adicionar:
 ```json
@@ -588,7 +588,7 @@ No `skill.json`, adicionar:
 }
 ```
 
-#### Imported: 8.2 Handler De Smart Home
+### 8.2 Handler De Smart Home
 
 ```python
 def handle_smart_home_directive(event, context):
@@ -608,7 +608,7 @@ def handle_smart_home_directive(event, context):
         return build_smart_home_response(endpoint_id, "brightness", brightness)
 ```
 
-#### Imported: 8.3 Discovery De Dispositivos
+### 8.3 Discovery De Dispositivos
 
 ```python
 def handle_discovery(event, context):

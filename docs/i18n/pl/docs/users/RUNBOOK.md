@@ -8,7 +8,7 @@
 
 ---
 
-<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/users/RUNBOOK.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-05-12T00:00:00+00:00 -->
+<!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/users/RUNBOOK.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-05-17T00:00:00+00:00 -->
 
 > **The complete operational guide for building, validating, serving, securing, and troubleshooting Awesome Omni Skills.**
 

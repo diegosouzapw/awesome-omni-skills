@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
 # Autonomous Agents
@@ -239,15 +239,6 @@ def create_scoped_agent(task_type):
     return Agent(tools=tools)
 """
 
-#### Imported: Least privilege principle
-
-PERMISSIONS = {
-    "research_agent": ["read_web", "read_docs"],
-    "code_agent": ["read_file", "write_file", "run_tests"],
-    "email_agent": ["read_email", "draft_email"],  # NOT send
-    "admin_agent": ["all"],  # Rarely used
-}
-
 ## Troubleshooting
 
 ### Problem: The operator skipped the imported context and answered too generically
@@ -307,12 +298,20 @@ Broad permissions + autonomy + goal optimization = danger.
 
 Recommended fix:
 
+### Least privilege principle
+PERMISSIONS = {
+    "research_agent": ["read_web", "read_docs"],
+    "code_agent": ["read_file", "write_file", "run_tests"],
+    "email_agent": ["read_email", "draft_email"],  # NOT send
+    "admin_agent": ["all"],  # Rarely used
+}
+
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-criminal` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-especialista` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@agent-memory-systems` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

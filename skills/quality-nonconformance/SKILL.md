@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
 # Quality & Non-Conformance Management
@@ -29,9 +29,8 @@ Imported source sections that did not map cleanly to the public headings are sti
 
 Use this section as the trigger filter. It should make the activation boundary explicit before the operator loads files, runs commands, or opens a pull request.
 
-- Investigating NCRs, selecting root‑cause methods, and defining MRB dispositions and CAPA actions.
-- Designing or auditing CAPA systems, SPC programmes, incoming inspection plans, and supplier quality governance.
-- Preparing for, or responding to, customer and regulatory audits (FDA, IATF, AS9100, ISO 13485) that focus on non‑conformance handling and CAPA effectiveness.
+- Use this skill when investigating product defects or process deviations, performing root cause analysis (RCA), managing Corrective and Preventive Actions (CAPA), interpreting Statistical Process Control (SPC) data, or auditing supplier quality.
+- # Quality & Non-Conformance Management
 - Use when provenance needs to stay visible in the answer, PR, or review packet.
 - Use when copied upstream references, examples, or scripts materially improve the answer.
 - Use when the workflow should remain reviewable in the public intake repo before the private enhancer takes over.
@@ -134,10 +133,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-criminal` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-especialista` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@agent-memory-systems` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -165,6 +164,13 @@ Use this support matrix and the linked files below as the operator packet for th
 - For detailed decision frameworks, MRB processes, and SPC decision logic, see [decision-frameworks.md](references/decision-frameworks.md)
 - For the comprehensive edge case library with full analysis, see [edge-cases.md](references/edge-cases.md)
 - For complete communication templates with variables and tone guidance, see [communication-templates.md](references/communication-templates.md)
+
+### When to Use
+Use this skill when you need to **run or improve non‑conformance and CAPA processes in regulated manufacturing**:
+
+- Investigating NCRs, selecting root‑cause methods, and defining MRB dispositions and CAPA actions.
+- Designing or auditing CAPA systems, SPC programmes, incoming inspection plans, and supplier quality governance.
+- Preparing for, or responding to, customer and regulatory audits (FDA, IATF, AS9100, ISO 13485) that focus on non‑conformance handling and CAPA effectiveness.
 
 #### Imported: Core Knowledge
 

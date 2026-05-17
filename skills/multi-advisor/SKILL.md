@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
 # MULTI-ADVISOR: Board de Especialistas em Paralelo
@@ -25,7 +25,7 @@ This intake keeps the copied upstream files intact and uses the `external_source
 
 # MULTI-ADVISOR: Board de Especialistas em Paralelo
 
-Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: How It Works, 1. O Principio, 2.1 Personas Disponiveis, 2.2 Boards Pre-Configurados, 3.1 Fluxo Standard, 3.2 Como Invocar Cada Persona.
+Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: How It Works, 1. O Principio, Multi-Advisor: [Topico], [Persona 1] — [Angulo Principal], [Persona 2] — [Angulo Principal], Sintese Do Board.
 
 ## When to Use This Skill
 
@@ -151,10 +151,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-criminal` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-especialista` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@agent-memory-systems` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -187,7 +187,7 @@ A sintese dessas perspectivas e o que separa decisoes mediocres de decisoes imor
 
 ---
 
-#### Imported: 2.1 Personas Disponiveis
+### 2.1 Personas Disponiveis
 
 | Agente | Especialidade Core | Quando Chamar |
 |--------|-------------------|---------------|
@@ -205,7 +205,7 @@ A sintese dessas perspectivas e o que separa decisoes mediocres de decisoes imor
 | `007` | Security, threat modeling, infraestrutura | Riscos de seguranca, vulnerabilidades |
 | `product-inventor` | Design systems, UX/UI, React/Next.js | Execucao de produto, UI engineering |
 
-#### Imported: 2.2 Boards Pre-Configurados
+### 2.2 Boards Pre-Configurados
 
 | Board | Composicao | Uso |
 |-------|-----------|-----|
@@ -219,7 +219,7 @@ A sintese dessas perspectivas e o que separa decisoes mediocres de decisoes imor
 
 ---
 
-#### Imported: 3.1 Fluxo Standard
+### 3.1 Fluxo Standard
 
 ```
 1. RECEBER: Questao do usuario
@@ -230,7 +230,7 @@ A sintese dessas perspectivas e o que separa decisoes mediocres de decisoes imor
 6. SINTETIZAR: Visao consolidada + recomendacao final
 ```
 
-#### Imported: 3.2 Como Invocar Cada Persona
+### 3.2 Como Invocar Cada Persona
 
 Para cada membro do board, adote completamente a perspectiva daquela persona:
 
@@ -261,7 +261,7 @@ Para cada membro do board, adote completamente a perspectiva daquela persona:
 
 ---
 
-#### Imported: 4.1 Estrutura Do Conselho
+### 4.1 Estrutura Do Conselho
 
 ```markdown
 
@@ -346,7 +346,7 @@ Board: AI_BOARD (Sam + Karpathy + LeCun + Ilya)
 
 ---
 
-#### Imported: 6. Regras Do Board
+#### Imported: 2. Regras Do Board
 
 1. **Autenticidade** — Cada persona fala com sua voz unica. Jobs nao fala como Buffett.
 2. **Tensao e saudavel** — Se todo board concorda, investigar mais fundo.
@@ -357,7 +357,7 @@ Board: AI_BOARD (Sam + Karpathy + LeCun + Ilya)
 
 ---
 
-#### Imported: 7. Consulta Customizada
+#### Imported: 3. Consulta Customizada
 
 Usuario pode customizar o board:
 
@@ -374,7 +374,7 @@ Usuario pode customizar o board:
 
 ---
 
-#### Imported: 8. Integracao Com Ecossistema
+#### Imported: 4. Integracao Com Ecossistema
 
 Esta skill usa as personas instaladas no ecossistema:
 - Ao consultar cada persona, adotar sua perspectiva COMPLETA (nao superficial)

@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-14"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
 # ADVOGADO CRIMINALISTA SENIOR — ESPECIALISTA EM DIREITO PENAL E MARIA DA PENHA
@@ -25,7 +25,7 @@ This intake keeps the copied upstream files intact and uses the `external_source
 
 # ADVOGADO CRIMINALISTA SENIOR — ESPECIALISTA EM DIREITO PENAL E MARIA DA PENHA
 
-Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: How It Works, 1. Identificar O Tipo De Solicitacao, 2. Identificar O Perfil Do Cliente, 1.1 Mapa Da Legislacao Atualizada (2006-2025), 1.2 Formas De Violencia (Art. 7 Da Lei 11.340/2006), 1.3 Medidas Protetivas De Urgencia.
+Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: How It Works, 1. Identificar O Tipo De Solicitacao, 2. Identificar O Perfil Do Cliente, Etapa 1 — Enquadramento Do Fato, Etapa 2 — Sujeitos, Etapa 3 — Materialidade E Autoria.
 
 ## When to Use This Skill
 
@@ -52,52 +52,15 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 This workflow is intentionally editorial and operational at the same time. It keeps the imported source useful to the operator while still satisfying the public intake standards that feed the downstream enhancer flow.
 
-1. Vedacao - Base Legal
-2. Nao aplica Lei 9.099/95 (JECrim) - Art. 41 Lei 11.340
-3. Nao aplica transacao penal - Art. 41 Lei 11.340
-4. Nao aplica suspensao condicional do processo - Sumula 536 STJ
-5. Nao aplica composicao civil como extintiva - Art. 41 Lei 11.340
-6. Nao aplica principio da insignificancia - Sumula 589 STJ
-7. Nao aplica substituicao por restritivas de direitos - Sumula 588 STJ
+1. Competencia (vara criminal, juri, JECrim, violencia domestica)
+2. Acao penal (publica condicionada, incondicionada, privada)
+3. Prisao em flagrante? Preventiva? Temporaria?
+4. Medidas cautelares aplicaveis
+5. Confirm the user goal, the scope of the imported workflow, and whether this skill is still the right router for the task.
+6. Read the overview and provenance files before loading any copied upstream support files.
+7. Load only the references, examples, prompts, or scripts that materially change the outcome for the current request.
 
 ### Imported Workflow Notes
-
-#### Imported: 3.2 Vedacoes Processuais Em Violencia Domestica
-
-O que **NAO** se aplica em casos de violencia domestica contra a mulher:
-
-| Vedacao | Base Legal |
-|---------|-----------|
-| Nao aplica Lei 9.099/95 (JECrim) | Art. 41 Lei 11.340 |
-| Nao aplica transacao penal | Art. 41 Lei 11.340 |
-| Nao aplica suspensao condicional do processo | Sumula 536 STJ |
-| Nao aplica composicao civil como extintiva | Art. 41 Lei 11.340 |
-| Nao aplica principio da insignificancia | Sumula 589 STJ |
-| Nao aplica substituicao por restritivas de direitos | Sumula 588 STJ |
-| Nao se exige coabitacao | Sumula 600 STJ |
-
----
-
-#### Imported: 4.3 Aplicacao No Processo Penal — Divergencia Jurisprudencial
-
-| Tribunal | Posicao | Fundamento |
-|----------|---------|-----------|
-| **STJ** | Nao cabe multa por ma-fe no processo penal | Sem previsao no CPP; analogia in malam partem vedada |
-| **STF** | Cabe multa em caso de abuso do direito de recorrer | Distorcao do postulado da ampla defesa; aplicacao subsidiaria CPC |
-
-#### Imported: 5.1 Fraude Processual (Art. 347 Cp)
-
-```
-Art. 347. Inovar artificiosamente, na pendencia de processo civil
-ou administrativo, o estado de lugar, de coisa ou de pessoa,
-com o fim de induzir a erro o juiz ou o perito.
-
-Pena — detencao de 3 meses a 2 anos, e multa.
-
-Paragrafo unico. Se a inovacao se destina a produzir efeito
-em processo penal, ainda que nao iniciado, a pena e aplicada
-em DOBRO.
-```
 
 #### Imported: Modulo 10 — Workflow Completo De Analise De Caso Criminal
 
@@ -209,10 +172,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-especialista` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@agent-memory-systems` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@agents-v2-py` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -255,7 +218,7 @@ Use this support matrix and the linked files below as the operator packet for th
 
 ---
 
-#### Imported: 1.1 Mapa Da Legislacao Atualizada (2006-2025)
+### 1.1 Mapa Da Legislacao Atualizada (2006-2025)
 
 | Lei | Ano | Alteracao Principal |
 |-----|-----|-------------------|
@@ -279,7 +242,7 @@ Use this support matrix and the linked files below as the operator packet for th
 | **15.212** | 2025 | Nome oficial "Lei Maria da Penha" incorporado |
 | **15.280** | 2025 | Medidas protetivas para vitimas de crimes sexuais + novo Art. 338-A CPP |
 
-#### Imported: 1.2 Formas De Violencia (Art. 7 Da Lei 11.340/2006)
+### 1.2 Formas De Violencia (Art. 7 Da Lei 11.340/2006)
 
 | Forma | Definicao | Exemplos |
 |-------|-----------|----------|
@@ -289,7 +252,7 @@ Use this support matrix and the linked files below as the operator packet for th
 | **Patrimonial** (IV) | Retencao, subtracao, destruicao de objetos/instrumentos de trabalho | Reter documentos, destruir celular, controlar dinheiro |
 | **Moral** (V) | Calunia, difamacao ou injuria | Acusar de traicao em publico, expor intimidade, xingar |
 
-#### Imported: 1.3 Medidas Protetivas De Urgencia
+### 1.3 Medidas Protetivas De Urgencia
 
 #### Contra o Agressor (Art. 22)
 
@@ -322,7 +285,7 @@ Use this support matrix and the linked files below as the operator packet for th
 | **III** | Suspensao de procuracoes |
 | **IV** | Caucao provisoria |
 
-#### Imported: 1.4 Fluxo De Atendimento — Vitima De Violencia Domestica
+### 1.4 Fluxo De Atendimento — Vitima De Violencia Domestica
 
 ```
 VITIMA em situacao de violencia
@@ -350,7 +313,7 @@ VITIMA em situacao de violencia
             └─→ Estabelecimento aciona autoridades
 ```
 
-#### Imported: 1.5 Descumprimento De Medida Protetiva (Art. 24-A)
+### 1.5 Descumprimento De Medida Protetiva (Art. 24-A)
 
 | Aspecto | Detalhe |
 |---------|---------|
@@ -361,7 +324,7 @@ VITIMA em situacao de violencia
 | **Flagrante** | Somente juiz concede fianca (nao o delegado) |
 | **Natureza** | Crime formal — basta descumprir a ordem |
 
-#### Imported: 1.6 Sumulas Do Stj Sobre Maria Da Penha
+### 1.6 Sumulas Do Stj Sobre Maria Da Penha
 
 | Sumula | Conteudo |
 |--------|----------|
@@ -373,7 +336,7 @@ VITIMA em situacao de violencia
 
 ---
 
-#### Imported: 2.1 Evolucao Legislativa
+### 2.1 Evolucao Legislativa
 
 | Periodo | Enquadramento |
 |---------|--------------|
@@ -381,7 +344,7 @@ VITIMA em situacao de violencia
 | 2015-2024 | Qualificadora do homicidio (Art. 121, par. 2, VI) — Lei 13.104/2015 |
 | **2024+** | **Crime autonomo** — Art. 121-A (Lei 14.994/2024) |
 
-#### Imported: 2.2 Tipificacao Atual
+### 2.2 Tipificacao Atual
 
 ```
 Art. 121-A. Matar mulher por razoes da condicao de sexo feminino:
@@ -392,7 +355,7 @@ I — violencia domestica e familiar
 II — menosprezo ou discriminacao a condicao de mulher
 ```
 
-#### Imported: 2.3 Causas De Aumento (Par. 7 — Ate 1/3 A Mais)
+### 2.3 Causas De Aumento (Par. 7 — Ate 1/3 A Mais)
 
 | Causa | Aumento |
 |-------|---------|
@@ -403,7 +366,7 @@ II — menosprezo ou discriminacao a condicao de mulher
 
 **Pena maxima possivel: ate 53 anos e 4 meses** (40 + 1/3)
 
-#### Imported: 2.4 Caracteristicas Juridicas
+### 2.4 Caracteristicas Juridicas
 
 | Aspecto | Detalhe |
 |---------|---------|
@@ -419,7 +382,7 @@ II — menosprezo ou discriminacao a condicao de mulher
 
 ---
 
-#### Imported: 3.1 Tabela De Crimes E Penas Atualizadas
+### 3.1 Tabela De Crimes E Penas Atualizadas
 
 | Crime | Base Legal | Pena | Acao Penal |
 |-------|-----------|------|-----------|
@@ -439,7 +402,23 @@ II — menosprezo ou discriminacao a condicao de mulher
 | **Estupro de vulneravel** | Art. 217-A CP | 8-15 anos reclusao | Publica incondicionada |
 | **Registro nao autorizado intimidade** | Art. 216-B CP | 6 meses - 1 ano detencao + multa | Publica incondicionada |
 
-#### Imported: 4.1 Condutas (Art. 80 Cpc)
+### 3.2 Vedacoes Processuais Em Violencia Domestica
+
+O que **NAO** se aplica em casos de violencia domestica contra a mulher:
+
+| Vedacao | Base Legal |
+|---------|-----------|
+| Nao aplica Lei 9.099/95 (JECrim) | Art. 41 Lei 11.340 |
+| Nao aplica transacao penal | Art. 41 Lei 11.340 |
+| Nao aplica suspensao condicional do processo | Sumula 536 STJ |
+| Nao aplica composicao civil como extintiva | Art. 41 Lei 11.340 |
+| Nao aplica principio da insignificancia | Sumula 589 STJ |
+| Nao aplica substituicao por restritivas de direitos | Sumula 588 STJ |
+| Nao se exige coabitacao | Sumula 600 STJ |
+
+---
+
+### 4.1 Condutas (Art. 80 Cpc)
 
 | Inciso | Conduta |
 |--------|---------|
@@ -451,7 +430,7 @@ II — menosprezo ou discriminacao a condicao de mulher
 | **VI** | Provocar incidente manifestamente infundado |
 | **VII** | Interpor recurso com intuito manifestamente protelatorio |
 
-#### Imported: 4.2 Sancoes (Art. 81 Cpc)
+### 4.2 Sancoes (Art. 81 Cpc)
 
 | Sancao | Detalhamento |
 |--------|-------------|
@@ -460,7 +439,14 @@ II — menosprezo ou discriminacao a condicao de mulher
 | **Honorarios** | Pagamento de honorarios advocaticios |
 | **Despesas** | Reembolso de todas as despesas processuais |
 
-#### Imported: 4.4 Requisitos Para Configuracao
+### 4.3 Aplicacao No Processo Penal — Divergencia Jurisprudencial
+
+| Tribunal | Posicao | Fundamento |
+|----------|---------|-----------|
+| **STJ** | Nao cabe multa por ma-fe no processo penal | Sem previsao no CPP; analogia in malam partem vedada |
+| **STF** | Cabe multa em caso de abuso do direito de recorrer | Distorcao do postulado da ampla defesa; aplicacao subsidiaria CPC |
+
+### 4.4 Requisitos Para Configuracao
 
 | Requisito | Descricao |
 |-----------|-----------|
@@ -469,7 +455,7 @@ II — menosprezo ou discriminacao a condicao de mulher
 | **Prejuizo** | Demonstracao de dano a parte contraria ou ao processo |
 | **Nexo causal** | Ligacao entre a conduta e o dano |
 
-#### Imported: 4.5 Consequencias Praticas
+### 4.5 Consequencias Praticas
 
 | Ambito | Consequencia |
 |--------|-------------|
@@ -480,7 +466,21 @@ II — menosprezo ou discriminacao a condicao de mulher
 
 ---
 
-#### Imported: 5.2 Elementos Do Crime
+### 5.1 Fraude Processual (Art. 347 Cp)
+
+```
+Art. 347. Inovar artificiosamente, na pendencia de processo civil
+ou administrativo, o estado de lugar, de coisa ou de pessoa,
+com o fim de induzir a erro o juiz ou o perito.
+
+Pena — detencao de 3 meses a 2 anos, e multa.
+
+Paragrafo unico. Se a inovacao se destina a produzir efeito
+em processo penal, ainda que nao iniciado, a pena e aplicada
+em DOBRO.
+```
+
+### 5.2 Elementos Do Crime
 
 | Elemento | Descricao |
 |----------|-----------|
@@ -491,7 +491,7 @@ II — menosprezo ou discriminacao a condicao de mulher
 | **Tentativa** | Admissivel |
 | **Acao penal** | Publica incondicionada |
 
-#### Imported: 5.3 Crimes Conexos A Ardilosidade
+### 5.3 Crimes Conexos A Ardilosidade
 
 | Crime | Artigo CP | Pena | Descricao |
 |-------|----------|------|-----------|
@@ -505,7 +505,7 @@ II — menosprezo ou discriminacao a condicao de mulher
 | **Favorecimento pessoal** | Art. 348 | 1-6 meses detencao + multa | Auxiliar fuga de criminoso |
 | **Favorecimento real** | Art. 349 | 1-6 meses detencao + multa | Assegurar produto de crime |
 
-#### Imported: 5.4 Ardilosidade Como Agravante
+### 5.4 Ardilosidade Como Agravante
 
 A ardilosidade pode funcionar como:
 - **Agravante generica** (Art. 61, II, "c" CP) — crime cometido a traicao, emboscada, **mediante dissimulacao** ou outro recurso que dificultou a defesa da vitima
@@ -514,7 +514,7 @@ A ardilosidade pode funcionar como:
 
 ---
 
-#### Imported: 6.1 Sistema Trifasico (Art. 68 Cp)
+### 6.1 Sistema Trifasico (Art. 68 Cp)
 
 ```
 FASE 1: Pena-base (Art. 59 CP — circunstancias judiciais)
@@ -531,7 +531,7 @@ FASE 3: Causas de aumento e diminuicao
   → PODE ultrapassar os limites legais
 ```
 
-#### Imported: 6.2 Tabela De Agravantes Relevantes (Art. 61 Cp)
+### 6.2 Tabela De Agravantes Relevantes (Art. 61 Cp)
 
 | Agravante | Inciso | Relevancia |
 |-----------|--------|-----------|
@@ -544,7 +544,7 @@ FASE 3: Causas de aumento e diminuicao
 | Contra crianca, idoso, enfermo, gestante | II-h | Vulnerabilidade |
 | Em violacao de medida protetiva | II (interpretacao) | Maria da Penha |
 
-#### Imported: 6.3 Regimes De Cumprimento
+### 6.3 Regimes De Cumprimento
 
 | Regime | Pena | Condicoes |
 |--------|------|-----------|
@@ -553,7 +553,7 @@ FASE 3: Causas de aumento e diminuicao
 | **Aberto** | <= 4 anos | Primario |
 | **Fechado** (hediondo) | Qualquer pena | Feminicidio — inicio obrigatorio em fechado |
 
-#### Imported: 6.4 Progressao De Regime (Lei 13.964/2019 — Pacote Anticrime)
+### 6.4 Progressao De Regime (Lei 13.964/2019 — Pacote Anticrime)
 
 | Crime | Primario | Reincidente | Reincidente especifico |
 |-------|---------|------------|----------------------|
@@ -565,7 +565,7 @@ FASE 3: Causas de aumento e diminuicao
 
 ---
 
-#### Imported: 7.1 Tabela De Prescricao (Art. 109 Cp)
+### 7.1 Tabela De Prescricao (Art. 109 Cp)
 
 | Pena maxima cominada | Prazo prescricional |
 |---------------------|-------------------|
@@ -576,7 +576,7 @@ FASE 3: Causas de aumento e diminuicao
 | 8 a 12 anos | 16 anos |
 | Superior a 12 anos | 20 anos |
 
-#### Imported: 7.2 Imprescritibilidade
+### 7.2 Imprescritibilidade
 
 | Crime | Base |
 |-------|------|
@@ -585,7 +585,7 @@ FASE 3: Causas de aumento e diminuicao
 
 **Feminicidio**: NAO e imprescritivel, mas prazo e de **20 anos** (pena maxima > 12 anos).
 
-#### Imported: 7.3 Causas De Suspensao E Interrupcao
+### 7.3 Causas De Suspensao E Interrupcao
 
 | Tipo | Causas |
 |------|--------|
@@ -594,7 +594,7 @@ FASE 3: Causas de aumento e diminuicao
 
 ---
 
-#### Imported: 8.1 Teses De Defesa — Violencia Domestica
+### 8.1 Teses De Defesa — Violencia Domestica
 
 | Tese | Fundamento | Viabilidade |
 |------|-----------|-------------|
@@ -606,7 +606,7 @@ FASE 3: Causas de aumento e diminuicao
 | Nulidade processual | Cerceamento defesa | Media — depende de vicio |
 | Insuficiencia probatoria | In dubio pro reo | Alta — principio constitucional |
 
-#### Imported: 8.2 Teses De Acusacao — Violencia Domestica
+### 8.2 Teses De Acusacao — Violencia Domestica
 
 | Tese | Fundamento | Efetividade |
 |------|-----------|-------------|
@@ -616,7 +616,7 @@ FASE 3: Causas de aumento e diminuicao
 | Laudos periciais | IML, psicologico | Alta — prova tecnica |
 | Descumprimento reiterado | Art. 24-A | Alta — agravante |
 
-#### Imported: 8.3 Teses De Defesa — Crimes Em Geral
+### 8.3 Teses De Defesa — Crimes Em Geral
 
 | Tese | Fundamento |
 |------|-----------|
@@ -637,7 +637,7 @@ FASE 3: Causas de aumento e diminuicao
 
 ---
 
-#### Imported: 9.1 Tipos De Prisao
+### 9.1 Tipos De Prisao
 
 | Tipo | Base Legal | Requisitos |
 |------|-----------|-----------|
@@ -646,7 +646,7 @@ FASE 3: Causas de aumento e diminuicao
 | **Temporaria** | Lei 7.960/89 | Imprescindivel para investigacao (5 dias + 5, ou 30+30 se hediondo) |
 | **Definitiva** | Transito em julgado | Sentenca condenatoria irrecorrivel |
 
-#### Imported: 9.2 Prisao Preventiva Em Violencia Domestica
+### 9.2 Prisao Preventiva Em Violencia Domestica
 
 | Aspecto | Detalhe |
 |---------|---------|
@@ -656,7 +656,7 @@ FASE 3: Causas de aumento e diminuicao
 | **Revogacao** | A qualquer tempo se cessar o motivo |
 | **Substituicao** | Cautelares diversas (Art. 319 CPP) |
 
-#### Imported: 9.3 Habeas Corpus
+### 9.3 Habeas Corpus
 
 | Hipotese | Art. 648 CPP |
 |----------|-------------|
@@ -837,7 +837,7 @@ Esta skill implementa as seguintes politicas:
 
 ---
 
-#### Imported: 11.1 Previsao Legal (Art. 28-A Cpp — Lei 13.964/2019)
+### 11.1 Previsao Legal (Art. 28-A Cpp — Lei 13.964/2019)
 
 ```
 Art. 28-A. Nao sendo caso de arquivamento e tendo o investigado
@@ -846,7 +846,7 @@ sem violencia ou grave ameaca e com pena minima inferior a 4 anos,
 o MP podera propor ANPP.
 ```
 
-#### Imported: 11.2 Requisitos Cumulativos
+### 11.2 Requisitos Cumulativos
 
 | # | Requisito | Detalhe |
 |---|-----------|---------|
@@ -856,7 +856,7 @@ o MP podera propor ANPP.
 | 4 | Nao ser caso de arquivamento | Deve haver justa causa |
 | 5 | Nao ser cabivel transacao penal | Lei 9.099/95 |
 
-#### Imported: 11.3 Impedimentos
+### 11.3 Impedimentos
 
 | Impedimento | Base |
 |-------------|------|
@@ -865,7 +865,7 @@ o MP podera propor ANPP.
 | Crime de violencia domestica | Art. 28-A, par. 2, IV |
 | Elementos indicam conduta criminal habitual | Art. 28-A, par. 2, III |
 
-#### Imported: 11.4 Condicoes Ajustaveis (Par. 1)
+### 11.4 Condicoes Ajustaveis (Par. 1)
 
 | Condicao | Descricao |
 |----------|-----------|
@@ -875,7 +875,7 @@ o MP podera propor ANPP.
 | **IV** | Pagamento de prestacao pecuniaria a entidade publica/privada |
 | **V** | Cumprir outra condicao indicada pelo MP desde que proporcional |
 
-#### Imported: 11.5 Impacto Para A Defesa
+### 11.5 Impacto Para A Defesa
 
 - ANPP **nao gera antecedentes** criminais
 - ANPP **nao e condenacao** — e acordo pre-processual
@@ -885,7 +885,7 @@ o MP podera propor ANPP.
 
 ---
 
-#### Imported: 12.1 Tabela Comparativa
+### 12.1 Tabela Comparativa
 
 | Crime | Artigo | Pena | Acao Penal | Observacoes |
 |-------|--------|------|-----------|-------------|
@@ -901,7 +901,7 @@ o MP podera propor ANPP.
 | **Apropriacao indebita** | Art. 168 | 1-4 anos reclusao + multa | Publica incondicionada | Apropriar coisa alheia movel |
 | **Receptacao** | Art. 180 | 1-4 anos reclusao + multa | Publica incondicionada | Adquirir produto de crime |
 
-#### Imported: 12.2 Estelionato — Representacao (Lei 13.964/2019)
+### 12.2 Estelionato — Representacao (Lei 13.964/2019)
 
 Apos o Pacote Anticrime, o estelionato passou a ser de **acao penal publica condicionada a representacao**, EXCETO quando a vitima for:
 - Administracao publica
@@ -912,7 +912,7 @@ Apos o Pacote Anticrime, o estelionato passou a ser de **acao penal publica cond
 
 ---
 
-#### Imported: 13.1 Uso Vs Trafico
+### 13.1 Uso Vs Trafico
 
 | Aspecto | Uso (Art. 28) | Trafico (Art. 33) |
 |---------|--------------|-------------------|
@@ -923,7 +923,7 @@ Apos o Pacote Anticrime, o estelionato passou a ser de **acao penal publica cond
 | **Liberdade provisoria** | N/A | STF permite (HC 104.339) |
 | **Criterios de distincao** | Art. 28, par. 2: natureza, quantidade, local, circunstancias, conduta, antecedentes | Inverso dos criterios do Art. 28 |
 
-#### Imported: 13.2 Trafico Privilegiado (Art. 33, Par. 4)
+### 13.2 Trafico Privilegiado (Art. 33, Par. 4)
 
 ```
 Primario + bons antecedentes + nao integra organizacao criminosa
@@ -932,7 +932,7 @@ Primario + bons antecedentes + nao integra organizacao criminosa
 → Regime inicial pode ser aberto ou semiaberto
 ```
 
-#### Imported: 13.3 Associacao Para Trafico (Art. 35)
+### 13.3 Associacao Para Trafico (Art. 35)
 
 | Aspecto | Detalhe |
 |---------|---------|
@@ -943,7 +943,7 @@ Primario + bons antecedentes + nao integra organizacao criminosa
 
 ---
 
-#### Imported: 14.1 Estrategias Ardilosas Mais Comuns No Criminal
+### 14.1 Estrategias Ardilosas Mais Comuns No Criminal
 
 | # | Estrategia Ardilosa | Crime/Sancao | Como Identificar |
 |---|-------------------|-------------|-----------------|
@@ -958,7 +958,7 @@ Primario + bons antecedentes + nao integra organizacao criminosa
 | 9 | Usar processo penal para cobrar divida | Exercicio arbitrario (Art. 345 CP) | Analise da pretensao real |
 | 10 | Abusar de medida protetiva para afastar de imovel | Litigancia de ma-fe + locupletamento | Contexto patrimonial vs violencia |
 
-#### Imported: 14.2 Defesa Contra Acusacao Ardilosa
+### 14.2 Defesa Contra Acusacao Ardilosa
 
 | Situacao | Medida Defensiva | Base Legal |
 |----------|-----------------|-----------|
@@ -968,7 +968,7 @@ Primario + bons antecedentes + nao integra organizacao criminosa
 | Laudo forjado | Contrapericia oficial | Art. 182 CPP |
 | Medida protetiva indevida | Revogacao + HC se necessario | Art. 19, par. 3 Lei 11.340 |
 
-#### Imported: 14.3 Denuncia Caluniosa Em Contexto De Maria Da Penha
+### 14.3 Denuncia Caluniosa Em Contexto De Maria Da Penha
 
 **Situacao delicada**: quando a suposta vitima forja agressao para obter vantagens (guarda, imovel, pensao).
 
@@ -988,7 +988,7 @@ Primario + bons antecedentes + nao integra organizacao criminosa
 
 ---
 
-#### Imported: 15.1 Beneficios Na Execucao
+### 15.1 Beneficios Na Execucao
 
 | Beneficio | Requisito Temporal | Requisito Subjetivo |
 |-----------|-------------------|-------------------|
@@ -1003,7 +1003,7 @@ Primario + bons antecedentes + nao integra organizacao criminosa
 | **Remicao** | 3 dias trabalho = 1 dia pena | Trabalho ou estudo |
 | **Indulto** | Decreto presidencial | Conforme decreto anual |
 
-#### Imported: 15.2 Detracoes E Remicao
+### 15.2 Detracoes E Remicao
 
 - **Detracao** (Art. 42 CP): tempo de prisao provisoria e internacao abatido da pena definitiva
 - **Remicao por trabalho** (Art. 126 LEP): 3 dias de trabalho = 1 dia de pena

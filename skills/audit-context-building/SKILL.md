@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
 # Deep Context Builder Skill (Ultra-Granular Pure Context Mode)
@@ -25,7 +25,7 @@ This intake keeps the copied upstream files intact and uses the `external_source
 
 # Deep Context Builder Skill (Ultra-Granular Pure Context Mode)
 
-Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: 1. Purpose, 3. How This Skill Behaves, Rationalizations (Do Not Skip), 4. Phase 1 — Initial Orientation (Bottom-Up Scan), 5. Phase 2 — Ultra-Granular Function Analysis (Default Mode), 6. Phase 3 — Global System Understanding.
+Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: 1. Purpose, 2. How This Skill Behaves, Rationalizations (Do Not Skip), 3. Phase 1 — Initial Orientation (Bottom-Up Scan), 4. Phase 2 — Ultra-Granular Function Analysis (Default Mode), 5. Phase 3 — Global System Understanding.
 
 ## When to Use This Skill
 
@@ -113,7 +113,7 @@ Review @audit-context-building using the copied upstream files plus provenance, 
 
 ### Imported Usage Notes
 
-#### Imported: 8. Subagent Usage
+#### Imported: 7. Subagent Usage
 
 Claude may spawn subagents for:
 - Dense or complex functions.
@@ -147,7 +147,7 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ### Imported Operating Notes
 
-#### Imported: 7. Stability & Consistency Rules
+#### Imported: 6. Stability & Consistency Rules
 
 *(Anti-Hallucination, Anti-Contradiction)*
 
@@ -197,10 +197,10 @@ Claude must:
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-criminal` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-especialista` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@agent-memory-systems` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -218,7 +218,7 @@ Use this support matrix and the linked files below as the operator packet for th
 
 ### Imported Reference Notes
 
-#### Imported: 3. How This Skill Behaves
+#### Imported: 2. How This Skill Behaves
 
 When active, Claude will:
 - Default to **ultra-granular analysis** of each block and line.
@@ -245,7 +245,7 @@ Goal: **deep, accurate understanding**, not conclusions.
 
 ---
 
-#### Imported: 4. Phase 1 — Initial Orientation (Bottom-Up Scan)
+#### Imported: 3. Phase 1 — Initial Orientation (Bottom-Up Scan)
 
 Before deep analysis, Claude performs a minimal mapping:
 
@@ -259,7 +259,7 @@ This establishes anchors for detailed analysis.
 
 ---
 
-#### Imported: 5. Phase 2 — Ultra-Granular Function Analysis (Default Mode)
+#### Imported: 4. Phase 2 — Ultra-Granular Function Analysis (Default Mode)
 
 Every non-trivial function receives full micro analysis.
 
@@ -380,7 +380,7 @@ Analysis is complete when all checklist items are satisfied and no unresolved "u
 
 ---
 
-#### Imported: 6. Phase 3 — Global System Understanding
+#### Imported: 5. Phase 3 — Global System Understanding
 
 After sufficient micro-analysis:
 
@@ -408,7 +408,7 @@ These clusters help guide the vulnerability-hunting phase.
 
 ---
 
-#### Imported: 9. Relationship to Other Phases
+#### Imported: 8. Relationship to Other Phases
 
 This skill runs **before**:
 - Vulnerability discovery
@@ -424,7 +424,7 @@ It exists solely to build:
 
 ---
 
-#### Imported: 10. Non-Goals
+#### Imported: 9. Non-Goals
 
 While active, Claude should NOT:
 - Identify vulnerabilities

@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-14"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
 # Email Systems
@@ -236,8 +236,63 @@ TXT record: v=spf1 include:_spf.google.com include:sendgrid.net ~all
 - At least 60% text content
 - Images for enhancement, not content
 
-#### Imported: Best practices:
+### Always include:
+- Alt text on every image
+- Key message in text, not just image
+- Fallback for images-off view
 
+### Test:
+- Preview with images disabled
+- Should still be usable
+
+# Example:
+```html
+<img
+  src="hero.jpg"
+  alt="Save 50% this week - use code SAVE50"
+  style="max-width: 100%"
+/>
+<p>Use code <strong>SAVE50</strong> to save 50% this week.</p>
+```
+
+### Missing or default preview text
+
+Severity: MEDIUM
+
+Situation: Inbox shows "View this email in browser" or random HTML as preview.
+Lower open rates. First impression wasted on boilerplate.
+
+Symptoms:
+- View in browser as preview
+- HTML code visible in preview
+- No preview component in template
+
+Why this breaks:
+Preview text is prime real estate - appears right after subject line.
+Default or missing preview text wastes this space. Good preview text
+increases open rates 10-30%.
+
+Recommended fix:
+
+# Add explicit preview text:
+
+### In HTML:
+```html
+<div style="display:none;max-height:0;overflow:hidden;">
+  Your preview text here. This appears in inbox preview.
+  <!-- Add whitespace to push footer text out -->
+  &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+</div>
+```
+
+### With React Email:
+```tsx
+<Preview>
+  Your preview text here. This appears in inbox preview.
+</Preview>
+```
+
+### Best practices:
 - Complement the subject line
 - 40-100 characters optimal
 - Create curiosity or value
@@ -319,10 +374,10 @@ async function sendCampaign(emails: string[]) {
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-criminal` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-especialista` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@agent-memory-systems` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -340,8 +395,167 @@ Use this support matrix and the linked files below as the operator packet for th
 
 ### Imported Reference Notes
 
-#### Imported: Preference center:
+#### Imported: Sharp Edges
 
+### Missing SPF, DKIM, or DMARC records
+
+Severity: CRITICAL
+
+Situation: Sending emails without authentication. Emails going to spam folder.
+Low open rates. No idea why. Turns out DNS records were never set up.
+
+Symptoms:
+- Emails going to spam
+- Low deliverability rates
+- mail-tester.com score below 8
+- No DMARC reports received
+
+Why this breaks:
+Email authentication (SPF, DKIM, DMARC) tells receiving servers you're
+legit. Without them, you look like a spammer. Modern email providers
+increasingly require all three.
+
+Recommended fix:
+
+# Required DNS records:
+
+#### Imported: DKIM (DomainKeys Identified Mail)
+
+TXT record provided by your email provider
+Adds cryptographic signature to emails
+
+#### Imported: DMARC (Domain-based Message Authentication)
+
+TXT record: v=DMARC1; p=quarantine; rua=mailto:dmarc@yourdomain.com
+
+# Verify setup:
+- Send test email to mail-tester.com
+- Check MXToolbox for record validation
+- Monitor DMARC reports
+
+### Using shared IP for transactional email
+
+Severity: HIGH
+
+Situation: Password resets going to spam. Using free tier of email provider.
+Some other customer on your shared IP got flagged for spam.
+Your reputation is ruined by association.
+
+Symptoms:
+- Transactional emails in spam
+- Inconsistent delivery
+- Using same provider for marketing and transactional
+
+Why this breaks:
+Shared IPs share reputation. One bad actor affects everyone. For
+critical transactional email, you need your own IP or a provider
+with strict shared IP policies.
+
+Recommended fix:
+
+# Transactional email strategy:
+
+#### Imported: Option 1: Dedicated IP (high volume)
+
+- Get dedicated IP from your provider
+- Warm it up slowly (start with 100/day)
+- Maintain consistent volume
+
+#### Imported: Option 2: Transactional-only provider
+
+- Postmark (very strict, great reputation)
+- Includes shared pool with high standards
+
+### Separate concerns:
+- Transactional: Postmark or Resend
+- Marketing: ConvertKit or Customer.io
+- Never mix marketing and transactional
+
+### Not processing bounce notifications
+
+Severity: HIGH
+
+Situation: Emailing same dead addresses over and over. Bounce rate climbing.
+Email provider threatening to suspend account. List is 40% dead.
+
+Symptoms:
+- Bounce rate above 2%
+- No webhook handlers for bounces
+- Same emails failing repeatedly
+
+Why this breaks:
+Bounces damage sender reputation. Email providers track bounce rates.
+Above 2% and you start looking like a spammer. Dead addresses must
+be removed immediately.
+
+Recommended fix:
+
+# Bounce handling requirements:
+
+### Hard bounces:
+Remove immediately on first occurrence
+Invalid address, domain doesn't exist
+
+### Soft bounces:
+Retry 3 times over 72 hours
+After 3 failures, treat as hard bounce
+
+### Implementation:
+```typescript
+// Webhook handler for bounces
+app.post('/webhooks/email', (req, res) => {
+  const event = req.body;
+  if (event.type === 'bounce') {
+    await markEmailInvalid(event.email);
+    await removeFromAllLists(event.email);
+  }
+});
+```
+
+### Monitor:
+Track bounce rate by campaign
+Alert if bounce rate exceeds 1%
+
+### Missing or hidden unsubscribe link
+
+Severity: CRITICAL
+
+Situation: Users marking as spam because they cannot unsubscribe. Spam complaints
+rising. CAN-SPAM violation. Email provider suspends account.
+
+Symptoms:
+- Hidden unsubscribe links
+- Multi-step unsubscribe process
+- No List-Unsubscribe header
+- High spam complaint rate
+
+Why this breaks:
+Users who cannot unsubscribe will mark as spam. Spam complaints hurt
+reputation more than unsubscribes. Also it is literally illegal.
+CAN-SPAM, GDPR all require clear unsubscribe.
+
+Recommended fix:
+
+# Unsubscribe requirements:
+
+### Visible:
+- Above the fold in email footer
+- Clear text, not hidden
+- Not styled to be invisible
+
+### One-click:
+- Link directly unsubscribes
+- No login required
+- No "are you sure" hoops
+
+### List-Unsubscribe header:
+```
+List-Unsubscribe: <mailto:unsubscribe@example.com>,
+  <https://example.com/unsubscribe?token=xxx>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+```
+
+### Preference center:
 Option to reduce frequency instead of full unsubscribe
 
 ### Sending HTML without plain text alternative
@@ -441,195 +655,23 @@ Recommended fix:
 
 # Permission requirements:
 
-#### Imported: Sharp Edges
-
-### Missing SPF, DKIM, or DMARC records
-
-Severity: CRITICAL
-
-Situation: Sending emails without authentication. Emails going to spam folder.
-Low open rates. No idea why. Turns out DNS records were never set up.
-
-Symptoms:
-- Emails going to spam
-- Low deliverability rates
-- mail-tester.com score below 8
-- No DMARC reports received
-
-Why this breaks:
-Email authentication (SPF, DKIM, DMARC) tells receiving servers you're
-legit. Without them, you look like a spammer. Modern email providers
-increasingly require all three.
-
-Recommended fix:
-
-# Required DNS records:
-
-#### Imported: DKIM (DomainKeys Identified Mail)
-
-TXT record provided by your email provider
-Adds cryptographic signature to emails
-
-#### Imported: DMARC (Domain-based Message Authentication)
-
-TXT record: v=DMARC1; p=quarantine; rua=mailto:dmarc@yourdomain.com
-
-# Verify setup:
-- Send test email to mail-tester.com
-- Check MXToolbox for record validation
-- Monitor DMARC reports
-
-### Using shared IP for transactional email
-
-Severity: HIGH
-
-Situation: Password resets going to spam. Using free tier of email provider.
-Some other customer on your shared IP got flagged for spam.
-Your reputation is ruined by association.
-
-Symptoms:
-- Transactional emails in spam
-- Inconsistent delivery
-- Using same provider for marketing and transactional
-
-Why this breaks:
-Shared IPs share reputation. One bad actor affects everyone. For
-critical transactional email, you need your own IP or a provider
-with strict shared IP policies.
-
-Recommended fix:
-
-# Transactional email strategy:
-
-#### Imported: Option 1: Dedicated IP (high volume)
-
-- Get dedicated IP from your provider
-- Warm it up slowly (start with 100/day)
-- Maintain consistent volume
-
-#### Imported: Option 2: Transactional-only provider
-
-- Postmark (very strict, great reputation)
-- Includes shared pool with high standards
-
-#### Imported: Separate concerns:
-
-- Transactional: Postmark or Resend
-- Marketing: ConvertKit or Customer.io
-- Never mix marketing and transactional
-
-### Not processing bounce notifications
-
-Severity: HIGH
-
-Situation: Emailing same dead addresses over and over. Bounce rate climbing.
-Email provider threatening to suspend account. List is 40% dead.
-
-Symptoms:
-- Bounce rate above 2%
-- No webhook handlers for bounces
-- Same emails failing repeatedly
-
-Why this breaks:
-Bounces damage sender reputation. Email providers track bounce rates.
-Above 2% and you start looking like a spammer. Dead addresses must
-be removed immediately.
-
-Recommended fix:
-
-# Bounce handling requirements:
-
-#### Imported: Hard bounces:
-
-Remove immediately on first occurrence
-Invalid address, domain doesn't exist
-
-#### Imported: Soft bounces:
-
-Retry 3 times over 72 hours
-After 3 failures, treat as hard bounce
-
-#### Imported: Implementation:
-
-```typescript
-// Webhook handler for bounces
-app.post('/webhooks/email', (req, res) => {
-  const event = req.body;
-  if (event.type === 'bounce') {
-    await markEmailInvalid(event.email);
-    await removeFromAllLists(event.email);
-  }
-});
-```
-
-#### Imported: Monitor:
-
-Track bounce rate by campaign
-Alert if bounce rate exceeds 1%
-
-### Missing or hidden unsubscribe link
-
-Severity: CRITICAL
-
-Situation: Users marking as spam because they cannot unsubscribe. Spam complaints
-rising. CAN-SPAM violation. Email provider suspends account.
-
-Symptoms:
-- Hidden unsubscribe links
-- Multi-step unsubscribe process
-- No List-Unsubscribe header
-- High spam complaint rate
-
-Why this breaks:
-Users who cannot unsubscribe will mark as spam. Spam complaints hurt
-reputation more than unsubscribes. Also it is literally illegal.
-CAN-SPAM, GDPR all require clear unsubscribe.
-
-Recommended fix:
-
-# Unsubscribe requirements:
-
-#### Imported: Visible:
-
-- Above the fold in email footer
-- Clear text, not hidden
-- Not styled to be invisible
-
-#### Imported: One-click:
-
-- Link directly unsubscribes
-- No login required
-- No "are you sure" hoops
-
-#### Imported: List-Unsubscribe header:
-
-```
-List-Unsubscribe: <mailto:unsubscribe@example.com>,
-  <https://example.com/unsubscribe?token=xxx>
-List-Unsubscribe-Post: List-Unsubscribe=One-Click
-```
-
-#### Imported: Explicit opt-in:
-
+### Explicit opt-in:
 - User actively chooses to receive email
 - Not pre-checked boxes
 - Clear what they are signing up for
 
-#### Imported: Double opt-in:
-
+### Double opt-in:
 - Confirmation email with link
 - Only add to list after confirmation
 - Best practice for marketing lists
 
-#### Imported: What you cannot do:
-
+### What you cannot do:
 - Buy email lists
 - Scrape emails from websites
 - Add conference contacts without consent
 - Use partner/customer lists without consent
 
-#### Imported: Transactional exception:
-
+### Transactional exception:
 Password resets, receipts, account alerts
 do not need marketing opt-in
 
@@ -655,66 +697,6 @@ increase.
 Recommended fix:
 
 # Balance images and text:
-
-#### Imported: Always include:
-
-- Alt text on every image
-- Key message in text, not just image
-- Fallback for images-off view
-
-#### Imported: Test:
-
-- Preview with images disabled
-- Should still be usable
-
-# Example:
-```html
-<img
-  src="hero.jpg"
-  alt="Save 50% this week - use code SAVE50"
-  style="max-width: 100%"
-/>
-<p>Use code <strong>SAVE50</strong> to save 50% this week.</p>
-```
-
-### Missing or default preview text
-
-Severity: MEDIUM
-
-Situation: Inbox shows "View this email in browser" or random HTML as preview.
-Lower open rates. First impression wasted on boilerplate.
-
-Symptoms:
-- View in browser as preview
-- HTML code visible in preview
-- No preview component in template
-
-Why this breaks:
-Preview text is prime real estate - appears right after subject line.
-Default or missing preview text wastes this space. Good preview text
-increases open rates 10-30%.
-
-Recommended fix:
-
-# Add explicit preview text:
-
-#### Imported: In HTML:
-
-```html
-<div style="display:none;max-height:0;overflow:hidden;">
-  Your preview text here. This appears in inbox preview.
-  <!-- Add whitespace to push footer text out -->
-  &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
-</div>
-```
-
-#### Imported: With React Email:
-
-```tsx
-<Preview>
-  Your preview text here. This appears in inbox preview.
-</Preview>
-```
 
 #### Imported: Validation Checks
 

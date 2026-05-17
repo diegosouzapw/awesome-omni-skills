@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-14"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
 # Energy Procurement
@@ -29,9 +29,7 @@ Imported source sections that did not map cleanly to the public headings are sti
 
 Use this section as the trigger filter. It should make the activation boundary explicit before the operator loads files, runs commands, or opens a pull request.
 
-- Evaluating fixed vs. index vs. block-and-index contracts, PPAs, or VPPAs.
-- Reducing demand charges, managing capacity tags, or planning DR and battery investments.
-- Preparing RFPs, supplier negotiations, or executive decision memos about multi-site energy strategy, risk, and sustainability tradeoffs.
+- Use this skill when managing energy procurement tasks, such as optimizing electricity or gas tariffs, evaluating Power Purchase Agreements (PPAs), or developing long-term energy cost management strategies for commercial or industrial facilities.
 - Use when provenance needs to stay visible in the answer, PR, or review packet.
 - Use when copied upstream references, examples, or scripts materially improve the answer.
 - Use when the workflow should remain reviewable in the public intake repo before the private enhancer takes over.
@@ -134,10 +132,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-criminal` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-especialista` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@agent-memory-systems` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -165,6 +163,13 @@ Use this support matrix and the linked files below as the operator packet for th
 - For detailed decision frameworks on procurement strategy, PPA evaluation, hedging, and multi-facility optimization, see [decision-frameworks.md](references/decision-frameworks.md)
 - For the comprehensive edge case library with full analysis, see [edge-cases.md](references/edge-cases.md)
 - For communication templates covering RFPs, PPA negotiations, rate cases, and internal reporting, see [communication-templates.md](references/communication-templates.md)
+
+### When to Use
+Use this skill when you need to **design, audit, or optimise an energy procurement strategy** for commercial or industrial facilities:
+
+- Evaluating fixed vs. index vs. block-and-index contracts, PPAs, or VPPAs.
+- Reducing demand charges, managing capacity tags, or planning DR and battery investments.
+- Preparing RFPs, supplier negotiations, or executive decision memos about multi-site energy strategy, risk, and sustainability tradeoffs.
 
 #### Imported: Core Knowledge
 
