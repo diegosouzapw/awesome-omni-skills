@@ -10,7 +10,7 @@
 
 <!-- generated:i18n-doc: project=awesome-omni-skills; source=docs/CATALOG.md; version=0.12.9; release=v0.12.9; english_snapshot=2026-05-17T00:00:00+00:00 -->
 
-> Auto-generated from `skills_index.json` — 4696 skills across 17 categories.
+> Auto-generated from `skills_index.json` — 4705 skills across 17 categories.
 
 Generated: 2026-05-17T00:00:00+00:00
 
@@ -18,19 +18,19 @@ Generated: 2026-05-17T00:00:00+00:00
 
 ## Table of Contents
 
-- [🧠 Ai Agents (408)](#ai-agents)
+- [🧠 Ai Agents (410)](#ai-agents)
 - [🗄️ Backend (490)](#backend)
 - [💼 Business (120)](#business)
-- [⚙️ Cli Automation (603)](#cli-automation)
+- [⚙️ Cli Automation (605)](#cli-automation)
 - [💬 Communication (72)](#communication)
 - [🎬 Content Media (157)](#content-media)
 - [🤖 Data Ai (185)](#data-ai)
 - [🎨 Design (131)](#design)
-- [💻 Development (714)](#development)
-- [☁️ Devops (342)](#devops)
+- [💻 Development (716)](#development)
+- [☁️ Devops (344)](#devops)
 - [📝 Documentation (69)](#documentation)
 - [🖼️ Frontend (545)](#frontend)
-- [🌐 Fullstack Web (172)](#fullstack-web)
+- [🌐 Fullstack Web (173)](#fullstack-web)
 - [📈 Machine Learning (54)](#machine-learning)
 - [🧭 Product (56)](#product)
 - [🛡️ Testing Security (365)](#testing-security)
@@ -369,9 +369,11 @@ Generated: 2026-05-17T00:00:00+00:00
 | [`mcp-builder-v4`](../../../../skills/mcp-builder-v4/SKILL.md) | MCP Server Development Guide workflow skill. Use this skill when the user needs Create MCP (Model Context Protocol) serv | L3 resources | 100/100 | 97/100 | 30/100 warn |
 | [`mcp-builder-v4--omni`](../../../../skills_omni/mcp-builder-v4/SKILL.md) | MCP Server Development Guide workflow skill. Use this skill when the user needs Create MCP (Model Context Protocol) serv | L3 resources | 100/100 | 97/100 | 30/100 warn |
 | [`mcp-tool-developer`](../../../../skills/mcp-tool-developer/SKILL.md) | MCP Tool Developer workflow skill. Use this skill when the user needs Build Model Context Protocol (MCP) servers and too | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`mcp-tool-developer-v2`](../../../../skills/mcp-tool-developer-v2/SKILL.md) | MCP Tool Developer workflow skill. Use this skill when the user needs Build Model Context Protocol (MCP) servers and too | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`multi-advisor`](../../../../skills/multi-advisor/SKILL.md) | MULTI-ADVISOR: Board de Especialistas em Paralelo workflow skill. Use this skill when the user needs Conselho de especia | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`multi-advisor-v2`](../../../../skills/multi-advisor-v2/SKILL.md) | MULTI-ADVISOR: Board de Especialistas em Paralelo workflow skill. Use this skill when the user needs Conselho de especia | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`multi-agent-architect`](../../../../skills/multi-agent-architect/SKILL.md) | Multi-Agent Architect & Updater Skill workflow skill. Use this skill when the user needs Design and optimize production- | L2 instructions | 100/100 | 86/100 | 100/100 passed |
+| [`multi-agent-architect-v2`](../../../../skills/multi-agent-architect-v2/SKILL.md) | Multi-Agent Architect & Updater Skill workflow skill. Use this skill when the user needs Design and optimize production- | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`multi-agent-brainstorming`](../../../../skills/multi-agent-brainstorming/SKILL.md) | Multi-Agent Brainstorming (Structured Design Review) workflow skill. Use this skill when the user needs Simulate a struc | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`multi-agent-brainstorming-v2`](../../../../skills/multi-agent-brainstorming-v2/SKILL.md) | Multi-Agent Brainstorming (Structured Design Review) workflow skill. Use this skill when the user needs Simulate a struc | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`multi-agent-patterns`](../../../../skills/multi-agent-patterns/SKILL.md) | Multi-Agent Architecture Patterns workflow skill. Use this skill when the user needs This skill should be used when the  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
@@ -857,7 +859,7 @@ Generated: 2026-05-17T00:00:00+00:00
 | [`neon-postgres`](../../../../skills/neon-postgres/SKILL.md) | Neon Postgres workflow skill. Use this skill when the user needs Expert patterns for Neon serverless Postgres, branching | L2 instructions | 98/100 | 86/100 | 0/100 warn |
 | [`neon-postgres-v2`](../../../../skills/neon-postgres-v2/SKILL.md) | Neon Postgres workflow skill. Use this skill when the user needs Expert patterns for Neon serverless Postgres, branching | L2 instructions | 98/100 | 86/100 | 0/100 warn |
 | [`nestjs-expert`](../../../../skills/nestjs-expert/SKILL.md) | Nest.js Expert workflow skill. Use this skill when the user needs You are an expert in Nest.js with deep knowledge of en | L2 instructions | 100/100 | 88/100 | 90/100 warn |
-| [`nestjs-expert-v2`](../../../../skills/nestjs-expert-v2/SKILL.md) | Nest.js Expert workflow skill. Use this skill when the user needs You are an expert in Nest.js with deep knowledge of en | L2 instructions | 100/100 | 87/100 | 90/100 warn |
+| [`nestjs-expert-v2`](../../../../skills/nestjs-expert-v2/SKILL.md) | Nest.js Expert workflow skill. Use this skill when the user needs You are an expert in Nest.js with deep knowledge of en | L2 instructions | 100/100 | 88/100 | 90/100 warn |
 | [`nestjs-modular-monolith`](../../../../skills/nestjs-modular-monolith/SKILL.md) | Modular Monolith Specialist workflow skill. Use this skill when the user needs Specialist in designing and implementing  | L3 resources | 100/100 | 98/100 | 0/100 warn |
 | [`nestjs-modular-monolith--omni`](../../../../skills_omni/nestjs-modular-monolith/SKILL.md) | Modular Monolith Specialist workflow skill. Use this skill when the user needs Specialist in designing and implementing  | L3 resources | 100/100 | 98/100 | 0/100 warn |
 | [`nodejs-backend-patterns`](../../../../skills/nodejs-backend-patterns/SKILL.md) | Node.js Backend Patterns workflow skill. Use this skill when the user needs Comprehensive guidance for building scalable | L2 instructions | 99/100 | 88/100 | 0/100 warn |
@@ -1379,6 +1381,7 @@ Generated: 2026-05-17T00:00:00+00:00
 | [`git-hooks-automation-v2`](../../../../skills/git-hooks-automation-v2/SKILL.md) | Git Hooks Automation workflow skill. Use this skill when the user needs Master Git hooks setup with Husky, lint-staged,  | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`git-hooks-automation-v2--omni`](../../../../skills_omni/git-hooks-automation-v2/SKILL.md) | Git Hooks Automation workflow skill. Use this skill when the user needs Master Git hooks setup with Husky, lint-staged,  | L2 instructions | 100/100 | 86/100 | 100/100 passed |
 | [`git-pr-review`](../../../../skills/git-pr-review/SKILL.md) | git-pr-review workflow skill. Use this skill when the user needs Generate a concise and structured PR description from c | L2 instructions | 98/100 | 86/100 | 50/100 warn |
+| [`git-pr-review-v2`](../../../../skills/git-pr-review-v2/SKILL.md) | git-pr-review workflow skill. Use this skill when the user needs Generate a concise and structured PR description from c | L2 instructions | 98/100 | 86/100 | 50/100 warn |
 | [`git-pr-workflows-pr-enhance`](../../../../skills/git-pr-workflows-pr-enhance/SKILL.md) | Pull Request Enhancement workflow skill. Use this skill when the user needs You are a PR optimization expert specializin | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`git-pr-workflows-pr-enhance--omni`](../../../../skills_omni/git-pr-workflows-pr-enhance/SKILL.md) | Pull Request Enhancement workflow skill. Use this skill when the user needs You are a PR optimization expert specializin | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`git-pr-workflows-pr-enhance-v2`](../../../../skills/git-pr-workflows-pr-enhance-v2/SKILL.md) | Pull Request Enhancement workflow skill. Use this skill when the user needs You are a PR optimization expert specializin | L2 instructions | 100/100 | 89/100 | 100/100 passed |
@@ -1429,6 +1432,7 @@ Generated: 2026-05-17T00:00:00+00:00
 | [`impress`](../../../../skills/impress/SKILL.md) | LibreOffice Impress workflow skill. Use this skill when the user needs Presentation creation, format conversion (ODP/PPT | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`impress-v2`](../../../../skills/impress-v2/SKILL.md) | LibreOffice Impress workflow skill. Use this skill when the user needs Presentation creation, format conversion (ODP/PPT | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`ingest-youtube`](../../../../skills/ingest-youtube/SKILL.md) | ingest-youtube \u2014 YouTube-to-vault connector workflow skill. Use this skill when the user needs Pull a YouTube video | L3 resources | 100/100 | 93/100 | 95/100 passed |
+| [`ingest-youtube-v2`](../../../../skills/ingest-youtube-v2/SKILL.md) | ingest-youtube \u2014 YouTube-to-vault connector workflow skill. Use this skill when the user needs Pull a YouTube video | L3 resources | 100/100 | 93/100 | 95/100 passed |
 | [`instagram-automation`](../../../../skills/instagram-automation/SKILL.md) | Instagram Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Instagram tasks via Rube M | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`instagram-automation-v2`](../../../../skills/instagram-automation-v2/SKILL.md) | Instagram Automation via Rube MCP workflow skill. Use this skill when the user needs Automate Instagram tasks via Rube M | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`interactive-portfolio`](../../../../skills/interactive-portfolio/SKILL.md) | Interactive Portfolio workflow skill. Use this skill when the user needs Expert in building portfolios that actually lan | L2 instructions | 100/100 | 86/100 | 100/100 passed |
@@ -2583,6 +2587,7 @@ Generated: 2026-05-17T00:00:00+00:00
 | [`dwarf-expert-v2`](../../../../skills/dwarf-expert-v2/SKILL.md) | Overview workflow skill. Use this skill when the user needs Provides expertise for analyzing DWARF debug files and under | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`dwarf-expert-v2--omni`](../../../../skills_omni/dwarf-expert-v2/SKILL.md) | Overview workflow skill. Use this skill when the user needs Provides expertise for analyzing DWARF debug files and under | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`ejentum-reasoning-harness`](../../../../skills/ejentum-reasoning-harness/SKILL.md) | Ejentum Reasoning Harness workflow skill. Use this skill when the user needs MCP server exposing four cognitive harness  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`ejentum-reasoning-harness-v2`](../../../../skills/ejentum-reasoning-harness-v2/SKILL.md) | Ejentum Reasoning Harness workflow skill. Use this skill when the user needs MCP server exposing four cognitive harness  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`electron-development`](../../../../skills/electron-development/SKILL.md) | Electron Development workflow skill. Use this skill when the user needs Master Electron desktop app development with sec | L2 instructions | 100/100 | 87/100 | 70/100 warn |
 | [`electron-development--omni`](../../../../skills_omni/electron-development/SKILL.md) | Electron Development workflow skill. Use this skill when the user needs Master Electron desktop app development with sec | L2 instructions | 100/100 | 87/100 | 70/100 warn |
 | [`electron-development-v2`](../../../../skills/electron-development-v2/SKILL.md) | Electron Development workflow skill. Use this skill when the user needs Master Electron desktop app development with sec | L2 instructions | 100/100 | 87/100 | 70/100 warn |
@@ -2725,6 +2730,7 @@ Generated: 2026-05-17T00:00:00+00:00
 | [`lightning-channel-factories`](../../../../skills/lightning-channel-factories/SKILL.md) | lightning-channel-factories workflow skill. Use this skill when the user needs Technical reference on Lightning Network  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`lightning-channel-factories-v2`](../../../../skills/lightning-channel-factories-v2/SKILL.md) | lightning-channel-factories workflow skill. Use this skill when the user needs Technical reference on Lightning Network  | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`logic-lens`](../../../../skills/logic-lens/SKILL.md) | Logic Lens workflow skill. Use this skill when the user needs AI-powered Claude Code skill that performs deep code revie | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`logic-lens-v2`](../../../../skills/logic-lens-v2/SKILL.md) | Logic Lens workflow skill. Use this skill when the user needs AI-powered Claude Code skill that performs deep code revie | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`macos-menubar-tuist-app`](../../../../skills/macos-menubar-tuist-app/SKILL.md) | macos-menubar-tuist-app workflow skill. Use this skill when the user needs Build, refactor, or review SwiftUI macOS menu | L2 instructions | 100/100 | 96/100 | 100/100 passed |
 | [`macos-menubar-tuist-app-v2`](../../../../skills/macos-menubar-tuist-app-v2/SKILL.md) | macos-menubar-tuist-app workflow skill. Use this skill when the user needs Build, refactor, or review SwiftUI macOS menu | L2 instructions | 100/100 | 96/100 | 100/100 passed |
 | [`makepad-animation`](../../../../skills/makepad-animation/SKILL.md) | Makepad Animation Skill workflow skill. Use this skill when the user needs &#124; and the operator should preserve the u | L2 instructions | 96/100 | 85/100 | 100/100 passed |
@@ -3101,7 +3107,7 @@ Generated: 2026-05-17T00:00:00+00:00
 | [`distributed-tracing-v3--omni`](../../../../skills_omni/distributed-tracing-v3/SKILL.md) | Distributed Tracing workflow skill. Use this skill when the user needs Implement distributed tracing with Jaeger and Tem | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`docker-expert`](../../../../skills/docker-expert/SKILL.md) | Docker Expert workflow skill. Use this skill when the user needs You are an advanced Docker containerization expert with | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`docker-expert--omni`](../../../../skills_omni/docker-expert/SKILL.md) | Docker Expert workflow skill. Use this skill when the user needs You are an advanced Docker containerization expert with | L2 instructions | 100/100 | 87/100 | 100/100 passed |
-| [`docker-expert-v2`](../../../../skills/docker-expert-v2/SKILL.md) | Docker Expert workflow skill. Use this skill when the user needs You are an advanced Docker containerization expert with | L2 instructions | 100/100 | 87/100 | 100/100 passed |
+| [`docker-expert-v2`](../../../../skills/docker-expert-v2/SKILL.md) | Docker Expert workflow skill. Use this skill when the user needs You are an advanced Docker containerization expert with | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`docker-expert-v2--omni`](../../../../skills_omni/docker-expert-v2/SKILL.md) | Docker Expert workflow skill. Use this skill when the user needs You are an advanced Docker containerization expert with | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`docker-expert-v3`](../../../../skills/docker-expert-v3/SKILL.md) | Docker Expert workflow skill. Use this skill when the user needs You are an advanced Docker containerization expert with | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`docker-expert-v3--omni`](../../../../skills_omni/docker-expert-v3/SKILL.md) | Docker Expert workflow skill. Use this skill when the user needs You are an advanced Docker containerization expert with | L2 instructions | 100/100 | 87/100 | 100/100 passed |
@@ -3204,6 +3210,7 @@ Generated: 2026-05-17T00:00:00+00:00
 | [`kubernetes-deployment`](../../../../skills/kubernetes-deployment/SKILL.md) | Kubernetes Deployment Workflow workflow skill. Use this skill when the user needs Kubernetes deployment workflow for con | L2 instructions | 97/100 | 84/100 | 100/100 passed |
 | [`kubernetes-deployment-v2`](../../../../skills/kubernetes-deployment-v2/SKILL.md) | Kubernetes Deployment Workflow workflow skill. Use this skill when the user needs Kubernetes deployment workflow for con | L2 instructions | 97/100 | 84/100 | 100/100 passed |
 | [`kubestellar-console`](../../../../skills/kubestellar-console/SKILL.md) | KubeStellar Console workflow skill. Use this skill when the user needs Multi-cluster Kubernetes dashboard with AI-powere | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`kubestellar-console-v2`](../../../../skills/kubestellar-console-v2/SKILL.md) | KubeStellar Console workflow skill. Use this skill when the user needs Multi-cluster Kubernetes dashboard with AI-powere | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`leiloeiro-edital`](../../../../skills/leiloeiro-edital/SKILL.md) | SKILL DE EDITAL \u2014 AN\u00c1LISE PERICIAL DE EDITAIS DE LEIL\u00c3O workflow skill. Use this skill when the user need | L3 resources | 100/100 | 95/100 | 95/100 passed |
 | [`leiloeiro-edital-v2`](../../../../skills/leiloeiro-edital-v2/SKILL.md) | SKILL DE EDITAL \u2014 AN\u00c1LISE PERICIAL DE EDITAIS DE LEIL\u00c3O workflow skill. Use this skill when the user need | L3 resources | 100/100 | 95/100 | 95/100 passed |
 | [`leiloeiro-ia`](../../../../skills/leiloeiro-ia/SKILL.md) | LEILOEIRO JUR\u00cdDICO, PERICIAL E DE MERCADO \u2014 IA workflow skill. Use this skill when the user needs Especialista | L3 resources | 100/100 | 96/100 | 95/100 passed |
@@ -3233,6 +3240,7 @@ Generated: 2026-05-17T00:00:00+00:00
 | [`network-engineer`](../../../../skills/network-engineer/SKILL.md) | network-engineer workflow skill. Use this skill when the user needs Expert network engineer specializing in modern cloud | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`network-engineer-v2`](../../../../skills/network-engineer-v2/SKILL.md) | network-engineer workflow skill. Use this skill when the user needs Expert network engineer specializing in modern cloud | L2 instructions | 100/100 | 89/100 | 100/100 passed |
 | [`news-sentiment-engine`](../../../../skills/news-sentiment-engine/SKILL.md) | News Sentiment Engine (Free) workflow skill. Use this skill when the user needs Multi-source RSS news aggregation with C | L2 instructions | 100/100 | 88/100 | 80/100 warn |
+| [`news-sentiment-engine-v2`](../../../../skills/news-sentiment-engine-v2/SKILL.md) | News Sentiment Engine (Free) workflow skill. Use this skill when the user needs Multi-source RSS news aggregation with C | L2 instructions | 100/100 | 88/100 | 80/100 warn |
 | [`nx-ci-monitor`](../../../../skills/nx-ci-monitor/SKILL.md) | CI Monitor Command workflow skill. Use this skill when the user needs Monitor Nx Cloud CI pipeline status and handle sel | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`nx-ci-monitor--omni`](../../../../skills_omni/nx-ci-monitor/SKILL.md) | CI Monitor Command workflow skill. Use this skill when the user needs Monitor Nx Cloud CI pipeline status and handle sel | L2 instructions | 100/100 | 87/100 | 100/100 passed |
 | [`observability-engineer`](../../../../skills/observability-engineer/SKILL.md) | observability-engineer workflow skill. Use this skill when the user needs Build production-ready monitoring, logging, an | L2 instructions | 100/100 | 88/100 | 100/100 passed |
@@ -4041,6 +4049,7 @@ Generated: 2026-05-17T00:00:00+00:00
 | [`odoo-qweb-templates`](../../../../skills/odoo-qweb-templates/SKILL.md) | Odoo QWeb Templates workflow skill. Use this skill when the user needs Expert in Odoo QWeb templating for PDF reports, e | L2 instructions | 99/100 | 89/100 | 100/100 passed |
 | [`odoo-qweb-templates-v2`](../../../../skills/odoo-qweb-templates-v2/SKILL.md) | Odoo QWeb Templates workflow skill. Use this skill when the user needs Expert in Odoo QWeb templating for PDF reports, e | L2 instructions | 99/100 | 89/100 | 100/100 passed |
 | [`options-flow-analyzer`](../../../../skills/options-flow-analyzer/SKILL.md) | Options Flow Analyzer workflow skill. Use this skill when the user needs Real vs lottery call separation for options P/C | L2 instructions | 100/100 | 88/100 | 100/100 passed |
+| [`options-flow-analyzer-v2`](../../../../skills/options-flow-analyzer-v2/SKILL.md) | Options Flow Analyzer workflow skill. Use this skill when the user needs Real vs lottery call separation for options P/C | L2 instructions | 100/100 | 88/100 | 100/100 passed |
 | [`page-cro`](../../../../skills/page-cro/SKILL.md) | Page Conversion Rate Optimization (CRO) workflow skill. Use this skill when the user needs Analyze and optimize individu | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`page-cro-v2`](../../../../skills/page-cro-v2/SKILL.md) | Page Conversion Rate Optimization (CRO) workflow skill. Use this skill when the user needs Analyze and optimize individu | L2 instructions | 98/100 | 86/100 | 100/100 passed |
 | [`pakistan-payments-stack`](../../../../skills/pakistan-payments-stack/SKILL.md) | Pakistan Payments Stack for SaaS workflow skill. Use this skill when the user needs Design and implement production-grad | L2 instructions | 100/100 | 89/100 | 100/100 passed |

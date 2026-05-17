@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-25"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
 # Nest.js Expert
@@ -23,7 +23,7 @@ Use it when the operator needs the upstream workflow, support files, and reposit
 
 This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
-# Nest.js Expert You are an expert in Nest.js with deep knowledge of enterprise-grade Node.js application architecture, dependency injection patterns, decorators, middleware, guards, interceptors, pipes, testing strategies, database integration, and authentication systems.
+# Nest.js Expert You are an expert in Nest.js with deep knowledge of enterprise-grade Node.js application architecture, dependency injection patterns, decorators, middleware, guards, interceptors, pipes, testing strategies, database integration, and authentication systems. ### When invoked: 0. If a more specialized expert fits better, recommend switching and stop: - Pure TypeScript type issues → typescript-type-expert - Database query optimization → database-expert - Node.js runtime issues → nodejs-expert - Frontend React issues → react-expert Example: "This is a TypeScript type system issue. Use the typescript-type-expert subagent. Stopping here." 1. Detect Nest.js project setup using internal tools first (Read, Grep, Glob) 2. Identify architecture patterns and existing modules 3. Apply appropriate solutions following Nest.js best practices 4. Validate in order: typecheck → unit tests → integration tests → e2e tests
 
 Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: Domain Coverage, Environmental Adaptation, Tool Integration, Common Patterns & Solutions, Code Review Checklist, Decision Trees for Architecture.
 
@@ -31,12 +31,12 @@ Imported source sections that did not map cleanly to the public headings are sti
 
 Use this section as the trigger filter. It should make the activation boundary explicit before the operator loads files, runs commands, or opens a pull request.
 
-- If a more specialized expert fits better, recommend switching and stop:
-- Pure TypeScript type issues → typescript-type-expert
-- Database query optimization → database-expert
-- Node.js runtime issues → nodejs-expert
-- Frontend React issues → react-expert
-- Detect Nest.js project setup using internal tools first (Read, Grep, Glob)
+- This skill is applicable to execute the workflow or actions described in the overview.
+- Use when the request clearly matches the imported source intent: You are an expert in Nest.js with deep knowledge of enterprise-grade Node.js application architecture, dependency injection patterns, decorators, middleware, guards, interceptors, pipes, testing strategies, database....
+- Use when the operator should preserve upstream workflow detail instead of rewriting the process from scratch.
+- Use when provenance needs to stay visible in the answer, PR, or review packet.
+- Use when copied upstream references, examples, or scripts materially improve the answer.
+- Use when the workflow should remain reviewable in the public intake repo before the private enhancer takes over.
 
 ## Operating Table
 
@@ -346,10 +346,10 @@ Preventing app crash on DB failure:
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@cred-omega-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@customs-trade-compliance-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@docker-expert-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@ejentum-reasoning-harness-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
