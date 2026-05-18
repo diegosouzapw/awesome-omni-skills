@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-27"
-date_updated: "2026-04-27"
+date_updated: "2026-05-17"
 ---
 
 # UI/UX Pro Max - Design Intelligence
@@ -230,10 +230,10 @@ These are frequently overlooked issues that make UI look unprofessional:
 
 ## Related Skills
 
-- `@3d-web-experience-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@canvas-design-v4` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@form-cro-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@frontend-design-v5` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-search-documents-py-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@backend-dev-guidelines-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@browser-automation-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@cc-skill-security-review-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -492,6 +492,9 @@ Before delivering UI code, verify these items:
 - [ ] Form inputs have labels
 - [ ] Color is not the only indicator
 - [ ] `prefers-reduced-motion` respected
+
+### When to Use
+This skill is applicable to execute the workflow or actions described in the overview.
 
 #### Imported: Limitations
 

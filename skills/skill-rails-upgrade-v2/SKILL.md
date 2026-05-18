@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-25"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
 # Rails Upgrade Analyzer
@@ -267,6 +267,13 @@ List the most important changes the user needs to handle:
 
 ---
 
+
+### When to Use This Skill
+
+Analyze Rails apps and provide upgrade assessments
+
+Use this skill when working with analyze rails apps and provide upgrade assessments.
+
 #### Imported: Step 9: Selective File Update (replaces `rails app:update`)
 
 **IMPORTANT:** Do NOT run `rails app:update` as it overwrites files without considering local customizations. Instead, follow this selective merge process:
@@ -319,6 +326,13 @@ After verifying the app works:
 4. Delete the `new_framework_defaults_X_Y.rb` file
 
 ---
+
+
+### When to Use This Skill
+
+Analyze Rails apps and provide upgrade assessments
+
+Use this skill when working with analyze rails apps and provide upgrade assessments.
 
 #### Imported: Upgrade Plan: Rails X.Y.Z → A.B.C
 
@@ -505,10 +519,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@production-audit-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@production-scheduling-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@quality-nonconformance-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@react-best-practices-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-27"
-date_updated: "2026-04-27"
+date_updated: "2026-05-17"
 ---
 
 # React Patterns
@@ -210,10 +210,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@3d-web-experience-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@canvas-design-v4` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@form-cro-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@frontend-design-v5` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-search-documents-py-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@backend-dev-guidelines-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@browser-automation-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@cc-skill-security-review-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -336,6 +336,14 @@ Use this support matrix and the linked files below as the operator packet for th
 | useEffect for everything | Server components |
 | Premature optimization | Profile first |
 | Index as key | Stable unique ID |
+
+---
+
+#### Imported: 11. File Structure
+
+<img width="1150" height="1438" alt="image" src="https://github.com/user-attachments/assets/10369698-472c-4695-a494-2c0672103aa1" />
+
+Use this image as a reference for a better file structure of the project
 
 ---
 

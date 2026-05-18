@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
 # Frontend Development Guidelines
@@ -25,7 +25,7 @@ This intake keeps the copied upstream files intact and uses the `external_source
 
 # Frontend Development Guidelines (React · TypeScript · Suspense-First · Production-Grade) You are a senior frontend engineer operating under strict architectural and performance standards. Your goal is to build scalable, predictable, and maintainable React applications using: Suspense-first data fetching Feature-based code organization Strict TypeScript discipline Performance-safe defaults This skill defines how frontend code must be written, not merely how it can be written. ---
 
-Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: 2. Core Architectural Doctrine (Non-Negotiable), 4. Quick Start Checklists, 5. Import Aliases (Required), 6. Component Standards, 7. Data Fetching Doctrine, 9. Styling Standards (MUI v7).
+Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: 2. Core Architectural Doctrine (Non-Negotiable), 3. Quick Start Checklists, 4. Import Aliases (Required), 5. Component Standards, 6. Data Fetching Doctrine, 8. Styling Standards (MUI v7).
 
 ## When to Use This Skill
 
@@ -62,7 +62,7 @@ This workflow is intentionally editorial and operational at the same time. It ke
 
 ### Imported Workflow Notes
 
-#### Imported: 8. Routing Standards (TanStack Router)
+#### Imported: 7. Routing Standards (TanStack Router)
 
 * Folder-based routing only
 * Lazy load route components
@@ -177,10 +177,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-criminal` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-especialista` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@agent-memory-systems` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -236,7 +236,7 @@ FFCI = (Architectural Fit + Reusability + Performance) − (Complexity + Mainten
 
 ---
 
-#### Imported: 4. Quick Start Checklists
+#### Imported: 3. Quick Start Checklists
 
 ### New Component Checklist
 
@@ -264,7 +264,7 @@ FFCI = (Architectural Fit + Reusability + Performance) − (Complexity + Mainten
 
 ---
 
-#### Imported: 5. Import Aliases (Required)
+#### Imported: 4. Import Aliases (Required)
 
 | Alias         | Path             |
 | ------------- | ---------------- |
@@ -277,7 +277,7 @@ Aliases must be used consistently. Relative imports beyond one level are discour
 
 ---
 
-#### Imported: 6. Component Standards
+#### Imported: 5. Component Standards
 
 ### Required Structure Order
 
@@ -298,7 +298,7 @@ Always wrapped in `<SuspenseLoader>`.
 
 ---
 
-#### Imported: 7. Data Fetching Doctrine
+#### Imported: 6. Data Fetching Doctrine
 
 ### Primary Pattern
 
@@ -321,7 +321,7 @@ Always wrapped in `<SuspenseLoader>`.
 
 ---
 
-#### Imported: 9. Styling Standards (MUI v7)
+#### Imported: 8. Styling Standards (MUI v7)
 
 ### Inline vs Separate
 
@@ -339,7 +339,7 @@ Theme access must always be type-safe.
 
 ---
 
-#### Imported: 10. Loading & Error Handling
+#### Imported: 9. Loading & Error Handling
 
 ### Absolute Rule
 
@@ -353,7 +353,7 @@ Theme access must always be type-safe.
 
 ---
 
-#### Imported: 11. Performance Defaults
+#### Imported: 10. Performance Defaults
 
 * `useMemo` for expensive derivations
 * `useCallback` for passed handlers
@@ -365,7 +365,7 @@ Performance regressions are bugs.
 
 ---
 
-#### Imported: 12. TypeScript Standards
+#### Imported: 11. TypeScript Standards
 
 * Strict mode enabled
 * No implicit `any`
@@ -375,7 +375,7 @@ Performance regressions are bugs.
 
 ---
 
-#### Imported: 13. Canonical File Structure
+#### Imported: 12. Canonical File Structure
 
 ```
 src/
@@ -399,7 +399,7 @@ src/
 
 ---
 
-#### Imported: 14. Canonical Component Template
+#### Imported: 13. Canonical Component Template
 
 ```ts
 import React, { useState, useCallback } from 'react';
@@ -440,7 +440,7 @@ export default MyComponent;
 
 ---
 
-#### Imported: 15. Anti-Patterns (Immediate Rejection)
+#### Imported: 14. Anti-Patterns (Immediate Rejection)
 
 ❌ Early loading returns
 ❌ Feature logic in `components/`
@@ -451,7 +451,7 @@ export default MyComponent;
 
 ---
 
-#### Imported: 16. Integration With Other Skills
+#### Imported: 15. Integration With Other Skills
 
 * **frontend-design** → Visual systems & aesthetics
 * **page-cro** → Layout hierarchy & conversion logic
@@ -461,7 +461,7 @@ export default MyComponent;
 
 ---
 
-#### Imported: 17. Operator Validation Checklist
+#### Imported: 16. Operator Validation Checklist
 
 Before finalizing code:
 
@@ -475,10 +475,14 @@ Before finalizing code:
 
 ---
 
-#### Imported: 18. Skill Status
+#### Imported: 17. Skill Status
 
 **Status:** Stable, opinionated, and enforceable
 **Intended Use:** Production React codebases with long-term maintenance horizons
+
+
+### When to Use
+This skill is applicable to execute the workflow or actions described in the overview.
 
 #### Imported: Limitations
 

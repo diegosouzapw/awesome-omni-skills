@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-26"
+date_updated: "2026-05-17"
 ---
 
 # Loki Mode - Multi-Agent Autonomous Startup System
@@ -214,10 +214,10 @@ See `references/lab-research-patterns.md` for Constitutional AI implementation.
 
 ## Related Skills
 
-- `@ab-test-setup-v4` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@analytics-tracking-v4` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@app-store-optimization-v4` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@content-creator-v4` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-criminal` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-especialista` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@agent-memory-systems` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

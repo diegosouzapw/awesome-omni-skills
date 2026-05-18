@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-25"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
 # Logistics Exception Management
@@ -29,9 +29,8 @@ Imported source sections that did not map cleanly to the public headings are sti
 
 Use this section as the trigger filter. It should make the activation boundary explicit before the operator loads files, runs commands, or opens a pull request.
 
-- Handling delays, damages, shortages, misdeliveries, and claims across LTL, FTL, parcel, intermodal, ocean, or air.
-- Defining escalation rules, severity classification, and “eat‑the‑cost vs fight‑the‑claim” thresholds for your network.
-- Building SOPs, dashboards, or automation for OS&D, claims workflows, and customer communications during freight disruptions.
+- Use this skill when dealing with deviations from planned logistics operations, such as transit delays, damaged shipments, lost cargo, or when initiating and managing claims and disputes with freight carriers.
+- # Logistics Exception Management
 - Use when provenance needs to stay visible in the answer, PR, or review packet.
 - Use when copied upstream references, examples, or scripts materially improve the answer.
 - Use when the workflow should remain reviewable in the public intake repo before the private enhancer takes over.
@@ -134,10 +133,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@cred-omega-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@customs-trade-compliance-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@docker-expert-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@ejentum-reasoning-harness-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -165,6 +164,13 @@ Use this support matrix and the linked files below as the operator packet for th
 - For detailed decision frameworks, escalation matrices, and mode-specific workflows, see [decision-frameworks.md](references/decision-frameworks.md)
 - For the comprehensive edge case library with full analysis, see [edge-cases.md](references/edge-cases.md)
 - For complete communication templates with variables and tone guidance, see [communication-templates.md](references/communication-templates.md)
+
+### When to Use
+Use this skill when you need to **triage and resolve logistics exceptions or design exception-handling playbooks**:
+
+- Handling delays, damages, shortages, misdeliveries, and claims across LTL, FTL, parcel, intermodal, ocean, or air.
+- Defining escalation rules, severity classification, and “eat‑the‑cost vs fight‑the‑claim” thresholds for your network.
+- Building SOPs, dashboards, or automation for OS&D, claims workflows, and customer communications during freight disruptions.
 
 #### Imported: Core Knowledge
 

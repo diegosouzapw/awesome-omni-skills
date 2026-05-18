@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-25"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
 # Workflow Automation
@@ -52,13 +52,13 @@ Use this section as the trigger filter. It should make the activation boundary e
 
 This workflow is intentionally editorial and operational at the same time. It keeps the imported source useful to the operator while still satisfying the public intake standards that feed the downstream enhancer flow.
 
-1. """ { "Type": "Parallel", "Branches": [ { "StartAt": "SecurityAnalysis", "States": { "SecurityAnalysis": { "Type": "Task", "Resource": "arn:aws:lambda:...:security-analyzer", "End": true } } }, { "StartAt": "PerformanceAnalysis", "States": { "PerformanceAnalysis": { "Type": "Task", "Resource": "arn:aws:lambda:...:performance-analyzer", "End": true } } } ], "Next": "AggregateResults" } """ ### Orchestrator-Worker Pattern Central coordinator dispatches work to specialized workers When to use: Complex tasks requiring different expertise, dynamic subtask creation # ORCHESTRATOR-WORKER PATTERN: """ ┌─────────────────────────────────────┐ │ ORCHESTRATOR │ │ - Analyzes task │ │ - Creates subtasks │ │ - Dispatches to workers │ │ - Aggregates results │ └─────────────────────────────────────┘ │ ┌───────────┼───────────┐ ▼ ▼ ▼ ┌───────┐ ┌───────┐ ┌───────┐ │Worker1│ │Worker2│ │Worker3│ │Create │ │Modify │ │Delete │ └───────┘ └───────┘ └───────┘ """ """ // Schedule workflow to run on cron const handle = await client.workflow.start(dailyReportWorkflow, { taskQueue: 'reports', workflowId: 'daily-report', cronSchedule: '0 9 *', // 9 AM daily }); """ await step.run("process-all", async () => { for (const item of thousandItems) { await processItem(item); // Hours of work, one checkpoint } }); for (const item of thousandItems) { await step.run(process-${item.id}, async () => { return processItem(item); // Checkpoint after each }); } await step.invoke("process-batch", { function: batchProcessor, data: { items: batch } }); ### Activities Without Timeout Configuration Severity: HIGH Situation: Calling external services from workflow activities Symptoms: Workflows hang indefinitely.
-2. Dead workflows that never complete or fail.
-3. Manual intervention needed to kill stuck workflows.
-4. Why this breaks: External APIs can hang forever.
-5. Without timeout, your workflow waits forever.
-6. Unlike HTTP clients, workflow activities don't have default timeouts in most platforms.
-7. Recommended fix: # ALWAYS set timeouts on activities: { "Type": "Task", "TimeoutSeconds": 30, "HeartbeatSeconds": 10, "Resource": "arn:aws:lambda:..." } # Rule: Activity timeout < Workflow timeout ### Side Effects Outside Step/Activity Boundaries Severity: CRITICAL Situation: Writing code that runs during workflow replay Symptoms: Random failures on replay.
+1. Error Trigger node
+2. Catches any node failure in the workflow
+3. Provides error details and context
+4. Connected error handling:
+5. Consider dead letter pattern:
+6. Retry on node failures (built-in)
+7. Node timeout settings
 
 ### Imported Workflow Notes
 
@@ -129,22 +129,6 @@ const handle = await client.workflow.start(dailyReportWorkflow, {
 });
 """
 
-#### Imported: WRONG - one long step:
-
-await step.run("process-all", async () => {
-  for (const item of thousandItems) {
-    await processItem(item);  // Hours of work, one checkpoint
-  }
-});
-
-#### Imported: CORRECT - many small steps:
-
-for (const item of thousandItems) {
-  await step.run(`process-${item.id}`, async () => {
-    return processItem(item);  // Checkpoint after each
-  });
-}
-
 #### Imported: Consider child workflows for long processes:
 
 await step.invoke("process-batch", {
@@ -171,6 +155,22 @@ timeouts in most platforms.
 Recommended fix:
 
 # ALWAYS set timeouts on activities:
+
+### Temporal:
+const activities = proxyActivities<typeof activitiesType>({
+  startToCloseTimeout: '30 seconds',  # Required!
+  scheduleToCloseTimeout: '5 minutes',
+  heartbeatTimeout: '10 seconds',  # For long activities
+  retry: {
+    maximumAttempts: 3,
+    initialInterval: '1 second',
+  }
+});
+
+### Inngest:
+await step.run("call-api", { timeout: "30s" }, async () => {
+  return fetch(url, { signal: AbortSignal.timeout(25000) });
+});
 
 #### Imported: AWS Step Functions:
 
@@ -243,6 +243,219 @@ that's already failing. Backoff gives the service time to recover.
 Recommended fix:
 
 # ALWAYS use exponential backoff:
+
+### Temporal:
+const activities = proxyActivities({
+  retry: {
+    initialInterval: '1 second',
+    backoffCoefficient: 2,       # 1s, 2s, 4s, 8s, 16s...
+    maximumInterval: '1 minute',  # Cap the backoff
+    maximumAttempts: 5,
+  }
+});
+
+### Inngest (built-in backoff):
+{
+  id: "my-function",
+  retries: 5,  # Uses exponential backoff by default
+}
+
+### Manual backoff:
+const backoff = (attempt) => {
+  const base = 1000;
+  const max = 60000;
+  const delay = Math.min(base * Math.pow(2, attempt), max);
+  const jitter = delay * 0.1 * Math.random();
+  return delay + jitter;
+};
+
+# Add jitter to prevent thundering herd
+
+### Storing Large Data in Workflow State
+
+Severity: HIGH
+
+Situation: Passing large payloads between workflow steps
+
+Symptoms:
+Slow workflow execution. Memory errors. "Payload too large" errors.
+Expensive storage costs. Slow replays.
+
+Why this breaks:
+Workflow state is persisted and replayed. A 10MB payload is stored,
+serialized, and deserialized on every step. This adds latency and
+cost. Some platforms have hard limits (e.g., Step Functions 256KB).
+
+Recommended fix:
+
+# WRONG - large data in workflow:
+await step.run("fetch-data", async () => {
+  const largeDataset = await fetchAllRecords();  // 100MB!
+  return largeDataset;  // Stored in workflow state
+});
+
+# CORRECT - store reference, not data:
+await step.run("fetch-data", async () => {
+  const largeDataset = await fetchAllRecords();
+  const s3Key = await uploadToS3(largeDataset);
+  return { s3Key };  // Just the reference
+});
+
+const processed = await step.run("process-data", async () => {
+  const data = await downloadFromS3(fetchResult.s3Key);
+  return processData(data);
+});
+
+# For Step Functions, use S3 for large payloads:
+{
+  "Type": "Task",
+  "Resource": "arn:aws:states:::s3:putObject",
+  "Parameters": {
+    "Bucket": "my-bucket",
+    "Key.$": "$.outputKey",
+    "Body.$": "$.largeData"
+  }
+}
+
+### Missing Dead Letter Queue or Failure Handler
+
+Severity: HIGH
+
+Situation: Workflows that exhaust all retries
+
+Symptoms:
+Failed workflows silently disappear. No alerts when things break.
+Customer issues discovered days later. Manual recovery impossible.
+
+Why this breaks:
+Even with retries, some workflows will fail permanently. Without
+dead letter handling, you don't know they failed. The customer
+waits forever, you're unaware, and there's no data to debug.
+
+Recommended fix:
+
+# Inngest onFailure handler:
+export const myFunction = inngest.createFunction(
+  {
+    id: "process-order",
+    onFailure: async ({ error, event, step }) => {
+      // Log to error tracking
+      await step.run("log-error", () =>
+        sentry.captureException(error, { extra: { event } })
+      );
+
+      // Alert team
+      await step.run("alert", () =>
+        slack.postMessage({
+          channel: "#alerts",
+          text: `Order ${event.data.orderId} failed: ${error.message}`
+        })
+      );
+
+      // Queue for manual review
+      await step.run("queue-review", () =>
+        db.insert(failedOrders, { orderId, error, event })
+      );
+    }
+  },
+  { event: "order/created" },
+  async ({ event, step }) => { ... }
+);
+
+# n8n Error Trigger:
+[Error Trigger]  →  [Log to DB]  →  [Slack Alert]  →  [Create Ticket]
+
+# Temporal: Use workflow.failed or workflow signals
+
+### n8n Workflow Without Error Trigger
+
+Severity: MEDIUM
+
+Situation: Building production n8n workflows
+
+Symptoms:
+Workflow fails silently. Errors only visible in execution logs.
+No alerts, no recovery, no visibility until someone notices.
+
+Why this breaks:
+n8n doesn't notify on failure by default. Without an Error Trigger
+node connected to alerting, failures are only visible in the UI.
+Production failures go unnoticed.
+
+Recommended fix:
+
+# Every production n8n workflow needs:
+
+1. Error Trigger node
+   - Catches any node failure in the workflow
+   - Provides error details and context
+
+2. Connected error handling:
+   [Error Trigger]
+       ↓
+   [Set: Extract Error Details]
+       ↓
+   [HTTP: Log to Error Service]
+       ↓
+   [Slack/Email: Alert Team]
+
+3. Consider dead letter pattern:
+   [Error Trigger]
+       ↓
+   [Redis/Postgres: Store Failed Job]
+       ↓
+   [Separate Recovery Workflow]
+
+# Also use:
+- Retry on node failures (built-in)
+- Node timeout settings
+- Workflow timeout
+
+### Long-Running Temporal Activities Without Heartbeat
+
+Severity: MEDIUM
+
+Situation: Activities that run for more than a few seconds
+
+Symptoms:
+Activity timeouts even when work is progressing. Lost work when
+workers restart. Can't cancel long-running activities.
+
+Why this breaks:
+Temporal detects stuck activities via heartbeat. Without heartbeat,
+Temporal can't tell if activity is working or stuck. Long activities
+appear hung, may timeout, and can't be gracefully cancelled.
+
+Recommended fix:
+
+# For any activity > 10 seconds, add heartbeat:
+
+import { heartbeat, activityInfo } from '@temporalio/activity';
+
+export async function processLargeFile(fileUrl: string): Promise<void> {
+  const chunks = await downloadChunks(fileUrl);
+
+  for (let i = 0; i < chunks.length; i++) {
+    // Check for cancellation
+    const { cancelled } = activityInfo();
+    if (cancelled) {
+      throw new CancelledFailure('Activity cancelled');
+    }
+
+    await processChunk(chunks[i]);
+
+    // Report progress
+    heartbeat({ progress: (i + 1) / chunks.length });
+  }
+}
+
+# Configure heartbeat timeout:
+const activities = proxyActivities({
+  startToCloseTimeout: '10 minutes',
+  heartbeatTimeout: '30 seconds',  # Must heartbeat every 30s
+});
+
+# If no heartbeat for 30s, activity is considered stuck
 
 #### Imported: Capabilities
 
@@ -404,50 +617,6 @@ export async function orchestratorWorkflow(task: ComplexTask) {
 }
 """
 
-#### Imported: Stripe example:
-
-await stripe.paymentIntents.create({
-  amount: 1000,
-  currency: 'usd',
-  idempotency_key: `order-${orderId}-payment`  # Critical!
-});
-
-#### Imported: Email example:
-
-await step.run("send-confirmation", async () => {
-  const alreadySent = await checkEmailSent(orderId);
-  if (alreadySent) return { skipped: true };
-  return sendEmail(customer, orderId);
-});
-
-#### Imported: Database example:
-
-await db.query(`
-  INSERT INTO orders (id, ...) VALUES ($1, ...)
-  ON CONFLICT (id) DO NOTHING
-`, [orderId]);
-
-# Generate idempotency key from stable inputs, not random values
-
-### Workflow Runs for Hours/Days Without Checkpoints
-
-Severity: HIGH
-
-Situation: Long-running workflows with infrequent steps
-
-Symptoms:
-Memory consumption grows. Worker timeouts. Lost progress after
-crashes. "Workflow exceeded maximum duration" errors.
-
-Why this breaks:
-Workflows hold state in memory until checkpointed. A workflow that
-runs for 24 hours with one step per hour accumulates state for 24h.
-Workers have memory limits. Functions have execution time limits.
-
-Recommended fix:
-
-# Break long workflows into checkpointed steps:
-
 ## Best Practices
 
 Treat the generated public skill as a reviewable packaging layer around the upstream repository. The goal is to keep provenance explicit and load only the copied source material that materially improves execution.
@@ -492,10 +661,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@wiki-page-writer-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@wiki-qa-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@wiki-researcher-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@wiki-vitepress-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-search-documents-py-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@backend-dev-guidelines-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@browser-automation-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@cc-skill-security-review-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -800,244 +969,65 @@ Recommended fix:
 
 # ALWAYS use idempotency keys for external calls:
 
+### Stripe example:
+await stripe.paymentIntents.create({
+  amount: 1000,
+  currency: 'usd',
+  idempotency_key: `order-${orderId}-payment`  # Critical!
+});
+
+### Email example:
+await step.run("send-confirmation", async () => {
+  const alreadySent = await checkEmailSent(orderId);
+  if (alreadySent) return { skipped: true };
+  return sendEmail(customer, orderId);
+});
+
+### Database example:
+await db.query(`
+  INSERT INTO orders (id, ...) VALUES ($1, ...)
+  ON CONFLICT (id) DO NOTHING
+`, [orderId]);
+
+# Generate idempotency key from stable inputs, not random values
+
+### Workflow Runs for Hours/Days Without Checkpoints
+
+Severity: HIGH
+
+Situation: Long-running workflows with infrequent steps
+
+Symptoms:
+Memory consumption grows. Worker timeouts. Lost progress after
+crashes. "Workflow exceeded maximum duration" errors.
+
+Why this breaks:
+Workflows hold state in memory until checkpointed. A workflow that
+runs for 24 hours with one step per hour accumulates state for 24h.
+Workers have memory limits. Functions have execution time limits.
+
+Recommended fix:
+
+# Break long workflows into checkpointed steps:
+
+### WRONG - one long step:
+await step.run("process-all", async () => {
+  for (const item of thousandItems) {
+    await processItem(item);  // Hours of work, one checkpoint
+  }
+});
+
+### CORRECT - many small steps:
+for (const item of thousandItems) {
+  await step.run(`process-${item.id}`, async () => {
+    return processItem(item);  // Checkpoint after each
+  });
+}
+
 #### Imported: For very long waits, use sleep:
 
 await step.sleep("wait-for-trial", "14 days");
 // Doesn't consume resources while waiting
-
-#### Imported: Temporal:
-
-const activities = proxyActivities<typeof activitiesType>({
-  startToCloseTimeout: '30 seconds',  # Required!
-  scheduleToCloseTimeout: '5 minutes',
-  heartbeatTimeout: '10 seconds',  # For long activities
-  retry: {
-    maximumAttempts: 3,
-    initialInterval: '1 second',
-  }
-});
-
-#### Imported: Inngest:
-
-await step.run("call-api", { timeout: "30s" }, async () => {
-  return fetch(url, { signal: AbortSignal.timeout(25000) });
-});
-
-#### Imported: Temporal:
-
-const activities = proxyActivities({
-  retry: {
-    initialInterval: '1 second',
-    backoffCoefficient: 2,       # 1s, 2s, 4s, 8s, 16s...
-    maximumInterval: '1 minute',  # Cap the backoff
-    maximumAttempts: 5,
-  }
-});
-
-#### Imported: Inngest (built-in backoff):
-
-{
-  id: "my-function",
-  retries: 5,  # Uses exponential backoff by default
-}
-
-#### Imported: Manual backoff:
-
-const backoff = (attempt) => {
-  const base = 1000;
-  const max = 60000;
-  const delay = Math.min(base * Math.pow(2, attempt), max);
-  const jitter = delay * 0.1 * Math.random();
-  return delay + jitter;
-};
-
-# Add jitter to prevent thundering herd
-
-### Storing Large Data in Workflow State
-
-Severity: HIGH
-
-Situation: Passing large payloads between workflow steps
-
-Symptoms:
-Slow workflow execution. Memory errors. "Payload too large" errors.
-Expensive storage costs. Slow replays.
-
-Why this breaks:
-Workflow state is persisted and replayed. A 10MB payload is stored,
-serialized, and deserialized on every step. This adds latency and
-cost. Some platforms have hard limits (e.g., Step Functions 256KB).
-
-Recommended fix:
-
-# WRONG - large data in workflow:
-await step.run("fetch-data", async () => {
-  const largeDataset = await fetchAllRecords();  // 100MB!
-  return largeDataset;  // Stored in workflow state
-});
-
-# CORRECT - store reference, not data:
-await step.run("fetch-data", async () => {
-  const largeDataset = await fetchAllRecords();
-  const s3Key = await uploadToS3(largeDataset);
-  return { s3Key };  // Just the reference
-});
-
-const processed = await step.run("process-data", async () => {
-  const data = await downloadFromS3(fetchResult.s3Key);
-  return processData(data);
-});
-
-# For Step Functions, use S3 for large payloads:
-{
-  "Type": "Task",
-  "Resource": "arn:aws:states:::s3:putObject",
-  "Parameters": {
-    "Bucket": "my-bucket",
-    "Key.$": "$.outputKey",
-    "Body.$": "$.largeData"
-  }
-}
-
-### Missing Dead Letter Queue or Failure Handler
-
-Severity: HIGH
-
-Situation: Workflows that exhaust all retries
-
-Symptoms:
-Failed workflows silently disappear. No alerts when things break.
-Customer issues discovered days later. Manual recovery impossible.
-
-Why this breaks:
-Even with retries, some workflows will fail permanently. Without
-dead letter handling, you don't know they failed. The customer
-waits forever, you're unaware, and there's no data to debug.
-
-Recommended fix:
-
-# Inngest onFailure handler:
-export const myFunction = inngest.createFunction(
-  {
-    id: "process-order",
-    onFailure: async ({ error, event, step }) => {
-      // Log to error tracking
-      await step.run("log-error", () =>
-        sentry.captureException(error, { extra: { event } })
-      );
-
-      // Alert team
-      await step.run("alert", () =>
-        slack.postMessage({
-          channel: "#alerts",
-          text: `Order ${event.data.orderId} failed: ${error.message}`
-        })
-      );
-
-      // Queue for manual review
-      await step.run("queue-review", () =>
-        db.insert(failedOrders, { orderId, error, event })
-      );
-    }
-  },
-  { event: "order/created" },
-  async ({ event, step }) => { ... }
-);
-
-# n8n Error Trigger:
-[Error Trigger]  →  [Log to DB]  →  [Slack Alert]  →  [Create Ticket]
-
-# Temporal: Use workflow.failed or workflow signals
-
-### n8n Workflow Without Error Trigger
-
-Severity: MEDIUM
-
-Situation: Building production n8n workflows
-
-Symptoms:
-Workflow fails silently. Errors only visible in execution logs.
-No alerts, no recovery, no visibility until someone notices.
-
-Why this breaks:
-n8n doesn't notify on failure by default. Without an Error Trigger
-node connected to alerting, failures are only visible in the UI.
-Production failures go unnoticed.
-
-Recommended fix:
-
-# Every production n8n workflow needs:
-
-1. Error Trigger node
-   - Catches any node failure in the workflow
-   - Provides error details and context
-
-2. Connected error handling:
-   [Error Trigger]
-       ↓
-   [Set: Extract Error Details]
-       ↓
-   [HTTP: Log to Error Service]
-       ↓
-   [Slack/Email: Alert Team]
-
-3. Consider dead letter pattern:
-   [Error Trigger]
-       ↓
-   [Redis/Postgres: Store Failed Job]
-       ↓
-   [Separate Recovery Workflow]
-
-# Also use:
-- Retry on node failures (built-in)
-- Node timeout settings
-- Workflow timeout
-
-### Long-Running Temporal Activities Without Heartbeat
-
-Severity: MEDIUM
-
-Situation: Activities that run for more than a few seconds
-
-Symptoms:
-Activity timeouts even when work is progressing. Lost work when
-workers restart. Can't cancel long-running activities.
-
-Why this breaks:
-Temporal detects stuck activities via heartbeat. Without heartbeat,
-Temporal can't tell if activity is working or stuck. Long activities
-appear hung, may timeout, and can't be gracefully cancelled.
-
-Recommended fix:
-
-# For any activity > 10 seconds, add heartbeat:
-
-import { heartbeat, activityInfo } from '@temporalio/activity';
-
-export async function processLargeFile(fileUrl: string): Promise<void> {
-  const chunks = await downloadChunks(fileUrl);
-
-  for (let i = 0; i < chunks.length; i++) {
-    // Check for cancellation
-    const { cancelled } = activityInfo();
-    if (cancelled) {
-      throw new CancelledFailure('Activity cancelled');
-    }
-
-    await processChunk(chunks[i]);
-
-    // Report progress
-    heartbeat({ progress: (i + 1) / chunks.length });
-  }
-}
-
-# Configure heartbeat timeout:
-const activities = proxyActivities({
-  startToCloseTimeout: '10 minutes',
-  heartbeatTimeout: '30 seconds',  # Must heartbeat every 30s
-});
-
-# If no heartbeat for 30s, activity is considered stuck
 
 #### Imported: Validation Checks
 

@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-16"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
 # CRED-OMEGA: Security Engine for All API Keys (Enterprise)
@@ -25,7 +25,7 @@ This intake keeps the copied upstream files intact and uses the `external_source
 
 # CRED-OMEGA: Security Engine for All API Keys (Enterprise)
 
-Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: How It Works, 1.1 As 5 Missoes Inegociaveis, 1.2 Regras De Ouro (Nunca Violar), 1.3 Mentalidade De Seguranca, 2.1 Tipos De Credenciais (Taxonomia Completa), 2.2 Onde Vazam (Superficie De Ataque).
+Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: How It Works, Fase 0 — Reconhecimento (Mapear Ambiente), Fase 1 — Descoberta (Varredura Profunda), Scanner Principal — Padroes Regex De Alta Cobertura, Encontrar Arquivos Que Tipicamente Contem Segredos, Openai (Sk-...).
 
 ## When to Use This Skill
 
@@ -72,6 +72,88 @@ CISO operacional enterprise para gestao total de credenciais e segredos. Descobr
 > Sua missao: prevenir vazamentos, reduzir permissoes ao minimo, impor rotacao
 > e expirar segredos, criar governanca continua para TODO tipo de credencial
 > em TODOS os provedores, com execucao pratica em VPS e repositorios locais.
+
+---
+
+### 1.1 As 5 Missoes Inegociaveis
+
+1. **DESCOBRIR** — Encontrar onde estao (ou poderiam estar) segredos: codigo, .env, commits antigos, CI/CD, containers, logs, backups, variaveis, paineis de provedores, docker images, build artifacts
+2. **ELIMINAR EXPOSICAO** — Nenhum segredo em repo, nenhum segredo em front-end, nenhum segredo em logs, nenhum segredo em historico git, nenhum segredo em error messages
+3. **REDUZIR BLAST RADIUS** — Least privilege, escopo minimo, restricoes de origem (IP/referrer/dominio/app), quotas, rate limits, separacao por ambiente
+4. **MODERNIZAR AUTENTICACAO** — Preferir tokens de curta duracao, OAuth 2.0, federation (OIDC), workload identity, secret managers; desencorajar chaves long-lived
+5. **IMPLANTAR GOVERNANCA** — Inventario (registry), rotacao obrigatoria, auditoria recorrente, deteccao de anomalia, resposta a incidentes, compliance continuo
+
+### 1.2 Regras De Ouro (Nunca Violar)
+
+- **NUNCA** peca para o usuario colar chaves/tokens no chat
+- Se o usuario colar uma chave por engano: tratar como INCIDENTE — orientar revogacao imediata e rotacao
+- Todo segredo deve existir APENAS em Secret Manager/Vault/env seguro e ser injetado em runtime
+- NENHUM client-side (browser/mobile) pode conter chave de API — zero excecoes
+- Todo token/key deve ter: owner, finalidade, ambiente, TTL/expiracao, restricoes e plano de rotacao
+- Logs NUNCA contem segredos — aplicar redaction em toda saida
+- Principio do menor privilegio: se nao precisa, nao tem acesso
+
+### 1.3 Mentalidade De Seguranca
+
+Pense como um atacante para defender como um profissional:
+- "Se eu vazasse essa chave, qual o pior cenario?" — essa pergunta define a criticidade
+- "Quanto tempo leva pra detectar o vazamento?" — isso define a urgencia da governanca
+- "Quem mais tem acesso?" — isso define o blast radius
+- "Existe alternativa mais segura?" — isso define o caminho de modernizacao
+
+---
+
+### 2.1 Tipos De Credenciais (Taxonomia Completa)
+
+| Categoria | Exemplos | Criticidade Base |
+|-----------|----------|-----------------|
+| API Keys (strings) | OpenAI sk-*, Google AIza*, Stripe sk_live_* | CRITICA |
+| OAuth Secrets | client_id + client_secret | CRITICA |
+| Access/Refresh Tokens | Bearer tokens, JWT, refresh_token | ALTA |
+| Service Account Keys | GCP JSON, AWS IAM credentials | CRITICA |
+| Webhook Secrets | signing secrets, HMAC keys | ALTA |
+| JWT Signing Keys | private keys para assinatura | CRITICA |
+| SSH/TLS Keys | .pem, .p12, .key, id_rsa | CRITICA |
+| DB Credentials | connection strings, passwords | CRITICA |
+| Bot Tokens | Telegram bot token, Discord bot token | ALTA |
+| App Secrets | Meta App Secret, Twitter API Secret | CRITICA |
+| Conversion/Pixel Tokens | Meta CAPI token, GA measurement secret | MEDIA |
+| Encryption Keys | AES keys, master keys | CRITICA |
+| Session Cookies | cookies de sessao privilegiada | MEDIA |
+| CI/CD Tokens | GitHub PAT, GitLab tokens, deploy keys | ALTA |
+| Cloud Provider Keys | AWS_ACCESS_KEY_ID, AZURE_CLIENT_SECRET | CRITICA |
+
+### 2.2 Onde Vazam (Superficie De Ataque)
+
+**Codigo e Config:**
+- `.env`, `.env.local`, `.env.production`, `.env.development`
+- `config.js`, `config.ts`, `settings.json`, `firebase.json`, `appsettings.json`
+- `docker-compose.yml`, `Dockerfile`, `k8s secrets`, `helm values`
+- Hardcoded em codigo-fonte (pior cenario)
+
+**Historico e Versionamento:**
+- Historico do git (mesmo apos apagar — `git log --all`)
+- Pull requests (code review com segredos)
+- Forks publicos de repos privados
+
+**Build e Deploy:**
+- `dist/`, `.next/`, `build/`, `node_modules/` (dependencias com segredos)
+- CI/CD logs (GitHub Actions, Jenkins, GitLab CI)
+- Docker images (layers contendo segredos)
+- Terraform state files
+
+**Runtime e Observabilidade:**
+- `console.log()` acidental em producao
+- Error tracking (Sentry, Bugsnag) com stack traces contendo segredos
+- APM e tracing (Datadog, New Relic) capturando headers
+- Log aggregators (ELK, CloudWatch)
+
+**Humano e Processo:**
+- Screenshots e screen recordings
+- Tickets (Jira, Linear) com segredos colados
+- Slack/Teams/email com chaves compartilhadas
+- Documentacao interna (Confluence, Notion)
+- Backups nao criptografados (zip, tar, snapshots)
 
 ---
 
@@ -152,10 +234,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@customs-trade-compliance-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@docker-expert-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@ejentum-reasoning-harness-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@elon-musk-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -172,88 +254,6 @@ Use this support matrix and the linked files below as the operator packet for th
 
 
 ### Imported Reference Notes
-
-#### Imported: 1.1 As 5 Missoes Inegociaveis
-
-1. **DESCOBRIR** — Encontrar onde estao (ou poderiam estar) segredos: codigo, .env, commits antigos, CI/CD, containers, logs, backups, variaveis, paineis de provedores, docker images, build artifacts
-2. **ELIMINAR EXPOSICAO** — Nenhum segredo em repo, nenhum segredo em front-end, nenhum segredo em logs, nenhum segredo em historico git, nenhum segredo em error messages
-3. **REDUZIR BLAST RADIUS** — Least privilege, escopo minimo, restricoes de origem (IP/referrer/dominio/app), quotas, rate limits, separacao por ambiente
-4. **MODERNIZAR AUTENTICACAO** — Preferir tokens de curta duracao, OAuth 2.0, federation (OIDC), workload identity, secret managers; desencorajar chaves long-lived
-5. **IMPLANTAR GOVERNANCA** — Inventario (registry), rotacao obrigatoria, auditoria recorrente, deteccao de anomalia, resposta a incidentes, compliance continuo
-
-#### Imported: 1.2 Regras De Ouro (Nunca Violar)
-
-- **NUNCA** peca para o usuario colar chaves/tokens no chat
-- Se o usuario colar uma chave por engano: tratar como INCIDENTE — orientar revogacao imediata e rotacao
-- Todo segredo deve existir APENAS em Secret Manager/Vault/env seguro e ser injetado em runtime
-- NENHUM client-side (browser/mobile) pode conter chave de API — zero excecoes
-- Todo token/key deve ter: owner, finalidade, ambiente, TTL/expiracao, restricoes e plano de rotacao
-- Logs NUNCA contem segredos — aplicar redaction em toda saida
-- Principio do menor privilegio: se nao precisa, nao tem acesso
-
-#### Imported: 1.3 Mentalidade De Seguranca
-
-Pense como um atacante para defender como um profissional:
-- "Se eu vazasse essa chave, qual o pior cenario?" — essa pergunta define a criticidade
-- "Quanto tempo leva pra detectar o vazamento?" — isso define a urgencia da governanca
-- "Quem mais tem acesso?" — isso define o blast radius
-- "Existe alternativa mais segura?" — isso define o caminho de modernizacao
-
----
-
-#### Imported: 2.1 Tipos De Credenciais (Taxonomia Completa)
-
-| Categoria | Exemplos | Criticidade Base |
-|-----------|----------|-----------------|
-| API Keys (strings) | OpenAI sk-*, Google AIza*, Stripe sk_live_* | CRITICA |
-| OAuth Secrets | client_id + client_secret | CRITICA |
-| Access/Refresh Tokens | Bearer tokens, JWT, refresh_token | ALTA |
-| Service Account Keys | GCP JSON, AWS IAM credentials | CRITICA |
-| Webhook Secrets | signing secrets, HMAC keys | ALTA |
-| JWT Signing Keys | private keys para assinatura | CRITICA |
-| SSH/TLS Keys | .pem, .p12, .key, id_rsa | CRITICA |
-| DB Credentials | connection strings, passwords | CRITICA |
-| Bot Tokens | Telegram bot token, Discord bot token | ALTA |
-| App Secrets | Meta App Secret, Twitter API Secret | CRITICA |
-| Conversion/Pixel Tokens | Meta CAPI token, GA measurement secret | MEDIA |
-| Encryption Keys | AES keys, master keys | CRITICA |
-| Session Cookies | cookies de sessao privilegiada | MEDIA |
-| CI/CD Tokens | GitHub PAT, GitLab tokens, deploy keys | ALTA |
-| Cloud Provider Keys | AWS_ACCESS_KEY_ID, AZURE_CLIENT_SECRET | CRITICA |
-
-#### Imported: 2.2 Onde Vazam (Superficie De Ataque)
-
-**Codigo e Config:**
-- `.env`, `.env.local`, `.env.production`, `.env.development`
-- `config.js`, `config.ts`, `settings.json`, `firebase.json`, `appsettings.json`
-- `docker-compose.yml`, `Dockerfile`, `k8s secrets`, `helm values`
-- Hardcoded em codigo-fonte (pior cenario)
-
-**Historico e Versionamento:**
-- Historico do git (mesmo apos apagar — `git log --all`)
-- Pull requests (code review com segredos)
-- Forks publicos de repos privados
-
-**Build e Deploy:**
-- `dist/`, `.next/`, `build/`, `node_modules/` (dependencias com segredos)
-- CI/CD logs (GitHub Actions, Jenkins, GitLab CI)
-- Docker images (layers contendo segredos)
-- Terraform state files
-
-**Runtime e Observabilidade:**
-- `console.log()` acidental em producao
-- Error tracking (Sentry, Bugsnag) com stack traces contendo segredos
-- APM e tracing (Datadog, New Relic) capturando headers
-- Log aggregators (ELK, CloudWatch)
-
-**Humano e Processo:**
-- Screenshots e screen recordings
-- Tickets (Jira, Linear) com segredos colados
-- Slack/Teams/email com chaves compartilhadas
-- Documentacao interna (Confluence, Notion)
-- Backups nao criptografados (zip, tar, snapshots)
-
----
 
 #### Imported: Fase 0 — Reconhecimento (Mapear Ambiente)
 
@@ -579,7 +579,7 @@ jobs:
     steps:
       - uses: actions/
 
-#### Imported: 4.1 Openai
+### 4.1 Openai
 
 **Risco tipico:** Chave vazada → consumo/custo descontrolado → milhares de dolares em horas.
 
@@ -602,7 +602,7 @@ jobs:
 [ ] Alertas de anomalia de consumo
 ```
 
-#### Imported: 4.2 Google Cloud (Gcp)
+### 4.2 Google Cloud (Gcp)
 
 **Risco tipico:** Service account key JSON vazada = acesso total a recursos cloud.
 
@@ -627,7 +627,7 @@ jobs:
 [ ] Audit logs ativados
 ```
 
-#### Imported: 4.3 Meta (Whatsapp / Facebook / Instagram)
+### 4.3 Meta (Whatsapp / Facebook / Instagram)
 
 **Risco tipico:** App Secret/token vazado + webhooks mal validados = controle da integracao.
 
@@ -651,7 +651,7 @@ jobs:
 [ ] Revisao trimestral de apps ativos
 ```
 
-#### Imported: 4.4 Telegram (Bots)
+### 4.4 Telegram (Bots)
 
 **Risco tipico:** Token do bot vazou = controle total do bot (ler mensagens, enviar spam).
 
@@ -673,7 +673,7 @@ jobs:
 [ ] Logs redacted
 ```
 
-#### Imported: 4.5 Aws
+### 4.5 Aws
 
 **Risco tipico:** AWS_ACCESS_KEY_ID + SECRET vazados = acesso ilimitado a cloud.
 
@@ -696,7 +696,7 @@ jobs:
 [ ] Budget alerts configurados
 ```
 
-#### Imported: 4.6 Stripe / Pagamentos
+### 4.6 Stripe / Pagamentos
 
 **Risco tipico:** sk_live_ vazada = capacidade de criar charges, refunds, acessar dados de clientes.
 
@@ -807,7 +807,7 @@ F) SECRET REGISTRY
 
 ---
 
-#### Imported: 7.1 Severidade E Tempo De Resposta
+### 7.1 Severidade E Tempo De Resposta
 
 | Severidade | Descricao | SLA | Quem |
 |-----------|-----------|-----|------|
@@ -816,7 +816,7 @@ F) SECRET REGISTRY
 | SEV-3 | Chave de dev exposta, permissoes limitadas | < 4 horas | Dev responsavel |
 | SEV-4 | Potencial exposicao, nao confirmada | < 24 horas | Dev responsavel |
 
-#### Imported: 7.2 Protocolo De 4 Passos
+### 7.2 Protocolo De 4 Passos
 
 **1. CONTER (imediato)**
 ```bash
@@ -848,7 +848,7 @@ F) SECRET REGISTRY
 
 ---
 
-#### Imported: 8.1 Scanner De Segredos (Python)
+### 8.1 Scanner De Segredos (Python)
 
 Localizado em: `scripts/secret_scanner.py`
 - Varredura de arquivos com 30+ padroes regex
@@ -857,7 +857,7 @@ Localizado em: `scripts/secret_scanner.py`
 - Modo pre-commit (--staged) para verificar so arquivos staged
 - Saida JSON ou texto
 
-#### Imported: 8.2 Registry Manager
+### 8.2 Registry Manager
 
 Localizado em: `scripts/registry_manager.py`
 - CRUD de entries no secret registry
@@ -865,14 +865,14 @@ Localizado em: `scripts/registry_manager.py`
 - Status report
 - Export CSV para auditoria
 
-#### Imported: 8.3 Pre-Commit Hook
+### 8.3 Pre-Commit Hook
 
 Localizado em: `scripts/pre_commit_hook.sh`
 - Wrapper para secret_scanner.py em modo staged
 - Bloqueia commit se encontrar segredo
 - Mensagem clara de como resolver
 
-#### Imported: 8.4 Audit Report Generator
+### 8.4 Audit Report Generator
 
 Localizado em: `scripts/audit_report.py`
 - Executa todas as varreduras
@@ -882,7 +882,7 @@ Localizado em: `scripts/audit_report.py`
 
 ---
 
-#### Imported: 9.1 Estrutura De Diretorios
+### 9.1 Estrutura De Diretorios
 
 ```
 /opt/
@@ -899,7 +899,7 @@ Localizado em: `scripts/audit_report.py`
   /systemd/system/     # Services para proxy e apps
 ```
 
-#### Imported: 9.2 Padrao De Seguranca Na Vps
+### 9.2 Padrao De Seguranca Na Vps
 
 ```
 1. Firewall (ufw/iptables):
@@ -930,7 +930,7 @@ Localizado em: `scripts/audit_report.py`
 
 ---
 
-#### Imported: 10.1 Comportamento Transversal
+### 10.1 Comportamento Transversal
 
 Esta skill opera de forma TRANSVERSAL — mesmo quando outras skills estao ativas:
 
@@ -939,7 +939,7 @@ Esta skill opera de forma TRANSVERSAL — mesmo quando outras skills estao ativa
 - Se detectar .env sendo commitado → bloquear e orientar .gitignore
 - Se ver hardcoded credentials → sugerir refatoracao para env vars
 
-#### Imported: 10.2 Sinais De Alerta Automaticos
+### 10.2 Sinais De Alerta Automaticos
 
 Monitore estes sinais durante QUALQUER operacao:
 - Strings que parecem chaves/tokens em codigo

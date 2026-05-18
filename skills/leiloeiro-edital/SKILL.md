@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
 # SKILL DE EDITAL — ANÁLISE PERICIAL DE EDITAIS DE LEILÃO
@@ -150,10 +150,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-criminal` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-especialista` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@agent-memory-systems` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -272,7 +272,7 @@ Avaliador responsável:             _______________
 
 ---
 
-#### Imported: 5.1 Responsabilidade Por Débitos — O Que Diz O Edital?
+### 5.1 Responsabilidade Por Débitos — O Que Diz O Edital?
 
 **Verificar especificamente:**
 - [ ] IPTU — valor dos débitos e quem responde
@@ -297,7 +297,7 @@ Antes de arrematar, obter:
 2. Extrato de débitos de condomínio (síndico/administradora)
 3. Declaração de débitos de água/gás
 
-#### Imported: 5.2 Ônus Reais Registrados Na Matrícula
+### 5.2 Ônus Reais Registrados Na Matrícula
 
 **Verificar no edital e na matrícula:**
 - [ ] Hipoteca (qual banco, qual valor, qual data)
@@ -559,7 +559,7 @@ Skill baseada em conhecimento (knowledge-only). Não requer instalação de depe
 
 ```bash
 
-#### Imported: Verificar Se A Skill Está Registrada:
+### Verificar Se A Skill Está Registrada:
 
 python C:\Users\renat\skills\agent-orchestrator\scripts\scan_registry.py
 ```
@@ -572,7 +572,7 @@ Como usar esta skill:
 
 ```bash
 
-#### Imported: Uso Via Orchestrator (Automático):
+### Uso Via Orchestrator (Automático):
 
 python agent-orchestrator/scripts/match_skills.py "analisar edital leilao"
 

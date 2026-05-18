@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-27"
-date_updated: "2026-04-27"
+date_updated: "2026-05-17"
 ---
 
 # Vercel React Best Practices
@@ -162,10 +162,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@competitive-landscape-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@competitor-alternatives-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@copywriting-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@cpp-pro-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-search-documents-py-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@backend-dev-guidelines-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@browser-automation-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@cc-skill-security-review-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -262,6 +262,9 @@ Use this support matrix and the linked files below as the operator packet for th
 #### Imported: Full Compiled Document
 
 For the complete guide with all rules expanded: `AGENTS.md`
+
+### When to Use
+This skill is applicable to execute the workflow or actions described in the overview.
 
 #### Imported: Limitations
 

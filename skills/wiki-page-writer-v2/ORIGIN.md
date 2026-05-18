@@ -6,12 +6,12 @@ This native intake skill was imported automatically from an external repository.
 - Source owner: `sickn33`
 - Source repository name: `antigravity-awesome-skills`
 - Source branch: `main`
-- Source commit: `9bad53f2426e310c33ef5bacf9f845855197be6a`
+- Source commit: `7c55ad5908444255b5b58674972bf09333bc0424`
 - Source skills path: `plugins`
 - Source skill path: `plugins/antigravity-awesome-skills/skills/wiki-page-writer`
 - Imported public skill id: `wiki-page-writer-v2`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260425T183000.322204+0000-sickn33-antigravity-awesome-skills-dashboard-sync`
+- Sync run id: `20260517T213745.317383+0000-sickn33-antigravity-awesome-skills-weekly`
 
 The original source identity is preserved for review and attribution.

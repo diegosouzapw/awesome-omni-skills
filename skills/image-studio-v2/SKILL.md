@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-17"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
 # IMAGE-STUDIO: Gerador de Imagens Inteligente
@@ -25,7 +25,7 @@ This intake keeps the copied upstream files intact and uses the `external_source
 
 # IMAGE-STUDIO: Gerador de Imagens Inteligente
 
-Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: How It Works, 1. Matriz De Decisao, Ai-Studio-Image (Gemini 2.0 Flash — Free), Stability-Ai (Sd3.5 Large — Community), 3.1 Geracao Simples, 3.2 Geracao Com Ai-Studio-Image.
+Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: How It Works, 1. Matriz De Decisao, Ai-Studio-Image (Gemini 2.0 Flash — Free), Stability-Ai (Sd3.5 Large — Community), Template Especifico, Prompt Customizado.
 
 ## When to Use This Skill
 
@@ -151,10 +151,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@cred-omega-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@customs-trade-compliance-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@docker-expert-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@ejentum-reasoning-harness-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -245,7 +245,7 @@ concept-art, comic, minimalist, fantasy, sci-fi, sketch, pop-art, noir
 
 ---
 
-#### Imported: 3.1 Geracao Simples
+### 3.1 Geracao Simples
 
 ```
 Usuario: "crie uma imagem de X"
@@ -258,7 +258,7 @@ Usuario: "crie uma imagem de X"
 6. Oferecer: variacoes, ajustes, versao alternativa
 ```
 
-#### Imported: 3.2 Geracao Com Ai-Studio-Image
+### 3.2 Geracao Com Ai-Studio-Image
 
 Usar sistema de templates e prompt engine:
 
@@ -277,7 +277,7 @@ python generate.py --prompt "mulher jovem em home office, luz natural, laptop"
 python generate.py --prompt "..." --humanization maximum
 ```
 
-#### Imported: 3.3 Geracao Com Stability-Ai
+### 3.3 Geracao Com Stability-Ai
 
 Mapear para modo correto:
 
@@ -346,7 +346,7 @@ extra fingers, bad anatomy, worst quality"
 
 ---
 
-#### Imported: 5. Formato De Resposta
+#### Imported: 2. Formato De Resposta
 
 ```
 IMAGE-STUDIO — [tipo de geracao]
@@ -408,7 +408,7 @@ Usuario: "foto profissional para LinkedIn"
 
 ---
 
-#### Imported: 7. Fallback E Redundancia
+#### Imported: 3. Fallback E Redundancia
 
 ```
 Se ai-studio-image falha (limite diario, erro de API):
@@ -426,7 +426,7 @@ Se ambos falham:
 
 ---
 
-#### Imported: 8. Localizacao Das Skills
+#### Imported: 4. Localizacao Das Skills
 
 ```
 ai-studio-image:

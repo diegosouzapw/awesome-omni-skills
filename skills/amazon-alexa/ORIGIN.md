@@ -6,12 +6,12 @@ This native intake skill was imported automatically from an external repository.
 - Source owner: `sickn33`
 - Source repository name: `antigravity-awesome-skills`
 - Source branch: `main`
-- Source commit: `9bad53f2426e310c33ef5bacf9f845855197be6a`
+- Source commit: `7c55ad5908444255b5b58674972bf09333bc0424`
 - Source skills path: `plugins`
 - Source skill path: `plugins/antigravity-awesome-skills-claude/skills/amazon-alexa`
 - Imported public skill id: `amazon-alexa`
 - Source license: `MIT`
 - License status: `compatible`
-- Sync run id: `20260425T181941.597517+0000-sickn33-antigravity-awesome-skills-dashboard-refresh-native-pr`
+- Sync run id: `20260517T202848.855369+0000-sickn33-antigravity-awesome-skills-weekly`
 
 The original source identity is preserved for review and attribution.

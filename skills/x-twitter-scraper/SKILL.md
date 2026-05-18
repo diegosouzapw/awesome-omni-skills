@@ -1,19 +1,19 @@
 ---
 name: x-twitter-scraper
-description: "X (Twitter) Scraper \u2014 Xquik workflow skill. Use this skill when the user needs X (Twitter) data platform skill \u2014 tweet search, user lookup, follower extraction, engagement metrics, giveaway draws, monitoring, webhooks, 19 extraction tools, MCP server and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off."
+description: "X (Twitter) Scraper - Xquik workflow skill. Use this skill when the user needs X/Twitter automation skill for tweet search, follower export, posting, DMs, webhooks, MCP, SDKs, Hermes Tweet, and TweetClaw and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off."
 version: "0.0.1"
 category: data-ai
-tags: ["twitter", "x-api", "scraping", "mcp", "social-media", "data-extraction", "giveaway", "monitoring"]
-complexity: intermediate
+tags: ["twitter", "x-api", "tweet-search", "twitter-api", "twitter-scraper", "follower-export", "automation", "mcp"]
+complexity: advanced
 risk: safe
 tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
-# X (Twitter) Scraper — Xquik
+# X (Twitter) Scraper - Xquik
 
 ## Overview
 
@@ -23,7 +23,7 @@ Use it when the operator needs the upstream workflow, support files, and reposit
 
 This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
-# X (Twitter) Scraper — Xquik
+# X (Twitter) Scraper - Xquik
 
 Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: Capabilities, Repository, Limitations.
 
@@ -32,11 +32,11 @@ Imported source sections that did not map cleanly to the public headings are sti
 Use this section as the trigger filter. It should make the activation boundary explicit before the operator loads files, runs commands, or opens a pull request.
 
 - User needs to search X/Twitter for tweets by keyword, hashtag, or user
+- User asks for advanced Twitter search, profile tweets, or user timeline data
 - User wants to look up a user profile (bio, follower counts, etc.)
 - User needs engagement metrics for a specific tweet (likes, retweets, views)
 - User wants to check if one account follows another
 - User needs to extract followers, replies, retweets, quotes, or community members in bulk
-- User wants to run a giveaway draw from tweet replies
 
 ## Operating Table
 
@@ -80,6 +80,26 @@ git clone https://github.com/Xquik-dev/x-twitter-scraper.git .claude/skills/x-tw
 git clone https://github.com/Xquik-dev/x-twitter-scraper.git .agents/skills/x-twitter-scraper
 ```
 
+### Use the Hermes Agent Plugin
+
+For Hermes Agent runtime tools, install Hermes Tweet. It wraps the same Xquik API with `tweet_explore` for endpoint discovery, `tweet_read` for read-only calls, and approval-gated `tweet_action` for writes and private actions.
+
+```bash
+hermes plugins install Xquik-dev/hermes-tweet --enable
+```
+
+Use Hermes Tweet when a Hermes Agent should search Twitter/X, read tweet replies, look up users, export followers, monitor tweets, post tweets, post replies, send DMs, or automate X actions with explicit approval gates.
+
+### Use the OpenClaw Plugin
+
+For OpenClaw runtime tools, install TweetClaw. It wraps the same Xquik API with `explore` for endpoint discovery and `tweetclaw` for approved calls.
+
+```bash
+openclaw plugins install @xquik/tweetclaw
+```
+
+Use TweetClaw when the agent should search tweets, post tweets, post replies, send DMs, export followers, download media, create monitors, deliver webhooks, or run giveaway draws from OpenClaw.
+
 ### Get an API Key
 
 1. Sign up at [xquik.com](https://xquik.com)
@@ -92,22 +112,26 @@ export XQUIK_API_KEY="xq_YOUR_KEY_HERE"
 
 #### Imported: Overview
 
-Gives your AI agent full access to X (Twitter) data through the Xquik platform. Covers tweet search, user profiles, follower extraction, engagement metrics, giveaway draws, account monitoring, webhooks, and 19 bulk extraction tools — all via REST API or MCP server.
+Gives AI agents X (Twitter) data and automation workflows through the Xquik platform. Covers tweet search, advanced Twitter search, profile tweets, user lookup, follower export, media download, posting, replies, DMs, giveaway draws, account monitoring, webhooks, 23 bulk extraction tools, MCP, official SDKs, the Hermes Tweet Hermes Agent plugin, and the TweetClaw OpenClaw plugin.
 
 #### Imported: Capabilities
 
 | Capability | Description |
 |---|---|
-| Tweet Search | Find tweets by keyword, hashtag, from:user, "exact phrase" |
+| Tweet Search | Find tweets by keyword, hashtag, from:user, "exact phrase", and advanced operators |
 | User Lookup | Profile info, bio, follower/following counts |
-| Tweet Lookup | Full metrics — likes, retweets, replies, quotes, views, bookmarks |
+| Tweet Lookup | Full metrics: likes, retweets, replies, quotes, views, bookmarks |
 | Follow Check | Check if A follows B (both directions) |
 | Trending Topics | Top trends by region (free, no quota) |
 | Account Monitoring | Track new tweets, replies, retweets, quotes, follower changes |
 | Webhooks | HMAC-signed real-time event delivery to your endpoint |
 | Giveaway Draws | Random winner selection from tweet replies with filters |
-| 19 Extraction Tools | Followers, following, verified followers, mentions, posts, replies, reposts, quotes, threads, articles, communities, lists, Spaces, people search |
+| 23 Extraction Tools | Followers, following, verified followers, mentions, posts, replies, reposts, quotes, threads, articles, communities, lists, Spaces, people search, media, likes, and more |
+| Write Actions | Send tweets, post replies, like, repost, follow, unfollow, and send DMs after explicit approval |
+| SDKs | Official TypeScript, Python, Ruby, Go, Kotlin, Java, PHP, C#, CLI, and Terraform clients |
 | MCP Server | StreamableHTTP endpoint for AI-native integrations |
+| Hermes Tweet Hermes Agent Plugin | Installable `hermes-tweet` runtime with `tweet_explore`, `tweet_read`, and approval-gated `tweet_action` tools |
+| TweetClaw OpenClaw Plugin | Installable `@xquik/tweetclaw` runtime with `explore` and `tweetclaw` tools |
 
 ## Examples
 
@@ -172,9 +196,19 @@ Review @x-twitter-scraper using the copied upstream files plus provenance, then 
 "Monitor @openai for new tweets and notify me via webhook"
 ```
 
+**Use Hermes Agent:**
+```
+"Use Hermes Tweet to search Twitter/X for this launch, read the tweet replies, and prepare a draft reply for approval"
+```
+
 **Bulk extraction:**
 ```
 "Extract all followers of @anthropic"
+```
+
+**Post a reply:**
+```
+"Draft and post a reply to this tweet after I approve the final text"
 ```
 
 ## Best Practices
@@ -211,10 +245,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@20-andruia-niche-intelligence-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-criminal-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-especialista-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@agent-memory-systems-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -247,6 +281,8 @@ Use this support matrix and the linked files below as the operator packet for th
 | `/draws` | POST | Run giveaway draw |
 | `/extractions` | POST | Start bulk extraction |
 | `/extractions/estimate` | POST | Estimate extraction cost |
+| `/drafts` | POST | Create tweet drafts |
+| `/styles` | POST | Analyze or apply tweet style |
 | `/account` | GET | Account & usage info |
 
 **Base URL:** `https://xquik.com/api/v1`
@@ -256,6 +292,10 @@ Use this support matrix and the linked files below as the operator packet for th
 #### Imported: Repository
 
 https://github.com/Xquik-dev/x-twitter-scraper
+
+Hermes Tweet Hermes Agent plugin: https://github.com/Xquik-dev/hermes-tweet
+
+TweetClaw OpenClaw plugin: https://github.com/Xquik-dev/tweetclaw
 
 **Maintained By:** [Xquik](https://xquik.com)
 

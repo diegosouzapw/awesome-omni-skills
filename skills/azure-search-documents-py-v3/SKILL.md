@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-26"
-date_updated: "2026-04-26"
+date_updated: "2026-05-17"
 ---
 
 # Azure AI Search SDK for Python
@@ -68,7 +68,7 @@ This workflow is intentionally editorial and operational at the same time. It ke
 pip install azure-search-documents
 ```
 
-#### Imported: Installation
+#### Imported: Installation for Additional Patterns
 
 ```bash
 pip install azure-search-documents azure-identity
@@ -142,15 +142,6 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 6. **Use HNSW algorithm** for large-scale vector search
 7. **Create suggesters** at index creation time (cannot add later)
 
-#### Imported: Best Practices
-
-1. **Use environment variables** for endpoints, keys, and deployment names
-2. **Prefer `DefaultAzureCredential`** over API keys for production
-3. **Use `SearchIndexingBufferedSender`** for batch uploads (handles batching/retries)
-4. **Always define semantic configuration** for agentic retrieval indexes
-5. **Use `create_or_update_index`** for idempotent index creation
-6. **Close clients** with context managers or explicit `close()`
-
 ## Troubleshooting
 
 ### Problem: The operator skipped the imported context and answered too generically
@@ -172,10 +163,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@ab-test-setup-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@algolia-search-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@algorithmic-art-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@analytics-tracking-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@backend-dev-guidelines-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@browser-automation-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@cc-skill-security-review-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@docker-expert-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -541,11 +532,11 @@ results = client.suggest(
 
 #### Imported: Additional Azure AI Search Patterns
 
-# Azure AI Search Python SDK
+### Additional SDK Focus
 
 Write clean, idiomatic Python code for Azure AI Search using `azure-search-documents`.
 
-#### Imported: Environment Variables
+#### Imported: Environment Variables for Additional Patterns
 
 ```bash
 AZURE_SEARCH_ENDPOINT=https://<search-service>.search.windows.net
@@ -554,7 +545,7 @@ AZURE_SEARCH_INDEX_NAME=<index-name>
 AZURE_SEARCH_API_KEY=<api-key>
 ```
 
-#### Imported: Authentication
+#### Imported: Authentication for Additional Patterns
 
 **DefaultAzureCredential (preferred)**:
 ```python
@@ -653,6 +644,15 @@ async with SearchClient(endpoint, index_name, credential) as client:
     async for result in results:
         print(result["title"])
 ```
+
+#### Imported: Best Practices for Additional Patterns
+
+1. **Use environment variables** for endpoints, keys, and deployment names
+2. **Prefer `DefaultAzureCredential`** over API keys for production
+3. **Use `SearchIndexingBufferedSender`** for batch uploads (handles batching/retries)
+4. **Always define semantic configuration** for agentic retrieval indexes
+5. **Use `create_or_update_index`** for idempotent index creation
+6. **Close clients** with context managers or explicit `close()`
 
 #### Imported: Error Handling
 

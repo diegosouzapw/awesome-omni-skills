@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
 # Zapier & Make Patterns
@@ -103,6 +103,19 @@ Zap: "New Lead → CRM → Slack → Email"
 # Make's visual router makes complex branching clear
 """
 
+### Best Practices:
+- Always have a fallback/else path
+- Test each path independently
+- Document which conditions trigger which path
+
+### Data Transformation Pattern
+
+Clean, format, and transform data between apps
+
+**When to use**: Apps expect different data formats
+
+# DATA TRANSFORMATION:
+
 #### Imported: Capabilities
 
 - zapier
@@ -183,143 +196,7 @@ Todoist Module:
   - Due String: tomorrow
 """
 
-#### Imported: Zapier example:
-
-[Webhook Trigger]
-   ↓
-[Airtable: Find Records] - search by event_id
-   ↓
-[Filter: Only continue if not found]
-   ↓
-[Process Event]
-   ↓
-[Airtable: Create Record] - store event_id
-
-# Handle missed events:
-
-1. Use polling triggers for critical data
-   - Less real-time but more reliable
-   - Catches events during downtime
-
-2. Implement reconciliation:
-   - Scheduled Zap to check for gaps
-   - Compare source data to processed data
-
-3. Check source system retry settings:
-   - Some systems retry on failure
-   - Configure retry count/timing
-
-### Make Operations Consumed by Error Retries
-
-Severity: MEDIUM
-
-Situation: Scenarios with failing modules
-
-Symptoms:
-Operations quota depleted quickly. Scenario runs "succeeded" but
-used many operations. Same scenario running more than expected.
-
-Why this breaks:
-Make counts operations per module execution, including failed
-attempts and retries. Error handler modules consume operations.
-Scenarios that fail and retry can use 3-5x expected operations.
-
-Recommended fix:
-
-# Understand operation counting:
-
-Successful run: Each module = 1 operation
-Failed + retry (3x): 3 operations for that module
-Error handler: Additional operation per handler module
-
-# Reduce operation waste:
-
-1. Add error handlers that break early:
-   [Module] → Error → [Break] (1 additional op)
-   vs
-   [Module] → Error → [Log] → [Alert] → [Update] (3+ ops)
-
-2. Use ignore instead of retry when appropriate:
-   - If failure is expected (record exists)
-   - If retrying won't help (bad data)
-
-3. Pre-validate before expensive operations:
-   [Check Data] → Filter → [API Call]
-   - Fail fast before consuming operations
-
-4. Optimize scenario scheduling:
-   - Don't run every minute if hourly is enough
-   - Use webhooks for real-time when possible
-
-# Monitor usage:
-- Check Operations dashboard
-- Set up usage alerts
-- Review high-consumption scenarios
-
-### Timezone Mismatches in Scheduled Triggers
-
-Severity: MEDIUM
-
-Situation: Setting up scheduled automations
-
-Symptoms:
-Zap runs at wrong time. "9 AM" trigger fires at 2 PM. Different
-behavior on different days. DST causes hour shifts.
-
-Why this breaks:
-Zapier shows times in your local timezone but may store in UTC.
-If you change timezones or DST occurs, scheduled times shift.
-Team members in different zones see different times.
-
-Recommended fix:
-
-# Best practices:
-
-1. Explicitly set timezone in schedule:
-   - Don't rely on browser detection
-   - Use business timezone, not personal
-
-2. Document in Zap name:
-   - "Daily Report 9AM EST"
-   - Include timezone in description
-
-3. Test around DST transitions:
-   - Schedule changes at DST boundaries
-   - Verify times before/after change
-
-4. For global teams:
-   - Use UTC as standard
-   - Convert to local in descriptions
-
-5. Consider buffer times:
-   - Don't schedule at exactly midnight
-   - Avoid on-the-hour (busy periods)
-
-## Best Practices
-
-Treat the generated public skill as a reviewable packaging layer around the upstream repository. The goal is to keep provenance explicit and load only the copied source material that materially improves execution.
-
-- Start simple, add complexity only when needed
-- Test with real data before going live
-- Document every automation with clear naming
-- Monitor errors - 95% error rate auto-disables Zaps
-- Know when to graduate to code-based solutions
-- Operations/tasks cost money - design efficiently
-- Use descriptive Zap/Scenario names
-
-### Imported Operating Notes
-
-#### Imported: Principles
-
-- Start simple, add complexity only when needed
-- Test with real data before going live
-- Document every automation with clear naming
-- Monitor errors - 95% error rate auto-disables Zaps
-- Know when to graduate to code-based solutions
-- Operations/tasks cost money - design efficiently
-
-#### Imported: Best Practices:
-
+### Best Practices:
 - Use descriptive Zap/Scenario names
 - Test with real sample data
 - Use filters to prevent unwanted runs
@@ -337,70 +214,28 @@ Chain of actions executed in order
 Each step's output available to subsequent steps
 """
 
-#### Imported: Best Practices:
+## Best Practices
 
-- Always have a fallback/else path
-- Test each path independently
-- Document which conditions trigger which path
+Treat the generated public skill as a reviewable packaging layer around the upstream repository. The goal is to keep provenance explicit and load only the copied source material that materially improves execution.
 
-### Data Transformation Pattern
+- Start simple, add complexity only when needed
+- Test with real data before going live
+- Document every automation with clear naming
+- Monitor errors - 95% error rate auto-disables Zaps
+- Know when to graduate to code-based solutions
+- Operations/tasks cost money - design efficiently
+- Keep the imported skill grounded in the upstream repository; do not invent steps that the source material cannot support.
 
-Clean, format, and transform data between apps
+### Imported Operating Notes
 
-**When to use**: Apps expect different data formats
+#### Imported: Principles
 
-# DATA TRANSFORMATION:
-
-#### Imported: Best Practices:
-
-- Transform early in the workflow
-- Use filters to skip invalid data
-- Log transformations for debugging
-
-### Error Handling Pattern
-
-Graceful handling of failures
-
-**When to use**: Any production automation
-
-# ERROR HANDLING:
-
-#### Imported: Best Practices:
-
-- Always add error handlers for external APIs
-- Log errors to a spreadsheet/database
-- Set up Slack/email alerts for critical failures
-- Test failure scenarios, not just success
-
-### Batch Processing Pattern
-
-Process multiple items efficiently
-
-**When to use**: Importing data, bulk operations
-
-# BATCH PROCESSING:
-
-#### Imported: Best Practices:
-
-- Use aggregators to combine results
-- Consider batch limits (some APIs limit to 100)
-- Watch operation/task counts for cost
-- Add delays for rate-limited APIs
-
-### Scheduled Automation Pattern
-
-Time-based triggers instead of events
-
-**When to use**: Daily reports, periodic syncs, batch jobs
-
-# SCHEDULED AUTOMATION:
-
-#### Imported: Best Practices:
-
-- Consider timezone differences
-- Add buffer time for long-running jobs
-- Log execution times for monitoring
-- Don't schedule at exactly midnight (busy period)
+- Start simple, add complexity only when needed
+- Test with real data before going live
+- Document every automation with clear naming
+- Monitor errors - 95% error rate auto-disables Zaps
+- Know when to graduate to code-based solutions
+- Operations/tasks cost money - design efficiently
 
 ## Troubleshooting
 
@@ -423,10 +258,10 @@ Time-based triggers instead of events
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@20-andruia-niche-intelligence-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-criminal-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-especialista-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@agent-memory-systems-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -568,6 +403,19 @@ Math:
   {{round(1.price * 0.8; 2)}}  # 20% discount, 2 decimals
 """
 
+### Best Practices:
+- Transform early in the workflow
+- Use filters to skip invalid data
+- Log transformations for debugging
+
+### Error Handling Pattern
+
+Graceful handling of failures
+
+**When to use**: Any production automation
+
+# ERROR HANDLING:
+
 #### Imported: Zapier Error Handling
 
 """
@@ -609,6 +457,20 @@ Example:
            → Continue scenario
 """
 
+### Best Practices:
+- Always add error handlers for external APIs
+- Log errors to a spreadsheet/database
+- Set up Slack/email alerts for critical failures
+- Test failure scenarios, not just success
+
+### Batch Processing Pattern
+
+Process multiple items efficiently
+
+**When to use**: Importing data, bulk operations
+
+# BATCH PROCESSING:
+
 #### Imported: Zapier Looping
 
 """
@@ -644,6 +506,20 @@ Aggregator combines results back together.
 Use Array Aggregator for collecting processed items.
 """
 
+### Best Practices:
+- Use aggregators to combine results
+- Consider batch limits (some APIs limit to 100)
+- Watch operation/task counts for cost
+- Add delays for rate-limited APIs
+
+### Scheduled Automation Pattern
+
+Time-based triggers instead of events
+
+**When to use**: Daily reports, periodic syncs, batch jobs
+
+# SCHEDULED AUTOMATION:
+
 #### Imported: Make Scheduled Scenarios
 
 """
@@ -662,6 +538,12 @@ Scenario Schedule Options:
       ↓
 [Gmail: Send Report]
 """
+
+### Best Practices:
+- Consider timezone differences
+- Add buffer time for long-running jobs
+- Log execution times for monitoring
+- Don't schedule at exactly midnight (busy period)
 
 #### Imported: Sharp Edges
 
@@ -687,8 +569,7 @@ Recommended fix:
 
 # If you need dynamic values:
 
-#### Imported: Zapier approach:
-
+### Zapier approach:
 1. Add a "Find" or "Search" action first
    - HubSpot: Find Contact → returns contact_id
    - Slack: Find User by Email → returns user_id
@@ -697,8 +578,7 @@ Recommended fix:
    - Dropdown: Use Custom Value
    - Select the ID from the search step
 
-#### Imported: Make approach:
-
+### Make approach:
 1. Add a Search module first
    - Search Contacts: filter by email
    - Returns: contact_id
@@ -920,8 +800,118 @@ Recommended fix:
    - Store processed IDs
    - Skip if ID exists
 
-#### Imported: Make timezone handling:
+### Zapier example:
+[Webhook Trigger]
+   ↓
+[Airtable: Find Records] - search by event_id
+   ↓
+[Filter: Only continue if not found]
+   ↓
+[Process Event]
+   ↓
+[Airtable: Create Record] - store event_id
 
+# Handle missed events:
+
+1. Use polling triggers for critical data
+   - Less real-time but more reliable
+   - Catches events during downtime
+
+2. Implement reconciliation:
+   - Scheduled Zap to check for gaps
+   - Compare source data to processed data
+
+3. Check source system retry settings:
+   - Some systems retry on failure
+   - Configure retry count/timing
+
+### Make Operations Consumed by Error Retries
+
+Severity: MEDIUM
+
+Situation: Scenarios with failing modules
+
+Symptoms:
+Operations quota depleted quickly. Scenario runs "succeeded" but
+used many operations. Same scenario running more than expected.
+
+Why this breaks:
+Make counts operations per module execution, including failed
+attempts and retries. Error handler modules consume operations.
+Scenarios that fail and retry can use 3-5x expected operations.
+
+Recommended fix:
+
+# Understand operation counting:
+
+Successful run: Each module = 1 operation
+Failed + retry (3x): 3 operations for that module
+Error handler: Additional operation per handler module
+
+# Reduce operation waste:
+
+1. Add error handlers that break early:
+   [Module] → Error → [Break] (1 additional op)
+   vs
+   [Module] → Error → [Log] → [Alert] → [Update] (3+ ops)
+
+2. Use ignore instead of retry when appropriate:
+   - If failure is expected (record exists)
+   - If retrying won't help (bad data)
+
+3. Pre-validate before expensive operations:
+   [Check Data] → Filter → [API Call]
+   - Fail fast before consuming operations
+
+4. Optimize scenario scheduling:
+   - Don't run every minute if hourly is enough
+   - Use webhooks for real-time when possible
+
+# Monitor usage:
+- Check Operations dashboard
+- Set up usage alerts
+- Review high-consumption scenarios
+
+### Timezone Mismatches in Scheduled Triggers
+
+Severity: MEDIUM
+
+Situation: Setting up scheduled automations
+
+Symptoms:
+Zap runs at wrong time. "9 AM" trigger fires at 2 PM. Different
+behavior on different days. DST causes hour shifts.
+
+Why this breaks:
+Zapier shows times in your local timezone but may store in UTC.
+If you change timezones or DST occurs, scheduled times shift.
+Team members in different zones see different times.
+
+Recommended fix:
+
+# Best practices:
+
+1. Explicitly set timezone in schedule:
+   - Don't rely on browser detection
+   - Use business timezone, not personal
+
+2. Document in Zap name:
+   - "Daily Report 9AM EST"
+   - Include timezone in description
+
+3. Test around DST transitions:
+   - Schedule changes at DST boundaries
+   - Verify times before/after change
+
+4. For global teams:
+   - Use UTC as standard
+   - Convert to local in descriptions
+
+5. Consider buffer times:
+   - Don't schedule at exactly midnight
+   - Avoid on-the-hour (busy periods)
+
+### Make timezone handling:
 - Scenarios use account timezone setting
 - formatDate() function respects timezone
 - Use parseDate() with explicit timezone

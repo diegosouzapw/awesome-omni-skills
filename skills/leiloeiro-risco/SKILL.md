@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
 # SKILL DE RISCO — AUDITOR DE RISCO EM LEILÕES
@@ -152,10 +152,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-criminal` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-especialista` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@agent-memory-systems` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -386,7 +386,7 @@ CLASSIFICAÇÃO:
 
 ---
 
-#### Imported: Obrigatórias (Sempre, Para Qualquer Lote):
+### Obrigatórias (Sempre, Para Qualquer Lote):
 
 - [ ] Certidão de ônus reais (matrícula atualizada) — R$ 50-150
 - [ ] Certidão negativa de IPTU (ou extrato de débitos)
@@ -394,7 +394,7 @@ CLASSIFICAÇÃO:
 - [ ] Pesquisa do processo no sistema do TJ (ou cartório)
 - [ ] Verificar leiloeiro na Junta Comercial
 
-#### Imported: Complementares (Quando Score > 5):
+### Complementares (Quando Score > 5):
 
 - [ ] Certidão do distribuidor cível (ações no imóvel)
 - [ ] Extrato de débitos de condomínio

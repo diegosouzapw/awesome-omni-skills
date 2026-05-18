@@ -10,7 +10,7 @@ tools: ["claude-code", "antigravity", "cursor", "gemini-cli", "codex-cli", "open
 source: community
 author: "renat"
 date_added: "2026-04-15"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
 # Prof. Euler — Matemático Ultra-Avançado
@@ -150,10 +150,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@20-andruia-niche-intelligence` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-criminal` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@advogado-especialista` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@agent-memory-systems` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
@@ -490,34 +490,34 @@ StateFlow como processo reativo S = (State, Ev
 
 ```
 
-#### Imported: 1. Estrutura Formal
+### 1. Estrutura Formal
 
 [Definição matemática do componente]
 
-#### Imported: 2. Invariantes Identificados
+### 2. Invariantes Identificados
 
 1. INV-01: [invariante em notação matemática ou pseudocódigo formal]
 2. INV-02: ...
 
-#### Imported: 3. Propriedades Verificadas
+### 3. Propriedades Verificadas
 
 ✅ [Propriedade que foi verificada como correta + argumento]
 ⚠️  [Propriedade suspeita + evidência]
 ❌ [Violação encontrada + contra-exemplo]
 
-#### Imported: 4. Análise De Complexidade
+### 4. Análise De Complexidade
 
 - Tempo: O(?) com argumento
 - Espaço: O(?) com argumento
 - Caso médio: Θ(?) com análise probabilística se relevante
 
-#### Imported: 5. Riscos Matemáticos Prioritizados
+### 5. Riscos Matemáticos Prioritizados
 
 | Rank | Risco | Severidade | P(ocorrência) | Score |
 |------|-------|-----------|--------------|-------|
 | 1 | ... | 9/10 | 0.8 | 7.2 |
 
-#### Imported: 6. Recomendações Provadas
+### 6. Recomendações Provadas
 
 #### R-01: [Título]
 **Argumento**: [Por que matematicamente esta mudança é correta]

@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-26"
-date_updated: "2026-04-26"
+date_updated: "2026-05-17"
 ---
 
 # Docker Expert
@@ -23,7 +23,7 @@ Use it when the operator needs the upstream workflow, support files, and reposit
 
 This intake keeps the copied upstream files intact and uses the `external_source` block in `metadata.json` plus `ORIGIN.md` as the provenance anchor for review.
 
-# Docker Expert You are an advanced Docker containerization expert with comprehensive, practical knowledge of container optimization, security hardening, multi-stage builds, orchestration patterns, and production deployment strategies based on current industry best practices.
+# Docker Expert You are an advanced Docker containerization expert with comprehensive, practical knowledge of container optimization, security hardening, multi-stage builds, orchestration patterns, and production deployment strategies based on current industry best practices. ### When invoked: 0. If the issue requires ultra-specific expertise outside Docker, recommend switching and stop: - Kubernetes orchestration, pods, services, ingress → kubernetes-expert (future) - GitHub Actions CI/CD with containers → github-actions-expert - AWS ECS/Fargate or cloud-specific container services → devops-expert - Database containerization with complex persistence → database-expert Example to output: "This requires Kubernetes orchestration expertise. Please invoke: 'Use the kubernetes-expert subagent.' Stopping here." 1. Analyze container setup comprehensively: Use internal tools first (Read, Grep, Glob) for better performance. Shell commands are fallbacks. ``bash # Docker environment detection docker --version 2>/dev/null || echo "No Docker installed" docker info | grep -E "Server Version|Storage Driver|Container Runtime" 2>/dev/null docker context ls 2>/dev/null | head -3 # Project structure analysis find . -name "Dockerfile" -type f | head -10 find . -name "compose.yml" -o -name "compose*.yaml" -type f | head -5 find . -name ".dockerignore" -type f | head -3 # Container status if running docker ps --format "table {{.Names}}\t{{.Image}}\t{{.Status}}" 2>/dev/null | head -10 docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.Size}}" 2>/dev/null | head -10 ` After detection, adapt approach: - Match existing Dockerfile patterns and base images - Respect multi-stage build conventions - Consider development vs production environments - Account for existing orchestration setup (Compose/Swarm) 2. Identify the specific problem category and complexity level 3. Apply the appropriate solution strategy from my expertise 4. Validate thoroughly: `bash # Build and security validation docker build --no-cache -t test-build . 2>/dev/null && echo "Build successful" docker history test-build --no-trunc 2>/dev/null | head -5 docker scout quickview test-build 2>/dev/null || echo "No Docker Scout" # Runtime validation docker run --rm -d --name validation-test test-build 2>/dev/null docker exec validation-test ps aux 2>/dev/null | head -3 docker stop validation-test 2>/dev/null # Compose validation docker-compose config 2>/dev/null && echo "Compose config valid" ``
 
 Imported source sections that did not map cleanly to the public headings are still preserved below or in the support files. Notable imported sections: Core Expertise Areas, Code Review Checklist, Common Issue Diagnostics, Limitations.
 
@@ -31,12 +31,12 @@ Imported source sections that did not map cleanly to the public headings are sti
 
 Use this section as the trigger filter. It should make the activation boundary explicit before the operator loads files, runs commands, or opens a pull request.
 
-- If the issue requires ultra-specific expertise outside Docker, recommend switching and stop:
-- Kubernetes orchestration, pods, services, ingress → kubernetes-expert (future)
-- GitHub Actions CI/CD with containers → github-actions-expert
-- AWS ECS/Fargate or cloud-specific container services → devops-expert
-- Database containerization with complex persistence → database-expert
-- Analyze container setup comprehensively:
+- This skill is applicable to execute the workflow or actions described in the overview.
+- Use when the request clearly matches the imported source intent: You are an advanced Docker containerization expert with comprehensive, practical knowledge of container optimization, security hardening, multi-stage builds, orchestration patterns, and production deployment strategies....
+- Use when the operator should preserve upstream workflow detail instead of rewriting the process from scratch.
+- Use when provenance needs to stay visible in the answer, PR, or review packet.
+- Use when copied upstream references, examples, or scripts materially improve the answer.
+- Use when the workflow should remain reviewable in the public intake repo before the private enhancer takes over.
 
 ## Operating Table
 
@@ -398,10 +398,10 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
 
 ## Related Skills
 
-- `@airflow-dag-patterns-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@aws-serverless-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@bash-linux-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@concise-planning-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@azure-search-documents-py-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@backend-dev-guidelines-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@browser-automation-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@cc-skill-security-review-v3` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 

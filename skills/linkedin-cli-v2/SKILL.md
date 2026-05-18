@@ -10,7 +10,7 @@ tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]
 source: community
 author: "sickn33"
 date_added: "2026-04-25"
-date_updated: "2026-04-25"
+date_updated: "2026-05-17"
 ---
 
 # LinkedIn Skill
@@ -29,12 +29,12 @@ Imported source sections that did not map cleanly to the public headings are sti
 
 Use this section as the trigger filter. It should make the activation boundary explicit before the operator loads files, runs commands, or opens a pull request.
 
-- Building outreach, research, or recruiting workflows that rely on LinkedIn data and messaging.
-- Enriching leads or accounts by fetching people and company profiles in bulk.
-- Coordinating multi-step Sales Navigator or workflow runs where JSON output and exit codes are required.
-- Use when provenance needs to stay visible in the answer, PR, or review packet.
-- Use when copied upstream references, examples, or scripts materially improve the answer.
-- Use when the workflow should remain reviewable in the public intake repo before the private enhancer takes over.
+- Use this skill when you need to automate LinkedIn tasks such as profile fetching, connection management, or post creation via CLI, especially when integrated into automated workflows.
+- # LinkedIn Skill You have access to linkedin – a CLI tool for LinkedIn automation.
+- Use it to fetch profiles, search people and companies, send messages, manage connections, create posts, react, comment, and more.
+- Each command sends a request to Linked API, which runs a real cloud browser to perform the action on LinkedIn.
+- Operations are not instant – expect 30 seconds to several minutes depending on complexity.
+- If linkedin is not available, install it: bash npm install -g @linkedapi/linkedin-cli
 
 ## Operating Table
 
@@ -73,6 +73,15 @@ Once the user provides the tokens, run:
 ```bash
 linkedin setup --linked-api-token=TOKEN --identification-token=TOKEN
 ```
+
+### When to Use
+Use this skill when you need to **orchestrate LinkedIn actions from scripts or an AI agent** instead of clicking through the web UI:
+
+- Building outreach, research, or recruiting workflows that rely on LinkedIn data and messaging.
+- Enriching leads or accounts by fetching people and company profiles in bulk.
+- Coordinating multi-step Sales Navigator or workflow runs where JSON output and exit codes are required.
+
+Always respect LinkedIn’s terms of service, local regulations, and your organisation’s compliance policies when using automation against real accounts.
 
 ## Examples
 
@@ -577,10 +586,10 @@ Treat the generated public skill as a reviewable packaging layer around the upst
 
 ## Related Skills
 
-- `@00-andruia-consultant` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@00-andruia-consultant-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith` - Use when the work is better handled by that native specialization after this imported skill establishes context.
-- `@10-andruia-skill-smith-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@cred-omega-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@customs-trade-compliance-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@docker-expert-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
+- `@ejentum-reasoning-harness-v2` - Use when the work is better handled by that native specialization after this imported skill establishes context.
 
 ## Additional Resources
 
