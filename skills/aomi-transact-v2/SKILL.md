@@ -1,9 +1,9 @@
 ---
 name: aomi-transact-v2
-description: "Aomi Transact workflow skill. Use this skill when the user needs Build natural-language crypto/DeFi agents and EVM MCP plugins (Claude Code, Cursor, Codex, Gemini). Aomi turns prompts into wallet-signed txs on Ethereum, Base, Arbitrum, Optimism, Polygon, Linea \u2014 non-custodial, fork-simulated. 40+ apps: Uniswap, Aave, Lido, Morpho, GMX, Hyperliquid, Polymarket and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off."
+description: "Use this skill to operate the Aomi CLI for natural-language crypto and DeFi workflows, including balance checks, route simulation, transaction review, and explicit user-approved signing flows across EVM chains."
 version: "0.0.1"
 category: ai-agents
-tags: ["defi", "wallet", "account-abstraction", "cli", "eip-712", "onchain", "agent", "intent"]
+tags: ["defi", "wallet", "account-abstraction", "cli", "eip-712", "onchain", "transaction-simulation", "evm"]
 complexity: advanced
 risk: caution
 tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]

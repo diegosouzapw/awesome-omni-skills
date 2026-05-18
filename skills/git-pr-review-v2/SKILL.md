@@ -1,9 +1,9 @@
 ---
 name: git-pr-review-v2
-description: "git-pr-review workflow skill. Use this skill when the user needs Generate a concise and structured PR description from commit history with minimal token usage and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off."
+description: "Use this skill to generate concise, structured pull request descriptions from commit history while filtering noise, grouping changes by domain, and inspecting diffs only when needed."
 version: "0.0.1"
 category: cli-automation
-tags: ["git-pr-review-v2", "git-pr-review", "generate", "concise", "and", "structured", "description", "commit"]
+tags: ["git", "pull-request", "review", "description", "commits", "changelog", "automation", "cli"]
 complexity: beginner
 risk: caution
 tools: ["codex-cli", "claude-code", "cursor", "gemini-cli", "opencode"]

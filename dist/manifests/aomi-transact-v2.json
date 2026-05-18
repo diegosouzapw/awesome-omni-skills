@@ -3,7 +3,7 @@
   "id": "aomi-transact-v2",
   "slug": "aomi-transact-v2",
   "display_name": "Aomi Transact",
-  "description": "Aomi Transact workflow skill. Use this skill when the user needs Build natural-language crypto/DeFi agents and EVM MCP plugins (Claude Code, Cursor, Codex, Gemini). Aomi turns prompts into wallet-signed txs on Ethereum, Base, Arbitrum, Optimism, Polygon, Linea \\u2014 non-custodial, fork-simulated. 40+ apps: Uniswap, Aave, Lido, Morpho, GMX, Hyperliquid, Polymarket and the operator should preserve the upstream workflow, copied support files, and provenance before merging or handing off.",
+  "description": "Use this skill to operate the Aomi CLI for natural-language crypto and DeFi workflows, including balance checks, route simulation, transaction review, and explicit user-approved signing flows across EVM chains.",
   "version": "0.0.1",
   "category": "ai-agents",
   "raw_category": "ai-agents",
@@ -20,8 +20,8 @@
     "cli",
     "eip-712",
     "onchain",
-    "agent",
-    "intent"
+    "transaction-simulation",
+    "evm"
   ],
   "complexity": "advanced",
   "risk": "caution",
@@ -318,7 +318,7 @@
     "related_skills_count": 4,
     "has_local_support_links": false,
     "local_support_links_count": 0,
-    "has_local_script_example": true,
+    "has_local_script_example": false,
     "local_script_example_count": 0,
     "semantic_signals": {
       "workflow_steps_count": 14,
@@ -408,14 +408,14 @@
     {
       "path": "skills/aomi-transact-v2/SKILL.md",
       "kind": "entrypoint",
-      "size_bytes": 17429,
-      "sha256": "f5a06a877578175d71c51dbadef24abaa4bbf68d6e4bf2fc9e72a37afcd074bb"
+      "size_bytes": 17163,
+      "sha256": "d9096920872f7f4125aa565e63ad0cfcd5ef28bea78028f702ac421fd4702f39"
     },
     {
       "path": "skills/aomi-transact-v2/metadata.json",
       "kind": "support",
-      "size_bytes": 12256,
-      "sha256": "34a6cabeca988ce65416b1616a17962124ca921a9bdff76f62cceb26b63b66de"
+      "size_bytes": 11990,
+      "sha256": "46031f966deb5dd953c28e5f83d9f9e0ab3324aff979b16f069190bbd5403fc1"
     }
   ],
   "archives": [
@@ -423,8 +423,8 @@
       "format": "zip",
       "path": "dist/archives/aomi-transact-v2.zip",
       "file_name": "aomi-transact-v2.zip",
-      "size_bytes": 30823,
-      "sha256": "10a9c106c63f35edce8db678e7affd09d9716b26140d1aab721fbdd9a28e1fe6",
+      "size_bytes": 30291,
+      "sha256": "b484801897b08fe59dbb4c598924f5be068bf5a7df5d9af70d4908b9f2eaa8eb",
       "signature": {
         "status": "unsigned",
         "path": null,
@@ -438,7 +438,7 @@
       "path": "dist/archives/aomi-transact-v2.tar.gz",
       "file_name": "aomi-transact-v2.tar.gz",
       "size_bytes": 40988,
-      "sha256": "6419c7f4fa1e082caad8956890b399a2bb89d64d0ab14d8415c7507c8a7477e1",
+      "sha256": "1aaa22a27c153cf6fbc88b6393ec9e7c5a6ed67e83e622e0eecd562693be53e4",
       "signature": {
         "status": "unsigned",
         "path": null,
@@ -451,7 +451,7 @@
   "archive_checksums": {
     "path": "dist/archives/aomi-transact-v2.checksums.txt",
     "file_name": "aomi-transact-v2.checksums.txt",
-    "sha256": "6a15ad15ec664d41ec6607de3778078a18457b12145715612267a1bc36d496b5",
+    "sha256": "87bee0da3327c002526c8512553b7f7ab14174ad0a37ab4e7e144bd1f961547f",
     "signature": {
       "status": "unsigned",
       "path": null,
@@ -461,7 +461,7 @@
     }
   },
   "checksums": {
-    "entrypoint_sha256": "f5a06a877578175d71c51dbadef24abaa4bbf68d6e4bf2fc9e72a37afcd074bb",
-    "package_sha256": "7dee4f50783a6bb4543b48a8fa6a29637dff7b06e7f198765ad528e5ed07c990"
+    "entrypoint_sha256": "d9096920872f7f4125aa565e63ad0cfcd5ef28bea78028f702ac421fd4702f39",
+    "package_sha256": "1b81a5c762d02284f95b68e6470d35eb1fe66556399eb9a1b045e44f5383db2e"
   }
 }
