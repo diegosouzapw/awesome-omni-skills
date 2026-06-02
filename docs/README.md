@@ -32,7 +32,7 @@ Standard community files live in the repository root:
 
 ## 🔭 Current Project State
 
-The repository should currently be read as a runtime-first baseline. In this workspace snapshot the generated catalog is empty, the bundle definitions remain available, and future content growth happens by merging new native skills into `skills/` and regenerating the published artifacts:
+The repository operates as a runtime-first platform with a populated catalog. The published catalog currently carries thousands of native intake skills plus their curated English derivatives, and content keeps growing by merging new native skills into `skills/` and regenerating the published artifacts:
 
 <!-- generated:docs-readme-current-project-state:start -->
 - public `v0.12.9` and private `v1.0.1` are the current stable release floor
@@ -97,6 +97,7 @@ Those decisions align with current official MCP and client documentation, includ
 
 | Doc | What You'll Learn |
 |:----|:------------------|
+| 🏛️ [Architecture & System Overview](ARCHITECTURE.md) | End-to-end map of all functionality: content model, catalog-core, the four runtime surfaces, and the generation/release pipeline |
 | 🗂️ [Project Structure](PROJECT-STRUCTURE.md) | Complete directory and file reference for the monorepo |
 | 🌐 [Catalog API Surface](specs/CATALOG-API.md) | HTTP endpoints, filtering, governance, and downloads |
 | 🧩 [CLI Guided Installer](specs/CLI-GUIDED-INSTALLER.md) | Behavioral contract for the guided installer |
@@ -107,6 +108,17 @@ Those decisions align with current official MCP and client documentation, includ
 | 📊 [Skill Classification](specs/SKILL-CLASSIFICATION.md) | Taxonomy, scoring heuristics, and metadata artifacts |
 | 🛡️ [Security Validation](specs/SECURITY-VALIDATION.md) | Scanners, archives, signatures, and release verification |
 | 📋 [Skill Manifest Spec](specs/SKILL-MANIFEST.md) | Machine-readable manifest format and compatibility contract |
+
+### ✨ If You Want to Understand the **Curated / Enhancer Pipeline**
+
+These normative (draft) specs govern the private enhancer and the `skills_omni/` curated surface:
+
+| Doc | What You'll Learn |
+|:----|:------------------|
+| 📜 [Enhanced Skill Standard](specs/ENHANCED-SKILL-STANDARD.md) | Editorial and structural standard for curated derivatives |
+| 🧩 [Enhanced Support Family Policy](specs/ENHANCED-SUPPORT-FAMILY-POLICY.md) | Support-file (agents/examples/references/scripts) family policy |
+| 🪪 [Enhanced Skill Profiles](specs/ENHANCED-SKILL-PROFILES.md) | Provenance/profile fields carried by curated skills |
+| ⚖️ [Enhanced Upstream Comparison](specs/ENHANCED-UPSTREAM-COMPARISON.md) | How a derivative must improve on its upstream source |
 
 ### 🤝 If You Want to **Contribute**
 
@@ -176,6 +188,7 @@ The build pipeline emits the machine-readable files that drive every runtime sur
 | `metadata.json` | Repository-wide validation and score summary |
 | `skills_index.json` | Repo-local normalized skill index |
 | `dist/catalog.json` | Published catalog for search and listing |
+| `dist/catalog.db` | SQLite catalog (FTS5 + trigram) for fast search via the catalog-core SQLite adapter |
 | `dist/bundles.json` | Bundle definitions with availability |
 | `dist/manifests/<skill>.json` | Per-skill machine-readable manifest |
 | `dist/archives/<skill>.zip` | Skill archive (zip) |
@@ -234,7 +247,7 @@ Task lifecycle, streaming, persistence, restart recovery, and simple-first local
 | Path | Purpose |
 |:-----|:--------|
 | 📂 `skills/` | Native intake surface when this branch tracks authored skills |
-| ✨ `skills_omni/` | Curated derivative surface; this branch currently only retains the placeholder README |
+| ✨ `skills_omni/` | Curated derivative surface; populated with the automation-managed English derivatives of native skills |
 | 📖 `docs/users/` | End-user documentation |
 | 🔧 `docs/specs/` | Runtime, protocol, and artifact contracts |
 | 🤝 `docs/contributors/` | Contributor templates and guidance |

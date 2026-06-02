@@ -13,7 +13,7 @@
 **The skill catalog that installs itself.**<br/>
 CLI · API · MCP · A2A — all from a single `npx` command.
 
-> 🚀 *0 skills · 7 bundles · 9 install clients · 16 MCP clients · 4 runtime surfaces*
+> 🚀 *4715 skills · 7 bundles · 9 install clients · 16 MCP clients · 4 runtime surfaces*
 
 <br/>
 
@@ -385,15 +385,17 @@ npx awesome-omni-skills config-mcp --target windsurf-user --transport sse --url 
 
 ### 📦 Bundle Availability
 
-| Bundle | Skills | Members |
-|:-------|:-------|:--------|
-| 🧰 `essentials` | **4/4** ✅ | `find-skills` · `brainstorming` · `architecture` · `debugging` |
-| 🌐 `full-stack` | **5/5** ✅ | `frontend-design` · `api-design` · `database-design` · `omni-figma` · `auth-flows` |
-| 🎨 `design` | **5/5** ✅ | `frontend-design` · `omni-figma` · `design-systems-ops` · `accessibility-audit` · `design-token-governance` |
-| 🛡️ `security` | **4/4** ✅ | `security-auditor` · `vulnerability-scanner` · `incident-response` · `threat-modeling` |
-| ⚙️ `devops` | **5/5** ✅ | `docker-expert` · `kubernetes` · `terraform` · `observability-review` · `release-engineering` |
-| 🤖 `ai-engineer` | **7/7** ✅ | `rag-engineer` · `prompt-engineer` · `llm-patterns` · `eval-design` · `context-engineering` · `data-contracts` · `model-serving` |
-| 🔧 `oss-maintainer` | **4/4** ✅ | `find-skills` · `create-pr` · `changelog` · `documentation` |
+> ℹ️ Bundle definitions in [`data/bundles.json`](data/bundles.json) list each bundle's **ideal** members. *Backing* shows how many of those skill ids are present in the **current published catalog** — several are curated targets (e.g. `find-skills`, `kubernetes`, `omni-figma`) not yet in the auto-imported set, so most bundles are currently **partially backed**. Run `npx awesome-omni-skills find --bundle <id>` to see what installs today.
+
+| Bundle | Backing | Members |
+|:-------|:--------|:--------|
+| 🧰 `essentials` | **2/4** ⚠️ | `find-skills` · `brainstorming` · `architecture` · `debugging` |
+| 🌐 `full-stack` | **2/5** ⚠️ | `frontend-design` · `api-design` · `database-design` · `omni-figma` · `auth-flows` |
+| 🎨 `design` | **1/5** ⚠️ | `frontend-design` · `omni-figma` · `design-systems-ops` · `accessibility-audit` · `design-token-governance` |
+| 🛡️ `security` | **2/4** ⚠️ | `security-auditor` · `vulnerability-scanner` · `incident-response` · `threat-modeling` |
+| ⚙️ `devops` | **1/5** ⚠️ | `docker-expert` · `kubernetes` · `terraform` · `observability-review` · `release-engineering` |
+| 🤖 `ai-engineer` | **2/7** ⚠️ | `rag-engineer` · `prompt-engineer` · `llm-patterns` · `eval-design` · `context-engineering` · `data-contracts` · `model-serving` |
+| 🔧 `oss-maintainer` | **2/4** ⚠️ | `find-skills` · `create-pr` · `changelog` · `documentation` |
 
 ### ✨ Native Intake → Curated Output
 
@@ -496,7 +498,8 @@ This is a user-facing benefit, not just build plumbing: the catalog favors insta
 
 | Doc | What You'll Learn |
 |:----|:-----------------|
-| 🗂️ [Project Structure](docs/PROJECT-STRUCTURE.md) | What is actually tracked in this workspace and where each runtime lives |
+| 🏛️ [Architecture & System Overview](docs/ARCHITECTURE.md) | End-to-end map of all functionality, how the surfaces connect, and current state |
+| 🗂️ [Project Structure](docs/PROJECT-STRUCTURE.md) | The monorepo directory and file reference, and where each runtime lives |
 | 🌐 [Catalog API](docs/specs/CATALOG-API.md) | HTTP endpoints, filtering, governance, and downloads |
 | 🧩 [CLI Guided Installer](docs/specs/CLI-GUIDED-INSTALLER.md) | Behavioral contract for the guided installer |
 | 🖥️ [CLI Visual Shell](docs/specs/CLI-VISUAL-SHELL.md) | Ink visual shell and state model |

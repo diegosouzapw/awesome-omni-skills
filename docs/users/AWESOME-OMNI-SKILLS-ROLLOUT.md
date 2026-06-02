@@ -6,11 +6,11 @@
 
 ## Snapshot
 
-- Date validated: **April 11, 2026**
+- Snapshot date: **May 17, 2026**
 - Canonical GitHub repo: `diegosouzapw/awesome-omni-skills`
-- Canonical source package: `awesome-omni-skills@0.12.0`
+- Canonical source package: `awesome-omni-skills@0.12.9` (paired private floor `v1.0.1`)
 - Current repository-local runtime surfaces: **CLI**, **API**, **MCP**, **A2A**
-- Current generated catalog state in this workspace: **0** native skills, **0** curated derivatives, **7** bundle definitions
+- Current generated catalog state: **4715** published skills (**3092** native + **1623** curated), across **2349** families and **7** bundle definitions
 - Current docs translation surface: **31** generated non-English language snapshots under `docs/i18n/`
 
 This document describes the state of the repository itself. It is not a live external dashboard report.
@@ -70,12 +70,12 @@ This policy is scoped to this repository only. It does not modify any global wor
 
 ## Current Repository State
 
-The naming and packaging rollout is complete. The project currently operates as a runtime-first baseline with:
+The naming and packaging rollout is complete. The project currently operates as a runtime-first platform with:
 
-- a synchronized source-controlled version of `0.12.0`
+- a synchronized source-controlled version of `0.12.9`
 - generated documentation and translation snapshots aligned to the current repository artifacts
 - automatic repository-local release bumps for qualifying merges into `main`
-- an empty tracked skill catalog in this workspace snapshot, with bundle definitions and runtime surfaces still present
+- a populated skill catalog (4715 published skills across 2349 families), with bundle definitions and all four runtime surfaces present
 
 Normal maintenance from this point forward is:
 

@@ -1,6 +1,8 @@
 # 🗂️ Project Structure
 
 > **Complete directory and file reference for the Awesome Omni Skills monorepo.**
+>
+> _Last updated against the `v0.12.9` snapshot (4715 published skills · 3092 native + 1623 curated · 2349 families). For an end-to-end architecture overview, see [Architecture & System Overview](ARCHITECTURE.md)._
 
 ---
 
@@ -15,8 +17,8 @@ awesome-omni-skills/
 ├── dist/                       # Generated runtime artifacts (committed)
 ├── docs/                       # All project documentation
 ├── packages/                   # Monorepo workspaces (runtime code)
-├── skills/                     # Native skill catalog when tracked in this branch
-├── skills_omni/                # Curated derivatives placeholder/readme surface
+├── skills/                     # Native skill catalog (community/upstream intake)
+├── skills_omni/                # Curated English derivatives (automation-managed)
 ├── tools/                      # Build, validation, and test scripts
 └── [root files]                # Package config, community files, licenses
 ```
@@ -29,7 +31,7 @@ awesome-omni-skills/
 
 > **The native skill catalog surface.** This is the primary public content surface of the project when native skills are tracked in the branch.
 
-In the current workspace snapshot this directory is not tracked, so the generated catalog is empty. When native skills are present, each skill directory contains at minimum a `SKILL.md` playbook. Larger skills may also include `agents/`, `references/`, `examples/`, `scripts/`, and `assets/` subdirectories.
+This directory is populated with the native intake catalog (3092 skills in the `v0.12.9` snapshot). Each skill directory contains at minimum a `SKILL.md` playbook plus a generated `metadata.json` and an `ORIGIN.md` provenance anchor. Larger skills may also include `agents/`, `references/`, `examples/`, `scripts/`, and `assets/` subdirectories.
 
 Skills arrive through two intake paths:
 - **Direct contributor PRs** — humans submit skills directly
@@ -47,9 +49,9 @@ Skills arrive through two intake paths:
 
 > **Curated improved English-only derivatives.** Maintained by the private enhancement pipeline.
 
-In the current workspace snapshot this surface only keeps the placeholder `README.md`. When enhanced derivatives are present, they mirror and improve upon their native counterparts in `skills/`. This surface is **not open for direct public contribution** and is populated exclusively by the automated enhancer pipeline.
+This surface is populated with the curated English derivatives (1623 in the `v0.12.9` snapshot). Each derivative mirrors and improves upon its native counterpart in `skills/`, carrying an `ATTRIBUTION.md` (crediting the upstream skill, author, and source PR) and an `OMNI_ENHANCED.json` (curation metadata). This surface is **not open for direct public contribution** and is populated exclusively by the automated enhancer pipeline.
 
-Each derivative preserves attribution to its native source while providing a higher editorial standard, always in English.
+Each derivative preserves attribution to its native source while providing a higher editorial standard, always in English. It is a one-way surface: curated output is never re-ingested as native intake.
 
 ---
 
@@ -80,6 +82,7 @@ These files are the machine-readable outputs consumed by CLI installs, API respo
 | Path | Purpose |
 |:-----|:--------|
 | `dist/catalog.json` | Published catalog with the current skills, scores, and metadata |
+| `dist/catalog.db` | SQLite catalog (FTS5 porter + trigram) built by `build_catalog_db.js`; consumed by the `catalog-core` SQLite search adapter and force-included in the npm tarball |
 | `dist/bundles.json` | Bundle definitions with member availability status |
 | `dist/manifests/<skill>.json` | Per-skill machine-readable manifest |
 | `dist/archives/<skill>.zip` | Per-skill ZIP archive for download |
@@ -112,6 +115,7 @@ These files are the machine-readable outputs consumed by CLI installs, API respo
 | Path | Audience | Content |
 |:-----|:---------|:--------|
 | `docs/README.md` | Everyone | Documentation hub — central index to all docs |
+| `docs/ARCHITECTURE.md` | Everyone | End-to-end architecture & system overview (all functionality and current state) |
 | `docs/CATALOG.md` | Users | Auto-generated catalog listing the currently published skills and scores |
 | `docs/PROJECT-STRUCTURE.md` | Everyone | This file — project directory reference |
 | `docs/users/` | End users | Getting started, CLI user guide, usage guide, bundles, runbook |
@@ -152,10 +156,16 @@ These files are the machine-readable outputs consumed by CLI installs, API respo
 | `SKILL-CLASSIFICATION.md` | Taxonomy, scoring heuristics, and metadata artifacts |
 | `SECURITY-VALIDATION.md` | Scanners, archives, signatures, and release verification |
 | `SKILL-MANIFEST.md` | Machine-readable manifest format and compatibility contract |
+| `ENHANCED-SKILL-STANDARD.md` | (Draft) editorial/structural standard for curated `skills_omni/` derivatives |
+| `ENHANCED-SUPPORT-FAMILY-POLICY.md` | (Draft) support-file family policy for curated skills |
+| `ENHANCED-SKILL-PROFILES.md` | (Draft) provenance/profile fields carried by curated skills |
+| `ENHANCED-UPSTREAM-COMPARISON.md` | (Draft) how a derivative must improve on its upstream source |
 
 #### `docs/i18n/`
 
-Contains **32** translation directories, matching the tracked non-English locales for the project docs: ar, bg, cs, da, de, es, fi, fr, he, hi, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
+Contains **31** translation directories, matching the tracked non-English locales for the project docs: ar, bg, cs, da, de, es, fi, fr, he, hu, id, in, it, ja, ko, ms, nl, no, phi, pl, pt, pt-BR, ro, ru, sk, sv, th, tr, uk-UA, vi, zh-CN.
+
+> **Note:** the documentation i18n surface (this directory, **31** locales) is distinct from the runtime UI i18n surface (`packages/i18n-runtime/src/locales/`, **33** locales — it additionally ships `en` and `hi`).
 
 Translations are auto-generated by `npm run i18n:render` and validated by `npm run i18n:check`.
 
@@ -174,6 +184,9 @@ Translations are auto-generated by `npm run i18n:render` and validated by `npm r
 | `recategorize_skills.py` | `npm run taxonomy:report` | Shows or applies canonical category normalization |
 | `generate_index.py` | `npm run index` | Generates `dist/` manifests, archives, and checksums |
 | `build_catalog.js` | `npm run catalog` | Generates `docs/CATALOG.md` from `skills_index.json` |
+| `build_catalog_db.js` | `npm run build:db` | Builds `dist/catalog.db` (SQLite FTS5 + trigram) from `dist/catalog.json` |
+| `generate_synthetic_skills.js` | `npm run catalog:synthetic` | Generates a throwaway synthetic catalog (default 200k skills) for benchmarking |
+| `benchmark_search.js` | `npm run benchmark:search` | Times the SQLite vs in-memory search adapters at scale |
 | `generate_project_status.py` | `npm run project:status` | Generates `data/project_status.json` with current metrics |
 | `render_project_docs.py` | `npm run docs:render` | Updates generated blocks in README, docs, and CONTRIBUTING |
 | `generate_i18n.py` | `npm run i18n:render` | Generates or updates `docs/i18n/` translations |
@@ -208,7 +221,9 @@ Integration and TUI test suites consumed by `npm test`:
 | `validate.yml` | Push/PR to `main` | Build, test, and confirm generated artifacts are committed |
 | `release.yml` | Tag push `v*` or manual dispatch | Release-grade scanners, signing, npm publish, GitHub Release |
 | `auto-release-skill-merges.yml` | Merge to `main` touching `skills/*`, `skills_omni/*`, or `data/bundles.json` | Repository-local automatic version bump, tag, and release on skill surface changes |
-| `enhance-pr-skills.yml` | PR with skill changes | Runs the private enhancer pipeline and posts companion PR |
+| `enhance-pr-skills.yml` | PR with skill changes (`pull_request_target`) | Runs the private enhancer pipeline on a self-hosted runner and opens the companion `skills_omni/` PR |
+| `manual-release-fallback.yml` | Manual dispatch (`workflow_dispatch`) | Break-glass release path: lightweight sanity check, bump/tag/push, npm + GitHub Release |
+| `skill-review.yml` | PR touching `**/SKILL.md` | Lightweight third-party `tesslio/skill-review` action |
 | `sync-repository-metadata.yml` | Changes to `data/project_identity.json` | Syncs GitHub description, homepage, and topics |
 
 #### `.github/pull_request_template.md`
@@ -254,13 +269,18 @@ Default PR template with checklist for skill and runtime contributions.
 ## 🔄 Build Pipeline Flow
 
 ```text
+npm run identity:check    →  (gate) verifies package/repo identity contract
 npm run validate          →  metadata.json, skills_index.json, per-skill metadata.json
+npm run verify:scanners   →  (gate) asserts security-scanner coverage in metadata
 npm run index             →  dist/manifests/, dist/archives/, dist/archives/*.checksums.txt
+npm run verify:archives   →  (gate) re-hashes archives + checksum manifests
 npm run catalog           →  docs/CATALOG.md
+npm run build:db          →  dist/catalog.db (SQLite FTS5 + trigram)
 npm run project:status    →  data/project_status.json
-npm run docs:render       →  updates generated blocks in README.md, docs/README.md, CONTRIBUTING.md
+npm run docs:render       →  updates generated blocks in README.md, docs/README.md, CONTRIBUTING.md, and 5 more docs
 npm run registry:render   →  updates REPOSITORY-SOURCES.md status block
 npm run i18n:render       →  docs/i18n/* plus translated docs mirrors (31 non-English languages)
+npm run docs:render:check / registry:check / i18n:check   →  (gates) fail if any generated artifact drifted
 ```
 
-All of the above run sequentially as part of `npm run build`.
+All of the above run sequentially as part of `npm run build`. The trailing `*:check` stages are drift gates: they regenerate in check mode and fail the build if committed output differs from a fresh generation.

@@ -19,8 +19,8 @@ development, frontend, backend, fullstack-web, tools, cli-automation,
 business, product, design, data-ai, ai-agents, machine-learning, devops,
 testing-security, documentation, content-media, communication, uncategorized.
 
-16 of these 18 categories are currently active. `business` and `content-media`
-are intentionally deferred unless a clearly code-native proposal appears.
+17 of these 18 categories are currently active; `uncategorized` is only the
+fallback bucket used when no category matches.
 
 `npm run validate` will generate skills/<skill>/metadata.json with canonical
 taxonomy, maturity level, best practices score, quality score, and security
@@ -30,8 +30,9 @@ constructs will be flagged automatically.
 The skill version is independent from the package version. Use the semantic
 version that makes sense for the skill itself.
 
-All 154 current native skills are classified at maturity L3. Aim for L3
-by including support files under references/, scripts/, examples/, and/or agents/.
+Most native skills are classified at maturity L2 (instructions), with a smaller
+L3 (resources) tier. Aim for L3 by including support files under references/,
+scripts/, examples/, and/or agents/ when the workflow genuinely needs them.
 
 For a top-scoring skill, also read:
 - docs/contributors/HIGH-SCORE-PLAYBOOK.md

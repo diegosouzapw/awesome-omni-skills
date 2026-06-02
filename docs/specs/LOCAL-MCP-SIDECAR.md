@@ -117,7 +117,7 @@ When local mode is enabled, these extra tools become available:
 | 🟢 Kiro | `~/.kiro/skills` |
 | 🔴 Codex CLI | `~/.codex/skills` or `$CODEX_HOME/skills` |
 | ⚪ OpenCode | `<workspace>/.opencode/skills` |
-| 🪿 Goose | `~/.local/share/goose/agent-skills` |
+| 🪿 Goose | `~/.agents/skills` |
 | 🟠 Qwen Code | `<workspace>/.qwen/skills` |
 
 These 9 targets are the only first-class install destinations today.
