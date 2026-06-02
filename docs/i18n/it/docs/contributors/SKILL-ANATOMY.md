@@ -61,7 +61,7 @@ The skill version is independent from the npm package version. The package versi
 
 ## 🏷️ Canonical Categories
 
-The repo taxonomy defines **18 canonical categories**, of which **16 are currently active**:
+The repo taxonomy defines **18 canonical categories**, of which **17 are currently active** (`uncategorized` is only the fallback bucket):
 
 | Category | Domain |
 |:---------|:-------|
@@ -123,7 +123,7 @@ Cross-references to complementary skills.
 - 📌 Instructions are **clear enough for an AI** to follow without human interpretation
 - 💡 Includes **concrete examples** with expected behavior
 - 🛡️ Has proper **error handling** guidance
-- 📊 Produces healthy metadata: canonical category, maturity L3 (all 154 native skills are L3), quality 70+
+- 📊 Produces healthy metadata: canonical category, solid maturity (the catalog skews L2 with a growing L3 resources tier — aim for L3), quality 70+
 - 🧰 Ships reusable support material when it is justified by the workflow, not a generic support pack added only for appearance or score
 
 For the stronger scoring patterns that push skills into the highest bands, see [High-Score Playbook](../../../../contributors/HIGH-SCORE-PLAYBOOK.md).
