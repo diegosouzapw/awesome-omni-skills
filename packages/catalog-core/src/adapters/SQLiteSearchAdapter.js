@@ -488,6 +488,14 @@ export class SQLiteSearchAdapter extends SearchAdapter {
     const goalTokens = tokenize(options.goal || "");
     const queryTokens = tokenize(options.q || options.query || "");
     const limit = ensureNumber(options.limit, 5);
+    // Safety ceiling on the candidate pool (defense against a pathological catalog size).
+    // Default (5000) sits above the real catalog (~4715 skills), so ordinary requests are
+    // unaffected; the SQL LIMIT is the ceiling itself, not combined with the caller's
+    // requested result `limit` (which is a separate, later `.slice(0, limit)` step below).
+    const candidateLimit = ensureNumber(
+      options.recommendCandidateCeiling ?? this.context.recommendCandidateCeiling,
+      5000,
+    );
     const where = buildFilterSql(parsed.filters, "skills");
     const rows = db
       .prepare(
@@ -495,10 +503,11 @@ export class SQLiteSearchAdapter extends SearchAdapter {
           SELECT ${buildSkillSelectColumns("skills")}
           FROM skills
           ${where.sql ? `WHERE ${where.sql}` : ""}
-          ORDER BY skills.rowid ASC
+          ORDER BY skills.quality_score DESC, skills.rowid ASC
+          LIMIT ?
         `,
       )
-      .all(...where.params);
+      .all(...where.params, candidateLimit);
 
     const results = rows
       .map(hydrateSkillRow)
