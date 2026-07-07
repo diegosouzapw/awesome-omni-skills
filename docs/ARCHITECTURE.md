@@ -89,7 +89,7 @@ Every `SKILL.md` carries machine-readable YAML frontmatter: `name`, `description
 
 - **Loading** `dist/catalog.json`, `dist/manifests/<id>.json`, and `data/bundles.json` through an injectable `ICatalogStorageAdapter` (the default `FileSystemAdapter` enforces path-traversal containment).
 - **Search** behind a pluggable `SearchAdapter`:
-  - `SQLiteSearchAdapter` reads `dist/catalog.db` (FTS5 porter + trigram for typo tolerance) for fast browse/filter at scale.
+  - `SQLiteSearchAdapter` reads `dist/catalog.db` (FTS5 porter + trigram for typo tolerance). **Caveat:** in the shipped configuration every surface preloads the catalog, and with a catalog present the adapter serves *text* queries from the same in-memory scorer as the memory adapter — the FTS5/BM25/trigram SQL currently backs only the no-query browse/filter path and the benchmark harness. Wiring FTS5 into text search is tracked in `_tasks/new-search`.
   - `MemorySearchAdapter` is the fallback when the `.db` is missing, the driver is unbuilt, or the schema is stale — selection is automatic and logged, never a crash.
   - Both share one JS scorer (`search-utils.js`), so keyword ranking is identical regardless of backend.
 - **Public API:** `listSkills`, `getSkill`, `searchSkills`/`searchFamilies`, `recommendSkills`, `compareSkills`, `listBundles`, `buildInstallPlan`, `getHealthSnapshot`, and a family of path-safe `resolve*File` download helpers (which return `null` — never throw — for missing or escaping paths).
@@ -125,7 +125,7 @@ The Ink visual shell (`ui.mjs`) is a screen-stack UI with install/service funnel
 
 A read-only Express 5 catalog API. Routes under `/v1`: `skills`, `families`, `search` (with `?group=families`), `compare`, `bundles`, `install/plan`, plus path-safe download endpoints for manifests, entrypoints, artifacts, archives, signatures, and checksums. OpenAPI 3.1 is served at `/docs` via Swagger UI.
 
-Governance lives in the shared `http-runtime.js` (also reused by the MCP server's network transports): bearer/API-key auth, an admin route, token-bucket rate limiting, CORS and IP allowlists (`net.BlockList`), audit logging, maintenance mode, and security headers. **All of these are disabled by default** — an unconfigured server is open and unauthenticated, bound to `127.0.0.1`. Downloads are defended in depth (id regex + `..` checks + a resolved-path-stays-in-repo check + `dotfiles: deny`). See [Catalog API Surface](specs/CATALOG-API.md).
+Governance lives in the shared `http-runtime.js` (also reused by the MCP and A2A servers): bearer/API-key auth, an admin route, token-bucket rate limiting, CORS and IP allowlists (`net.BlockList`), audit logging, maintenance mode, and security headers. **Auth, the admin route, CORS, and IP allowlists are disabled until configured**, so an unconfigured server is open and unauthenticated, bound to `127.0.0.1`. **Token-bucket rate limiting, however, is on by default** (120 requests / 60 s per client; tune via `OMNI_SKILLS_RATE_LIMIT_MAX` / `OMNI_SKILLS_RATE_LIMIT_WINDOW_MS`, or disable with `OMNI_SKILLS_RATE_LIMIT_MAX=0`), and security headers are always applied. Downloads are defended in depth (id regex + `..` checks + a resolved-path-stays-in-repo check + `dotfiles: deny`). See [Catalog API Surface](specs/CATALOG-API.md).
 
 ### 5.3 MCP — `packages/server-mcp` (default `:3334`)
 
@@ -142,7 +142,7 @@ An Agent-to-Agent server exposing `GET /.well-known/agent.json` (the AgentCard) 
 - **Operations:** three catalog operations — `discover-skills`, `recommend-stack`, `prepare-install-plan` — and it can infer intent (skill/bundle/tool ids) from free-text messages.
 - **Operational tiers (all env-gated):** stores (`memory`/`json`/`sqlite`), executors (`inline`/external `process` worker), and coordinators (`store`/`redis`) with leases and a poll/queue worker for multi-instance and restart recovery.
 
-> A2A is "simple-first": the default is a local JSON store with inline execution. The package still self-describes as an "initial scaffold", but the lifecycle, persistence, SSE replay, and push notifications are substantially implemented. Note: A2A does **not** use the shared `http-runtime` governance layer.
+> A2A is "simple-first": the default is a local JSON store with inline execution. The package still self-describes as an "initial scaffold", but the lifecycle, persistence, SSE replay, and push notifications are substantially implemented. A2A now applies the shared `http-runtime` governance layer (security headers, CORS, token-bucket rate limiting, and optional auth), with `/healthz` and `/.well-known/agent.json` exempt from rate limiting.
 
 ---
 

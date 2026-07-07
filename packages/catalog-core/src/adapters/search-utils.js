@@ -1,4 +1,8 @@
 export const DEFAULT_LIMIT = 20;
+// Hard ceiling on how many results a single call may request. Bounds response
+// size and memory regardless of catalog size, so an untrusted caller cannot ask
+// for the entire catalog (or worse) in one request via `?limit=100000`.
+export const MAX_LIMIT = 1000;
 
 export function ensureNumber(value, fallback) {
   const parsed = Number.parseInt(String(value), 10);
@@ -195,7 +199,7 @@ export function parseSearchOptions(options = {}) {
   );
   const minSkillLevel = ensureOptionalNumber(options.min_skill_level ?? options.min_level);
   const minSecurityScore = ensureOptionalNumber(options.min_security_score ?? options.min_security);
-  const limit = ensureNumber(options.limit, DEFAULT_LIMIT);
+  const limit = Math.min(ensureNumber(options.limit, DEFAULT_LIMIT), MAX_LIMIT);
   const offset = Math.max(0, Number.parseInt(String(options.offset || 0), 10) || 0);
   const queryTokens = tokenize(options.q || options.query || "");
 

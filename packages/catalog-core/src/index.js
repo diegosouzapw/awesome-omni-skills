@@ -380,6 +380,25 @@ export function searchSkills(options = {}) {
 export function searchFamilies(options = {}) {
   const catalog = loadCatalog(options);
   const familyMap = new Map((catalog.families || []).map((family) => [family.id, family]));
+  const skillById = new Map((catalog.skills || []).map((skill) => [skill.id, skill]));
+  // Resolve default skills from the already-loaded catalog. Calling
+  // resolveSkillSelection() here would reload (and re-parse) the full catalog on
+  // every invocation, which turns the empty-query sort below into an O(N log N)
+  // reload storm that hangs the process on the real ~14 MB catalog.
+  const resolveSelection = (selectionId) => {
+    if (!selectionId) {
+      return null;
+    }
+    const directSkill = skillById.get(selectionId);
+    if (directSkill) {
+      return directSkill;
+    }
+    const family = familyMap.get(selectionId);
+    if (!family) {
+      return null;
+    }
+    return skillById.get(family.default_skill_id) || null;
+  };
   const searchResult = searchSkills(options);
   const familyResults = [];
   const seen = new Set();
@@ -393,7 +412,7 @@ export function searchFamilies(options = {}) {
     familyResults.push({
       ...family,
       default_skill_id: family.default_skill_id,
-      default_skill: resolveSkillSelection(family.default_skill_id, options),
+      default_skill: resolveSelection(family.default_skill_id),
       matched_skill_id: skill.id,
     });
   }
@@ -401,8 +420,8 @@ export function searchFamilies(options = {}) {
   if (!String(options.query || options.q || "").trim()) {
     const rankedFamilies = [...(catalog.families || [])]
       .sort((left, right) => {
-        const leftSkill = resolveSkillSelection(left.default_skill_id, options);
-        const rightSkill = resolveSkillSelection(right.default_skill_id, options);
+        const leftSkill = resolveSelection(left.default_skill_id);
+        const rightSkill = resolveSelection(right.default_skill_id);
         return (
           Number(rightSkill?.quality_score || 0) - Number(leftSkill?.quality_score || 0) ||
           String(left.display_name || left.id).localeCompare(String(right.display_name || right.id))
@@ -411,7 +430,7 @@ export function searchFamilies(options = {}) {
       .slice(0, options.limit || 24)
       .map((family) => ({
         ...family,
-        default_skill: resolveSkillSelection(family.default_skill_id, options),
+        default_skill: resolveSelection(family.default_skill_id),
       }));
 
     return {
@@ -428,8 +447,14 @@ export function searchFamilies(options = {}) {
   };
 }
 
+// Upper bound on how many skills a single compare call may load. Each id costs a
+// manifest read from disk, so an unbounded id list (e.g. the HTTP `/v1/compare`
+// endpoint) would otherwise let one request trigger thousands of file reads.
+export const MAX_COMPARE_IDS = 25;
+
 export function compareSkills(skillIds, options = {}) {
-  const manifests = skillIds
+  const manifests = (Array.isArray(skillIds) ? skillIds : [])
+    .slice(0, MAX_COMPARE_IDS)
     .map((skillId) => loadManifest(skillId, options))
     .filter(Boolean);
 
