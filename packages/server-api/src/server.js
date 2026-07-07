@@ -29,6 +29,7 @@ import {
   searchFamilies,
   searchSkills,
 } from "@omni-skills/catalog-core";
+import { isPathInside } from "@omni-skills/shared-fs";
 import {
   applyExpressHttpRuntime,
   createHttpCorsMiddleware,
@@ -77,11 +78,6 @@ app.param("id", (req, res, next, id) => {
 
 function requestBaseUrl(req) {
   return `${req.protocol}://${req.get("host")}`;
-}
-
-function isPathInside(candidatePath, rootPath) {
-  const relative = path.relative(rootPath, candidatePath);
-  return relative === "" || (!relative.startsWith("..") && !path.isAbsolute(relative));
 }
 
 function sanitizeDownloadName(candidateName, fallbackName) {

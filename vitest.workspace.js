@@ -1,6 +1,7 @@
 import { defineWorkspace } from "vitest/config";
 
 export default defineWorkspace([
+  "./packages/shared-fs/vitest.config.js",
   "./packages/catalog-core/vitest.config.js",
   "./packages/server-api/vitest.config.js",
   "./packages/server-mcp/vitest.config.js",
