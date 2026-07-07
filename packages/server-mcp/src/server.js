@@ -38,6 +38,77 @@ function formatJson(value) {
   return JSON.stringify(value, null, 2);
 }
 
+const SNIPPET_LENGTH = 160;
+const SNIPPET_CONTEXT_BEFORE = 40;
+
+// Builds a short, auditable excerpt of a skill's description so a caller can see *why* a
+// result matched without fetching the full manifest. When the query has a term that appears
+// in the description, the snippet is centered on the first occurrence of that term;
+// otherwise it falls back to the first ~160 chars of the description.
+function buildSnippet(description, query) {
+  const text = String(description || "");
+  if (!text) {
+    return "";
+  }
+
+  const queryTerms = String(query || "")
+    .toLowerCase()
+    .split(/\s+/)
+    .filter(Boolean);
+
+  let matchIndex = -1;
+  const lowerText = text.toLowerCase();
+  for (const term of queryTerms) {
+    const index = lowerText.indexOf(term);
+    if (index !== -1) {
+      matchIndex = index;
+      break;
+    }
+  }
+
+  if (matchIndex === -1) {
+    const head = text.slice(0, SNIPPET_LENGTH).trim();
+    return text.length > SNIPPET_LENGTH ? `${head}…` : head;
+  }
+
+  const start = Math.max(0, matchIndex - SNIPPET_CONTEXT_BEFORE);
+  const end = Math.min(text.length, start + SNIPPET_LENGTH);
+  const excerpt = text.slice(start, end).trim();
+  const prefix = start > 0 ? "…" : "";
+  const suffix = end < text.length ? "…" : "";
+  return `${prefix}${excerpt}${suffix}`;
+}
+
+// The search adapters (SQLiteSearchAdapter / MemorySearchAdapter) do not currently expose a
+// relevance score on each result item, even though results are already ordered by
+// relevance. Rather than silently trusting result order, we make that ordering explicit and
+// auditable: score = 1 / (rank + 1), a deterministic positional score derived from the
+// adapter's own sort order (highest for the first result, monotonically decreasing).
+function annotateSearchResults(result, query) {
+  const results = Array.isArray(result?.results) ? result.results : [];
+  const annotated = results.map((skill, index) => ({
+    ...skill,
+    score: skill.score != null && Number.isFinite(Number(skill.score))
+      ? Number(skill.score)
+      : Number((1 / (index + 1)).toFixed(4)),
+    snippet: buildSnippet(skill.description, query),
+  }));
+
+  if (annotated.length === 0) {
+    return {
+      ...result,
+      results: annotated,
+      no_match: true,
+      message: `No skills matched query '${query || ""}'. Try a broader term, drop filters (category/tool/risk), or check spelling.`,
+    };
+  }
+
+  return {
+    ...result,
+    results: annotated,
+  };
+}
+
 function getApiBaseUrl() {
   return process.env.OMNI_SKILLS_API_BASE_URL || process.env.OMNI_SKILLS_PUBLIC_BASE_URL || null;
 }
@@ -326,7 +397,7 @@ function createCatalogMcpServer() {
       },
     },
     async ({ query, category, tool, risk, limit }) => {
-      const result = searchSkills({ query, category, tool, risk, limit });
+      const result = annotateSearchResults(searchSkills({ query, category, tool, risk, limit }), query);
       return {
         content: [
           {
