@@ -1123,10 +1123,12 @@ def scan_text_patterns(rel_path: str, content: str, findings: List[Dict[str, Any
     # Passada por-linha: as regras casam sobre a linha NORMALIZADA (remove
     # homoglifos/fullwidth/zero-width), mas a evidência reportada é a linha
     # ORIGINAL, para inspeção humana fiel.
+    seen_by_line: set = set()
     for line_number, line in enumerate(content.splitlines(), start=1):
         normalized_line = normalize_for_scan(line)
         for rule in SECURITY_PATTERN_RULES:
             if rule["pattern"].search(normalized_line):
+                seen_by_line.add(rule["id"])
                 add_security_finding(
                     findings,
                     finding_id=rule["id"],
@@ -1137,6 +1139,28 @@ def scan_text_patterns(rel_path: str, content: str, findings: List[Dict[str, Any
                     evidence=line,
                     line_number=line_number,
                 )
+
+    # Passada de conteúdo inteiro: colapsa quebras de linha em espaço para pegar
+    # comandos perigosos partidos em múltiplas linhas (ex.: `curl ... |\nsh`).
+    # Restrita às regras marcadas `multiline` e deduplicada por (finding_id,
+    # rel_path) — só reporta se a regra ainda não disparou por linha.
+    joined = normalize_for_scan(re.sub(r"\s*\n\s*", " ", content))
+    for rule in SECURITY_PATTERN_RULES:
+        if not rule.get("multiline"):
+            continue
+        if rule["id"] in seen_by_line:
+            continue
+        if rule["pattern"].search(joined):
+            add_security_finding(
+                findings,
+                finding_id=rule["id"],
+                kind=rule["kind"],
+                severity=rule["severity"],
+                rel_path=rel_path,
+                message=rule["message"] + " (multi-line)",
+                evidence=rule["pattern"].search(joined).group(0),
+                line_number=0,
+            )
 
 
 def scan_script_patterns(rel_path: str, content: str, findings: List[Dict[str, Any]]) -> None:
