@@ -10,6 +10,7 @@ export default defineConfig({
       "./packages/server-mcp/vitest.config.js",
       "./packages/server-a2a/vitest.config.js",
       "./packages/cli/vitest.config.js",
+      "./tools/eval/vitest.config.js",
     ],
     exclude: [
       "**/node_modules/**",
