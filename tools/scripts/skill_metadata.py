@@ -11,6 +11,7 @@ import re
 import hashlib
 import shutil
 import subprocess
+import unicodedata
 import urllib.error
 import urllib.request
 from datetime import datetime, timezone
@@ -415,6 +416,28 @@ SECURITY_SEVERITY_WEIGHTS = {
     "info": 1,
 }
 
+# Homoglifos comuns que NFKC NÃO colapsa (Cyrillic/Greek lookalikes -> ASCII).
+# Fullwidth/compatibilidade já são cobertos por NFKC; este mapa cobre o resíduo.
+_HOMOGLYPH_MAP = str.maketrans({
+    "а": "a", "е": "e", "о": "o", "р": "p", "с": "c",
+    "у": "y", "х": "x", "ѕ": "s", "і": "i", "ј": "j",
+    "ο": "o", "Α": "A", "Β": "B", "Ε": "E", "Ο": "O",
+})
+# Caracteres de largura zero / joiners invisíveis usados para partir tokens.
+_ZERO_WIDTH = dict.fromkeys([0x200B, 0x200C, 0x200D, 0x2060, 0xFEFF], None)
+
+
+def normalize_for_scan(text: str) -> str:
+    """Normaliza texto para varredura de segurança: remove zero-width, aplica NFKC
+    (fullwidth/compat -> ASCII) e mapeia homoglifos residuais para ASCII. Reduz
+    evasões triviais (homoglifos, fullwidth, ZWSP) sem alterar texto ASCII legítimo."""
+    if not text:
+        return ""
+    stripped = str(text).translate(_ZERO_WIDTH)
+    folded = unicodedata.normalize("NFKC", stripped)
+    return folded.translate(_HOMOGLYPH_MAP)
+
+
 SECURITY_PATTERN_RULES = [
     {
         "id": "remote-fetch-pipe-shell",
@@ -422,6 +445,18 @@ SECURITY_PATTERN_RULES = [
         "severity": "critical",
         "message": "Remote content piped directly into a shell is unsafe.",
         "pattern": re.compile(r"\b(?:curl|wget)\b[^|\n]{0,240}\|\s*(?:sh|bash|zsh)\b", re.IGNORECASE),
+        "multiline": True,
+    },
+    {
+        "id": "decode-and-exec",
+        "kind": "dangerous-command",
+        "severity": "high",
+        "message": "Base64-decoded content piped directly into an interpreter is unsafe.",
+        "pattern": re.compile(
+            r"\bbase64\s+(?:-d|--decode)\b[^\n]{0,80}\|\s*(?:sh|bash|zsh|python)\b",
+            re.IGNORECASE,
+        ),
+        "multiline": True,
     },
     {
         "id": "destructive-rm-root",
@@ -1096,9 +1131,15 @@ def iter_skill_files(skill_path: str) -> List[str]:
 
 
 def scan_text_patterns(rel_path: str, content: str, findings: List[Dict[str, Any]]) -> None:
+    # Passada por-linha: as regras casam sobre a linha NORMALIZADA (remove
+    # homoglifos/fullwidth/zero-width), mas a evidência reportada é a linha
+    # ORIGINAL, para inspeção humana fiel.
+    seen_by_line: set = set()
     for line_number, line in enumerate(content.splitlines(), start=1):
+        normalized_line = normalize_for_scan(line)
         for rule in SECURITY_PATTERN_RULES:
-            if rule["pattern"].search(line):
+            if rule["pattern"].search(normalized_line):
+                seen_by_line.add(rule["id"])
                 add_security_finding(
                     findings,
                     finding_id=rule["id"],
@@ -1109,6 +1150,28 @@ def scan_text_patterns(rel_path: str, content: str, findings: List[Dict[str, Any
                     evidence=line,
                     line_number=line_number,
                 )
+
+    # Passada de conteúdo inteiro: colapsa quebras de linha em espaço para pegar
+    # comandos perigosos partidos em múltiplas linhas (ex.: `curl ... |\nsh`).
+    # Restrita às regras marcadas `multiline` e deduplicada por (finding_id,
+    # rel_path) — só reporta se a regra ainda não disparou por linha.
+    joined = normalize_for_scan(re.sub(r"\s*\n\s*", " ", content))
+    for rule in SECURITY_PATTERN_RULES:
+        if not rule.get("multiline"):
+            continue
+        if rule["id"] in seen_by_line:
+            continue
+        if rule["pattern"].search(joined):
+            add_security_finding(
+                findings,
+                finding_id=rule["id"],
+                kind=rule["kind"],
+                severity=rule["severity"],
+                rel_path=rel_path,
+                message=rule["message"] + " (multi-line)",
+                evidence=rule["pattern"].search(joined).group(0),
+                line_number=0,
+            )
 
 
 def scan_script_patterns(rel_path: str, content: str, findings: List[Dict[str, Any]]) -> None:
