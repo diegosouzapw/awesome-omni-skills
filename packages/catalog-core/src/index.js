@@ -441,6 +441,16 @@ export function searchFamilies(options = {}) {
     };
   }
 
+  // Rank matched families by the quality of their DEFAULT ("flagship") variant,
+  // not by which variant happened to match the query first. A family can match
+  // via a low-quality non-default variant yet still deserve top placement because
+  // its default is the one users actually land on. Array.prototype.sort is
+  // stable, so families tied on default quality keep their relevance order.
+  familyResults.sort(
+    (left, right) =>
+      Number(right.default_skill?.quality_score || 0) - Number(left.default_skill?.quality_score || 0),
+  );
+
   return {
     ...searchResult,
     total: familyResults.length,
