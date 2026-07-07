@@ -84,10 +84,30 @@ export function getCatalogPaths(options = {}) {
   };
 }
 
+// Cache por processo do catálogo parseado, invalidado quando o mtime do arquivo muda.
+// Evita re-parsear ~13 MB de catalog.json a cada request de API/A2A. Chaveado por path
+// absoluto, então fixtures em diretórios temporários distintos nunca colidem.
+const catalogCache = new Map();
+
 export function loadCatalog(options = {}) {
   const adapter = options.storageAdapter || defaultFsAdapter;
   const paths = getCatalogPaths(options);
-  return readJson(paths.catalogPath, adapter, { repoRoot: paths.repoRoot });
+  const context = { repoRoot: paths.repoRoot };
+  const mtimeMs =
+    typeof adapter.statMtimeMs === "function" ? adapter.statMtimeMs(paths.catalogPath, context) : null;
+  const cached = catalogCache.get(paths.catalogPath);
+  if (cached && mtimeMs !== null && cached.mtimeMs === mtimeMs) {
+    return cached.data;
+  }
+  const data = readJson(paths.catalogPath, adapter, context);
+  if (mtimeMs !== null) {
+    catalogCache.set(paths.catalogPath, { mtimeMs, data });
+  }
+  return data;
+}
+
+export function __clearCatalogCache() {
+  catalogCache.clear();
 }
 
 export function listFamilies(options = {}) {

@@ -27,5 +27,9 @@ export const defaultFsAdapter = {
   readJsonSync(jsonPath, context = {}) {
     const safePath = assertReadablePath(jsonPath, context);
     return JSON.parse(fs.readFileSync(safePath, "utf-8"));
-  }
+  },
+  statMtimeMs(filePath, context = {}) {
+    const safePath = assertReadablePath(filePath, context);
+    return fs.statSync(safePath).mtimeMs;
+  },
 };
