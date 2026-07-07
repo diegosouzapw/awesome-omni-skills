@@ -43,8 +43,9 @@ jobs:
       - name: Determine release version
         id: release_version
         shell: bash
+        env:
+          INPUT_VERSION: ${{ github.event.inputs.version }}
         run: |
-          INPUT_VERSION="${{ github.event.inputs.version }}"
           if [ -n "$INPUT_VERSION" ]; then
             NEXT_VERSION="$INPUT_VERSION"
           else

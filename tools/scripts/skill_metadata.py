@@ -568,6 +568,49 @@ def utc_now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+SCORING_REFERENCE_EPOCH_FILE = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+    "data",
+    "scoring-reference-epoch",
+)
+
+
+def _resolve_scoring_epoch() -> "int | None":
+    """Epoch for the scoring reference date: SOURCE_DATE_EPOCH first, then the
+    committed pin file. Returns None only when neither yields a valid integer."""
+    env_epoch = os.environ.get("SOURCE_DATE_EPOCH", "").strip()
+    if env_epoch:
+        try:
+            return int(env_epoch)
+        except ValueError:
+            pass
+    try:
+        with open(SCORING_REFERENCE_EPOCH_FILE, encoding="utf-8") as handle:
+            return int(handle.read().strip())
+    except (OSError, ValueError):
+        return None
+
+
+def scoring_reference_datetime() -> datetime:
+    """Reference "now" for time-based scoring (currently the recency term).
+
+    Pinned so the committed catalog artifacts stay byte-for-byte reproducible over
+    time: without a fixed date the recency score reads the wall clock, so every skill
+    silently loses a quality point as real days pass and the generated-artifact diff
+    check eventually fails on unrelated PRs. Resolution order: SOURCE_DATE_EPOCH env
+    (reproducible-build override) -> the committed `data/scoring-reference-epoch`
+    pin -> the wall clock. Only the recency term reads this, so bumping the pin never
+    perturbs unrelated timestamped artifacts (e.g. i18n snapshots).
+    """
+    epoch = _resolve_scoring_epoch()
+    if epoch is not None:
+        try:
+            return datetime.fromtimestamp(epoch, tz=timezone.utc)
+        except (OverflowError, OSError, ValueError):
+            pass
+    return datetime.now(timezone.utc)
+
+
 def stable_isoformat(value: datetime) -> str:
     normalized = value.astimezone(timezone.utc).replace(microsecond=0)
     return normalized.isoformat()
@@ -2214,7 +2257,7 @@ def compute_quality_score(
     details["metadata"] = min(metadata_score, 12)
 
     updated_at = parse_iso_date(normalize_text(metadata_fields.get("date_updated"))) or file_mtime
-    age_days = max(0, (datetime.now(timezone.utc) - updated_at).days)
+    age_days = max(0, (scoring_reference_datetime() - updated_at).days)
     if age_days <= 30:
         details["recency"] = 8
     elif age_days <= 90:

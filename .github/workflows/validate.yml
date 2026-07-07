@@ -40,12 +40,15 @@ jobs:
 
       - name: Validate contribution scope
         if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
           python3 tools/scripts/validate_contribution_scope.py \
             --repository "${GITHUB_REPOSITORY}" \
             --event-path "${GITHUB_EVENT_PATH}" \
-            --base-sha "${{ github.event.pull_request.base.sha }}" \
-            --head-sha "${{ github.event.pull_request.head.sha }}"
+            --base-sha "${BASE_SHA}" \
+            --head-sha "${HEAD_SHA}"
 
       - name: Build generated artifacts
         run: npm run build
@@ -59,62 +62,69 @@ jobs:
       - name: Resolve generated artifact diff scope
         id: generated_scope
         shell: bash
+        env:
+          # Interpolate event fields through the environment, never inline into the
+          # script body. Titles/bodies are attacker-controlled and multi-line, and
+          # inlining them into `[[ ... ]]` breaks the shell (and is a script-injection
+          # vector). See https://docs.github.com/actions/security-guides/security-hardening-for-github-actions
+          EVENT_NAME: ${{ github.event_name }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          BASE_REPO: ${{ github.repository }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_BODY: ${{ github.event.pull_request.body }}
         run: |
-          if [[ "${{ github.event_name }}" == "push" ]] && [[ "${{ github.ref_name }}" == "main" ]]; then
-            {
-              echo 'paths<<__PATHS__'
-              printf '%s\n' \
-                README.md \
-                CONTRIBUTING.md \
-                REPOSITORY-SOURCES.md \
-                data/project_status.json \
-                metadata.json \
-                skills \
-                dist/catalog.json \
-                dist/bundles.json \
-                dist/catalog.db \
-                docs \
-                ':(exclude)skills/*/metadata.json' \
-                ':(exclude)skills_omni/*/metadata.json'
-              echo '__PATHS__'
-            } >> "$GITHUB_OUTPUT"
-          elif [[ "${{ github.event_name }}" == "pull_request" ]] \
-            && [[ "${{ github.event.pull_request.head.repo.full_name }}" == "${{ github.repository }}" ]] \
-            && [[ "${{ github.event.pull_request.head.ref }}" == skills-omni/pr-* ]] \
-            && { [[ "${{ github.event.pull_request.title }}" == enhance:\ promote\ curated\ skills_omni\ candidates\ for\ #* ]] \
-              || [[ "${{ github.event.pull_request.title }}" == feat\(skills_omni\):\ curate\ #* ]]; } \
-            && { [[ "${{ github.event.pull_request.body }}" == *"This PR was generated automatically from source PR #"* ]] \
-              || [[ "${{ github.event.pull_request.body }}" == *"## Private Curated Companion PR"* ]]; }; then
-            {
-              echo 'paths<<__PATHS__'
-              printf '%s\n' \
-                metadata.json \
-                dist/catalog.json \
-                dist/bundles.json \
-                dist/catalog.db \
-                skills_omni \
-                ':(exclude)skills_omni/*/metadata.json'
-              echo '__PATHS__'
-            } >> "$GITHUB_OUTPUT"
-          else
-            {
-              echo 'paths<<__PATHS__'
-              printf '%s\n' \
-                README.md \
-                CONTRIBUTING.md \
-                REPOSITORY-SOURCES.md \
-                data/project_status.json \
-                metadata.json \
-                skills \
-                dist/catalog.json \
-                dist/bundles.json \
-                dist/catalog.db \
-                docs \
-                ':(exclude)skills/*/metadata.json' \
-                ':(exclude)skills_omni/*/metadata.json'
-              echo '__PATHS__'
-            } >> "$GITHUB_OUTPUT"
+          set -euo pipefail
+
+          broad_scope() {
+            printf '%s\n' \
+              README.md \
+              CONTRIBUTING.md \
+              REPOSITORY-SOURCES.md \
+              data/project_status.json \
+              metadata.json \
+              skills \
+              dist/catalog.json \
+              dist/bundles.json \
+              dist/catalog.db \
+              docs \
+              ':(exclude)skills/*/metadata.json' \
+              ':(exclude)skills_omni/*/metadata.json'
+          }
+
+          omni_scope() {
+            printf '%s\n' \
+              metadata.json \
+              dist/catalog.json \
+              dist/bundles.json \
+              dist/catalog.db \
+              skills_omni \
+              ':(exclude)skills_omni/*/metadata.json'
+          }
+
+          # The narrow (skills_omni-only) scope applies solely to the automated
+          # curated-companion PRs opened from a same-repo skills-omni/pr-* branch;
+          # every other event uses the broad scope.
+          is_automated_omni_pr=false
+          if [[ "$EVENT_NAME" == "pull_request" \
+                && "$HEAD_REPO" == "$BASE_REPO" \
+                && "$HEAD_REF" == skills-omni/pr-* ]] \
+            && { [[ "$PR_TITLE" == "enhance: promote curated skills_omni candidates for #"* ]] \
+              || [[ "$PR_TITLE" == "feat(skills_omni): curate #"* ]]; } \
+            && { [[ "$PR_BODY" == *"This PR was generated automatically from source PR #"* ]] \
+              || [[ "$PR_BODY" == *"## Private Curated Companion PR"* ]]; }; then
+            is_automated_omni_pr=true
           fi
+
+          {
+            echo 'paths<<__PATHS__'
+            if [[ "$is_automated_omni_pr" == "true" ]]; then
+              omni_scope
+            else
+              broad_scope
+            fi
+            echo '__PATHS__'
+          } >> "$GITHUB_OUTPUT"
 
       - name: Check generated artifacts are committed
         shell: bash
