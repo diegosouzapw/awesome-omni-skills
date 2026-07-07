@@ -90,7 +90,9 @@ function createSchema(db) {
       validation_status TEXT,
       archives_count INTEGER,
       date_updated TEXT,
-      generated_at TEXT
+      generated_at TEXT,
+      family_id TEXT,
+      raw_json TEXT
     );
 
     CREATE TABLE skill_tools (
@@ -103,23 +105,21 @@ function createSchema(db) {
       id,
       display_name,
       description,
+      tags,
+      category,
       content='skills',
       content_rowid='rowid',
       tokenize='porter unicode61 remove_diacritics 2',
-      prefix='2 3',
-      columnsize=0,
-      detail=none
+      prefix='2 3'
     );
 
     CREATE VIRTUAL TABLE skills_trigram USING fts5(
-      id,
       display_name,
       description,
+      tags,
       content='skills',
       content_rowid='rowid',
-      tokenize='trigram',
-      columnsize=0,
-      detail=none
+      tokenize='trigram'
     );
   `);
 }
@@ -185,8 +185,10 @@ function buildCatalogDb({
         validation_status,
         date_updated,
         archives_count,
-        generated_at
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        generated_at,
+        family_id,
+        raw_json
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `);
 
     const insertTool = db.prepare(`
@@ -226,6 +228,8 @@ function buildCatalogDb({
           toDateUpdated(skill),
           skill.archives_count ?? (Array.isArray(skill.archives) ? skill.archives.length : 0),
           skill.generated_at || toDateUpdated(skill),
+          skill.family_id || null,
+          JSON.stringify(skill),
         );
 
         for (const tool of Array.isArray(skill.tools) ? skill.tools : []) {
