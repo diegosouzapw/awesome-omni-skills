@@ -166,6 +166,16 @@ app.get("/v1/families/:id", (req, res) => {
   res.json(family);
 });
 
+app.get("/v1/families/:id/variants", (req, res) => {
+  const family = getFamily(req.params.id, req.query);
+  if (!family) {
+    res.status(404).json({ error: `Family '${req.params.id}' not found.` });
+    return;
+  }
+  const variants = Array.isArray(family.variants) ? family.variants : [];
+  res.json({ family_id: family.id, total: variants.length, results: variants });
+});
+
 app.get("/v1/skills/:id", (req, res) => {
   const skill = getSkill(req.params.id, { baseUrl: requestBaseUrl(req) });
   if (!skill) {
@@ -339,6 +349,10 @@ app.post("/v1/install/plan", (req, res) => {
   res.json(buildInstallPlan(req.body || {}, { baseUrl: requestBaseUrl(req) }));
 });
 
-app.listen(PORT, HOST, () => {
-  console.log(`Awesome Omni Skills API listening at http://${HOST}:${PORT}`);
-});
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  app.listen(PORT, HOST, () => {
+    console.log(`Awesome Omni Skills API listening at http://${HOST}:${PORT}`);
+  });
+}
+
+export { app };
