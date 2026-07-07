@@ -1300,6 +1300,7 @@ async function runGuidedInstall(args = []) {
 async function runFind(args) {
   const jsonOutput = args.includes("--json");
   const installRequested = args.includes("--install");
+  const showVariants = args.includes("--show-variants");
   const assumeYes = args.includes("--yes");
   const includeBundles = !args.includes("--no-bundles");
   const category = parseFlagValue(args, "--category") || "";
@@ -1325,7 +1326,10 @@ async function runFind(args) {
           stripFlag(
             stripFlag(
               stripFlag(
-                stripFlag(args, "--json"),
+                stripFlag(
+                  stripFlag(args, "--json"),
+                  "--show-variants",
+                ),
                 "--install",
               ),
               "--yes",
@@ -1398,11 +1402,19 @@ async function runFind(args) {
     throw new Error("Use either --json or --install, not both at the same time.");
   }
 
+  if (showVariants && installRequested) {
+    throw new Error("Use either --show-variants or --install, not both at the same time.");
+  }
+
   const runtime = createCatalogRuntime({ repoRoot: ROOT });
   const core = runtime.core;
   const catalog = runtime.catalog;
   const limit = limitValue ? Number.parseInt(limitValue, 10) : query ? 10 : 50;
-  const result = core.searchFamilies(
+  // Without --show-variants we group matches by FAMILY (default). With the flag
+  // we surface the concrete SKILL variants instead, using the exact same search
+  // options so filtering/sorting behave identically across both modes.
+  const searchFn = showVariants ? core.searchSkills : core.searchFamilies;
+  const result = searchFn(
     runtime.withSearch({
       query,
       category,
@@ -1427,6 +1439,7 @@ async function runFind(args) {
       console.log(
         JSON.stringify(
           {
+            mode: showVariants ? "variants" : "families",
             query,
             category: category || null,
             tool: tool || null,
@@ -1490,34 +1503,61 @@ async function runFind(args) {
     } else {
       console.log(style(COLOR.bold, `Results (${result.results.length}/${result.total})`));
       console.log("");
-      for (const family of result.results) {
-        const skill = resolveFamilySelection(catalog, family.id);
-        console.log(
-          `${style(COLOR.green, family.display_name || family.id)} ${style(COLOR.dim, `(${family.id})`)}`,
-        );
-        console.log(`  ${family.description}`);
-        console.log(
-          `  category: ${skill.category || "uncategorized"} | risk: ${skill.risk || "unknown"}`,
-        );
-        if (skill.skill_level || skill.best_practices_score || skill.quality_score || skill.security_score) {
+      if (showVariants) {
+        // Variants mode: each result is a concrete skill, not a family row, so
+        // render the skill directly instead of resolving a family selection.
+        for (const skill of result.results) {
           console.log(
-            `  level: ${skill.skill_level ? `L${skill.skill_level} ${skill.skill_level_label || ""}`.trim() : "—"} | ` +
-              `best practices: ${Number.isFinite(skill.best_practices_score) ? `${skill.best_practices_score}/100` : "—"} | ` +
-              `quality: ${Number.isFinite(skill.quality_score) ? `${skill.quality_score}/100` : "—"} | ` +
-              `security: ${Number.isFinite(skill.security_score) ? `${skill.security_score}/100 ${skill.security_status || ""}`.trim() : "—"}`,
+            `${style(COLOR.green, skill.display_name || skill.id)} ${style(COLOR.dim, `(${skill.id})`)}`,
           );
+          console.log(`  ${skill.description}`);
+          console.log(
+            `  category: ${skill.category || "uncategorized"} | risk: ${skill.risk || "unknown"}`,
+          );
+          if (skill.skill_level || skill.best_practices_score || skill.quality_score || skill.security_score) {
+            console.log(
+              `  level: ${skill.skill_level ? `L${skill.skill_level} ${skill.skill_level_label || ""}`.trim() : "—"} | ` +
+                `best practices: ${Number.isFinite(skill.best_practices_score) ? `${skill.best_practices_score}/100` : "—"} | ` +
+                `quality: ${Number.isFinite(skill.quality_score) ? `${skill.quality_score}/100` : "—"} | ` +
+                `security: ${Number.isFinite(skill.security_score) ? `${skill.security_score}/100 ${skill.security_status || ""}`.trim() : "—"}`,
+            );
+          }
+          console.log(`  tools: ${formatList(skill.tools || [])}`);
+          console.log(`  tags: ${formatList((skill.tags || []).slice(0, 8))}`);
+          console.log(`  install: ${buildInstallHint(skill.id, tool)}`);
+          console.log(`  default manifest: dist/manifests/${skill.id}.json`);
+          console.log("");
         }
-        console.log(`  tools: ${formatList(skill.tools || [])}`);
-        console.log(`  tags: ${formatList((skill.tags || []).slice(0, 8))}`);
-        console.log(
-          `  variants: ${(family.variants || []).map((variant) => `${variant.variant_label}${variant.is_default ? "*" : ""}`).join(", ")}`,
-        );
-        console.log(`  install: ${buildInstallHint(family.id, tool)}`);
-        console.log(`  default manifest: dist/manifests/${skill.id}.json`);
-        if (Number.isFinite(skill.archives_count)) {
-          console.log(`  archives: ${skill.archives_count}`);
+      } else {
+        for (const family of result.results) {
+          const skill = resolveFamilySelection(catalog, family.id);
+          console.log(
+            `${style(COLOR.green, family.display_name || family.id)} ${style(COLOR.dim, `(${family.id})`)}`,
+          );
+          console.log(`  ${family.description}`);
+          console.log(
+            `  category: ${skill.category || "uncategorized"} | risk: ${skill.risk || "unknown"}`,
+          );
+          if (skill.skill_level || skill.best_practices_score || skill.quality_score || skill.security_score) {
+            console.log(
+              `  level: ${skill.skill_level ? `L${skill.skill_level} ${skill.skill_level_label || ""}`.trim() : "—"} | ` +
+                `best practices: ${Number.isFinite(skill.best_practices_score) ? `${skill.best_practices_score}/100` : "—"} | ` +
+                `quality: ${Number.isFinite(skill.quality_score) ? `${skill.quality_score}/100` : "—"} | ` +
+                `security: ${Number.isFinite(skill.security_score) ? `${skill.security_score}/100 ${skill.security_status || ""}`.trim() : "—"}`,
+            );
+          }
+          console.log(`  tools: ${formatList(skill.tools || [])}`);
+          console.log(`  tags: ${formatList((skill.tags || []).slice(0, 8))}`);
+          console.log(
+            `  variants: ${(family.variants || []).map((variant) => `${variant.variant_label}${variant.is_default ? "*" : ""}`).join(", ")}`,
+          );
+          console.log(`  install: ${buildInstallHint(family.id, tool)}`);
+          console.log(`  default manifest: dist/manifests/${skill.id}.json`);
+          if (Number.isFinite(skill.archives_count)) {
+            console.log(`  archives: ${skill.archives_count}`);
+          }
+          console.log("");
         }
-        console.log("");
       }
     }
 
