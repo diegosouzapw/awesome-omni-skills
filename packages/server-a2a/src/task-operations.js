@@ -1,5 +1,6 @@
 import {
   buildInstallPlan,
+  getSharedSearchAdapter,
   recommendSkills,
   searchSkills,
 } from "@omni-skills/catalog-core";
@@ -50,6 +51,7 @@ export function evaluateTaskOperation(operation, input = {}) {
         tool: input.tools?.[0],
         risk: input.risk,
         limit: input.limit || 10,
+        searchAdapter: getSharedSearchAdapter(),
       });
 
       return {
@@ -74,6 +76,7 @@ export function evaluateTaskOperation(operation, input = {}) {
         tool: input.tools?.[0],
         category: input.category,
         limit: input.limit || 5,
+        searchAdapter: getSharedSearchAdapter(),
       });
 
       return {

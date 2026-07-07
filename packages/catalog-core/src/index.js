@@ -736,6 +736,30 @@ function createSearchAdapterContext(options = {}) {
   };
 }
 
+// Adapters de busca persistentes por processo, chaveados por databasePath. Servidores
+// de longa duração (API/A2A) reusam um único adapter (um handle SQLite aberto) entre
+// requests, em vez de abrir/fechar por chamada. createSearchAdapterContext já evita
+// injetar o catálogo quando há DB, então o adapter compartilhado usa o SQL.
+const sharedSearchAdapters = new Map();
+
+export function getSharedSearchAdapter(options = {}) {
+  const context = createSearchAdapterContext(options);
+  const key = context.databasePath || "__memory__";
+  let adapter = sharedSearchAdapters.get(key);
+  if (!adapter) {
+    adapter = createSearchAdapter(context);
+    sharedSearchAdapters.set(key, adapter);
+  }
+  return adapter;
+}
+
+export function __resetSharedSearchAdapters() {
+  for (const adapter of sharedSearchAdapters.values()) {
+    adapter.close?.();
+  }
+  sharedSearchAdapters.clear();
+}
+
 function withSearchAdapter(options = {}, callback) {
   const externalAdapter = options.searchAdapter && typeof options.searchAdapter.search === "function";
   const adapter = externalAdapter
