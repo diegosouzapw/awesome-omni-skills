@@ -24,6 +24,10 @@ export class MemorySearchAdapter extends SearchAdapter {
     this.catalog = this.context.catalog || this.catalog;
     this.manifestLoader = this.context.manifestLoader || this.manifestLoader;
 
+    if (!this.catalog && typeof this.context.catalogLoader === "function") {
+      this.catalog = this.context.catalogLoader();
+    }
+
     if (!this.catalog) {
       throw new Error("MemorySearchAdapter requires a preloaded catalog in the current runtime.");
     }

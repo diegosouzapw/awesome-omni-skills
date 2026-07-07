@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createSearchAdapter } from "./adapters/createSearchAdapter.js";
@@ -685,11 +686,22 @@ export function getHealthSnapshot(options = {}) {
 
 function createSearchAdapterContext(options = {}) {
   const paths = getCatalogPaths(options);
+  const requestedMode = String(
+    options.searchMode || options.search_mode || process.env.OMNI_SKILLS_SEARCH_ADAPTER || "auto",
+  )
+    .trim()
+    .toLowerCase();
+  const willUseSqlite = requestedMode !== "memory" && fs.existsSync(paths.databasePath);
   return {
     ...options,
     catalogPath: paths.catalogPath,
     databasePath: paths.databasePath,
-    catalog: options.catalog || loadCatalog(options),
+    // Com DB presente e modo != memory, NÃO pré-carrega o catálogo: deixa o
+    // SQLiteSearchAdapter usar o SQL (BM25/porter/trigram) em vez de curto-circuitar
+    // para o scorer em memória. O catálogo é carregado sob demanda (catalogLoader)
+    // apenas se o fallback Memory for necessário.
+    catalog: options.catalog || (willUseSqlite ? undefined : loadCatalog(options)),
+    catalogLoader: () => loadCatalog(options),
     manifestLoader: (skillId) => loadManifest(skillId, options),
   };
 }
