@@ -24,7 +24,7 @@ import {
   createHttpCorsMiddleware,
   createHttpRuntimeMiddleware,
   getHttpRuntimeSnapshot,
-} from "@omni-skills/server-api/http-runtime";
+} from "@omni-skills/http-core";
 import {
   configureClientMcp,
   detectClients,

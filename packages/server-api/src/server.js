@@ -35,7 +35,7 @@ import {
   createHttpCorsMiddleware,
   createHttpRuntimeMiddleware,
   getHttpRuntimeSnapshot,
-} from "./http-runtime.js";
+} from "@omni-skills/http-core";
 import { isSafeArchiveFormat } from "./archive-format.js";
 
 const app = express();
