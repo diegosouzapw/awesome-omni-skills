@@ -61,4 +61,20 @@ describe("catalog.db FTS schema", () => {
     expect(results.length).toBeGreaterThan(0);
     expect(results.every((r) => typeof r.family_id === "string")).toBe(true);
   });
+
+  // Regression guard: bm25() arg counts must match the current skills_fts (5 cols)
+  // and skills_trigram (3 cols) schemas. This does not assert on result ORDER
+  // (the ORDER BY tiebreaks on exact_id/prefix_id/relevance_score before rank),
+  // it only proves both strategies execute without a bm25 argument-count error
+  // and return results.
+  test("adapter bm25 weights match column counts for fts5 and trigram strategies", () => {
+    const adapter = new SQLiteSearchAdapter({ databasePath: dbPath });
+    adapter.init({ databasePath: dbPath });
+    // fts5 (exact term) e trigram (fuzzy/typo) devem rodar sem erro de bm25 e retornar resultados.
+    const exact = adapter.search({ query: "kubernetes", searchMode: "sqlite" });
+    const fuzzy = adapter.search({ query: "kuberntes", searchMode: "sqlite" }); // typo -> trigram
+    adapter.close();
+    expect(exact.results.length).toBeGreaterThan(0);
+    expect(fuzzy.results.length).toBeGreaterThan(0);
+  });
 });

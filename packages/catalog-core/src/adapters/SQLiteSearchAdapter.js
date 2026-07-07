@@ -452,13 +452,13 @@ export class SQLiteSearchAdapter extends SearchAdapter {
         name: "fts5",
         params: [buildPorterMatch(parsed.queryTokens)],
         cteSql:
-          "SELECT rowid AS skill_rowid, bm25(skills_fts, 12.0, 9.0, 7.0) AS rank FROM skills_fts WHERE skills_fts MATCH ?",
+          "SELECT rowid AS skill_rowid, bm25(skills_fts, 10.0, 5.0, 3.0, 2.0, 1.0) AS rank FROM skills_fts WHERE skills_fts MATCH ?",
       },
       {
         name: "trigram",
         params: [buildTrigramMatch(normalizedQuery, parsed.queryTokens)],
         cteSql:
-          "SELECT rowid AS skill_rowid, bm25(skills_trigram, 10.0, 8.0, 6.0) AS rank FROM skills_trigram WHERE skills_trigram MATCH ?",
+          "SELECT rowid AS skill_rowid, bm25(skills_trigram, 6.0, 4.0, 2.0) AS rank FROM skills_trigram WHERE skills_trigram MATCH ?",
       },
       {
         name: "like",
