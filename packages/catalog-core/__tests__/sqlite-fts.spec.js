@@ -35,10 +35,14 @@ describe("catalog.db FTS schema", () => {
   });
   afterAll(() => { db?.close(); fs.rmSync(dir, { recursive: true, force: true }); });
 
-  test("skills table carries family_id and raw_json", () => {
+  test("skills table carries family_id", () => {
     const cols = db.prepare("PRAGMA table_info(skills)").all().map((c) => c.name);
     expect(cols).toContain("family_id");
-    expect(cols).toContain("raw_json");
+  });
+
+  test("skills_fts uses detail=column (bm25-capable, position-free)", () => {
+    const sql = db.prepare("SELECT sql FROM sqlite_master WHERE name = 'skills_fts'").get().sql;
+    expect(sql).toMatch(/detail\s*=\s*['"]?column/i);
   });
 
   test("a tag-only term is matched by the porter FTS table", () => {
