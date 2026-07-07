@@ -448,6 +448,17 @@ SECURITY_PATTERN_RULES = [
         "multiline": True,
     },
     {
+        "id": "decode-and-exec",
+        "kind": "dangerous-command",
+        "severity": "high",
+        "message": "Base64-decoded content piped directly into an interpreter is unsafe.",
+        "pattern": re.compile(
+            r"\bbase64\s+(?:-d|--decode)\b[^\n]{0,80}\|\s*(?:sh|bash|zsh|python)\b",
+            re.IGNORECASE,
+        ),
+        "multiline": True,
+    },
+    {
         "id": "destructive-rm-root",
         "kind": "dangerous-command",
         "severity": "critical",

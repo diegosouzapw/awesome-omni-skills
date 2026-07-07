@@ -66,6 +66,30 @@ class BypassCorpusTest(unittest.TestCase):
         )
 
 
+class DecodeAndExecTest(unittest.TestCase):
+    def test_base64_d_pipe_sh_is_detected(self):
+        content = "echo aGVsbG8= | base64 -d | sh"
+        self.assertIn(DECODE_AND_EXEC_ID, scan_ids(content))
+
+    def test_base64_decode_pipe_bash_is_detected(self):
+        content = "cat payload.b64 | base64 --decode | bash"
+        self.assertIn(DECODE_AND_EXEC_ID, scan_ids(content))
+
+    def test_base64_split_multiline_is_detected(self):
+        content = "base64 -d payload |\nsh"
+        self.assertIn(DECODE_AND_EXEC_ID, scan_ids(content))
+
+    def test_loose_base64_block_is_not_flagged(self):
+        # Bloco base64 solto, sem decode-and-exec: NÃO deve gerar finding
+        # (evita FP em massa sobre conteúdo legítimo com blobs base64).
+        content = (
+            "Here is an embedded asset:\n"
+            "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVR4nGNgYAAAAAMAASsJTYQAAAAASUVORK5CYII=\n"
+            "and a mention of base64 decoding in prose."
+        )
+        self.assertNotIn(DECODE_AND_EXEC_ID, scan_ids(content))
+
+
 class NormalizeForScanTest(unittest.TestCase):
     def test_cyrillic_homoglyph_folds_to_ascii(self):
         self.assertEqual(normalize_for_scan("сurl"), "curl")
