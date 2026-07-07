@@ -10,6 +10,7 @@ import {
   loadCatalog,
   loadManifest,
 } from "@omni-skills/catalog-core";
+import { isPathInside } from "@omni-skills/shared-fs";
 
 const PACKAGE_JSON_PATH = fileURLToPath(new URL("../../../package.json", import.meta.url));
 const require = createRequire(import.meta.url);
@@ -654,11 +655,6 @@ function getClientDefinition(client) {
 
 function normalizeClientId(client) {
   return getClientDefinition(client)?.id || null;
-}
-
-function isPathInside(candidatePath, rootPath) {
-  const relative = path.relative(rootPath, candidatePath);
-  return relative === "" || (!relative.startsWith("..") && !path.isAbsolute(relative));
 }
 
 function assertPathInsideRoot(candidatePath, rootPath, label = "Path") {

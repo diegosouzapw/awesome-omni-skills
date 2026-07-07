@@ -1,10 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-
-function isPathInside(candidatePath, rootPath) {
-  const relative = path.relative(rootPath, candidatePath);
-  return relative === "" || (!relative.startsWith("..") && !path.isAbsolute(relative));
-}
+import { isPathInside } from "@omni-skills/shared-fs";
 
 function assertReadablePath(candidatePath, context = {}) {
   const absolutePath = path.resolve(String(candidatePath || ""));
@@ -27,5 +23,9 @@ export const defaultFsAdapter = {
   readJsonSync(jsonPath, context = {}) {
     const safePath = assertReadablePath(jsonPath, context);
     return JSON.parse(fs.readFileSync(safePath, "utf-8"));
-  }
+  },
+  statMtimeMs(filePath, context = {}) {
+    const safePath = assertReadablePath(filePath, context);
+    return fs.statSync(safePath).mtimeMs;
+  },
 };

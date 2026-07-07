@@ -1,5 +1,7 @@
 import express from "express";
 import { randomUUID } from "node:crypto";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import * as z from "zod/v4";
 import { McpServer, ResourceTemplate } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
@@ -22,7 +24,7 @@ import {
   createHttpCorsMiddleware,
   createHttpRuntimeMiddleware,
   getHttpRuntimeSnapshot,
-} from "@omni-skills/server-api/http-runtime";
+} from "@omni-skills/http-core";
 import {
   configureClientMcp,
   detectClients,
@@ -794,19 +796,26 @@ async function startSse() {
   });
 }
 
-const transportMode = resolveTransportMode();
-const startByTransport = {
-  stdio: startStdio,
-  stream: startStreamableHttp,
-  sse: startSse,
-};
+// Only auto-start a transport when this file is executed directly (e.g. `node src/server.js`
+// or the package's `start*` scripts). Importing this module — as tests do to exercise
+// createCatalogMcpServer() — must not have the side effect of opening a stdio/HTTP listener.
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  const transportMode = resolveTransportMode();
+  const startByTransport = {
+    stdio: startStdio,
+    stream: startStreamableHttp,
+    sse: startSse,
+  };
 
-if (!startByTransport[transportMode]) {
-  console.error(`Unsupported MCP transport '${transportMode}'. Use stdio, stream, or sse.`);
-  process.exit(1);
+  if (!startByTransport[transportMode]) {
+    console.error(`Unsupported MCP transport '${transportMode}'. Use stdio, stream, or sse.`);
+    process.exit(1);
+  }
+
+  startByTransport[transportMode]().catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
 }
 
-startByTransport[transportMode]().catch((error) => {
-  console.error(error);
-  process.exit(1);
-});
+export { createCatalogMcpServer };

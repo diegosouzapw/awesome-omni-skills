@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import { createRequire } from "node:module";
-import path from "node:path";
 import { SearchAdapter } from "./SearchAdapter.js";
+import { resolveSafeDbPath } from "./db-path.js";
 import {
   buildSearchResponse,
   ensureNumber,
@@ -63,24 +63,6 @@ function loadDatabaseDriver() {
   return require("better-sqlite3");
 }
 
-function resolveReadableDatabasePath(candidatePath) {
-  const normalized = String(candidatePath || "").trim();
-  if (!normalized || normalized.includes("\u0000") || /(^|[\\/])\.\.([\\/]|$)/.test(normalized)) {
-    return null;
-  }
-
-  const absolutePath = path.resolve(normalized);
-  if (path.basename(absolutePath).toLowerCase().endsWith(".db")) {
-    return absolutePath;
-  }
-
-  if (!fs.existsSync(absolutePath) || !fs.statSync(absolutePath).isDirectory()) {
-    return null;
-  }
-
-  return absolutePath;
-}
-
 function parseListValue(value) {
   const normalized = String(value || "");
   if (!normalized) {
@@ -135,6 +117,7 @@ function hydrateSkillRow(row = {}) {
     date_updated: row.date_updated || null,
     updated_at: row.date_updated || null,
     generated_at: row.generated_at || row.date_updated || null,
+    family_id: row.family_id || null,
   };
 }
 
@@ -169,6 +152,7 @@ function buildSkillSelectColumns(alias = "skills") {
     `${alias}.archives_count AS archives_count`,
     `${alias}.date_updated AS date_updated`,
     `${alias}.generated_at AS generated_at`,
+    `${alias}.family_id AS family_id`,
   ].join(", ");
 }
 
@@ -208,6 +192,65 @@ function buildTrigramMatch(normalizedQuery, tokens) {
     tokens.length > 0 ? tokens : normalizedQuery.split(/\s+/).filter(Boolean),
   );
   return trigramTokens.join(" OR ");
+}
+
+// Relevance floor for the fuzzy TRIGRAM fallback. The trigram MATCH is an OR over
+// every 3-char slice of the query, so it returns any skill that shares even a single
+// slice — which lets junk queries (e.g. "qwxzptlkjv", "kubzzzzzzzz") leak results.
+// We keep a trigram candidate only when this fraction of the QUERY's trigrams is
+// present in the candidate's searchable text. Trigrams are taken over the full
+// normalized string (including padding/junk chars), so noise in the query dilutes
+// the coverage of an adversarial query below the floor, while a clean typo of a real
+// term ("kuberntes" -> "kubernetes") still covers ~0.71. 0.5 chosen empirically to
+// clear real typos with headroom while rejecting the junk queries above; applied ONLY
+// to the trigram strategy — fts5/porter (exact/prefix/stem) is never post-filtered.
+const TRIGRAM_COVERAGE_FLOOR = 0.5;
+// Bounded candidate pool for the post-filtered trigram pass: fetch matches ordered by
+// relevance, then apply the JS floor and paginate in memory. The trigram fallback is a
+// last resort (fts5/porter already returned nothing), so the pool is small and this
+// full pass keeps `total`/pagination correct after filtering.
+const TRIGRAM_CANDIDATE_CEILING = 2000;
+
+function toCoverageTrigrams(text) {
+  const normalized = normalizeText(text || "");
+  const set = new Set();
+  if (!normalized) {
+    return set;
+  }
+  if (normalized.length < 3) {
+    set.add(normalized);
+    return set;
+  }
+  for (let index = 0; index <= normalized.length - 3; index += 1) {
+    set.add(normalized.slice(index, index + 3));
+  }
+  return set;
+}
+
+function buildTrigramCoverageFilter(normalizedQuery) {
+  const queryTrigrams = toCoverageTrigrams(normalizedQuery);
+  if (queryTrigrams.size === 0) {
+    return null;
+  }
+  return (skill) => {
+    const searchable = [
+      skill.id,
+      skill.slug,
+      skill.display_name,
+      skill.description,
+      Array.isArray(skill.tags) ? skill.tags.join(" ") : skill.tags,
+    ]
+      .filter(Boolean)
+      .join(" ");
+    const candidateTrigrams = toCoverageTrigrams(searchable);
+    let hits = 0;
+    for (const trigram of queryTrigrams) {
+      if (candidateTrigrams.has(trigram)) {
+        hits += 1;
+      }
+    }
+    return hits / queryTrigrams.size >= TRIGRAM_COVERAGE_FLOOR;
+  };
 }
 
 function buildFilterSql(filters, alias = "skills") {
@@ -392,7 +435,7 @@ export class SQLiteSearchAdapter extends SearchAdapter {
     this.catalog = this.context.catalog || this.catalog;
     this.manifestLoader = this.context.manifestLoader || this.manifestLoader;
 
-    const safeDbPath = resolveReadableDatabasePath(this.dbPath);
+    const safeDbPath = resolveSafeDbPath(this.dbPath);
     if (!safeDbPath || !fs.existsSync(safeDbPath)) {
       throw new Error(`SQLite catalog database not found at ${this.dbPath || "<missing>"}.`);
     }
@@ -450,13 +493,14 @@ export class SQLiteSearchAdapter extends SearchAdapter {
         name: "fts5",
         params: [buildPorterMatch(parsed.queryTokens)],
         cteSql:
-          "SELECT rowid AS skill_rowid, bm25(skills_fts, 12.0, 9.0, 7.0) AS rank FROM skills_fts WHERE skills_fts MATCH ?",
+          "SELECT rowid AS skill_rowid, bm25(skills_fts, 10.0, 5.0, 3.0, 2.0, 1.0) AS rank FROM skills_fts WHERE skills_fts MATCH ?",
       },
       {
         name: "trigram",
         params: [buildTrigramMatch(normalizedQuery, parsed.queryTokens)],
         cteSql:
-          "SELECT rowid AS skill_rowid, bm25(skills_trigram, 10.0, 8.0, 6.0) AS rank FROM skills_trigram WHERE skills_trigram MATCH ?",
+          "SELECT rowid AS skill_rowid, bm25(skills_trigram, 6.0, 4.0, 2.0) AS rank FROM skills_trigram WHERE skills_trigram MATCH ?",
+        postFilter: buildTrigramCoverageFilter(normalizedQuery),
       },
       {
         name: "like",
@@ -486,6 +530,14 @@ export class SQLiteSearchAdapter extends SearchAdapter {
     const goalTokens = tokenize(options.goal || "");
     const queryTokens = tokenize(options.q || options.query || "");
     const limit = ensureNumber(options.limit, 5);
+    // Safety ceiling on the candidate pool (defense against a pathological catalog size).
+    // Default (5000) sits above the real catalog (~4715 skills), so ordinary requests are
+    // unaffected; the SQL LIMIT is the ceiling itself, not combined with the caller's
+    // requested result `limit` (which is a separate, later `.slice(0, limit)` step below).
+    const candidateLimit = ensureNumber(
+      options.recommendCandidateCeiling ?? this.context.recommendCandidateCeiling,
+      5000,
+    );
     const where = buildFilterSql(parsed.filters, "skills");
     const rows = db
       .prepare(
@@ -493,10 +545,11 @@ export class SQLiteSearchAdapter extends SearchAdapter {
           SELECT ${buildSkillSelectColumns("skills")}
           FROM skills
           ${where.sql ? `WHERE ${where.sql}` : ""}
-          ORDER BY skills.rowid ASC
+          ORDER BY skills.quality_score DESC, skills.rowid ASC
+          LIMIT ?
         `,
       )
-      .all(...where.params);
+      .all(...where.params, candidateLimit);
 
     const results = rows
       .map(hydrateSkillRow)
@@ -594,6 +647,9 @@ export class SQLiteSearchAdapter extends SearchAdapter {
   }
 
   listWithQueryStrategy(strategy, parsed, normalizedQuery) {
+    if (typeof strategy.postFilter === "function") {
+      return this.listWithPostFilteredStrategy(strategy, parsed, normalizedQuery);
+    }
     const db = this.ensureDb();
     const filter = buildFilterSql(parsed.filters, "skills");
     const relevanceFromFiltered = buildRelevanceSql("filtered", parsed.queryTokens, parsed.filters);
@@ -752,6 +808,67 @@ export class SQLiteSearchAdapter extends SearchAdapter {
     }
 
     return buildPaginatedResponse(rows.map(hydrateSkillRow), parsed, total);
+  }
+
+  // Trigram fallback with a JS relevance floor: fetch the full (bounded) matched set
+  // ordered by relevance, apply strategy.postFilter, then recompute total and paginate
+  // in memory so the count and pages stay consistent after filtering. Only the trigram
+  // strategy carries a postFilter; fts5/porter and the like fallback take the fast path.
+  listWithPostFilteredStrategy(strategy, parsed, normalizedQuery) {
+    const db = this.ensureDb();
+    const filter = buildFilterSql(parsed.filters, "skills");
+    const relevance = buildRelevanceSql("filtered", parsed.queryTokens, parsed.filters);
+    const baseParams = [
+      ...strategy.params,
+      normalizedQuery,
+      normalizedQuery,
+      `${normalizedQuery}%`,
+      `${normalizedQuery}%`,
+      ...filter.params,
+    ];
+
+    const rows = db
+      .prepare(
+        `
+          WITH matched AS (
+            ${strategy.cteSql}
+          ),
+          filtered AS (
+            SELECT
+              ${buildSkillSelectColumns("skills")},
+              skills.rowid AS rowid,
+              matched.rank AS rank,
+              CASE WHEN lower(skills.id) = ? OR lower(skills.slug) = ? THEN 1 ELSE 0 END AS exact_id,
+              CASE WHEN lower(skills.id) LIKE ? OR lower(skills.slug) LIKE ? THEN 1 ELSE 0 END AS prefix_id
+            FROM matched
+            JOIN skills ON skills.rowid = matched.skill_rowid
+            ${filter.sql ? `WHERE ${filter.sql}` : ""}
+          ),
+          scored AS (
+            SELECT
+              ${buildSkillSelectColumns("filtered")},
+              filtered.rank AS rank,
+              filtered.exact_id AS exact_id,
+              filtered.prefix_id AS prefix_id,
+              (${relevance.sql}) AS relevance_score
+            FROM filtered
+          )
+          SELECT ${buildSkillSelectColumns("scored")}
+          FROM scored
+          ORDER BY exact_id DESC, prefix_id DESC, relevance_score DESC, id ASC, rank ASC
+          LIMIT ?
+        `,
+      )
+      .all(...baseParams, ...relevance.params, TRIGRAM_CANDIDATE_CEILING);
+
+    let kept = rows.map(hydrateSkillRow).filter(strategy.postFilter);
+
+    if (parsed.sort && parsed.sort !== "relevance") {
+      kept = sortSkills(kept, parsed.sort, parsed.order);
+    }
+
+    const page = kept.slice(parsed.offset, parsed.offset + parsed.limit);
+    return buildPaginatedResponse(page, parsed, kept.length);
   }
 
   close() {

@@ -3,6 +3,8 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   test: {
     projects: [
+      "./packages/http-core/vitest.config.js",
+      "./packages/shared-fs/vitest.config.js",
       "./packages/catalog-core/vitest.config.js",
       "./packages/server-api/vitest.config.js",
       "./packages/server-mcp/vitest.config.js",

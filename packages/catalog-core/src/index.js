@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createSearchAdapter } from "./adapters/createSearchAdapter.js";
@@ -83,10 +84,30 @@ export function getCatalogPaths(options = {}) {
   };
 }
 
+// Cache por processo do catálogo parseado, invalidado quando o mtime do arquivo muda.
+// Evita re-parsear ~13 MB de catalog.json a cada request de API/A2A. Chaveado por path
+// absoluto, então fixtures em diretórios temporários distintos nunca colidem.
+const catalogCache = new Map();
+
 export function loadCatalog(options = {}) {
   const adapter = options.storageAdapter || defaultFsAdapter;
   const paths = getCatalogPaths(options);
-  return readJson(paths.catalogPath, adapter, { repoRoot: paths.repoRoot });
+  const context = { repoRoot: paths.repoRoot };
+  const mtimeMs =
+    typeof adapter.statMtimeMs === "function" ? adapter.statMtimeMs(paths.catalogPath, context) : null;
+  const cached = catalogCache.get(paths.catalogPath);
+  if (cached && mtimeMs !== null && cached.mtimeMs === mtimeMs) {
+    return cached.data;
+  }
+  const data = readJson(paths.catalogPath, adapter, context);
+  if (mtimeMs !== null) {
+    catalogCache.set(paths.catalogPath, { mtimeMs, data });
+  }
+  return data;
+}
+
+export function __clearCatalogCache() {
+  catalogCache.clear();
 }
 
 export function listFamilies(options = {}) {
@@ -440,6 +461,16 @@ export function searchFamilies(options = {}) {
     };
   }
 
+  // Rank matched families by the quality of their DEFAULT ("flagship") variant,
+  // not by which variant happened to match the query first. A family can match
+  // via a low-quality non-default variant yet still deserve top placement because
+  // its default is the one users actually land on. Array.prototype.sort is
+  // stable, so families tied on default quality keep their relevance order.
+  familyResults.sort(
+    (left, right) =>
+      Number(right.default_skill?.quality_score || 0) - Number(left.default_skill?.quality_score || 0),
+  );
+
   return {
     ...searchResult,
     total: familyResults.length,
@@ -685,13 +716,48 @@ export function getHealthSnapshot(options = {}) {
 
 function createSearchAdapterContext(options = {}) {
   const paths = getCatalogPaths(options);
+  const requestedMode = String(
+    options.searchMode || options.search_mode || process.env.OMNI_SKILLS_SEARCH_ADAPTER || "auto",
+  )
+    .trim()
+    .toLowerCase();
+  const willUseSqlite = requestedMode !== "memory" && fs.existsSync(paths.databasePath);
   return {
     ...options,
     catalogPath: paths.catalogPath,
     databasePath: paths.databasePath,
-    catalog: options.catalog || loadCatalog(options),
+    // Com DB presente e modo != memory, NÃO pré-carrega o catálogo: deixa o
+    // SQLiteSearchAdapter usar o SQL (BM25/porter/trigram) em vez de curto-circuitar
+    // para o scorer em memória. O catálogo é carregado sob demanda (catalogLoader)
+    // apenas se o fallback Memory for necessário.
+    catalog: options.catalog || (willUseSqlite ? undefined : loadCatalog(options)),
+    catalogLoader: () => loadCatalog(options),
     manifestLoader: (skillId) => loadManifest(skillId, options),
   };
+}
+
+// Adapters de busca persistentes por processo, chaveados por databasePath. Servidores
+// de longa duração (API/A2A) reusam um único adapter (um handle SQLite aberto) entre
+// requests, em vez de abrir/fechar por chamada. createSearchAdapterContext já evita
+// injetar o catálogo quando há DB, então o adapter compartilhado usa o SQL.
+const sharedSearchAdapters = new Map();
+
+export function getSharedSearchAdapter(options = {}) {
+  const context = createSearchAdapterContext(options);
+  const key = context.databasePath || "__memory__";
+  let adapter = sharedSearchAdapters.get(key);
+  if (!adapter) {
+    adapter = createSearchAdapter(context);
+    sharedSearchAdapters.set(key, adapter);
+  }
+  return adapter;
+}
+
+export function __resetSharedSearchAdapters() {
+  for (const adapter of sharedSearchAdapters.values()) {
+    adapter.close?.();
+  }
+  sharedSearchAdapters.clear();
 }
 
 function withSearchAdapter(options = {}, callback) {

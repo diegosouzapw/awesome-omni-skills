@@ -955,6 +955,37 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
+  /v1/families/{id}/variants:
+    get:
+      summary: List the variants of a skill family
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Variant list for the family
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  family_id:
+                    type: string
+                  total:
+                    type: integer
+                  results:
+                    type: array
+                    items:
+                      type: object
+        "404":
+          description: Family not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
   /v1/search:
     get:
       summary: Search skills using the same filters and relevance engine as `/v1/skills`

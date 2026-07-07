@@ -5,7 +5,7 @@ import {
   applyExpressHttpRuntime,
   createHttpCorsMiddleware,
   createHttpRuntimeMiddleware,
-} from "@omni-skills/server-api/http-runtime";
+} from "@omni-skills/http-core";
 import { OmniSkillsA2ARuntime } from "./task-runtime.js";
 
 const PORT = Number.parseInt(process.env.PORT || "3335", 10);

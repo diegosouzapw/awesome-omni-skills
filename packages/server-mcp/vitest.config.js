@@ -5,6 +5,5 @@ export default defineConfig({
     name: "server-mcp",
     environment: "node",
     include: ["__tests__/**/*.spec.js"],
-    passWithNoTests: true,
   },
 });

@@ -136,6 +136,9 @@ npx awesome-omni-skills api --port 3333
 |:-------|:-----|:------------|
 | `GET` | `/v1/skills` | List skills with filters |
 | `GET` | `/v1/skills/:id` | Get individual skill manifest |
+| `GET` | `/v1/families` | List skill families |
+| `GET` | `/v1/families/:id` | Get an individual family |
+| `GET` | `/v1/families/:id/variants` | List the variants of a family |
 | `GET` | `/v1/search` | Full-text search |
 | `GET` | `/v1/compare?ids=id1,id2` | Compare multiple skills |
 | `GET` | `/v1/bundles` | List bundles with availability |

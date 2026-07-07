@@ -1,5 +1,5 @@
 import fs from "node:fs";
-import path from "node:path";
+import { resolveSafeDbPath } from "./db-path.js";
 import { MemorySearchAdapter } from "./MemorySearchAdapter.js";
 import { SQLiteSearchAdapter } from "./SQLiteSearchAdapter.js";
 
@@ -14,31 +14,13 @@ function resolveRequestedMode(context = {}) {
     .toLowerCase();
 }
 
-function resolveSafeDatabasePath(candidatePath) {
-  const normalized = String(candidatePath || "").trim();
-  if (!normalized || normalized.includes("\u0000") || /(^|[\\/])\.\.([\\/]|$)/.test(normalized)) {
-    return null;
-  }
-
-  const absolutePath = path.resolve(normalized);
-  if (path.basename(absolutePath).toLowerCase().endsWith(".db")) {
-    return absolutePath;
-  }
-
-  if (!fs.existsSync(absolutePath) || !fs.statSync(absolutePath).isDirectory()) {
-    return null;
-  }
-
-  return absolutePath;
-}
-
 export function createSearchAdapter(context = {}) {
   if (context.searchAdapter && typeof context.searchAdapter.search === "function") {
     return context.searchAdapter;
   }
 
   const requestedMode = resolveRequestedMode(context);
-  const databasePath = resolveSafeDatabasePath(context.databasePath || context.dbPath || null);
+  const databasePath = resolveSafeDbPath(context.databasePath || context.dbPath || null);
 
   if (requestedMode !== "memory" && databasePath && fs.existsSync(databasePath)) {
     try {

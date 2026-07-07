@@ -11,6 +11,7 @@ import {
   getHealthSnapshot,
   getCatalogPaths,
   getFamily,
+  getSharedSearchAdapter,
   getSkill,
   getSkillPublicUrls,
   listFamilies,
@@ -28,18 +29,27 @@ import {
   searchFamilies,
   searchSkills,
 } from "@omni-skills/catalog-core";
+import { isPathInside } from "@omni-skills/shared-fs";
 import {
   applyExpressHttpRuntime,
   createHttpCorsMiddleware,
   createHttpRuntimeMiddleware,
   getHttpRuntimeSnapshot,
-} from "./http-runtime.js";
+} from "@omni-skills/http-core";
 import { isSafeArchiveFormat } from "./archive-format.js";
 
 const app = express();
 const PORT = Number.parseInt(process.env.PORT || "3333", 10);
 const HOST = process.env.HOST || "127.0.0.1";
 const { repoRoot } = getCatalogPaths();
+
+// Reusa um único adapter de busca (um handle SQLite aberto) por processo entre requests,
+// em vez de abrir/fechar por chamada. O adapter é injetado via options.searchAdapter.
+const withShared = (query = {}) => ({
+  ...query,
+  repoRoot,
+  searchAdapter: getSharedSearchAdapter({ repoRoot }),
+});
 
 applyExpressHttpRuntime(app);
 app.use(createHttpCorsMiddleware());
@@ -68,11 +78,6 @@ app.param("id", (req, res, next, id) => {
 
 function requestBaseUrl(req) {
   return `${req.protocol}://${req.get("host")}`;
-}
-
-function isPathInside(candidatePath, rootPath) {
-  const relative = path.relative(rootPath, candidatePath);
-  return relative === "" || (!relative.startsWith("..") && !path.isAbsolute(relative));
 }
 
 function sanitizeDownloadName(candidateName, fallbackName) {
@@ -125,7 +130,7 @@ app.get("/admin/runtime", (req, res) => {
       base_url: requestBaseUrl(req),
     },
     catalog: {
-      total_skills: listSkills({ limit: 1 }).total,
+      total_skills: listSkills(withShared({ limit: 1 })).total,
       bundles: listBundles().length,
     },
   });
@@ -150,7 +155,7 @@ app.get("/v1/catalog/download", (_req, res) => {
 });
 
 app.get("/v1/skills", (req, res) => {
-  res.json(listSkills(req.query));
+  res.json(listSkills(withShared(req.query)));
 });
 
 app.get("/v1/families", (req, res) => {
@@ -164,6 +169,16 @@ app.get("/v1/families/:id", (req, res) => {
     return;
   }
   res.json(family);
+});
+
+app.get("/v1/families/:id/variants", (req, res) => {
+  const family = getFamily(req.params.id, req.query);
+  if (!family) {
+    res.status(404).json({ error: `Family '${req.params.id}' not found.` });
+    return;
+  }
+  const variants = Array.isArray(family.variants) ? family.variants : [];
+  res.json({ family_id: family.id, total: variants.length, results: variants });
 });
 
 app.get("/v1/skills/:id", (req, res) => {
@@ -320,7 +335,7 @@ app.get("/v1/skills/:id/download/archive/checksums", (req, res) => {
 
 app.get("/v1/search", (req, res) => {
   const groupBy = String(req.query.group || "").trim().toLowerCase();
-  res.json(groupBy === "families" ? searchFamilies(req.query) : searchSkills(req.query));
+  res.json(groupBy === "families" ? searchFamilies(withShared(req.query)) : searchSkills(withShared(req.query)));
 });
 
 app.get("/v1/compare", (req, res) => {
@@ -339,6 +354,10 @@ app.post("/v1/install/plan", (req, res) => {
   res.json(buildInstallPlan(req.body || {}, { baseUrl: requestBaseUrl(req) }));
 });
 
-app.listen(PORT, HOST, () => {
-  console.log(`Awesome Omni Skills API listening at http://${HOST}:${PORT}`);
-});
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  app.listen(PORT, HOST, () => {
+    console.log(`Awesome Omni Skills API listening at http://${HOST}:${PORT}`);
+  });
+}
+
+export { app };
