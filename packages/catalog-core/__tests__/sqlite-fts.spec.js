@@ -4,6 +4,7 @@ import os from "node:os";
 import { describe, expect, test, beforeAll, afterAll } from "vitest";
 import { buildCatalogDb } from "../../../tools/scripts/build_catalog_db.js";
 import Database from "better-sqlite3";
+import { SQLiteSearchAdapter } from "../src/adapters/SQLiteSearchAdapter.js";
 
 function fixtureCatalog() {
   return {
@@ -50,5 +51,14 @@ describe("catalog.db FTS schema", () => {
       "SELECT id, bm25(skills_fts, 10.0, 5.0, 3.0, 2.0, 1.0) AS s FROM skills_fts WHERE skills_fts MATCH 'kube' ORDER BY s"
     ).all();
     expect(ranked[0].id).toBe("kube-ops");
+  });
+
+  test("hydrated rows preserve family_id for family grouping", () => {
+    const adapter = new SQLiteSearchAdapter({ databasePath: dbPath });
+    adapter.init({ databasePath: dbPath });
+    const { results } = adapter.search({ query: "kubernetes", searchMode: "sqlite" });
+    adapter.close();
+    expect(results.length).toBeGreaterThan(0);
+    expect(results.every((r) => typeof r.family_id === "string")).toBe(true);
   });
 });

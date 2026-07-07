@@ -135,6 +135,7 @@ function hydrateSkillRow(row = {}) {
     date_updated: row.date_updated || null,
     updated_at: row.date_updated || null,
     generated_at: row.generated_at || row.date_updated || null,
+    family_id: row.family_id || null,
   };
 }
 
@@ -169,6 +170,7 @@ function buildSkillSelectColumns(alias = "skills") {
     `${alias}.archives_count AS archives_count`,
     `${alias}.date_updated AS date_updated`,
     `${alias}.generated_at AS generated_at`,
+    `${alias}.family_id AS family_id`,
   ].join(", ");
 }
 
