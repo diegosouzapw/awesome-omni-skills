@@ -43,9 +43,11 @@ jobs:
         id: mode
         env:
           REPO_ADMIN_TOKEN: ${{ secrets.OMNI_SKILLS_REPO_ADMIN_TOKEN }}
+          EVENT_NAME: ${{ github.event_name }}
+          INPUT_MODE: ${{ github.event.inputs.mode }}
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            MODE="${{ github.event.inputs.mode }}"
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            MODE="$INPUT_MODE"
           elif [ -n "${REPO_ADMIN_TOKEN:-}" ]; then
             MODE="apply"
           else
