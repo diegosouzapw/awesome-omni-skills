@@ -15,6 +15,32 @@ import { isPathInside } from "@omni-skills/shared-fs";
 const PACKAGE_JSON_PATH = fileURLToPath(new URL("../../../package.json", import.meta.url));
 const require = createRequire(import.meta.url);
 import { listBuiltinInstallTargets } from "@omni-skills/install-targets";
+import {
+  getClaudeSettingsPath,
+  getGeminiSettingsPath,
+  getKiroSettingsPath,
+  getContinueWorkspaceConfigPath,
+  getJunieConfigPath,
+  getWindsurfConfigPath,
+  getGooseConfigDir,
+  getGooseConfigPath,
+  getClineConfigRoot,
+  getClineSettingsPath,
+  getCopilotHome,
+  getCopilotUserConfigPath,
+  getCopilotRepoConfigPath,
+  getKiloConfigDir,
+  getKiloUserConfigPath,
+  getKiloProjectConfigPath,
+  getKiloWorkspaceConfigPath,
+  getOpenCodeConfigDir,
+  getOpenCodeUserConfigPath,
+  getOpenCodeProjectConfigPath,
+  getOpenCodeSkillsPath,
+  getZedWorkspaceSettingsPath,
+  getClaudeDesktopConfigPath,
+  getVscodeUserConfigPath,
+} from "./client-config-paths.js";
 
 function loadOmniSkillsVersion() {
   try {
@@ -41,134 +67,6 @@ function shellQuote(value) {
     return "''";
   }
   return `'${text.replace(/'/g, `'\"'\"'`)}'`;
-}
-
-function getClaudeSettingsPath(env) {
-  return path.join(env.homeDir, ".claude", "settings.json");
-}
-
-function getGeminiSettingsPath(env, scope = "user") {
-  if (scope === "workspace") {
-    return path.join(env.cwd, ".gemini", "settings.json");
-  }
-  return path.join(env.homeDir, ".gemini", "settings.json");
-}
-
-function getKiroSettingsPath(env, scope = "user") {
-  if (scope === "workspace") {
-    return path.join(env.cwd, ".kiro", "settings", "mcp.json");
-  }
-  return path.join(env.homeDir, ".kiro", "settings", "mcp.json");
-}
-
-function getContinueWorkspaceConfigPath(env) {
-  return path.join(env.cwd, ".continue", "mcpServers", "omni-skills.yaml");
-}
-
-function getJunieConfigPath(env, scope = "user") {
-  if (scope === "project") {
-    return path.join(env.cwd, ".junie", "mcp", "mcp.json");
-  }
-  return path.join(env.homeDir, ".junie", "mcp", "mcp.json");
-}
-
-function getWindsurfConfigPath(env) {
-  return path.join(env.homeDir, ".codeium", "windsurf", "mcp_config.json");
-}
-
-function getGooseConfigDir(env) {
-  if (process.platform === "win32") {
-    const appData = process.env.APPDATA || path.join(env.homeDir, "AppData", "Roaming");
-    return path.join(appData, "Block", "goose", "config");
-  }
-  return path.join(env.homeDir, ".config", "goose");
-}
-
-function getGooseConfigPath(env) {
-  return path.join(getGooseConfigDir(env), "config.yaml");
-}
-
-function getClineConfigRoot(env) {
-  const customRoot = String(process.env.CLINE_DIR || "").trim();
-  if (customRoot) {
-    return path.resolve(customRoot);
-  }
-  return path.join(env.homeDir, ".cline");
-}
-
-function getClineSettingsPath(env) {
-  return path.join(getClineConfigRoot(env), "data", "settings", "cline_mcp_settings.json");
-}
-
-function getCopilotHome(env) {
-  const customRoot = String(process.env.COPILOT_HOME || "").trim();
-  if (customRoot) {
-    return path.resolve(customRoot);
-  }
-  return path.join(env.homeDir, ".copilot");
-}
-
-function getCopilotUserConfigPath(env) {
-  return path.join(getCopilotHome(env), "mcp-config.json");
-}
-
-function getCopilotRepoConfigPath(env) {
-  return path.join(env.cwd, ".github", "mcp.json");
-}
-
-function getKiloConfigDir(env) {
-  if (process.platform === "win32") {
-    const appData = process.env.APPDATA || path.join(env.homeDir, "AppData", "Roaming");
-    return path.join(appData, "kilo");
-  }
-  return path.join(env.homeDir, ".config", "kilo");
-}
-
-function getKiloUserConfigPath(env) {
-  return path.join(getKiloConfigDir(env), "kilo.json");
-}
-
-function getKiloProjectConfigPath(env) {
-  return path.join(env.cwd, "kilo.json");
-}
-
-function getKiloWorkspaceConfigPath(env) {
-  return path.join(env.cwd, ".kilocode", "mcp.json");
-}
-
-function getOpenCodeConfigDir(env) {
-  if (process.platform === "win32") {
-    const appData = process.env.APPDATA || path.join(env.homeDir, "AppData", "Roaming");
-    return path.join(appData, "opencode");
-  }
-  return path.join(env.homeDir, ".config", "opencode");
-}
-
-function getOpenCodeUserConfigPath(env) {
-  return path.join(getOpenCodeConfigDir(env), "opencode.json");
-}
-
-function getOpenCodeProjectConfigPath(env) {
-  return path.join(env.cwd, "opencode.json");
-}
-
-function getOpenCodeSkillsPath(env) {
-  return path.join(env.cwd, ".opencode", "skills");
-}
-
-function getZedWorkspaceSettingsPath(env) {
-  return path.join(env.cwd, ".zed", "settings.json");
-}
-
-function getClaudeDesktopConfigPath(env) {
-  if (process.platform === "darwin") {
-    return path.join(env.homeDir, "Library", "Application Support", "Claude", "claude_desktop_config.json");
-  }
-  if (process.platform === "win32") {
-    const appData = process.env.APPDATA || path.join(env.homeDir, "AppData", "Roaming");
-    return path.join(appData, "Claude", "claude_desktop_config.json");
-  }
-  return path.join(env.homeDir, ".config", "Claude", "claude_desktop_config.json");
 }
 
 const CLIENT_DEFINITIONS = {
@@ -229,21 +127,6 @@ const CLIENT_DEFINITIONS = {
     configProfile: "goose-yaml",
   },
 };
-
-function getVscodeUserConfigPath(env, edition = "stable") {
-  const platform = process.platform;
-  if (platform === "darwin") {
-    const appName = edition === "insiders" ? "Code - Insiders" : "Code";
-    return path.join(env.homeDir, "Library", "Application Support", appName, "User", "mcp.json");
-  }
-  if (platform === "win32") {
-    const appData = process.env.APPDATA || path.join(env.homeDir, "AppData", "Roaming");
-    const appName = edition === "insiders" ? "Code - Insiders" : "Code";
-    return path.join(appData, appName, "User", "mcp.json");
-  }
-  const appName = edition === "insiders" ? "Code - Insiders" : "Code";
-  return path.join(env.homeDir, ".config", appName, "User", "mcp.json");
-}
 
 const CONFIG_TARGETS = {
   workspace: {
