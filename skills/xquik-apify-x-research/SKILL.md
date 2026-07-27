@@ -74,9 +74,11 @@ Never compare display names as stable identifiers.
 Fetch current public Actor details without starting a run:
 
 ```bash
-apify actors info "xquik/x-tweet-scraper" --input --json 2>/dev/null
-apify actors info "xquik/x-follower-scraper" --input --json 2>/dev/null
+apify actors info "xquik/x-tweet-scraper" --input --json
+apify actors info "xquik/x-follower-scraper" --input --json
 ```
+
+Stop unless both commands return their input schemas successfully.
 
 Confirm these items before execution:
 
@@ -91,13 +93,14 @@ Do not hardcode prices. Treat each Actor listing as authoritative.
 ### 3. Build a Bounded Input
 
 Start with the smallest useful result cap.
-Use `maxItemsPerTarget` for fair multi-target collection.
 
-For multi-query tweet searches, `maxItems` covers the whole run.
+For multi-query tweet searches, use the run-wide `maxItems` field.
+It covers the whole run.
 It does not create an independent quota per search term.
 
-For relation work, retain `includeTargetMetadata: true`.
-It preserves `sourceTarget`, `sourceRelation`, and `sourceUrl`.
+For follower relations, use `maxItemsPerTarget` to balance targets.
+Retain `includeTargetMetadata: true` to preserve sources.
+For other explicit multi-target routes, use it only when the live schema permits it.
 
 Use the schema-checked inputs in [Worked Examples](examples/research-and-overlap.md).
 
@@ -119,7 +122,7 @@ Never place tokens in Actor input, output, logs, or saved examples.
 Run only after approval:
 
 ```bash
-apify actors call "ACTOR_ID" -i 'JSON_INPUT' --json 2>/dev/null
+apify actors call "ACTOR_ID" -i 'JSON_INPUT' --json --output-dataset
 ```
 
 For long runs, start asynchronously and poll the returned run ID.
@@ -213,8 +216,8 @@ relation, and public availability before changing limits.
 
 **Symptoms:** A multi-target run produces an unbalanced dataset.
 
-**Solution:** Add `maxItemsPerTarget`. Run targets separately when each needs
-an independent quota.
+**Solution:** Use a route-supported per-target cap. Run targets separately when
+each needs an independent quota.
 
 ### Problem: Overlap counts look inconsistent
 

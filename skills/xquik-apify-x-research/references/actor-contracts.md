@@ -67,9 +67,11 @@ It preserves the source target, relation, and URL.
 Use read-only Actor inspection:
 
 ```bash
-apify actors info "xquik/x-tweet-scraper" --input --json 2>/dev/null
-apify actors info "xquik/x-follower-scraper" --input --json 2>/dev/null
+apify actors info "xquik/x-tweet-scraper" --input --json
+apify actors info "xquik/x-follower-scraper" --input --json
 ```
+
+Stop unless both commands return their input schemas successfully.
 
 Validate every example against:
 
