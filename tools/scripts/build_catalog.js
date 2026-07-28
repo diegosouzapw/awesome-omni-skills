@@ -53,7 +53,7 @@ function main() {
   };
 
   let md = `# 📚 Awesome Omni Skills Catalog\n\n`;
-  md += `> Auto-generated from \`skills_index.json\` — ${index.total_skills} skills across ${Object.keys(byCategory).length} categories.\n\n`;
+  md += `> Auto-generated from \`skills_index.json\`: ${index.total_skills} skills across ${Object.keys(byCategory).length} categories.\n\n`;
   md += `Generated: ${index.generated_at}\n\n`;
   md += `---\n\n`;
   md += `## Table of Contents\n\n`;
