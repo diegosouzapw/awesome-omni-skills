@@ -67,8 +67,8 @@ It preserves the source target, relation, and URL.
 Use read-only Actor inspection:
 
 ```bash
-apify actors info "xquik/x-tweet-scraper" --input --json
-apify actors info "xquik/x-follower-scraper" --input --json
+apify actors info "xquik/x-tweet-scraper" --input
+apify actors info "xquik/x-follower-scraper" --input
 ```
 
 Stop unless both commands return their input schemas successfully.
@@ -81,3 +81,7 @@ taggedBuilds.latest.build.actorDefinition.input
 
 Never infer pricing from an old document.
 Read the current Actor listing and Actor information.
+
+Set `maxItems` in Actor input for a result-count cap. For an exact USD cap,
+set `maxTotalChargeUsd` as an Apify run option through the Console, API, or SDK.
+It is not an Actor input field.

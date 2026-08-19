@@ -74,8 +74,8 @@ Never compare display names as stable identifiers.
 Fetch current public Actor details without starting a run:
 
 ```bash
-apify actors info "xquik/x-tweet-scraper" --input --json
-apify actors info "xquik/x-follower-scraper" --input --json
+apify actors info "xquik/x-tweet-scraper" --input
+apify actors info "xquik/x-follower-scraper" --input
 ```
 
 Stop unless both commands return their input schemas successfully.
@@ -89,6 +89,10 @@ Confirm these items before execution:
 - Current pricing fits the approved budget.
 
 Do not hardcode prices. Treat each Actor listing as authoritative.
+
+Use Actor input `maxItems` when a result-count cap is sufficient. For an exact
+USD cap, use the Actor Console or Apify API or SDK and set
+`maxTotalChargeUsd` as a run option. Do not add that option to Actor input JSON.
 
 ### 3. Build a Bounded Input
 
@@ -122,11 +126,12 @@ Never place tokens in Actor input, output, logs, or saved examples.
 Run only after approval:
 
 ```bash
-apify actors call "ACTOR_ID" -i 'JSON_INPUT' --json --output-dataset
+apify actors call "ACTOR_ID" -i 'JSON_INPUT' --output-dataset
 ```
 
-For long runs, start asynchronously and poll the returned run ID.
-Fetch results from the run's default dataset.
+Use `--json` instead when you need run metadata. The CLI rejects `--json` with
+`--output-dataset`. For long runs, start asynchronously and poll the returned
+run ID. Fetch results from the run's default dataset.
 
 Do not retry automatically after billable partial success.
 Inspect the run, limits, and diagnostics before another attempt.
@@ -201,7 +206,7 @@ See [Worked Examples](examples/research-and-overlap.md) for exact JSON inputs.
 - ❌ **Don't:** Infer endorsement from a follow.
 - ❌ **Don't:** Treat display names as stable identifiers.
 - ❌ **Don't:** Hide unavailable, filtered, or duplicate rows.
-- ❌ **Don't:** retry a chargeable run without review.
+- ❌ **Don't:** Retry a chargeable run without review.
 
 ## Troubleshooting
 

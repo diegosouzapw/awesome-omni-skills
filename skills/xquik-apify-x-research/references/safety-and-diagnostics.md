@@ -9,11 +9,13 @@ Require these facts before a billable run:
 - Current input schema.
 - Current pricing source.
 - Explicit global result cap.
+- Optional platform USD charge cap.
 - Optional per-target cap.
 - User approval for the external run.
 
 Do not proceed when the target requires access bypass.
 Do not place credentials in inputs, outputs, or examples.
+Do not place the Apify run option `maxTotalChargeUsd` in Actor input JSON.
 
 ## Result Classification
 

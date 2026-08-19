@@ -79,6 +79,7 @@ Before execution:
 - [ ] Each field exists in the live input schema.
 - [ ] Each target is public and user-approved.
 - [ ] `maxItems` is explicit.
+- [ ] Any exact USD cap is configured as an Apify run option.
 - [ ] Multi-target work has a fairness decision.
 - [ ] Current pricing was reviewed.
 - [ ] The external run was approved.
