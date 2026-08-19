@@ -1,8 +1,8 @@
 # 📚 Awesome Omni Skills Catalog
 
-> Auto-generated from `skills_index.json` — 4715 skills across 17 categories.
+> Auto-generated from `skills_index.json`: 4716 skills across 17 categories.
 
-Generated: 2026-05-17T00:00:00+00:00
+Generated: 2026-07-27T00:00:00+00:00
 
 ---
 
@@ -14,7 +14,7 @@ Generated: 2026-05-17T00:00:00+00:00
 - [⚙️ Cli Automation (605)](#cli-automation)
 - [💬 Communication (72)](#communication)
 - [🎬 Content Media (158)](#content-media)
-- [🤖 Data Ai (186)](#data-ai)
+- [🤖 Data Ai (187)](#data-ai)
 - [🎨 Design (131)](#design)
 - [💻 Development (718)](#development)
 - [☁️ Devops (345)](#devops)
@@ -2106,6 +2106,7 @@ Generated: 2026-05-17T00:00:00+00:00
 | [`x-twitter-scraper`](../skills/x-twitter-scraper/SKILL.md) | X (Twitter) Scraper - Xquik workflow skill. Use this skill when the user needs X/Twitter automation skill for tweet sear | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`x-twitter-scraper-v2`](../skills/x-twitter-scraper-v2/SKILL.md) | X (Twitter) Scraper - Xquik workflow skill. Use this skill when the user needs X/Twitter automation skill for tweet sear | L2 instructions | 99/100 | 88/100 | 100/100 passed |
 | [`x-twitter-scraper-v2--omni`](../skills_omni/x-twitter-scraper-v2/SKILL.md) | X (Twitter) Scraper \\u2014 Xquik workflow skill. Use this skill when the user needs X (Twitter) data platform skill \\u | L2 instructions | 99/100 | 87/100 | 100/100 passed |
+| [`xquik-apify-x-research`](../skills/xquik-apify-x-research/SKILL.md) | X research and audience workflow using Xquik Apify Actors. Use this Skill for public tweet research, profiles, lists, fo | L2 instructions | 100/100 | 94/100 | 100/100 passed |
 
 ## 🎨 Design
 
